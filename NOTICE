@@ -1,0 +1,14 @@
+Kinglet
+Copyright 2026 Ryotaro Okamoto
+
+Kinglet models are knowledge-distilled from Perch 2.0
+(https://github.com/google-research/perch), Copyright Google LLC,
+licensed under the Apache License, Version 2.0.
+
+Training audio was sourced from Xeno-canto (https://xeno-canto.org, per-recording
+Creative Commons licenses), iNaturalist (https://www.inaturalist.org, per-recording
+Creative Commons licenses), the Macaulay Library at the Cornell Lab of Ornithology
+(https://www.macaulaylibrary.org), the BirdSet dataset
+(https://huggingface.co/datasets/DBD-research-group/BirdSet), and unlabeled Japanese
+passive acoustic monitoring recordings. The audio itself is NOT redistributed with
+this project; see MODEL_CARD.md for details.
