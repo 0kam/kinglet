@@ -42,8 +42,12 @@ embeddings, scores = m.run(wins)                         # (n, 1536), (n, 317) s
 - Output `embedding`: `(batch, 1536)` — projection into the Perch 2.0 embedding space
   (mean cosine ~0.9 to the teacher on held-out soundscapes)
 - Output `logits`: `(batch, n_classes)` — pre-sigmoid; class order in `<model>.classes.csv`
-  (`index, ebird_code, scientific_name, japanese_name`). Scores are not yet threshold-calibrated;
-  treat them as rankings.
+  (`index, ebird_code, scientific_name, japanese_name, logit_bg_p99, score_bg_p99,
+  logit_bg_p999, score_bg_p999`). Raw sigmoid scores run high (the distillation teacher's logits are
+  uncalibrated), so a single global threshold does not work. Use the per-species background
+  thresholds instead: `logit > logit_bg_p99` corresponds to roughly a 1% false-positive rate per
+  5 s window on bird-free field audio (BirdVox-DCASE-20k, hasbird=0; p999 ~ 0.1%). The bundled CLI
+  reports the top-k species per window.
 
 ## License
 
