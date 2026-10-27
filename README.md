@@ -19,11 +19,11 @@ scores and a 1536-d embedding projected into the Perch 2.0 embedding space.
 
 All models cover 317 Japanese bird species and are **score-calibrated**: a fixed threshold of 0.5
 corresponds to roughly a ≤1% false-positive rate per 5 s window on bird-free field audio for most
-species (details in [MODEL_CARD.md](MODEL_CARD.md)).
+species (details in [MODEL_CARD.md](https://github.com/0kam/kinglet/blob/main/MODEL_CARD.md)).
 
 \* 4 CPU threads, log-mel preprocessing included (Ryzen 9950X3D; expect roughly half on a typical
 laptop). \** Perch 2.0 (the ~47x-realtime teacher) scores 0.737; the 95% CI of the paired
-difference includes 0 for all three models. Download from [GitHub Releases](../../releases); the
+difference includes 0 for all three models. Download from [GitHub Releases](https://github.com/0kam/kinglet/releases); the
 `.classes.csv` must sit next to the `.onnx`. The `.gemm-mel` variants trade a slightly larger file
 for a mel frontend that is faster on some ARM CPUs — on x86, use the default files.
 
@@ -60,5 +60,5 @@ embeddings, scores = m.run(wins)                         # (n, 1536), (n, 317) s
 
 ## License
 
-[Apache License 2.0](LICENSE). Kinglet models are distilled from Perch 2.0 (Apache-2.0, Google);
-see [NOTICE](NOTICE) and [MODEL_CARD.md](MODEL_CARD.md) for training-data provenance.
+[Apache License 2.0](https://github.com/0kam/kinglet/blob/main/LICENSE). Kinglet models are distilled from Perch 2.0 (Apache-2.0, Google);
+see [NOTICE](https://github.com/0kam/kinglet/blob/main/NOTICE) and [MODEL_CARD.md](https://github.com/0kam/kinglet/blob/main/MODEL_CARD.md) for training-data provenance.

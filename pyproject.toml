@@ -10,6 +10,19 @@ readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.10"
 dependencies = ["numpy>=1.24", "onnxruntime>=1.17"]
+authors = [{ name = "Ryotaro Okamoto" }]
+keywords = ["bioacoustics", "birds", "sound-event-detection", "onnx", "knowledge-distillation"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+
+[project.urls]
+Homepage = "https://github.com/0kam/kinglet"
+Releases = "https://github.com/0kam/kinglet/releases"
+"Model Card" = "https://github.com/0kam/kinglet/blob/main/MODEL_CARD.md"
 
 [project.scripts]
 kinglet = "kinglet.cli:main"
