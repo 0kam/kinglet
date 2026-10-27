@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "kinglet-bio"
-version = "0.1.0a1"
+version = "0.1.0"
 description = "Kinglet: kinglet-sized bioacoustic embedding and classification models distilled from Perch 2.0"
 readme = "README.md"
 license = { text = "Apache-2.0" }

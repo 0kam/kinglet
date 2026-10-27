@@ -14,7 +14,7 @@ import numpy as np
 SR = 32_000
 WIN = 5 * SR
 
-__version__ = "0.1.0a1"
+__version__ = "0.1.0"
 
 
 def decode(path: str | Path, ffmpeg: str = "ffmpeg") -> np.ndarray:

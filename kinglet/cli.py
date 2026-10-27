@@ -36,10 +36,11 @@ def main() -> None:
     an.add_argument("audio", nargs="+", type=Path, help="audio files and/or directories")
     an.add_argument("--model", type=Path, required=True, help="Kinglet .onnx (classes.csv alongside)")
     an.add_argument("--out", type=Path, default=Path("kinglet_detections.csv"))
-    an.add_argument("--top-k", type=int, default=3, help="keep the k best species per window")
-    an.add_argument("--min-score", type=float, default=0.0,
-                    help="additionally drop rows below this sigmoid score (uncalibrated; ranks are "
-                         "meaningful, absolute values are not yet)")
+    an.add_argument("--top-k", type=int, default=3, help="keep at most the k best species per window")
+    an.add_argument("--min-score", type=float, default=0.5,
+                    help="drop rows below this sigmoid score (v0.1.0+ models are background-"
+                         "calibrated: 0.5 ~ 1%% false-positive rate per window on bird-free audio "
+                         "for most species; see classes.csv for per-species reference quantiles)")
     an.add_argument("--hop", type=float, default=5.0, help="window hop in seconds")
     an.add_argument("--threads", type=int, default=4)
     an.add_argument("--embeddings", type=Path, default=None, help="directory for per-file .npz embeddings")
