@@ -2,7 +2,9 @@
 
 A model is a single ONNX file (preprocessing included): waveform (batch, 160000) float32 in [-1, 1]
 at 32 kHz mono -> "embedding" (batch, 1536; a projection into the Perch 2.0 embedding space) and
-"logits" (batch, n_classes; pre-sigmoid). Class list ships as <model>.classes.csv next to the model.
+"logits" (batch, n_classes + 1), whose last channel is a background/"other" class distilled from
+the teacher's full-vocabulary softmax; scores are softmax probabilities over all channels with the
+background column dropped. Class list ships as <model>.classes.csv next to the model.
 """
 
 import csv
@@ -14,7 +16,7 @@ import numpy as np
 SR = 32_000
 WIN = 5 * SR
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 
 def decode(path: str | Path, ffmpeg: str = "ffmpeg") -> np.ndarray:
@@ -50,10 +52,13 @@ class Kinglet:
         self.classes = [(r["ebird_code"], r["scientific_name"], r["japanese_name"]) for r in rows]
 
     def run(self, wins: np.ndarray, batch: int = 64) -> tuple[np.ndarray, np.ndarray]:
-        """(n, 160000) float32 windows -> (embeddings (n, 1536), sigmoid scores (n, n_classes))."""
+        """(n, 160000) float32 windows -> (embeddings (n, 1536), species scores (n, n_classes)):
+        softmax probabilities with the trailing background channel dropped."""
         embs, scores = [], []
         for i in range(0, len(wins), batch):
             e, lg = self.sess.run(None, {"waveform": wins[i : i + batch]})
+            assert lg.shape[1] == len(self.classes) + 1, "model/classes.csv mismatch"
             embs.append(e)
-            scores.append(1 / (1 + np.exp(-lg)))
+            p = np.exp(lg - lg.max(axis=1, keepdims=True))
+            scores.append((p / p.sum(axis=1, keepdims=True))[:, :-1])
         return np.concatenate(embs), np.concatenate(scores)

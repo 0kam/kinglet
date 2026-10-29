@@ -1,12 +1,12 @@
 """kinglet analyze: batch-process audio files on a laptop CPU.
 
 Writes one detections CSV (file, start_s, end_s, ebird_code, scientific_name, japanese_name, score)
-with every window x species whose sigmoid score >= --min-score, and optionally one .npz of
+with every window x species whose score >= --min-score, and optionally one .npz of
 embeddings per audio file (ids, t_start, embedding) for downstream probes / similarity search.
 
 Usage:
   kinglet analyze recordings/ --model kinglet-s.onnx --out detections.csv
-  kinglet analyze a.wav b.flac --model kinglet-xs.onnx --min-score 0.5 --embeddings emb/
+  kinglet analyze a.wav b.flac --model kinglet-xs.onnx --min-score 0.3 --embeddings emb/
 """
 
 import argparse
@@ -37,10 +37,9 @@ def main() -> None:
     an.add_argument("--model", type=Path, required=True, help="Kinglet .onnx (classes.csv alongside)")
     an.add_argument("--out", type=Path, default=Path("kinglet_detections.csv"))
     an.add_argument("--top-k", type=int, default=3, help="keep at most the k best species per window")
-    an.add_argument("--min-score", type=float, default=0.5,
-                    help="drop rows below this sigmoid score (v0.1.0+ models are background-"
-                         "calibrated: 0.5 ~ 1%% false-positive rate per window on bird-free audio "
-                         "for most species; see classes.csv for per-species reference quantiles)")
+    an.add_argument("--min-score", type=float, default=0.1,
+                    help="drop rows below this softmax probability; 0.1 is the operating point "
+                         "used by the Perch ecosystem and in the Kinglet evaluations")
     an.add_argument("--hop", type=float, default=5.0, help="window hop in seconds")
     an.add_argument("--threads", type=int, default=4)
     an.add_argument("--embeddings", type=Path, default=None, help="directory for per-file .npz embeddings")
