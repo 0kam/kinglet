@@ -10,10 +10,14 @@ probabilities over the pack rows; group scores are sums of member probabilities.
 Pack npz fields: W (R, d) f32, b (R,) f32, codes (R,) str (species codes, member class names,
 "other" last), n_species, scientific_name/japanese_name (n_species,), groups json,
 group_thresholds json, meta json (build report included).
+
+A species list comes from a CSV or, for any eBird region, from the eBird API (free key).
 """
 
 import csv
 import json
+import urllib.parse
+import urllib.request
 from importlib import resources
 from pathlib import Path
 
@@ -22,6 +26,8 @@ import numpy as np
 RIDGE_LAMBDA = 1.0
 DEAD_BIAS = -1.0e9  # species absent from the vocabulary keep an exact-0 probability row
 CHUNK = 2048
+EBIRD_API = "https://api.ebird.org/v2"
+EBIRD_CHUNK = 200  # species codes per taxonomy request (keeps the URL short)
 
 
 def default_groups() -> tuple[dict[str, list[str]], dict[str, float | None]]:
@@ -48,6 +54,27 @@ def read_species_csv(path: str | Path) -> list[dict]:
     against the vocabulary (exact match only — synonyms become dead rows, listed in the report)."""
     with Path(path).open() as f:
         return list(csv.DictReader(f))
+
+
+def _ebird_get(path: str, key: str):
+    req = urllib.request.Request(f"{EBIRD_API}/{path}", headers={"X-eBirdApiToken": key})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return json.load(r)
+
+
+def fetch_region_species(region: str, key: str) -> list[dict]:
+    """eBird species list of a region (US-CA, CR, AU-NSW, ...) as ebird_code + scientific_name rows.
+    Names come from the current eBird taxonomy; the Perch vocabulary is older, so renamed or split
+    species become dead rows (listed in the build report). Non-species taxa (spuhs, hybrids, forms)
+    are dropped; codes the taxonomy does not resolve are kept with an empty name (dead rows too)."""
+    codes = _ebird_get(f"product/spplist/{urllib.parse.quote(region)}", key)
+    tax = {}
+    for i in range(0, len(codes), EBIRD_CHUNK):
+        q = urllib.parse.urlencode({"fmt": "json", "species": ",".join(codes[i : i + EBIRD_CHUNK])},
+                                   safe=",")
+        tax |= {t["speciesCode"]: t for t in _ebird_get(f"ref/taxonomy/ebird?{q}", key)}
+    return [{"ebird_code": c, "scientific_name": tax.get(c, {}).get("sciName", "")}
+            for c in codes if tax.get(c, {}).get("category", "species") == "species"]
 
 
 def build_pack(headpack: str | Path, species: list[dict], out: str | Path,

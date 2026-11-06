@@ -9,24 +9,28 @@ kinglet analyze
 
 kinglet build-pack
   Folds the full-vocabulary head (the .headpack.npz release asset) onto your species list:
-  a CSV with columns ebird_code, scientific_name (+ optional japanese_name, vocab_index).
+  a CSV with columns ebird_code, scientific_name (+ optional japanese_name, vocab_index), or
+  an eBird region code (--region; needs a free eBird API key, writes <out>.species.csv too).
 
 Usage:
   kinglet analyze recordings/ --model kinglet-s.onnx --pack kinglet-s.pack-jp.npz --out det.csv
   kinglet build-pack --headpack kinglet-s.headpack.npz --species my_region.csv --out pack_my.npz
+  kinglet build-pack --headpack kinglet-s.headpack.npz --region US-CA --out pack_us-ca.npz
 """
 
 import argparse
 import csv
 import json
+import os
 import sys
 import time
+import urllib.error
 from pathlib import Path
 
 import numpy as np
 
 from . import Kinglet, decode, windows
-from .pack import build_pack, read_species_csv
+from .pack import build_pack, fetch_region_species, read_species_csv
 
 AUDIO_EXTS = {".wav", ".flac", ".mp3", ".ogg", ".m4a", ".wma", ".aac", ".opus"}
 
@@ -80,7 +84,26 @@ def analyze(args) -> None:
 
 
 def build(args) -> None:
-    report = build_pack(args.headpack, read_species_csv(args.species), args.out)
+    if args.region:
+        key = args.ebird_key or os.environ.get("EBIRD_API_KEY")
+        if not key:
+            sys.exit("--region needs an eBird API key: pass --ebird-key or set EBIRD_API_KEY "
+                     "(free key: https://ebird.org/api/keygen)")
+        try:
+            species = fetch_region_species(args.region, key)
+        except urllib.error.URLError as e:  # HTTPError included; neither message carries the key
+            sys.exit(f"eBird API error for region {args.region}: {e}")
+        if not species:
+            sys.exit(f"eBird returned no species for region {args.region} (check the region code)")
+        sp_csv = args.out.with_suffix(".species.csv")
+        with sp_csv.open("w", newline="") as f:
+            w = csv.DictWriter(f, ["ebird_code", "scientific_name"])
+            w.writeheader()
+            w.writerows(species)
+        print(f"{len(species)} species in {args.region} -> {sp_csv} (edit and rerun with --species)")
+    else:
+        species = read_species_csv(args.species)
+    report = build_pack(args.headpack, species, args.out)
     print(json.dumps(report, indent=1))
     if report["unmatched"]:
         print(f"WARNING: {len(report['unmatched'])} species not in the Perch vocabulary "
@@ -108,8 +131,12 @@ def main() -> None:
 
     bp = sub.add_parser("build-pack", help="fold the full-vocabulary head onto a species list")
     bp.add_argument("--headpack", type=Path, required=True, help=".headpack.npz release asset")
-    bp.add_argument("--species", type=Path, required=True,
-                    help="CSV: ebird_code, scientific_name (+ japanese_name, vocab_index)")
+    src = bp.add_mutually_exclusive_group(required=True)
+    src.add_argument("--species", type=Path,
+                     help="CSV: ebird_code, scientific_name (+ japanese_name, vocab_index)")
+    src.add_argument("--region", help="eBird region code (US-CA, CR, AU-NSW, ...): fetch its species "
+                                      "list from the eBird API")
+    bp.add_argument("--ebird-key", help="eBird API key for --region (default: $EBIRD_API_KEY)")
     bp.add_argument("--out", type=Path, required=True, help="output pack .npz")
     bp.set_defaults(fn=build)
 

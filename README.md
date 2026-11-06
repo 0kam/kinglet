@@ -53,6 +53,13 @@ release asset — the CSV needs `ebird_code, scientific_name` columns:
 kinglet build-pack --headpack kinglet-s-v0.3.1.headpack.npz --species my_region.csv --out my_region.npz
 ```
 
+Or let eBird supply the list for any region (free key at https://ebird.org/api/keygen, via `--ebird-key`
+or `EBIRD_API_KEY`); it is saved as `us-ca.species.csv` to edit and rerun with `--species`:
+
+```bash
+kinglet build-pack --headpack kinglet-s-v0.3.1.headpack.npz --region US-CA --out us-ca.npz
+```
+
 Or from Python / any ONNX runtime:
 
 ```python
