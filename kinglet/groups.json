@@ -1,5 +1,5 @@
 {
- "note": "Perch 2.0 FSD50K class -> group mapping for Kinglet packs (owner decision 2026-11-06). A group score is the sum of member softmax probs. human_voice is the validated set from speech_probe.py (threshold ~0.005 at FPR 1%); other groups need their own measured thresholds before operational use. ungrouped = overlaps species classes or source-ambiguous onomatopoeia; kept as individual rows only.",
+ "note": "Perch 2.0 FSD50K class -> group mapping for Kinglet packs (owner decision 2026-11-06). A group score is the sum of member softmax probs. Calibrated thresholds (clean TPR >= 0.8 at the domestic-PAM FPR-1% point on every tier): human_voice 0.005, gunshot 0.0003, domestic_animal 0.003. Provisional operating points (the FPR-1% quantile is contaminated by genuine wind/rain/vehicles in field audio; these flag the ~0.1-2% most group-like windows): geophony 0.1, vehicle 0.05, music 0.05. other_anthrophony is a catch-all, no threshold. ungrouped = overlaps species classes or source-ambiguous onomatopoeia; kept as individual rows only.",
  "groups": {
   "human_voice": [
    "Child_speech_and_kid_speaking",
@@ -199,11 +199,11 @@
  },
  "thresholds": {
   "human_voice": 0.005,
-  "vehicle": null,
-  "geophony": null,
-  "music": null,
-  "gunshot": null,
-  "domestic_animal": null,
+  "vehicle": 0.05,
+  "geophony": 0.1,
+  "music": 0.05,
+  "gunshot": 0.0003,
+  "domestic_animal": 0.003,
   "other_anthrophony": null
  },
  "ungrouped": [

@@ -10,7 +10,7 @@ no Python ML stack — while staying close to Perch 2.0 on Japanese soundscape b
 outputs species scores, sound-group scores (human voice, vehicles, rain/wind, ...), and a 1536-d
 embedding projected into the Perch 2.0 embedding space.
 
-## Models (v0.3.0)
+## Models (v0.3.1)
 
 | model | backbone | trunk size | speed* | Kasumigaura macro AUPRC** |
 |---|---|---|---|---|
@@ -23,8 +23,10 @@ to a region at deployment time ("distill once, fold anywhere"): a prebuilt Japan
 ships with the release, and `kinglet build-pack` folds the same trunk onto **any species list** in
 seconds, no audio needed. Scores are **softmax probabilities with an explicit background channel**;
 use a fixed species threshold of **0.1** (the Perch operating point). Every pack also carries
-**sound groups** — including a calibrated `human_voice` detector (threshold 0.005) for privacy
-masking before sharing field audio (details in [MODEL_CARD.md](https://github.com/0kam/kinglet/blob/main/MODEL_CARD.md)).
+**sound groups** with operating thresholds (since v0.3.1): a calibrated `human_voice` detector
+(threshold 0.005) for privacy masking before sharing field audio, calibrated `gunshot` and
+`domestic_animal` detectors, and provisional `geophony` / `vehicle` / `music` flags for
+rain-and-traffic noise screening (details in [MODEL_CARD.md](https://github.com/0kam/kinglet/blob/main/MODEL_CARD.md)).
 
 \* 4 CPU threads, log-mel preprocessing included (Ryzen 9950X3D; expect roughly half on a typical
 laptop). \** Perch 2.0 (the ~47x-realtime teacher) scores 0.737; for Kinglet-B the 95% CI of the
@@ -36,7 +38,7 @@ some ARM CPUs — on x86, use the default files.
 
 ```bash
 pip install kinglet-bio   # needs ffmpeg on PATH
-kinglet analyze recordings/ --model kinglet-s-v0.3.0.onnx --pack kinglet-s-v0.3.0.pack-jp.npz --out detections.csv
+kinglet analyze recordings/ --model kinglet-s-v0.3.1.onnx --pack kinglet-s-v0.3.1.pack-jp.npz --out detections.csv
 ```
 
 The CLI keeps, per 5 s window, the top-3 species scoring at least 0.1 (adjustable with
@@ -48,14 +50,14 @@ Deploying outside Japan (or with your own species list)? Fold a pack from the `.
 release asset — the CSV needs `ebird_code, scientific_name` columns:
 
 ```bash
-kinglet build-pack --headpack kinglet-s-v0.3.0.headpack.npz --species my_region.csv --out my_region.npz
+kinglet build-pack --headpack kinglet-s-v0.3.1.headpack.npz --species my_region.csv --out my_region.npz
 ```
 
 Or from Python / any ONNX runtime:
 
 ```python
 from kinglet import Kinglet, decode, windows
-m = Kinglet("kinglet-s-v0.3.0.onnx", "kinglet-s-v0.3.0.pack-jp.npz")
+m = Kinglet("kinglet-s-v0.3.1.onnx", "kinglet-s-v0.3.1.pack-jp.npz")
 starts, wins = windows(decode("field_recording.wav"))   # 5 s windows at 32 kHz mono
 embeddings, scores, groups = m.run(wins)                # (n, 1536), (n, 317), {group: (n,)}
 mask = groups["human_voice"] >= m.groups["human_voice"] # windows to mute before sharing

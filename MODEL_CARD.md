@@ -1,4 +1,4 @@
-# Kinglet Model Card (v0.3.0)
+# Kinglet Model Card (v0.3.1)
 
 ## Overview
 
@@ -52,27 +52,46 @@ measured on the XS tier with LibriSpeech positives mixed into field audio):
 
 | TPR at the 0.005 threshold | clean speech | SNR 0 dB | −6 dB | −12 dB |
 |---|---|---|---|---|
-| Kinglet-XS v0.3.0 | 1.00 | 0.98 | 0.95 | 0.74 |
+| Kinglet-XS v0.3.1 | 1.00 | 0.98 | 0.95 | 0.74 |
 | Perch 2.0 (same protocol) | 1.00 | 0.93 | 0.87 | 0.72 |
 
 On held-out field windows the shipped packs flag 1.6% (B), 1.6% (S), 2.9% (XS) of windows at
 0.005 — an upper bound on the false-mask rate, since field audio contains genuine voice and
-over-masking is the safe failure direction for privacy. The other six groups ship **without** an
-operating threshold (scores are exposed in the Python API; the CLI skips uncalibrated groups) —
-calibrate against your own deployment before operational use.
+over-masking is the safe failure direction for privacy.
+
+**The other groups** were calibrated in v0.3.1 with the same protocol (positives = FSD50K *eval*
+clips carrying a member label, uploader-disjoint from the training source, clean + mixed into
+field audio; negatives = ~36k Japanese PAM windows; scores = the deployed pack scores):
+
+| group | threshold | status | clean TPR (B/S/XS) | field windows flagged |
+|---|---|---|---|---|
+| gunshot | 0.0003 | calibrated (FPR ≈ 1%) | 0.98 / 0.97 / 0.98 | 0.8–0.9% |
+| domestic_animal | 0.003 | calibrated (FPR < 0.5%) | 0.84 / 0.80 / 0.81 | ~0.3% |
+| geophony | 0.1 | provisional | 0.62 / 0.57 / 0.50 | 0.8–0.9% |
+| vehicle | 0.05 | provisional | 0.71 / 0.67 / 0.66 | 0.7–2.0% |
+| music | 0.05 | provisional | 0.84 / 0.83 / 0.80 | 0.3–1.6% |
+
+For geophony/vehicle/music a strict "FPR" is undefined on field audio — rural PAM genuinely
+contains wind, rain and distant traffic, so the flagged fraction is partly true detections. The
+provisional thresholds are operating points chosen to flag the most group-like ~0.1–2% of windows:
+they catch dominant events (heavy rain scores up to 0.9; on quiet rural sites vehicle scores never
+exceeded 0.18) and miss faint ones (TPR at SNR 0 dB is 0.2–0.5). Treat group rows as flags for
+review, not verdicts — loud impulsive events can co-flag gunshot/vehicle — and recalibrate against
+your own deployment if your sites are noisier. `other_anthrophony` is a catch-all and ships
+without a threshold (score exposed in the Python API; the CLI skips it).
 
 ## Files
 
-Per tier: `kinglet-<t>-v0.3.0.onnx` (trunk; `.gemm-mel` variant for ARM), `.pack-jp.npz`
+Per tier: `kinglet-<t>-v0.3.1.onnx` (trunk; `.gemm-mel` variant for ARM), `.pack-jp.npz`
 (prebuilt Japan pack: 317 species + 181 group rows + other), `.headpack.npz` (full head +
 calibration features, only needed for `kinglet build-pack`). Shared:
-`kinglet-v0.3.0.species-jp.csv` (the JP species list with authoritative vocabulary indices),
-`kinglet-v0.3.0.reliability.csv` (per-class reliability tiers, below).
+`kinglet-v0.3.1.species-jp.csv` (the JP species list with authoritative vocabulary indices),
+`kinglet-v0.3.1.reliability.csv` (per-class reliability tiers, below).
 v0.2 single-file models (logits in the graph) are not supported by the v0.3 package.
 
 ```
-kinglet analyze recordings/ --model kinglet-s-v0.3.0.onnx --pack kinglet-s-v0.3.0.pack-jp.npz
-kinglet build-pack --headpack kinglet-s-v0.3.0.headpack.npz --species my_region.csv --out my.npz
+kinglet analyze recordings/ --model kinglet-s-v0.3.1.onnx --pack kinglet-s-v0.3.1.pack-jp.npz
+kinglet build-pack --headpack kinglet-s-v0.3.1.headpack.npz --species my_region.csv --out my.npz
 ```
 
 ## Per-class reliability tiers
@@ -91,7 +110,7 @@ undercounts):
 
 `softlabel_only` classes were never positive in training audio — the student knows them only
 through the teacher's soft probabilities on other sounds. Treat their detections as weak signals;
-`kinglet-v0.3.0.reliability.csv` has the per-class table.
+`kinglet-v0.3.1.reliability.csv` has the per-class table.
 
 ## Evaluation (Japanese PAM benchmarks; higher is better)
 
@@ -99,9 +118,9 @@ through the teacher's soft probabilities on other sounds. Treat their detections
 |---|---|---|---|---|
 | Perch 2.0 (teacher, ~47x realtime) | 0.737 | 0.588 | 0.398 | 0.849 |
 | BirdNET V2.4 | 0.534 | 0.385 | 0.306 | 0.940* |
-| Kinglet-B v0.3.0 | 0.714 | 0.582 | 0.389 | 0.832 |
-| Kinglet-S v0.3.0 | 0.698 | 0.568 | 0.382 | 0.834 |
-| Kinglet-XS v0.3.0 | 0.714 | 0.568 | 0.379 | 0.826 |
+| Kinglet-B v0.3.1 | 0.714 | 0.582 | 0.389 | 0.832 |
+| Kinglet-S v0.3.1 | 0.698 | 0.568 | 0.382 | 0.834 |
+| Kinglet-XS v0.3.1 | 0.714 | 0.568 | 0.379 | 0.826 |
 | (Kinglet-B v0.2.0) | 0.722 | 0.572 | 0.380 | 0.832 |
 
 All tiers pass the pre-registered gates (JP cores within −0.01 of v0.2 per tier; S and XS improve
@@ -114,16 +133,16 @@ gives every Japanese species < 0.1; 92.2% of windows), scored through the shippe
 
 | | P(any detection on a teacher-quiet window) @0.1 | worst single class |
 |---|---|---|
-| Kinglet-B v0.3.0 | 1.5% | 0.4% |
-| Kinglet-S v0.3.0 | 1.4% | 0.3% |
-| Kinglet-XS v0.3.0 | 1.3% | ≤1% |
+| Kinglet-B v0.3.1 | 1.5% | 0.4% |
+| Kinglet-S v0.3.1 | 1.4% | 0.3% |
+| Kinglet-XS v0.3.1 | 1.3% | ≤1% |
 
 Pack-vs-exact-fold equivalence (the ridge "other" row vs computing the full 14,795-way softmax):
 mean per-species probability error ≤ 4e-5, detections at 0.1 disagree on ≤ 0.8% of windows.
 
 \* OKEON detections were sourced with BirdNET V2.4, biasing this comparison in its favor.
 
-## Known issues / limitations (v0.3.0)
+## Known issues / limitations (v0.3.1)
 
 - OKEON top-1 remains ~3.5 pt below v0.1.0 on all tiers (unchanged from v0.2, as expected).
 - The ridge "other" row is an approximation: on rare bird-dense windows a single species
@@ -133,6 +152,9 @@ mean per-species probability error ≤ 4e-5, detections at 0.1 disagree on ≤ 0
   behave consistently, but their TPR curves were not separately measured. Mixing used additive
   synthetic mixes (LibriSpeech + field audio); real-world distant/reverberant speech below
   −12 dB SNR will be missed — the mask reduces, not eliminates, privacy exposure.
+- Group TPRs were measured on FSD50K eval clips (the closest public match to the training
+  distribution), not on field recordings of the events themselves; geophony/vehicle/music
+  thresholds are provisional operating points (see Sound groups) and miss faint events by design.
 - Species outside your pack's list fold into "other" and are never reported; build the pack with
   every species you may encounter.
 - Region folding is evaluated on two BirdSet soundscapes (Powdermill, High Sierra); elsewhere the
