@@ -1,22 +1,26 @@
 """Kinglet: kinglet-sized bioacoustic embedding and classification models distilled from Perch 2.0.
 
-A model is a single ONNX file (preprocessing included): waveform (batch, 160000) float32 in [-1, 1]
-at 32 kHz mono -> "embedding" (batch, 1536; a projection into the Perch 2.0 embedding space) and
-"logits" (batch, n_classes + 1), whose last channel is a background/"other" class distilled from
-the teacher's full-vocabulary softmax; scores are softmax probabilities over all channels with the
-background column dropped. Class list ships as <model>.classes.csv next to the model.
+Since v0.3 a model is two files: a trunk ONNX (preprocessing included) mapping waveform
+(batch, 160000) float32 in [-1, 1] at 32 kHz mono to "embedding" (batch, 1536; a projection into
+the Perch 2.0 embedding space) and "feature" (batch, d; the trunk feature), plus a regional head
+pack (.npz, see kinglet.pack) folding the full 14,795-class Perch vocabulary onto
+<region species> + <sound groups such as human_voice / vehicle / geophony> + "other".
+Scores are softmax probabilities over the pack rows; a group's score is the sum of its member
+probabilities. Prebuilt packs ship for Japan; `kinglet build-pack` folds any species list.
+v0.2 single-file models (logits in the graph) are not supported by this version.
 """
 
-import csv
 import subprocess
 from pathlib import Path
 
 import numpy as np
 
+from .pack import load_pack
+
 SR = 32_000
 WIN = 5 * SR
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 
 def decode(path: str | Path, ffmpeg: str = "ffmpeg") -> np.ndarray:
@@ -38,27 +42,38 @@ def windows(audio: np.ndarray, hop_s: float = 5.0) -> tuple[np.ndarray, np.ndarr
 
 
 class Kinglet:
-    """ONNX-runtime wrapper. `classes` rows: (ebird_code, scientific_name, japanese_name)."""
+    """Trunk ONNX + head pack. `classes` rows: (ebird_code, scientific_name, japanese_name);
+    `groups` maps group name -> operating threshold (or None if not calibrated)."""
 
-    def __init__(self, model_path: str | Path, threads: int = 4):
+    def __init__(self, model_path: str | Path, pack_path: str | Path, threads: int = 4):
         import onnxruntime as ort
 
-        model_path = Path(model_path)
         opt = ort.SessionOptions()
         opt.intra_op_num_threads, opt.inter_op_num_threads = threads, 1
         self.sess = ort.InferenceSession(str(model_path), opt, providers=["CPUExecutionProvider"])
-        with model_path.with_suffix(".classes.csv").open() as f:
-            rows = list(csv.DictReader(f))
-        self.classes = [(r["ebird_code"], r["scientific_name"], r["japanese_name"]) for r in rows]
+        assert [o.name for o in self.sess.get_outputs()] == ["embedding", "feature"], \
+            "not a v0.3 split model (expected outputs: embedding, feature)"
+        p = load_pack(pack_path)
+        n = p["n_species"]
+        self.W, self.b, self.n_species = p["W"], p["b"], n
+        self.classes = list(zip([str(c) for c in p["codes"][:n]],
+                                [str(s) for s in p["scientific_name"]],
+                                [str(j) for j in p["japanese_name"]]))
+        self.group_cols = p["group_cols"]
+        self.groups = p["group_thresholds"]
 
-    def run(self, wins: np.ndarray, batch: int = 64) -> tuple[np.ndarray, np.ndarray]:
-        """(n, 160000) float32 windows -> (embeddings (n, 1536), species scores (n, n_classes)):
-        softmax probabilities with the trailing background channel dropped."""
-        embs, scores = [], []
+    def run(self, wins: np.ndarray, batch: int = 64) -> tuple[np.ndarray, np.ndarray, dict]:
+        """(n, 160000) float32 windows -> (embeddings (n, 1536), species scores (n, n_species),
+        {group: scores (n,)}): softmax probabilities over the pack rows; the trailing
+        background/"other" channel is dropped from species scores."""
+        embs, probs = [], []
         for i in range(0, len(wins), batch):
-            e, lg = self.sess.run(None, {"waveform": wins[i : i + batch]})
-            assert lg.shape[1] == len(self.classes) + 1, "model/classes.csv mismatch"
-            embs.append(e)
+            e, h = self.sess.run(None, {"waveform": wins[i : i + batch]})
+            lg = h @ self.W.T + self.b
             p = np.exp(lg - lg.max(axis=1, keepdims=True))
-            scores.append((p / p.sum(axis=1, keepdims=True))[:, :-1])
-        return np.concatenate(embs), np.concatenate(scores)
+            p /= p.sum(axis=1, keepdims=True)
+            embs.append(e)
+            probs.append(p)
+        emb, p = np.concatenate(embs), np.concatenate(probs)
+        gscores = {g: p[:, cols].sum(axis=1) for g, cols in self.group_cols.items()}
+        return emb, p[:, : self.n_species], gscores

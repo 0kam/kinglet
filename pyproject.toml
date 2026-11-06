@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "kinglet-bio"
-version = "0.2.0"
+version = "0.3.0"
 description = "Kinglet: kinglet-sized bioacoustic embedding and classification models distilled from Perch 2.0"
 readme = "README.md"
 license = { text = "Apache-2.0" }
@@ -29,3 +29,6 @@ kinglet = "kinglet.cli:main"
 
 [tool.setuptools]
 packages = ["kinglet"]
+
+[tool.setuptools.package-data]
+kinglet = ["groups.json"]
