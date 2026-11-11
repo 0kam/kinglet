@@ -67,9 +67,9 @@ field audio; negatives = ~36k Japanese PAM windows; scores = the deployed pack s
 |---|---|---|---|---|
 | gunshot | 0.0003 | calibrated (FPR ≈ 1%) | 0.98 / 0.97 / 0.98 | 0.8–0.9% |
 | domestic_animal | 0.003 | calibrated (FPR < 0.5%) | 0.84 / 0.80 / 0.81 | ~0.3% |
-| geophony | 0.1 | provisional | 0.62 / 0.57 / 0.50 | 0.8–0.9% |
-| vehicle | 0.05 | provisional | 0.71 / 0.67 / 0.66 | 0.7–2.0% |
-| music | 0.05 | provisional | 0.84 / 0.83 / 0.80 | 0.3–1.6% |
+| geophony | 0.1 | field-checked (14/16 flagged windows audible) | 0.62 / 0.57 / 0.50 | 0.8–0.9% |
+| vehicle | 0.05 | provisional (field check 4/16) | 0.71 / 0.67 / 0.66 | 0.7–2.0% |
+| music | 0.05 | provisional (field check 0/16) | 0.84 / 0.83 / 0.80 | 0.3–1.6% |
 
 For geophony/vehicle/music a strict "FPR" is undefined on field audio — rural PAM genuinely
 contains wind, rain and distant traffic, so the flagged fraction is partly true detections. The
@@ -79,6 +79,21 @@ exceeded 0.18) and miss faint ones (TPR at SNR 0 dB is 0.2–0.5). Treat group r
 review, not verdicts — loud impulsive events can co-flag gunshot/vehicle — and recalibrate against
 your own deployment if your sites are noisier. `other_anthrophony` is a catch-all and ships
 without a threshold (score exposed in the Python API; the CLI skips it).
+
+**Field listening check (November 2026).** For each of the three provisional groups, 16 windows
+flagged at the shipped threshold were drawn at random from 125,662 Japanese PAM windows that the
+calibration never used (tier S; flagged there: geophony 4.9%, vehicle 0.6%, music 0.5%) and judged
+by ear by one listener, blind to the score; the rule, fixed beforehand, was to keep a threshold if
+at least 80% of its flagged windows contain the sound.
+
+- **geophony 14/16** — threshold kept. Scores are not a confidence, though: of the 8
+  highest-scoring windows (0.80–0.92) only 3 were judged wind, rain or water.
+- **vehicle 4/16** (5 more unsure) — still provisional. All 8 highest-scoring windows (≥ 0.21) were
+  vehicles, while flags between 0.05 and 0.10 mostly were not: 0.05 is too loose on such audio,
+  and this check has no windows between 0.10 and 0.21 to place a better cut-off.
+- **music 0/16** — still provisional, and none of the 8 highest-scoring windows (up to 0.44)
+  contained music either. Where there is no music, every music flag is a false positive; whether
+  the flag finds real music in field recordings is untested. Do not rely on it.
 
 ## Files
 
@@ -153,8 +168,9 @@ mean per-species probability error ≤ 4e-5, detections at 0.1 disagree on ≤ 0
   synthetic mixes (LibriSpeech + field audio); real-world distant/reverberant speech below
   −12 dB SNR will be missed — the mask reduces, not eliminates, privacy exposure.
 - Group TPRs were measured on FSD50K eval clips (the closest public match to the training
-  distribution), not on field recordings of the events themselves; geophony/vehicle/music
-  thresholds are provisional operating points (see Sound groups) and miss faint events by design.
+  distribution), not on field recordings of the events themselves; the geophony/vehicle/music
+  thresholds miss faint events by design, and the vehicle and music ones are provisional — the
+  music flag failed a field listening check (see Sound groups).
 - Species outside your pack's list fold into "other" and are never reported; build the pack with
   every species you may encounter.
 - Region folding is evaluated on two BirdSet soundscapes (Powdermill, High Sierra); elsewhere the

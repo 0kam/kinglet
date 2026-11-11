@@ -25,8 +25,8 @@ seconds, no audio needed. Scores are **softmax probabilities with an explicit ba
 use a fixed species threshold of **0.1** (the Perch operating point). Every pack also carries
 **sound groups** with operating thresholds (since v0.3.1): a calibrated `human_voice` detector
 (threshold 0.005) for privacy masking before sharing field audio, calibrated `gunshot` and
-`domestic_animal` detectors, and provisional `geophony` / `vehicle` / `music` flags for
-rain-and-traffic noise screening (details in [MODEL_CARD.md](https://github.com/0kam/kinglet/blob/main/MODEL_CARD.md)).
+`domestic_animal` detectors, a field-checked `geophony` flag and provisional `vehicle` / `music`
+flags for rain-and-traffic noise screening (the `music` flag failed a field listening check — details in [MODEL_CARD.md](https://github.com/0kam/kinglet/blob/main/MODEL_CARD.md)).
 
 \* 4 CPU threads, log-mel preprocessing included (Ryzen 9950X3D; expect roughly half on a typical
 laptop). \** Perch 2.0 (the ~47x-realtime teacher) scores 0.737; for Kinglet-B the 95% CI of the
