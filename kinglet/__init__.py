@@ -41,6 +41,29 @@ def windows(audio: np.ndarray, hop_s: float = 5.0) -> tuple[np.ndarray, np.ndarr
     return starts / SR, np.stack([audio[s : s + WIN] for s in starts])
 
 
+def embedding_from_feature(model_path: str | Path, feature: np.ndarray, scale: float = 1.0,
+                           zero_point: int = 0) -> np.ndarray:
+    """Trunk feature (n, d) -> Perch-space embedding (n, 1536) on the host.
+
+    The embedding is one linear layer on top of the trunk feature, so a device that cannot afford
+    that layer (a microcontroller build logs the int8 feature, 1 byte per dimension) loses nothing:
+    this applies the layer stored in the same tier's trunk ONNX. For quantised features pass the
+    feature tensor's `scale` and `zero_point`. Needs the `onnx` package (pip install kinglet-bio[mcu]).
+    """
+    import onnx
+    from onnx import numpy_helper
+
+    g = onnx.load(str(model_path)).graph
+    node = next(n for n in g.node if "embedding" in n.output)
+    assert node.op_type == "Gemm" and node.input[0] == "feature", \
+        "not a v0.3 split model (expected embedding = Gemm(feature))"
+    init = {i.name: numpy_helper.to_array(i) for i in g.initializer if i.name in node.input}
+    W, b = init[node.input[1]], init[node.input[2]]
+    h = (np.asarray(feature, np.float32) - zero_point) * scale
+    assert h.ndim == 2 and h.shape[1] == W.shape[1], f"feature must be (n, {W.shape[1]}), got {h.shape}"
+    return h @ W.T + b
+
+
 class Kinglet:
     """Trunk ONNX + head pack. `classes` rows: (ebird_code, scientific_name, japanese_name);
     `groups` maps group name -> operating threshold (or None if not calibrated)."""
