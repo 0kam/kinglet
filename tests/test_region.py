@@ -85,6 +85,13 @@ class BuildPackRegion(unittest.TestCase):
                  calib_h=rng.normal(size=(40, 4)).astype(np.float32),
                  calib_is_holdout=np.arange(40) % 2 == 0, meta=json.dumps({}))
 
+    def test_no_group_rows(self):
+        out = self.tmp / "species_only.npz"
+        pack.build_pack(self.headpack, [{"ebird_code": "aaa1", "scientific_name": "Aus bus"}], out, groups={})
+        p = pack.load_pack(out)
+        self.assertEqual([str(c) for c in p["codes"]], ["aaa1", "other"])
+        self.assertEqual(p["groups"], {})
+
     def test_region_builds_pack_and_species_csv(self):
         out = self.tmp / "my_region.npz"
         with mock.patch("urllib.request.urlopen", fake_ebird(["aaa1", "duck1", "ccc1"], [])), \

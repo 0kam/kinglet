@@ -102,7 +102,7 @@ def build_pack(headpack: str | Path, species: list[dict], out: str | Path,
     vidx = np.array(vidx)
     members = [m for ms in groups.values() for m in ms]
     assert len(set(members)) == len(members), "a class may belong to one group only"
-    midx = np.array([lab_idx[m] for m in members])  # shipped groups always resolve
+    midx = np.array([lab_idx[m] for m in members], dtype=int)  # shipped groups always resolve; {} = no group rows
     overlap = set(vidx[vidx >= 0]) & set(midx)
     assert not overlap, f"species rows overlap group members: {sorted(overlap)}"
 
