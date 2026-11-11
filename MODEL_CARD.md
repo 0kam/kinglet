@@ -188,16 +188,23 @@ gives every Japanese species < 0.1; 92.2% of windows), scored through the shippe
 | Kinglet-XS v0.3.1 | 1.3% | ≤1% |
 
 Pack-vs-exact-fold equivalence (the ridge "other" row vs computing the full 14,795-way softmax):
-mean per-species probability error ≤ 4e-5, detections at 0.1 disagree on ≤ 0.8% of windows.
+on held-out Japanese PAM windows, where few windows contain a listed bird, the mean per-species
+probability error is ≤ 4e-5 and detections at 0.1 disagree on ≤ 0.8% of windows. On bird-dense
+soundscapes the gap is larger. On the 60,158 WABAD windows, "any species ≥ 0.1" differs between
+pack and exact fold on 1.7–2.0% of windows with the Japan pack (a foreign list there), and on
+4.9–5.6% with packs built for each site's own species list — almost always the pack missing a
+window the exact fold flags (about one in ten of the windows the exact fold flags). The public
+benchmark results above use the exact fold.
 
 \* OKEON detections were sourced with BirdNET V2.4, biasing this comparison in its favor.
 
 ## Known issues / limitations (v0.3.1)
 
 - OKEON top-1 remains ~3.5 pt below v0.1.0 on all tiers (unchanged from v0.2, as expected).
-- The ridge "other" row is an approximation: on rare bird-dense windows a single species
-  probability can shift by up to ~0.4 vs the exact fold (detection flips at 0.1 on ~0.8% of
-  windows). If a study needs exact folding, score the full head from the headpack directly.
+- The ridge "other" row is an approximation: on bird-dense windows a single species probability
+  can shift by up to ~0.5 vs the exact fold, and with a pack for the local species list about one
+  in ten windows that the exact fold would flag at 0.1 falls below the threshold (see Evaluation).
+  If a study needs exact folding, score the full head from the headpack directly.
 - human_voice TPR was measured on the XS tier; B/S share the recipe and their folded scores
   behave consistently, but their TPR curves were not separately measured. Mixing used additive
   synthetic mixes (LibriSpeech + field audio); real-world distant/reverberant speech below
