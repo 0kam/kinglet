@@ -162,6 +162,27 @@ own retrieval mAP, and 93–99% in the reverse direction. A linear probe trained
 and applied unchanged to Kinglet embeddings keeps 93% (B) / 92% (S) / 86% (XS) of its cmAP;
 refitting it on Kinglet embeddings recovers 100% / 100% / 97%.
 
+Open-set false detections: the 317-species Japan list scored on the same eight test sets (381,911
+windows), where almost no listed species occurs (69 of them are annotated in WABAD, 0–5 in each
+BirdSet set), so nearly every bird is outside the list. A false detection is a listed species above
+the threshold that is not annotated in that window. Kinglet is scored through the shipped Japan
+pack, Perch 2.0 through its full-vocabulary softmax sliced to the list.
+
+| | false detections per window | windows with any | recall on annotated listed species (WABAD) |
+|---|---|---|---|
+| Perch 2.0, p > 0.1 | 0.034 | 3.3% | 0.40 |
+| Kinglet-B v0.3.1, p > 0.1 | 0.026 | 2.5% | 0.41 |
+| Kinglet-S v0.3.1, p > 0.1 | 0.027 | 2.6% | 0.38 |
+| Kinglet-XS v0.3.1, p > 0.1 | 0.021 | 2.1% | 0.37 |
+| BirdNET+ V3, confidence > 0.1 / > 0.25 | 0.026 / 0.011 | 2.4% / 1.0% | 0.62 / 0.51 |
+| BirdNET V2.4, confidence > 0.1 / > 0.25 | 0.017 / 0.004 | 1.6% / 0.4% | 0.23 / 0.15 |
+
+These are single operating points, not a ranking. The rate depends on the avifauna: for Kinglet it
+runs from under 0.002 per window (PER) to 0.04–0.07 (UHH), and close relatives of listed species
+account for much of it (Goldcrest fires on 1–3% of the Sierra Nevada windows, where Golden-crowned
+Kinglet lives). A real but unannotated call counts as a false detection for every model alike.
+BirdNET has 313 (V3) and 299 (V2.4) of the 317 classes; a missing class cannot fire.
+
 ## Additional in-house evaluation (Japanese PAM benchmarks, data not public; higher is better)
 
 | | Kasumigaura macro AUPRC | Suishin clip AP | Fuji 5 s AP | OKEON top-1 |
@@ -177,15 +198,6 @@ All tiers pass the pre-registered gates (JP cores within −0.01 of v0.2 per tie
 on every AP benchmark; B's Kasumigaura −0.008 is inside the paired CI). Mean embedding cosine to
 the teacher on held-out focal validation: 0.871 (B), 0.868 (S), 0.842 (XS); v0.2 measured
 0.880 / 0.864 / 0.829.
-
-Open-set false positives, per tier on 250,997 Japanese PAM windows ("teacher-quiet" = the teacher
-gives every Japanese species < 0.1; 92.2% of windows), scored through the shipped packs:
-
-| | P(any detection on a teacher-quiet window) @0.1 | worst single class |
-|---|---|---|
-| Kinglet-B v0.3.1 | 1.5% | 0.4% |
-| Kinglet-S v0.3.1 | 1.4% | 0.3% |
-| Kinglet-XS v0.3.1 | 1.3% | ≤1% |
 
 Pack-vs-exact-fold equivalence (the ridge "other" row vs computing the full 14,795-way softmax):
 on held-out Japanese PAM windows, where few windows contain a listed bird, the mean per-species
