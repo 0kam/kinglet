@@ -11,11 +11,19 @@ species, a set of sound groups (human voice, vehicles, geophony, ...), and an ex
 background/"other" channel. Scores are softmax probabilities over the pack rows; the evaluated
 species operating threshold is **0.1**, the operating point used by the Perch ecosystem.
 
-| tier | backbone | params (trunk) | speed (4 CPU threads, trunk+JP pack, preprocessing incl.) |
-|---|---|---|---|
-| Kinglet-B | RegNetY-016 | 11.7 M | ~600x realtime |
-| Kinglet-S | EfficientNet-Lite0 | 5.3 M | ~1,250x realtime |
-| Kinglet-XS | MobileNetV4-Conv-S | 4.5 M | ~2,200x realtime |
+| tier | backbone | params (trunk) | laptop, end to end* | laptop, model only* | workstation, end to end** |
+|---|---|---|---|---|---|
+| Kinglet-B | RegNetY-016 | 11.7 M | 142x realtime | 147x | 515x |
+| Kinglet-S | EfficientNet-Lite0 | 5.3 M | 253x | 270x | 967x |
+| Kinglet-XS | MobileNetV4-Conv-S | 4.5 M | 399x | 416x | 1,456x |
+| *Perch 2.0 (teacher)* | | | 10.6x | 10.7x | 46.8x |
+| *BirdNET V2.4* | | | 36.9x | 37.1x | 115x |
+| *BirdNET+ V3* | | | 31.3x | 31.4x | 149x |
+
+\* Intel Core i7-8565U, 4 threads, one session for all six models on a 10-minute 32 kHz 16-bit
+WAV; end to end = decoding + windowing + model (trunk + JP pack) on every pass, model only =
+windows already in memory. \** Same measurement on a Ryzen 9 9950X3D, 4 threads. The ratio to
+Perch 2.0 depends on the machine (13–38x on the laptop, 11–31x on the workstation).
 
 Speed vs the v0.2 single-file models on the same harness: B −1.6%, S −3.4%, XS −1%.
 
@@ -40,11 +48,12 @@ On the Japanese benchmarks this costs nothing measurable (all tiers within the p
 
 ## Sound groups
 
-The vocabulary's 198 FSD50K sound classes (+ Homo sapiens) ship pre-assigned to 7 groups:
+Of the vocabulary's 198 FSD50K sound classes (+ Homo sapiens), 146 ship pre-assigned to 6 groups:
 `human_voice` (20 classes), `vehicle` (24), `geophony` (15: rain, wind, thunder, water, fire),
-`music` (35), `gunshot` (1; fireworks/explosion are deliberately kept out as classic confusers),
+`gunshot` (1; fireworks/explosion are deliberately kept out as classic confusers),
 `domestic_animal` (10), `other_anthrophony` (76). 18 classes that overlap bird/wildlife species or
-are source-ambiguous onomatopoeia stay ungrouped. A group's score is the sum of its members'
+are source-ambiguous onomatopoeia stay ungrouped, and the 35 musical-instrument classes are left
+out since the `music` group was removed (below). A group's score is the sum of its members'
 softmax probabilities; every pack carries the group rows.
 
 **human_voice is calibrated** (threshold 0.005 ≈ FPR 1% on voice-free Japanese PAM windows,
@@ -67,11 +76,11 @@ field audio; negatives = ~36k Japanese PAM windows; scores = the deployed pack s
 |---|---|---|---|---|
 | gunshot | 0.0003 | calibrated (FPR ≈ 1%) | 0.98 / 0.97 / 0.98 | 0.8–0.9% |
 | domestic_animal | 0.003 | calibrated (FPR < 0.5%) | 0.84 / 0.80 / 0.81 | ~0.3% |
-| geophony | 0.1 | field-checked (14/16 flagged windows audible) | 0.62 / 0.57 / 0.50 | 0.8–0.9% |
-| vehicle | 0.05 | provisional (field check 4/16) | 0.71 / 0.67 / 0.66 | 0.7–2.0% |
-| music | 0.05 | provisional (field check 0/16) | 0.84 / 0.83 / 0.80 | 0.3–1.6% |
+| geophony | 0.1 | provisional, limited (field check 14/16) | 0.62 / 0.57 / 0.50 | 0.8–0.9% |
+| vehicle | 0.05 | provisional, limited (field check 4/16) | 0.71 / 0.67 / 0.66 | 0.7–2.0% |
 
-For geophony/vehicle/music a strict "FPR" is undefined on field audio — rural PAM genuinely
+**geophony and vehicle are provisional features with limited performance.** For them a strict
+"FPR" is undefined on field audio — rural PAM genuinely
 contains wind, rain and distant traffic, so the flagged fraction is partly true detections. The
 provisional thresholds are operating points chosen to flag the most group-like ~0.1–2% of windows:
 they catch dominant events (heavy rain scores up to 0.9; on quiet rural sites vehicle scores never
@@ -80,25 +89,25 @@ review, not verdicts — loud impulsive events can co-flag gunshot/vehicle — a
 your own deployment if your sites are noisier. `other_anthrophony` is a catch-all and ships
 without a threshold (score exposed in the Python API; the CLI skips it).
 
-**Field listening check (November 2026).** For each of the three provisional groups, 16 windows
-flagged at the shipped threshold were drawn at random from 125,662 Japanese PAM windows that the
-calibration never used (tier S; flagged there: geophony 4.9%, vehicle 0.6%, music 0.5%) and judged
-by ear by one listener, blind to the score; the rule, fixed beforehand, was to keep a threshold if
-at least 80% of its flagged windows contain the sound.
+**Field listening check (November 2026).** For geophony, vehicle and a third group, music, 16
+windows flagged at the shipped threshold were drawn at random from 125,662 Japanese PAM windows
+that the calibration never used (tier S; flagged there: geophony 4.9%, vehicle 0.6%, music 0.5%)
+and judged by ear by one listener, blind to the score.
 
-- **geophony 14/16** — threshold kept. Scores are not a confidence, though: of the 8
-  highest-scoring windows (0.80–0.92) only 3 were judged wind, rain or water.
-- **vehicle 4/16** (5 more unsure) — still provisional. All 8 highest-scoring windows (≥ 0.21) were
-  vehicles, while flags between 0.05 and 0.10 mostly were not: 0.05 is too loose on such audio,
-  and this check has no windows between 0.10 and 0.21 to place a better cut-off.
-- **music 0/16** — still provisional, and none of the 8 highest-scoring windows (up to 0.44)
-  contained music either. Where there is no music, every music flag is a false positive; whether
-  the flag finds real music in field recordings is untested. Do not rely on it.
+- **geophony 14/16** flagged windows contained wind, rain or water. Scores are not a confidence,
+  though: of the 8 highest-scoring windows (0.80–0.92) only 3 did.
+- **vehicle 4/16** (5 more unsure). All 8 highest-scoring windows (≥ 0.21) were vehicles, while
+  flags between 0.05 and 0.10 mostly were not: 0.05 is too loose on such audio, and this check has
+  no windows between 0.10 and 0.21 to place a better cut-off.
+- **music 0/16**, and none of the 8 highest-scoring windows (up to 0.44) contained music either.
+  **The music group was removed**: packs built with `kinglet build-pack` no longer carry it, and
+  its classes fold into "other". The prebuilt v0.3.1 packs predate the removal and still report a
+  `music` score — ignore it.
 
 ## Files
 
 Per tier: `kinglet-<t>-v0.3.1.onnx` (trunk; `.gemm-mel` variant for ARM), `.pack-jp.npz`
-(prebuilt Japan pack: 317 species + 181 group rows + other), `.headpack.npz` (full head +
+(prebuilt Japan pack: 317 species + 181 group rows, the removed music group included, + other), `.headpack.npz` (full head +
 calibration features, only needed for `kinglet build-pack`). Shared:
 `kinglet-v0.3.1.species-jp.csv` (the JP species list with authoritative vocabulary indices),
 `kinglet-v0.3.1.reliability.csv` (per-class reliability tiers, below).
@@ -127,7 +136,33 @@ undercounts):
 through the teacher's soft probabilities on other sounds. Treat their detections as weak signals;
 `kinglet-v0.3.1.reliability.csv` has the per-class table.
 
-## Evaluation (Japanese PAM benchmarks; higher is better)
+## Evaluation on public benchmarks (higher is better)
+
+Class-mean average precision (cmAP) on [WABAD](https://zenodo.org/records/17293588) (60,158 5-s
+windows, 1,189 species, 72 sites) and the seven [BirdSet](https://huggingface.co/datasets/DBD-research-group/BirdSet)
+test sets, scored by folding the full-vocabulary output onto each benchmark's species list. No
+benchmark recording was used in training, and no benchmark label for model selection.
+
+| | WABAD | POW | HSN | NES | PER | SNE | SSW | UHH |
+|---|---|---|---|---|---|---|---|---|
+| Perch 2.0 (teacher) | 0.279 | 0.540 | 0.527 | 0.404 | 0.229 | 0.350 | 0.473 | 0.383 |
+| Kinglet-B v0.3.1 | 0.272 | 0.484 | 0.518 | 0.400 | 0.233 | 0.360 | 0.481 | 0.363 |
+| Kinglet-S v0.3.1 | 0.259 | 0.463 | 0.501 | 0.391 | 0.215 | 0.338 | 0.459 | 0.353 |
+| Kinglet-XS v0.3.1 | 0.249 | 0.445 | 0.487 | 0.385 | 0.207 | 0.323 | 0.452 | 0.348 |
+
+Capacity ordering is monotone (XS < S < B) on all eight benchmarks. On WABAD, pooled AUPRC is
+0.317 (B) / 0.301 (S) / 0.297 (XS) against 0.314 for Perch 2.0, and per site Kinglet-B stays within
+±0.06 AUPRC of Perch 2.0 at all 72 sites (71 within ±0.05; median difference −0.008, S −0.018,
+XS −0.026). The largest gap, POW, is the densest set (dawn chorus, 2.8 species per window).
+
+Embedding compatibility with Perch 2.0 on the WABAD windows: mean cosine between the two models'
+embeddings of the same window 0.868 (B) / 0.861 (S) / 0.834 (XS). Few-shot retrieval (k = 1, 5)
+with Perch exemplars against a Kinglet archive reaches 99–100% (B), 97–98% (S), 95% (XS) of Perch's
+own retrieval mAP, and 93–99% in the reverse direction. A linear probe trained on Perch embeddings
+and applied unchanged to Kinglet embeddings keeps 93% (B) / 92% (S) / 86% (XS) of its cmAP;
+refitting it on Kinglet embeddings recovers 100% / 100% / 97%.
+
+## Additional in-house evaluation (Japanese PAM benchmarks, data not public; higher is better)
 
 | | Kasumigaura macro AUPRC | Suishin clip AP | Fuji 5 s AP | OKEON top-1 |
 |---|---|---|---|---|
@@ -168,13 +203,14 @@ mean per-species probability error ≤ 4e-5, detections at 0.1 disagree on ≤ 0
   synthetic mixes (LibriSpeech + field audio); real-world distant/reverberant speech below
   −12 dB SNR will be missed — the mask reduces, not eliminates, privacy exposure.
 - Group TPRs were measured on FSD50K eval clips (the closest public match to the training
-  distribution), not on field recordings of the events themselves; the geophony/vehicle/music
-  thresholds miss faint events by design, and the vehicle and music ones are provisional — the
-  music flag failed a field listening check (see Sound groups).
+  distribution), not on field recordings of the events themselves. geophony and vehicle are
+  provisional features with limited performance: they miss faint events by design, and in a field
+  listening check only 4 of 16 vehicle flags were vehicles (see Sound groups).
 - Species outside your pack's list fold into "other" and are never reported; build the pack with
   every species you may encounter.
-- Region folding is evaluated on two BirdSet soundscapes (Powdermill, High Sierra); elsewhere the
-  claim rests on the teacher's own generality plus the reliability tiers.
+- Region folding is evaluated on WABAD (72 sites) and seven BirdSet soundscape sets; for regions
+  and taxa they do not cover, the claim rests on the teacher's own generality plus the
+  reliability tiers.
 - Embeddings approximate Perch 2.0; for embedding-critical analyses prefer Kinglet-B, or Perch
   itself when compute allows.
 

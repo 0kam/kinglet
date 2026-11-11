@@ -1,5 +1,5 @@
 {
- "note": "Perch 2.0 FSD50K class -> group mapping for Kinglet packs (owner decision 2026-11-06). A group score is the sum of member softmax probs. Calibrated thresholds (clean TPR >= 0.8 at the domestic-PAM FPR-1% point on every tier): human_voice 0.005, gunshot 0.0003, domestic_animal 0.003. Provisional operating points (the FPR-1% quantile is contaminated by genuine wind/rain/vehicles in field audio; these flag the ~0.1-2% most group-like windows): geophony 0.1, vehicle 0.05, music 0.05. other_anthrophony is a catch-all, no threshold. ungrouped = overlaps species classes or source-ambiguous onomatopoeia; kept as individual rows only.",
+ "note": "Perch 2.0 FSD50K class -> group mapping for Kinglet packs (owner decision 2026-11-06; music removed 2026-11-11). A group score is the sum of member softmax probs. Calibrated thresholds (clean TPR >= 0.8 at the domestic-PAM FPR-1% point on every tier): human_voice 0.005, gunshot 0.0003, domestic_animal 0.003. Provisional features with limited performance (the FPR-1% quantile is contaminated by genuine wind/rain/vehicles in field audio; operating points that flag the ~0.1-5% most group-like windows): geophony 0.1 (14 of 16 flagged field windows audible), vehicle 0.05 (4 of 16; reliable only at high scores). other_anthrophony is a catch-all, no threshold. The music group (35 instrument classes) was removed: it failed the field listening check (0 of 16 flagged windows, and none of the 8 highest-scoring, contained music), so those classes now fold into 'other'. ungrouped = overlaps species classes or source-ambiguous onomatopoeia; kept as individual rows only.",
  "groups": {
   "human_voice": [
    "Child_speech_and_kid_speaking",
@@ -65,43 +65,6 @@
    "Waves_and_surf",
    "Wind",
    "Drip"
-  ],
-  "music": [
-   "Accordion",
-   "Acoustic_guitar",
-   "Bass_drum",
-   "Bass_guitar",
-   "Bowed_string_instrument",
-   "Brass_instrument",
-   "Cowbell",
-   "Crash_cymbal",
-   "Cymbal",
-   "Drum",
-   "Drum_kit",
-   "Electric_guitar",
-   "Glockenspiel",
-   "Gong",
-   "Guitar",
-   "Harmonica",
-   "Harp",
-   "Hi-hat",
-   "Keyboard_(musical)",
-   "Mallet_percussion",
-   "Marimba_and_xylophone",
-   "Music",
-   "Musical_instrument",
-   "Organ",
-   "Percussion",
-   "Piano",
-   "Plucked_string_instrument",
-   "Rattle_(instrument)",
-   "Scratching_(performance_technique)",
-   "Snare_drum",
-   "Strum",
-   "Tabla",
-   "Tambourine",
-   "Trumpet",
-   "Wind_instrument_and_woodwind_instrument"
   ],
   "gunshot": [
    "Gunshot_and_gunfire"
@@ -201,7 +164,6 @@
   "human_voice": 0.005,
   "vehicle": 0.05,
   "geophony": 0.1,
-  "music": 0.05,
   "gunshot": 0.0003,
   "domestic_animal": 0.003,
   "other_anthrophony": null
