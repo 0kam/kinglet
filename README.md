@@ -105,7 +105,7 @@ voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear 
   `scale` and `zero_point` are the quantisation parameters of the device model's feature tensor
   (omit both for float features). Measured for Kinglet-XS with an int8 trunk on the 60,158 WABAD
   windows: cosine 0.990 between the restored and the fp32 embedding, and few-shot retrieval,
-  linear-probe and cross-space readouts all within 1.1% of the fp32 model.
+  linear-probe and cross-space readouts all within 1.5% of the fp32 model.
 - v0.2 single-file models (`logits` in the graph) are not supported by the v0.3 package — use the
   v0.2 release assets with `kinglet-bio==0.2.0` if you need them.
 
