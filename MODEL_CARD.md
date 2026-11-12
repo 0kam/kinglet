@@ -120,21 +120,23 @@ kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species my_region.
 
 ## Per-class reliability tiers
 
-The tiers record how many training recordings each vocabulary class had (name-matched via the
-eBird 2024 taxonomy; 258 training species totalling 1.9% of recordings could not be matched, so the
-counts are undercounts: at least 87 classes listed as `softlabel_only` did have recordings, under
-an eBird code that changed after 2021):
+The tiers record how many training recordings each vocabulary class had. A training species is
+assigned to a class by its eBird code and, failing that, its scientific name, and every recording
+is counted once; 168 training species (4,514 of 428,484 recordings) have no class in the vocabulary.
 
 | tier | training recordings | vocabulary classes | of the 317 JP classes |
 |---|---|---|---|
-| high | ≥ 100 | 996 | 245 |
-| medium | 10–99 | 4,439 | 65 |
-| low | 1–9 | 4,056 | 5 |
-| softlabel_only | 0 | 5,304 | 1 (shtalb: dead row) |
+| high | ≥ 100 | 996 | 237 |
+| medium | 10–99 | 4,486 | 74 |
+| low | 1–9 | 4,089 | 5 |
+| softlabel_only | 0 | 5,224 | 1 (shtalb: dead row) |
+
+The table shipped with v0.3.0 and v0.3.1 matched by eBird 2024 name only: it listed 87 classes
+without recordings that had some, and counted a recording once per list it appeared in.
 
 `softlabel_only` classes were never the labelled species of a training recording — the student
-knows them only through the probabilities the teacher assigns to them on other sounds. About 4,500
-of them are not birds (frogs, insects, mammals and sound classes).
+knows them only through the probabilities the teacher assigns to them on other sounds. 4,488 of
+them are not birds (frogs, insects, mammals and sound classes) and 736 are.
 
 The tiers say how much a class was heard, not how accurate it is. On the public benchmarks (WABAD
 and seven BirdSet sets) accuracy relative to Perch 2.0 did not fall with fewer training recordings:
