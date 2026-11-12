@@ -120,10 +120,9 @@ kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species my_region.
 
 ## Per-class reliability tiers
 
-Distillation quality per class tracks how often the class was actually heard during training.
-Counting training recordings per vocabulary class (name-matched via the eBird 2024 taxonomy;
-258 training species totalling 1.9% of recordings could not be matched, so counts are slight
-undercounts):
+The tiers record how many training recordings each vocabulary class had (name-matched via the
+eBird 2024 taxonomy; 258 training species totalling 1.9% of recordings could not be matched, so the
+counts are slight undercounts and a few classes listed as `softlabel_only` did have recordings):
 
 | tier | training recordings | vocabulary classes | of the 317 JP classes |
 |---|---|---|---|
@@ -132,8 +131,17 @@ undercounts):
 | low | 1–9 | 4,056 | 5 |
 | softlabel_only | 0 | 5,304 | 1 (shtalb: dead row) |
 
-`softlabel_only` classes were never positive in training audio — the student knows them only
-through the teacher's soft probabilities on other sounds. Treat their detections as weak signals;
+`softlabel_only` classes were never the labelled species of a training recording — the student
+knows them only through the probabilities the teacher assigns to them on other sounds. About 4,500
+of them are not birds (frogs, insects, mammals and sound classes).
+
+The tiers say how much a class was heard, not how accurate it is. On the public benchmarks (WABAD
+and seven BirdSet sets) accuracy relative to Perch 2.0 did not fall with fewer training recordings:
+the ratio of mean AP was 0.98 / 0.94 / 0.91 (B / S / XS) for `high`, 0.97 / 0.92 / 0.88 for `medium`
+and 1.00 / 1.00 / 0.94 for `low` species, and 1.01 / 0.97 / 0.93 for the 11 WABAD species without
+any training recording (95% intervals 0.72–1.35). Eleven species cannot settle the question,
+though, and the benchmarks contain no other `softlabel_only` class: apart from the sound groups,
+the accuracy of these classes is untested. Treat their detections as unverified.
 `kinglet-v0.3.2.reliability.csv` has the per-class table.
 
 ## Evaluation on public benchmarks (higher is better)
@@ -209,8 +217,8 @@ fold flags). The public benchmark results above use the exact fold.
 - Species outside your pack's list fold into "other" and are never reported; build the pack with
   every species you may encounter.
 - Region folding is evaluated on WABAD (72 sites) and seven BirdSet soundscape sets; for regions
-  and taxa they do not cover, the claim rests on the teacher's own generality plus the
-  reliability tiers.
+  and taxa they do not cover, the claim rests on the teacher's own generality. The reliability
+  tiers show which classes had training recordings, not how accurate they are.
 - Embeddings approximate Perch 2.0; for embedding-critical analyses prefer Kinglet-B, or Perch
   itself when compute allows.
 
