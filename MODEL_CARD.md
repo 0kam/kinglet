@@ -138,8 +138,8 @@ of them are not birds (frogs, insects, mammals and sound classes).
 The tiers say how much a class was heard, not how accurate it is. On the public benchmarks (WABAD
 and seven BirdSet sets) accuracy relative to Perch 2.0 did not fall with fewer training recordings:
 the ratio of mean AP was 0.98 / 0.94 / 0.91 (B / S / XS) for `high`, 0.97 / 0.92 / 0.88 for `medium`
-and 1.00 / 1.00 / 0.94 for `low` species, and 1.01 / 0.97 / 0.93 for the 11 WABAD species without
-any training recording (95% intervals 0.72–1.35). Eleven species cannot settle the question,
+and 1.00 / 0.99 / 0.93 for `low` species, and 1.01 / 0.97 / 0.93 for the 11 WABAD species without
+any training recording (95% intervals 0.72–1.34). Eleven species cannot settle the question,
 though, and the benchmarks contain no other `softlabel_only` class: apart from the sound groups,
 the accuracy of these classes is untested. Treat their detections as unverified.
 `kinglet-v0.3.2.reliability.csv` has the per-class table.
