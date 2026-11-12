@@ -32,11 +32,11 @@ Speed vs the v0.2 single-file models on the same harness: B −1.6%, S −3.4%, 
 The trunks, the species rows of every pack and the sound-group thresholds are identical to v0.3.1,
 and v0.3.1 packs keep working. Rebuilt or added:
 
-- **packs and headpacks**: the calibration features behind the "other" row now come from public
-  focal recordings only (held-out validation recordings of the training corpora); v0.3.1 also drew
-  on in-house soundscape recordings. On the WABAD windows the v0.3.1 and v0.3.2 Japan packs differ
-  on "any species ≥ 0.1" in 0.8–1.0% of windows.
-- **the `music` group is removed** (see Sound groups); its classes fold into "other".
+- **packs and headpacks** are rebuilt: the calibration features behind the "other" row are
+  held-out validation recordings of the public training corpora. On the WABAD windows the v0.3.1
+  and v0.3.2 Japan packs differ on "any species ≥ 0.1" in 0.8–1.0% of windows.
+- **the `music` group is removed**: it proved unreliable. Its classes fold into "other"
+  (v0.3.1 packs still report a `music` score — ignore it).
 - `kinglet.embedding_from_feature` restores the Perch-space embedding from a stored trunk feature,
   and `kinglet build-pack --region` fetches a regional species list.
 - The sound-group and open-set measurements in this card are now made on public data.
@@ -50,8 +50,7 @@ folds at deployment time. Folding a pack takes seconds on a laptop (`kinglet bui
 no audio: species rows slice exactly from the full head; the "other" row is a ridge fit of the exact
 out-of-pack logsumexp on calibration trunk features shipped with the release.
 
-On the Japanese benchmarks this costs nothing measurable (all tiers within the pre-registered
-−0.01 of v0.2, see Evaluation), while adding:
+Folding at deployment time adds:
 
 - **any-region deployment**: fold the same trunk onto any species list. On BirdSet soundscapes
   (regions never seen by our pipeline, scored with folded packs): Powdermill (48 spp, dawn chorus)
@@ -67,7 +66,7 @@ Of the vocabulary's 198 FSD50K sound classes (+ Homo sapiens), 146 ship pre-assi
 `gunshot` (1; fireworks/explosion are deliberately kept out as classic confusers),
 `domestic_animal` (10), `other_anthrophony` (76). 18 classes that overlap bird/wildlife species or
 are source-ambiguous onomatopoeia stay ungrouped, and the 35 musical-instrument classes are left
-out since the `music` group was removed (below). A group's score is the sum of its members'
+out since the `music` group was removed in v0.3.2. A group's score is the sum of its members'
 softmax probabilities; every pack carries the group rows.
 
 **human_voice flags clear voices only.** The shipped threshold is 0.005, a fixed operating point
@@ -104,20 +103,6 @@ WABAD carries no labels for these sounds, so the flagged share mixes true events
 Treat group rows as flags for review, not verdicts — loud impulsive events can co-flag
 gunshot/vehicle — and re-tune the thresholds against your own deployment. `other_anthrophony` is
 a catch-all and ships without a threshold (score exposed in the Python API; the CLI skips it).
-
-**Field listening check (November 2026).** For geophony, vehicle and a third group, music, 16
-windows flagged at the shipped threshold were drawn at random from in-house Japanese field
-recordings (not public; tier S with the v0.3.1 pack; flagged there: geophony 4.9%, vehicle 0.6%,
-music 0.5%) and judged by ear by one listener, blind to the score.
-
-- **geophony 14/16** flagged windows contained wind, rain or water. Scores are not a confidence,
-  though: of the 8 highest-scoring windows (0.80–0.92) only 3 did.
-- **vehicle 4/16** (5 more unsure). All 8 highest-scoring windows (≥ 0.21) were vehicles, while
-  flags between 0.05 and 0.10 mostly were not: 0.05 is too loose on such audio, and this check has
-  no windows between 0.10 and 0.21 to place a better cut-off.
-- **music 0/16**, and none of the 8 highest-scoring windows (up to 0.44) contained music either.
-  **The music group was removed** in v0.3.2: its classes fold into "other". (v0.3.1 packs still
-  report a `music` score — ignore it.)
 
 ## Files
 
@@ -198,21 +183,8 @@ account for much of it (Goldcrest fires on 1–3% of the Sierra Nevada windows, 
 Kinglet lives). A real but unannotated call counts as a false detection for every model alike.
 BirdNET has 313 (V3) and 299 (V2.4) of the 317 classes; a missing class cannot fire.
 
-## Additional in-house evaluation (Japanese PAM benchmarks, data not public; higher is better)
-
-| | Kasumigaura macro AUPRC | Suishin clip AP | Fuji 5 s AP | OKEON top-1 |
-|---|---|---|---|---|
-| Perch 2.0 (teacher, ~47x realtime) | 0.737 | 0.588 | 0.398 | 0.849 |
-| BirdNET V2.4 | 0.534 | 0.385 | 0.306 | 0.940* |
-| Kinglet-B v0.3.1 | 0.714 | 0.582 | 0.389 | 0.832 |
-| Kinglet-S v0.3.1 | 0.698 | 0.568 | 0.382 | 0.834 |
-| Kinglet-XS v0.3.1 | 0.714 | 0.568 | 0.379 | 0.826 |
-| (Kinglet-B v0.2.0) | 0.722 | 0.572 | 0.380 | 0.832 |
-
-All tiers pass the pre-registered gates (JP cores within −0.01 of v0.2 per tier; S and XS improve
-on every AP benchmark; B's Kasumigaura −0.008 is inside the paired CI). Mean embedding cosine to
-the teacher on held-out focal validation: 0.871 (B), 0.868 (S), 0.842 (XS); v0.2 measured
-0.880 / 0.864 / 0.829.
+Mean embedding cosine to the teacher on held-out focal validation recordings: 0.871 (B),
+0.868 (S), 0.842 (XS); v0.2 measured 0.880 / 0.864 / 0.829.
 
 Pack-vs-exact-fold equivalence (the ridge "other" row vs computing the full 14,795-way softmax):
 on held-out focal validation recordings (7,171 windows) the mean per-species probability error is
@@ -222,11 +194,8 @@ foreign list there), and on 5.5–5.8% with packs built for each site's own spec
 always the pack missing a window the exact fold flags (about one in ten of the windows the exact
 fold flags). The public benchmark results above use the exact fold.
 
-\* OKEON detections were sourced with BirdNET V2.4, biasing this comparison in its favor.
-
 ## Known issues / limitations (v0.3.2)
 
-- OKEON top-1 remains ~3.5 pt below v0.1.0 on all tiers (unchanged from v0.2, as expected).
 - The ridge "other" row is an approximation: on bird-dense windows a single species probability
   can shift by up to ~0.5 vs the exact fold, and with a pack for the local species list about one
   in ten windows that the exact fold would flag at 0.1 falls below the threshold (see Evaluation).
@@ -236,8 +205,7 @@ fold flags). The public benchmark results above use the exact fold.
   but does not remove it; use a dedicated voice activity detector when that matters.
 - Group TPRs were measured on FSD50K eval clips (the closest public match to the training
   distribution), not on field recordings of the events themselves. geophony and vehicle are
-  provisional features with limited performance: they miss faint events by design, and in a field
-  listening check only 4 of 16 vehicle flags were vehicles (see Sound groups).
+  provisional features with limited performance: they miss faint events by design.
 - Species outside your pack's list fold into "other" and are never reported; build the pack with
   every species you may encounter.
 - Region folding is evaluated on WABAD (72 sites) and seven BirdSet soundscape sets; for regions
