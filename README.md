@@ -11,7 +11,7 @@ worldwide. Each model outputs species scores for **any regional species list**, 
 (human voice, vehicles, rain/wind, ...), and a 1536-d embedding in the Perch 2.0 embedding space,
 so search indices and classifiers built on Perch embeddings keep working.
 
-## Models (v0.3.1)
+## Models (v0.3.2)
 
 | model | backbone | trunk size | speed on a laptop* | 1,000 h of audio* | WABAD cmAP** | BirdSet cmAP vs Perch 2.0*** |
 |---|---|---|---|---|---|---|
@@ -26,8 +26,9 @@ ships with the release, and `kinglet build-pack` folds the same trunk onto **any
 seconds, no audio needed. Scores are **softmax probabilities with an explicit background channel**;
 use a fixed species threshold of **0.1** (the Perch operating point). Every pack also carries
 **sound groups** with operating thresholds (since v0.3.1): a `human_voice` flag (threshold 0.005)
-that catches clear voices — about half of the audible voices in the WABAD soundscapes, so not a privacy mask
-on its own — calibrated `gunshot` and `domestic_animal` detectors, and `geophony` / `vehicle` flags for rain-and-traffic noise screening.
+that catches clear voices — about half of the audible voices in the WABAD soundscapes, so not a
+privacy mask on its own — `gunshot` and `domestic_animal` flags, and `geophony` / `vehicle` flags
+for rain-and-traffic noise screening.
 The last two are **provisional features with limited performance** — hints for review, not
 detections (details in [MODEL_CARD.md](https://github.com/0kam/kinglet/blob/main/MODEL_CARD.md)).
 
@@ -47,7 +48,7 @@ some ARM CPUs — on x86, use the default files.
 
 ```bash
 pip install kinglet-bio   # needs ffmpeg on PATH
-kinglet analyze recordings/ --model kinglet-s-v0.3.1.onnx --pack kinglet-s-v0.3.1.pack-jp.npz --out detections.csv
+kinglet analyze recordings/ --model kinglet-s-v0.3.2.onnx --pack kinglet-s-v0.3.2.pack-jp.npz --out detections.csv
 ```
 
 The CLI keeps, per 5 s window, the top-3 species scoring at least 0.1 (adjustable with
@@ -59,21 +60,21 @@ Deploying outside Japan (or with your own species list)? Fold a pack from the `.
 release asset — the CSV needs `ebird_code, scientific_name` columns:
 
 ```bash
-kinglet build-pack --headpack kinglet-s-v0.3.1.headpack.npz --species my_region.csv --out my_region.npz
+kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species my_region.csv --out my_region.npz
 ```
 
 Or let eBird supply the list for any region (free key at https://ebird.org/api/keygen, via `--ebird-key`
 or `EBIRD_API_KEY`); it is saved as `us-ca.species.csv` to edit and rerun with `--species`:
 
 ```bash
-kinglet build-pack --headpack kinglet-s-v0.3.1.headpack.npz --region US-CA --out us-ca.npz
+kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --region US-CA --out us-ca.npz
 ```
 
 Or from Python / any ONNX runtime:
 
 ```python
 from kinglet import Kinglet, decode, windows
-m = Kinglet("kinglet-s-v0.3.1.onnx", "kinglet-s-v0.3.1.pack-jp.npz")
+m = Kinglet("kinglet-s-v0.3.2.onnx", "kinglet-s-v0.3.2.pack-jp.npz")
 starts, wins = windows(decode("field_recording.wav"))   # 5 s windows at 32 kHz mono
 embeddings, scores, groups = m.run(wins)                # (n, 1536), (n, 317), {group: (n,)}
 voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear human voice
@@ -98,7 +99,7 @@ voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear 
 
   ```python
   import kinglet
-  emb = kinglet.embedding_from_feature("kinglet-xs-v0.3.1.onnx", feature_int8, scale, zero_point)  # (n, 1536)
+  emb = kinglet.embedding_from_feature("kinglet-xs-v0.3.2.onnx", feature_int8, scale, zero_point)  # (n, 1536)
   ```
 
   `scale` and `zero_point` are the quantisation parameters of the device model's feature tensor

@@ -20,7 +20,7 @@ from .pack import load_pack
 SR = 32_000
 WIN = 5 * SR
 
-__version__ = "0.3.1"
+__version__ = "0.3.2"
 
 
 def decode(path: str | Path, ffmpeg: str = "ffmpeg") -> np.ndarray:

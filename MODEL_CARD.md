@@ -1,4 +1,4 @@
-# Kinglet Model Card (v0.3.1)
+# Kinglet Model Card (v0.3.2)
 
 ## Overview
 
@@ -26,6 +26,20 @@ windows already in memory. \** Same measurement on a Ryzen 9 9950X3D, 4 threads.
 Perch 2.0 depends on the machine (13–38x on the laptop, 11–31x on the workstation).
 
 Speed vs the v0.2 single-file models on the same harness: B −1.6%, S −3.4%, XS −1%.
+
+## What changed in v0.3.2
+
+The trunks, the species rows of every pack and the sound-group thresholds are identical to v0.3.1,
+and v0.3.1 packs keep working. Rebuilt or added:
+
+- **packs and headpacks**: the calibration features behind the "other" row now come from public
+  focal recordings only (held-out validation recordings of the training corpora); v0.3.1 also drew
+  on in-house soundscape recordings. On the WABAD windows the v0.3.1 and v0.3.2 Japan packs differ
+  on "any species ≥ 0.1" in 0.8–1.0% of windows.
+- **the `music` group is removed** (see Sound groups); its classes fold into "other".
+- `kinglet.embedding_from_feature` restores the Perch-space embedding from a stored trunk feature,
+  and `kinglet build-pack --region` fetches a regional species list.
+- The sound-group and open-set measurements in this card are now made on public data.
 
 ## What changed vs v0.2.0: full-vocabulary distillation + regional folding
 
@@ -71,31 +85,30 @@ shipped threshold it misses about half of the audible voices. Where privacy matt
 dedicated voice activity detector — in the same embedded-speech test Silero VAD (default 0.5)
 detected 0.94 / 0.73 / 0.47 at 0 / −6 / −12 dB while flagging 0.7% of the WABAD windows.
 
-**The other groups** were calibrated in v0.3.1 with the same protocol (positives = FSD50K *eval*
-clips carrying a member label, uploader-disjoint from the training source, clean + mixed into
-field audio; negatives = ~36k Japanese PAM windows; scores = the deployed pack scores):
+**The other groups** use fixed thresholds of the same kind. Measured on public data with the
+v0.3.2 packs — FSD50K *eval* clips carrying a member label (uploader-disjoint from the training
+source; 59–400 clips per group), clean and embedded at 0 dB in WABAD soundscape windows
+(B / S / XS):
 
-| group | threshold | status | clean TPR (B/S/XS) | field windows flagged |
+| group | threshold | detected, clean | detected, SNR 0 dB | WABAD windows flagged |
 |---|---|---|---|---|
-| gunshot | 0.0003 | calibrated (FPR ≈ 1%) | 0.98 / 0.97 / 0.98 | 0.8–0.9% |
-| domestic_animal | 0.003 | calibrated (FPR < 0.5%) | 0.84 / 0.80 / 0.81 | ~0.3% |
-| geophony | 0.1 | provisional, limited (field check 14/16) | 0.62 / 0.57 / 0.50 | 0.8–0.9% |
-| vehicle | 0.05 | provisional, limited (field check 4/16) | 0.71 / 0.67 / 0.66 | 0.7–2.0% |
+| gunshot | 0.0003 | 0.98 / 0.98 / 0.98 | 0.73 / 0.68 / 0.59 | 0.3–0.4% |
+| domestic_animal | 0.003 | 0.84 / 0.78 / 0.82 | 0.56 / 0.53 / 0.50 | 0.3–0.4% |
+| geophony (provisional) | 0.1 | 0.64 / 0.59 / 0.49 | 0.12 / 0.10 / 0.06 | 0.1% |
+| vehicle (provisional) | 0.05 | 0.69 / 0.67 / 0.68 | 0.14 / 0.13 / 0.11 | 0.1% |
 
-**geophony and vehicle are provisional features with limited performance.** For them a strict
-"FPR" is undefined on field audio — rural PAM genuinely
-contains wind, rain and distant traffic, so the flagged fraction is partly true detections. The
-provisional thresholds are operating points chosen to flag the most group-like ~0.1–2% of windows:
-they catch dominant events (heavy rain scores up to 0.9; on quiet rural sites vehicle scores never
-exceeded 0.18) and miss faint ones (TPR at SNR 0 dB is 0.2–0.5). Treat group rows as flags for
-review, not verdicts — loud impulsive events can co-flag gunshot/vehicle — and recalibrate against
-your own deployment if your sites are noisier. `other_anthrophony` is a catch-all and ships
-without a threshold (score exposed in the Python API; the CLI skips it).
+All thresholds are fixed operating points set during development, not confidence levels.
+**geophony and vehicle are provisional features with limited performance**: they catch events
+that dominate the window and miss most events no louder than the background (6–14% at 0 dB).
+WABAD carries no labels for these sounds, so the flagged share mixes true events and false alarms.
+Treat group rows as flags for review, not verdicts — loud impulsive events can co-flag
+gunshot/vehicle — and re-tune the thresholds against your own deployment. `other_anthrophony` is
+a catch-all and ships without a threshold (score exposed in the Python API; the CLI skips it).
 
 **Field listening check (November 2026).** For geophony, vehicle and a third group, music, 16
-windows flagged at the shipped threshold were drawn at random from 125,662 Japanese PAM windows
-that the calibration never used (tier S; flagged there: geophony 4.9%, vehicle 0.6%, music 0.5%)
-and judged by ear by one listener, blind to the score.
+windows flagged at the shipped threshold were drawn at random from in-house Japanese field
+recordings (not public; tier S with the v0.3.1 pack; flagged there: geophony 4.9%, vehicle 0.6%,
+music 0.5%) and judged by ear by one listener, blind to the score.
 
 - **geophony 14/16** flagged windows contained wind, rain or water. Scores are not a confidence,
   though: of the 8 highest-scoring windows (0.80–0.92) only 3 did.
@@ -103,22 +116,21 @@ and judged by ear by one listener, blind to the score.
   flags between 0.05 and 0.10 mostly were not: 0.05 is too loose on such audio, and this check has
   no windows between 0.10 and 0.21 to place a better cut-off.
 - **music 0/16**, and none of the 8 highest-scoring windows (up to 0.44) contained music either.
-  **The music group was removed**: packs built with `kinglet build-pack` no longer carry it, and
-  its classes fold into "other". The prebuilt v0.3.1 packs predate the removal and still report a
-  `music` score — ignore it.
+  **The music group was removed** in v0.3.2: its classes fold into "other". (v0.3.1 packs still
+  report a `music` score — ignore it.)
 
 ## Files
 
-Per tier: `kinglet-<t>-v0.3.1.onnx` (trunk; `.gemm-mel` variant for ARM), `.pack-jp.npz`
-(prebuilt Japan pack: 317 species + 181 group rows, the removed music group included, + other), `.headpack.npz` (full head +
+Per tier: `kinglet-<t>-v0.3.2.onnx` (trunk; `.gemm-mel` variant for ARM), `.pack-jp.npz`
+(prebuilt Japan pack: 317 species + 146 group rows + other), `.headpack.npz` (full head +
 calibration features, only needed for `kinglet build-pack`). Shared:
-`kinglet-v0.3.1.species-jp.csv` (the JP species list with authoritative vocabulary indices),
-`kinglet-v0.3.1.reliability.csv` (per-class reliability tiers, below).
+`kinglet-v0.3.2.species-jp.csv` (the JP species list with authoritative vocabulary indices),
+`kinglet-v0.3.2.reliability.csv` (per-class reliability tiers, below).
 v0.2 single-file models (logits in the graph) are not supported by the v0.3 package.
 
 ```
-kinglet analyze recordings/ --model kinglet-s-v0.3.1.onnx --pack kinglet-s-v0.3.1.pack-jp.npz
-kinglet build-pack --headpack kinglet-s-v0.3.1.headpack.npz --species my_region.csv --out my.npz
+kinglet analyze recordings/ --model kinglet-s-v0.3.2.onnx --pack kinglet-s-v0.3.2.pack-jp.npz
+kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species my_region.csv --out my.npz
 ```
 
 ## Per-class reliability tiers
@@ -137,7 +149,7 @@ undercounts):
 
 `softlabel_only` classes were never positive in training audio — the student knows them only
 through the teacher's soft probabilities on other sounds. Treat their detections as weak signals;
-`kinglet-v0.3.1.reliability.csv` has the per-class table.
+`kinglet-v0.3.2.reliability.csv` has the per-class table.
 
 ## Evaluation on public benchmarks (higher is better)
 
@@ -149,9 +161,9 @@ benchmark recording was used in training, and no benchmark label for model selec
 | | WABAD | POW | HSN | NES | PER | SNE | SSW | UHH |
 |---|---|---|---|---|---|---|---|---|
 | Perch 2.0 (teacher) | 0.279 | 0.540 | 0.527 | 0.404 | 0.229 | 0.350 | 0.473 | 0.383 |
-| Kinglet-B v0.3.1 | 0.272 | 0.484 | 0.518 | 0.400 | 0.233 | 0.360 | 0.481 | 0.363 |
-| Kinglet-S v0.3.1 | 0.259 | 0.463 | 0.501 | 0.391 | 0.215 | 0.338 | 0.459 | 0.353 |
-| Kinglet-XS v0.3.1 | 0.249 | 0.445 | 0.487 | 0.385 | 0.207 | 0.323 | 0.452 | 0.348 |
+| Kinglet-B v0.3.2 | 0.272 | 0.484 | 0.518 | 0.400 | 0.233 | 0.360 | 0.481 | 0.363 |
+| Kinglet-S v0.3.2 | 0.259 | 0.463 | 0.501 | 0.391 | 0.215 | 0.338 | 0.459 | 0.353 |
+| Kinglet-XS v0.3.2 | 0.249 | 0.445 | 0.487 | 0.385 | 0.207 | 0.323 | 0.452 | 0.348 |
 
 Capacity ordering is monotone (XS < S < B) on all eight benchmarks. On WABAD, pooled AUPRC is
 0.317 (B) / 0.301 (S) / 0.297 (XS) against 0.314 for Perch 2.0, and per site Kinglet-B stays within
@@ -168,7 +180,7 @@ refitting it on Kinglet embeddings recovers 100% / 100% / 97%.
 Open-set false detections: the 317-species Japan list scored on the same eight test sets (381,911
 windows), where almost no listed species occurs (69 of them are annotated in WABAD, 0–5 in each
 BirdSet set), so nearly every bird is outside the list. A false detection is a listed species above
-the threshold that is not annotated in that window. Kinglet is scored through the shipped Japan
+the threshold that is not annotated in that window. Kinglet is scored through the v0.3.1 Japan
 pack, Perch 2.0 through its full-vocabulary softmax sliced to the list.
 
 | | false detections per window | windows with any | recall on annotated listed species (WABAD) |
@@ -203,17 +215,16 @@ the teacher on held-out focal validation: 0.871 (B), 0.868 (S), 0.842 (XS); v0.2
 0.880 / 0.864 / 0.829.
 
 Pack-vs-exact-fold equivalence (the ridge "other" row vs computing the full 14,795-way softmax):
-on held-out Japanese PAM windows, where few windows contain a listed bird, the mean per-species
-probability error is ≤ 4e-5 and detections at 0.1 disagree on ≤ 0.8% of windows. On bird-dense
-soundscapes the gap is larger. On the 60,158 WABAD windows, "any species ≥ 0.1" differs between
-pack and exact fold on 1.7–2.0% of windows with the Japan pack (a foreign list there), and on
-4.9–5.6% with packs built for each site's own species list — almost always the pack missing a
-window the exact fold flags (about one in ten of the windows the exact fold flags). The public
-benchmark results above use the exact fold.
+on held-out focal validation recordings (7,171 windows) the mean per-species probability error is
+≤ 7e-5 and detections at 0.1 disagree on 1.9–2.3% of windows. On the 60,158 WABAD windows, "any
+species ≥ 0.1" differs between pack and exact fold on 1.7–2.0% of windows with the Japan pack (a
+foreign list there), and on 5.5–5.8% with packs built for each site's own species list — almost
+always the pack missing a window the exact fold flags (about one in ten of the windows the exact
+fold flags). The public benchmark results above use the exact fold.
 
 \* OKEON detections were sourced with BirdNET V2.4, biasing this comparison in its favor.
 
-## Known issues / limitations (v0.3.1)
+## Known issues / limitations (v0.3.2)
 
 - OKEON top-1 remains ~3.5 pt below v0.1.0 on all tiers (unchanged from v0.2, as expected).
 - The ridge "other" row is an approximation: on bird-dense windows a single species probability
