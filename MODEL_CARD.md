@@ -44,7 +44,7 @@ On the Japanese benchmarks this costs nothing measurable (all tiers within the p
   cmAP B 0.484 / S 0.463 / XS 0.445; High Sierra (21 spp) 0.518 / 0.501 / 0.487. Teacher folded
   the same way: 0.540 / 0.527. BirdNET V2.4: 0.576 / 0.498. Kinglet-B reaches ~94% of the folded
   teacher's mean; capacity ordering is monotone (XS < S < B on every region metric).
-- **sound groups** (below), including a zero-training human-voice detector for privacy masking.
+- **sound groups** (below), including a human-voice flag that needs no extra training.
 
 ## Sound groups
 
@@ -56,17 +56,20 @@ are source-ambiguous onomatopoeia stay ungrouped, and the 35 musical-instrument 
 out since the `music` group was removed (below). A group's score is the sum of its members'
 softmax probabilities; every pack carries the group rows.
 
-**human_voice is calibrated** (threshold 0.005 ≈ FPR 1% on voice-free Japanese PAM windows,
-measured on the XS tier with LibriSpeech positives mixed into field audio):
+**human_voice flags clear voices only.** The shipped threshold is 0.005, a fixed operating point
+that flags 0.6% of the 60,158 WABAD windows. Measured on public data — LibriSpeech speech embedded
+in WABAD soundscape windows at a given signal-to-noise ratio (B / S / XS):
 
-| TPR at the 0.005 threshold | clean speech | SNR 0 dB | −6 dB | −12 dB |
+| | clean speech | SNR 0 dB | −6 dB | −12 dB |
 |---|---|---|---|---|
-| Kinglet-XS v0.3.1 | 1.00 | 0.98 | 0.95 | 0.74 |
-| Perch 2.0 (same protocol) | 1.00 | 0.93 | 0.87 | 0.72 |
+| detected at 0.005 | 1.00 / 1.00 / 1.00 | 0.56 / 0.58 / 0.68 | 0.41 / 0.42 / 0.49 | 0.24 / 0.27 / 0.28 |
 
-On held-out field windows the shipped packs flag 1.6% (B), 1.6% (S), 2.9% (XS) of windows at
-0.005 — an upper bound on the false-mask rate, since field audio contains genuine voice and
-over-masking is the safe failure direction for privacy.
+Of the 352 WABAD windows in which two independent speech detectors (PANNs CNN14 and Silero VAD)
+both find speech, the flag catches 47–49% at 0.005. Lowering the threshold to about 0.002 raises
+that to 78–80% and flags 2.5% of all windows. **Do not use it as the only privacy mask**: at the
+shipped threshold it misses about half of the audible voices. Where privacy matters, add a
+dedicated voice activity detector — in the same embedded-speech test Silero VAD (default 0.5)
+detected 0.94 / 0.73 / 0.47 at 0 / −6 / −12 dB while flagging 0.7% of the WABAD windows.
 
 **The other groups** were calibrated in v0.3.1 with the same protocol (positives = FSD50K *eval*
 clips carrying a member label, uploader-disjoint from the training source, clean + mixed into
@@ -217,10 +220,9 @@ benchmark results above use the exact fold.
   can shift by up to ~0.5 vs the exact fold, and with a pack for the local species list about one
   in ten windows that the exact fold would flag at 0.1 falls below the threshold (see Evaluation).
   If a study needs exact folding, score the full head from the headpack directly.
-- human_voice TPR was measured on the XS tier; B/S share the recipe and their folded scores
-  behave consistently, but their TPR curves were not separately measured. Mixing used additive
-  synthetic mixes (LibriSpeech + field audio); real-world distant/reverberant speech below
-  −12 dB SNR will be missed — the mask reduces, not eliminates, privacy exposure.
+- human_voice catches clear voices and misses faint ones: about half of the audible voices in
+  WABAD pass undetected at the shipped threshold (see Sound groups). It reduces privacy exposure
+  but does not remove it; use a dedicated voice activity detector when that matters.
 - Group TPRs were measured on FSD50K eval clips (the closest public match to the training
   distribution), not on field recordings of the events themselves. geophony and vehicle are
   provisional features with limited performance: they miss faint events by design, and in a field

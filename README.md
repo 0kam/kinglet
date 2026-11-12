@@ -25,9 +25,9 @@ to a region at deployment time ("distill once, fold anywhere"): a prebuilt Japan
 ships with the release, and `kinglet build-pack` folds the same trunk onto **any species list** in
 seconds, no audio needed. Scores are **softmax probabilities with an explicit background channel**;
 use a fixed species threshold of **0.1** (the Perch operating point). Every pack also carries
-**sound groups** with operating thresholds (since v0.3.1): a calibrated `human_voice` detector
-(threshold 0.005) for privacy masking before sharing field audio, calibrated `gunshot` and
-`domestic_animal` detectors, and `geophony` / `vehicle` flags for rain-and-traffic noise screening.
+**sound groups** with operating thresholds (since v0.3.1): a `human_voice` flag (threshold 0.005)
+that catches clear voices — about half of the audible voices in the WABAD soundscapes, so not a privacy mask
+on its own — calibrated `gunshot` and `domestic_animal` detectors, and `geophony` / `vehicle` flags for rain-and-traffic noise screening.
 The last two are **provisional features with limited performance** — hints for review, not
 detections (details in [MODEL_CARD.md](https://github.com/0kam/kinglet/blob/main/MODEL_CARD.md)).
 
@@ -52,7 +52,7 @@ kinglet analyze recordings/ --model kinglet-s-v0.3.1.onnx --pack kinglet-s-v0.3.
 
 The CLI keeps, per 5 s window, the top-3 species scoring at least 0.1 (adjustable with
 `--top-k` / `--min-score`), adds one row per calibrated sound group that passes its own threshold
-(`human_voice` windows are what you mute before sharing audio), and can dump embeddings with
+(`human_voice` marks windows with a clear voice), and can dump embeddings with
 `--embeddings emb/`.
 
 Deploying outside Japan (or with your own species list)? Fold a pack from the `.headpack.npz`
@@ -76,7 +76,7 @@ from kinglet import Kinglet, decode, windows
 m = Kinglet("kinglet-s-v0.3.1.onnx", "kinglet-s-v0.3.1.pack-jp.npz")
 starts, wins = windows(decode("field_recording.wav"))   # 5 s windows at 32 kHz mono
 embeddings, scores, groups = m.run(wins)                # (n, 1536), (n, 317), {group: (n,)}
-mask = groups["human_voice"] >= m.groups["human_voice"] # windows to mute before sharing
+voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear human voice
 ```
 
 ## Model I/O
