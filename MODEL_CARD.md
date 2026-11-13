@@ -78,7 +78,7 @@ in WABAD soundscape windows at a given signal-to-noise ratio (B / S / XS):
 | detected at 0.005 | 1.00 / 1.00 / 1.00 | 0.56 / 0.58 / 0.68 | 0.41 / 0.42 / 0.49 | 0.24 / 0.27 / 0.28 |
 
 Of the 352 WABAD windows in which two independent speech detectors (PANNs CNN14 and Silero VAD)
-both find speech, the flag catches 47–49% at 0.005. Lowering the threshold to about 0.002 raises
+both find speech, the flag catches 48–50% at 0.005. Lowering the threshold to about 0.002 raises
 that to 78–80% and flags 2.5% of all windows. **Do not use it as the only privacy mask**: at the
 shipped threshold it misses about half of the audible voices. Where privacy matters, add a
 dedicated voice activity detector — in the same embedded-speech test Silero VAD (default 0.5)
@@ -139,9 +139,9 @@ knows them only through the probabilities the teacher assigns to them on other s
 them are not birds (frogs, insects, mammals and sound classes) and 736 are.
 
 The tiers say how much a class was heard, not how accurate it is. On the public benchmarks (WABAD
-and seven BirdSet sets) accuracy relative to Perch 2.0 did not fall with fewer training recordings:
+and seven BirdSet sets) accuracy relative to Perch 2.0 did not fall steadily with fewer training recordings:
 the ratio of mean AP was 0.98 / 0.94 / 0.91 (B / S / XS) for `high`, 0.97 / 0.92 / 0.88 for `medium`
-and 1.00 / 0.99 / 0.93 for `low` species, and 1.02 / 0.97 / 0.95 for the 12 WABAD species without
+and 1.01 / 1.00 / 0.94 for `low` species, and 1.02 / 0.97 / 0.95 for the 12 WABAD species without
 any training recording (95% intervals 0.75–1.30). Twelve species cannot settle the question,
 though, and the benchmarks contain no other `softlabel_only` class: apart from the sound groups,
 the accuracy of these classes is untested. Treat their detections as unverified.
@@ -158,9 +158,9 @@ gates; WABAD and the other five sets were scored only after the models had been 
 | | WABAD | POW | HSN | NES | PER | SNE | SSW | UHH |
 |---|---|---|---|---|---|---|---|---|
 | Perch 2.0 (teacher) | 0.291 | 0.540 | 0.527 | 0.404 | 0.229 | 0.350 | 0.473 | 0.383 |
-| Kinglet-B v0.3.2 | 0.283 | 0.484 | 0.518 | 0.400 | 0.233 | 0.360 | 0.481 | 0.363 |
-| Kinglet-S v0.3.2 | 0.269 | 0.463 | 0.501 | 0.391 | 0.215 | 0.338 | 0.459 | 0.353 |
-| Kinglet-XS v0.3.2 | 0.259 | 0.445 | 0.487 | 0.385 | 0.207 | 0.323 | 0.452 | 0.348 |
+| Kinglet-B v0.3.2 | 0.283 | 0.484 | 0.518 | 0.401 | 0.233 | 0.360 | 0.481 | 0.363 |
+| Kinglet-S v0.3.2 | 0.269 | 0.463 | 0.501 | 0.393 | 0.215 | 0.338 | 0.459 | 0.353 |
+| Kinglet-XS v0.3.2 | 0.259 | 0.445 | 0.487 | 0.386 | 0.207 | 0.323 | 0.452 | 0.348 |
 
 Capacity ordering is monotone (XS < S < B) on all eight benchmarks. On WABAD, pooled AUPRC is
 0.328 (B) / 0.312 (S) / 0.308 (XS) against 0.324 for Perch 2.0, and per site Kinglet-B stays within
