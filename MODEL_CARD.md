@@ -152,19 +152,20 @@ the accuracy of these classes is untested. Treat their detections as unverified.
 Class-mean average precision (cmAP) on [WABAD](https://zenodo.org/records/17293588) (60,158 5-s
 windows, 1,189 species, 72 sites) and the seven [BirdSet](https://huggingface.co/datasets/DBD-research-group/BirdSet)
 test sets, scored by folding the full-vocabulary output onto each benchmark's species list. No
-benchmark recording was used in training, and no benchmark label for model selection.
+benchmark recording was used in training. Two BirdSet sets, POW and HSN, served as development
+gates; WABAD and the other five sets were scored only after the models had been frozen.
 
 | | WABAD | POW | HSN | NES | PER | SNE | SSW | UHH |
 |---|---|---|---|---|---|---|---|---|
-| Perch 2.0 (teacher) | 0.279 | 0.540 | 0.527 | 0.404 | 0.229 | 0.350 | 0.473 | 0.383 |
-| Kinglet-B v0.3.2 | 0.272 | 0.484 | 0.518 | 0.400 | 0.233 | 0.360 | 0.481 | 0.363 |
-| Kinglet-S v0.3.2 | 0.259 | 0.463 | 0.501 | 0.391 | 0.215 | 0.338 | 0.459 | 0.353 |
-| Kinglet-XS v0.3.2 | 0.249 | 0.445 | 0.487 | 0.385 | 0.207 | 0.323 | 0.452 | 0.348 |
+| Perch 2.0 (teacher) | 0.291 | 0.540 | 0.527 | 0.404 | 0.229 | 0.350 | 0.473 | 0.383 |
+| Kinglet-B v0.3.2 | 0.283 | 0.484 | 0.518 | 0.400 | 0.233 | 0.360 | 0.481 | 0.363 |
+| Kinglet-S v0.3.2 | 0.269 | 0.463 | 0.501 | 0.391 | 0.215 | 0.338 | 0.459 | 0.353 |
+| Kinglet-XS v0.3.2 | 0.259 | 0.445 | 0.487 | 0.385 | 0.207 | 0.323 | 0.452 | 0.348 |
 
 Capacity ordering is monotone (XS < S < B) on all eight benchmarks. On WABAD, pooled AUPRC is
-0.317 (B) / 0.301 (S) / 0.297 (XS) against 0.314 for Perch 2.0, and per site Kinglet-B stays within
-±0.06 AUPRC of Perch 2.0 at all 72 sites (71 within ±0.05; median difference −0.008, S −0.018,
-XS −0.026). The largest gap, POW, is the densest set (dawn chorus, 2.8 species per window).
+0.328 (B) / 0.312 (S) / 0.308 (XS) against 0.324 for Perch 2.0, and per site Kinglet-B stays within
+±0.06 AUPRC of Perch 2.0 at all 72 sites (71 within ±0.05; median difference −0.009, S −0.020,
+XS −0.025). The largest gap, POW, is the densest set (dawn chorus, 2.8 species per window).
 
 Embedding compatibility with Perch 2.0 on the WABAD windows: mean cosine between the two models'
 embeddings of the same window 0.868 (B) / 0.861 (S) / 0.834 (XS). Few-shot retrieval (k = 1, 5)
@@ -185,7 +186,7 @@ pack, Perch 2.0 through its full-vocabulary softmax sliced to the list.
 | Kinglet-B, p > 0.1 | 0.027 | 2.7% | 0.40 |
 | Kinglet-S, p > 0.1 | 0.027 | 2.7% | 0.38 |
 | Kinglet-XS, p > 0.1 | 0.021 | 2.0% | 0.36 |
-| BirdNET+ V3, confidence > 0.1 / > 0.25 | 0.026 / 0.011 | 2.4% / 1.0% | 0.62 / 0.51 |
+| BirdNET+ V3, confidence > 0.1 / > 0.25 | 0.025 / 0.011 | 2.4% / 1.0% | 0.62 / 0.51 |
 | BirdNET V2.4, confidence > 0.1 / > 0.25 | 0.017 / 0.004 | 1.6% / 0.4% | 0.23 / 0.15 |
 
 These are single operating points, not a ranking. The rate depends on the avifauna: for Kinglet it
@@ -201,7 +202,7 @@ Pack-vs-exact-fold equivalence (the ridge "other" row vs computing the full 14,7
 on held-out focal validation recordings (7,171 windows) the mean per-species probability error is
 ≤ 7e-5 and detections at 0.1 disagree on 1.9–2.3% of windows. On the 60,158 WABAD windows, "any
 species ≥ 0.1" differs between pack and exact fold on 1.7–2.0% of windows with the Japan pack (a
-foreign list there), and on 5.5–5.8% with packs built for each site's own species list — almost
+foreign list there), and on 5.6–5.8% with packs built for each site's own species list — almost
 always the pack missing a window the exact fold flags (about one in ten of the windows the exact
 fold flags). The public benchmark results above use the exact fold.
 

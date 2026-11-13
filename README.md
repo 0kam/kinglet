@@ -15,10 +15,10 @@ so search indices and classifiers built on Perch embeddings keep working.
 
 | model | backbone | trunk size | speed on a laptop* | 1,000 h of audio* | WABAD cmAP** | BirdSet cmAP vs Perch 2.0*** |
 |---|---|---|---|---|---|---|
-| Kinglet-B | RegNetY-016 | 51 MB | 142x realtime | 7.0 h | 0.272 (97%) | 90–103% |
-| Kinglet-S | EfficientNet-Lite0 | 26 MB | 253x realtime | 4.0 h | 0.259 (93%) | 86–97% |
-| Kinglet-XS | MobileNetV4-Conv-S | 22 MB | 399x realtime | 2.5 h | 0.249 (89%) | 82–96% |
-| *Perch 2.0 (teacher)* | | | 10.6x realtime | 94 h | 0.279 | |
+| Kinglet-B | RegNetY-016 | 51 MB | 142x realtime | 7.0 h | 0.283 (97%) | 89–103% |
+| Kinglet-S | EfficientNet-Lite0 | 26 MB | 253x realtime | 3.9 h | 0.269 (93%) | 86–97% |
+| Kinglet-XS | MobileNetV4-Conv-S | 22 MB | 399x realtime | 2.5 h | 0.259 (89%) | 82–96% |
+| *Perch 2.0 (teacher)* | | | 10.6x realtime | 94 h | 0.291 | |
 
 Since v0.3 the models are distilled from the teacher's **full 14,795-class vocabulary** and folded
 to a region at deployment time ("distill once, fold anywhere"): a prebuilt Japan pack (317 species)
@@ -38,7 +38,8 @@ BirdNET+ V3 at 31x realtime. \** Class-mean average precision on
 [WABAD](https://zenodo.org/records/17293588) (60,158 5-s windows, 1,189 species, 72 sites on six
 continents), in parentheses relative to Perch 2.0; per site, Kinglet-B stays within ±0.06 AUPRC of
 Perch 2.0 at all 72 sites. \*** Range over the seven [BirdSet](https://huggingface.co/datasets/DBD-research-group/BirdSet)
-test sets (POW, HSN, NES, PER, SNE, SSW, UHH). Both benchmarks are scored by folding the
+test sets (POW, HSN, NES, PER, SNE, SSW, UHH); POW and HSN served as development gates, on the
+other five the ranges are 95–103% / 92–97% / 90–96%. Both benchmarks are scored by folding the
 full-vocabulary output onto each benchmark's species list; none of their recordings were used in
 training. Download from [GitHub Releases](https://github.com/0kam/kinglet/releases).
 The `.gemm-mel` trunk variants trade a slightly larger file for a mel frontend that is faster on
