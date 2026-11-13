@@ -34,16 +34,22 @@ detections (details in [MODEL_CARD.md](https://github.com/0kam/kinglet/blob/main
 
 \* End to end — audio decoding, windowing and the model — on 4 CPU threads of a business laptop
 (Intel Core i7-8565U), 10-minute 32 kHz WAV. On the same laptop BirdNET V2.4 runs at 37x and
-BirdNET+ V3 at 31x realtime. \** Class-mean average precision on
-[WABAD](https://zenodo.org/records/17293588) (60,158 5-s windows, 1,189 species, 72 sites on six
-continents), in parentheses relative to Perch 2.0; per site, Kinglet-B stays within ±0.06 AUPRC of
-Perch 2.0 at all 72 sites. \*** Range over the seven [BirdSet](https://huggingface.co/datasets/DBD-research-group/BirdSet)
+BirdNET+ V3 at 31x realtime.
+
+\*\* Class-mean average precision on [WABAD](https://zenodo.org/records/17293588) (60,158 5-s
+windows, 1,189 species, 72 sites on six continents), in parentheses relative to Perch 2.0; per site,
+Kinglet-B stays within ±0.06 AUPRC of Perch 2.0 at all 72 sites.
+
+\*\*\* Range over the seven [BirdSet](https://huggingface.co/datasets/DBD-research-group/BirdSet)
 test sets (POW, HSN, NES, PER, SNE, SSW, UHH); POW and HSN served as development gates, on the
-other five the ranges are 95–103% / 92–97% / 90–96%. Both benchmarks are scored by folding the
-full-vocabulary output onto each benchmark's species list; none of their recordings were used in
-training. Download from [GitHub Releases](https://github.com/0kam/kinglet/releases).
-The `.gemm-mel` trunk variants trade a slightly larger file for a mel frontend that is faster on
-some ARM CPUs — on x86, use the default files.
+other five the ranges are 95–103% / 92–97% / 90–96%.
+
+Both benchmarks are scored by folding the full-vocabulary output onto each benchmark's species
+list; none of their recordings were used in training.
+
+Download from [GitHub Releases](https://github.com/0kam/kinglet/releases). The `.gemm-mel` trunk
+variants trade a slightly larger file for a mel frontend that is faster on some ARM CPUs — on x86,
+use the default files.
 
 ## Quickstart
 

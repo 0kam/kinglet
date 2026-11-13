@@ -22,8 +22,10 @@ species operating threshold is **0.1**, the operating point used by the Perch ec
 
 \* Intel Core i7-8565U, 4 threads, one session for all six models on a 10-minute 32 kHz 16-bit
 WAV; end to end = decoding + windowing + model (trunk + JP pack) on every pass, model only =
-windows already in memory. \** Same measurement on a Ryzen 9 9950X3D, 4 threads. The ratio to
-Perch 2.0 depends on the machine (13–38x on the laptop, 11–31x on the workstation).
+windows already in memory.
+
+\*\* Same measurement on a Ryzen 9 9950X3D, 4 threads. The ratio to Perch 2.0 depends on the
+machine (13–38x on the laptop, 11–31x on the workstation).
 
 Speed vs the v0.2 single-file models on the same harness: B −1.6%, S −3.4%, XS −1%.
 
