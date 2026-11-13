@@ -109,16 +109,20 @@ a catch-all and ships without a threshold (score exposed in the Python API; the 
 ## Files
 
 Per tier: `kinglet-<t>-v0.3.2.onnx` (trunk; `.gemm-mel` variant for ARM), `.pack-jp.npz`
-(prebuilt Japan pack: 317 species + 146 group rows + other), `.headpack.npz` (full head +
-calibration features, only needed for `kinglet build-pack`). Shared:
+(prebuilt compact Japan pack: 317 species + 146 group rows + other), `.headpack.npz` (full head +
+calibration features, needed for `kinglet build-pack`). Shared:
 `kinglet-v0.3.2.species-jp.csv` (the JP species list with authoritative vocabulary indices),
 `kinglet-v0.3.2.reliability.csv` (per-class reliability tiers, below).
 v0.2 single-file models (logits in the graph) are not supported by the v0.3 package.
 
 ```
-kinglet analyze recordings/ --model kinglet-s-v0.3.2.onnx --pack kinglet-s-v0.3.2.pack-jp.npz
-kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species my_region.csv --out my.npz
+kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species kinglet-v0.3.2.species-jp.csv --out jp.npz
+kinglet analyze recordings/ --model kinglet-s-v0.3.2.onnx --pack jp.npz
 ```
+
+`build-pack` writes an exact pack by default (the full head, 26–38 MB; scores are the full softmax
+read at the listed species); `--compact` writes the ~2 MB approximate pack with the ridge "other"
+row (as the prebuilt `.pack-jp.npz`) for microcontrollers and low-memory use.
 
 ## Per-class reliability tiers
 
@@ -213,7 +217,8 @@ fold flags). The public benchmark results above use the exact fold.
 - The ridge "other" row is an approximation: on bird-dense windows a single species probability
   can shift by up to ~0.5 vs the exact fold, and with a pack for the local species list about one
   in ten windows that the exact fold would flag at 0.1 falls below the threshold (see Evaluation).
-  If a study needs exact folding, score the full head from the headpack directly.
+  This applies to compact packs only (`--compact`, the prebuilt `.pack-jp.npz`); on a computer
+  use the default exact pack from `kinglet build-pack`.
 - human_voice catches clear voices and misses faint ones: about half of the audible voices in
   WABAD pass undetected at the shipped threshold (see Sound groups). It reduces privacy exposure
   but does not remove it; use a dedicated voice activity detector when that matters.

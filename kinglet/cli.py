@@ -11,6 +11,8 @@ kinglet build-pack
   Folds the full-vocabulary head (the .headpack.npz release asset) onto your species list:
   a CSV with columns ebird_code, scientific_name (+ optional japanese_name, vocab_index), or
   an eBird region code (--region; needs a free eBird API key, writes <out>.species.csv too).
+  The default pack is exact (full 14,795-way softmax read at your species); --compact writes the
+  ~2 MB approximate pack for microcontrollers / low-memory use.
 
 Usage:
   kinglet analyze recordings/ --model kinglet-s.onnx --pack kinglet-s.pack-jp.npz --out det.csv
@@ -103,7 +105,7 @@ def build(args) -> None:
         print(f"{len(species)} species in {args.region} -> {sp_csv} (edit and rerun with --species)")
     else:
         species = read_species_csv(args.species)
-    report = build_pack(args.headpack, species, args.out)
+    report = build_pack(args.headpack, species, args.out, compact=args.compact)
     print(json.dumps(report, indent=1))
     if report["unmatched"]:
         print(f"WARNING: {len(report['unmatched'])} species not in the Perch vocabulary "
@@ -138,6 +140,9 @@ def main() -> None:
                                       "list from the eBird API")
     bp.add_argument("--ebird-key", help="eBird API key for --region (default: $EBIRD_API_KEY)")
     bp.add_argument("--out", type=Path, required=True, help="output pack .npz")
+    bp.add_argument("--compact", action="store_true",
+                    help="approximate ~2 MB pack (ridge-fitted 'other' row) for microcontrollers / "
+                         "low-memory use; the default exact pack carries the full head (~26-38 MB)")
     bp.set_defaults(fn=build)
 
     args = ap.parse_args()

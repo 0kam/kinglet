@@ -5,7 +5,8 @@ Since v0.3 a model is two files: a trunk ONNX (preprocessing included) mapping w
 the Perch 2.0 embedding space) and "feature" (batch, d; the trunk feature), plus a regional head
 pack (.npz, see kinglet.pack) folding the full 14,795-class Perch vocabulary onto
 <region species> + <sound groups such as human_voice / vehicle / geophony> + "other".
-Scores are softmax probabilities over the pack rows; a group's score is the sum of its member
+Scores are softmax probabilities (an exact pack reads the full 14,795-way softmax, a compact pack
+approximates the out-of-pack mass with its "other" row); a group's score is the sum of its member
 probabilities. Prebuilt packs ship for Japan; `kinglet build-pack` folds any species list.
 v0.2 single-file models (logits in the graph) are not supported by this version.
 """
@@ -78,7 +79,8 @@ class Kinglet:
             "not a v0.3 split model (expected outputs: embedding, feature)"
         p = load_pack(pack_path)
         n = p["n_species"]
-        self.W, self.b, self.n_species = p["W"], p["b"], n
+        self.W, self.b, self.n_species = np.asarray(p["W"], np.float32), p["b"], n
+        self.cols = p.get("cols")  # exact pack: full-head column of every pack row but "other"
         self.classes = list(zip([str(c) for c in p["codes"][:n]],
                                 [str(s) for s in p["scientific_name"]],
                                 [str(j) for j in p["japanese_name"]]))
@@ -87,14 +89,16 @@ class Kinglet:
 
     def run(self, wins: np.ndarray, batch: int = 64) -> tuple[np.ndarray, np.ndarray, dict]:
         """(n, 160000) float32 windows -> (embeddings (n, 1536), species scores (n, n_species),
-        {group: scores (n,)}): softmax probabilities over the pack rows; the trailing
-        background/"other" channel is dropped from species scores."""
+        {group: scores (n,)}): softmax probabilities over the pack rows (exact pack: over the full
+        head, read at the pack columns); the background/"other" channel is not returned."""
         embs, probs = [], []
         for i in range(0, len(wins), batch):
             e, h = self.sess.run(None, {"waveform": wins[i : i + batch]})
             lg = h @ self.W.T + self.b
             p = np.exp(lg - lg.max(axis=1, keepdims=True))
             p /= p.sum(axis=1, keepdims=True)
+            if self.cols is not None:
+                p = p[:, self.cols]
             embs.append(e)
             probs.append(p)
         emb, p = np.concatenate(embs), np.concatenate(probs)

@@ -1,15 +1,23 @@
 """Regional head packs: build one from a headpack bundle, load one for scoring.
 
-A v0.3 model is a trunk ONNX (waveform -> embedding + trunk feature h) plus a head pack:
-a linear map folding the full 14,795-class Perch vocabulary onto
-<region species> + <sound-group member classes> + "other". Species rows slice exactly from the
-full head; the "other" row is a ridge fit of the exact out-of-pack logsumexp on calibration
-features shipped inside the headpack (closed form, seconds on a laptop). Scores are softmax
-probabilities over the pack rows; group scores are sums of member probabilities.
+A v0.3 model is a trunk ONNX (waveform -> embedding + trunk feature h) plus a head pack
+folding the full 14,795-class Perch vocabulary onto
+<region species> + <sound-group member classes> + "other". Two kinds:
+
+- exact (default): the full head plus the column of each pack row; scores are the full 14,795-way
+  softmax read at those columns (~26-38 MB, fp16 like the headpack; the default on computers).
+- compact (build_pack(compact=True)): species rows slice exactly from the full head; the "other"
+  row is a ridge fit of the exact out-of-pack logsumexp on calibration features shipped inside the
+  headpack (closed form, seconds on a laptop). Scores are softmax probabilities over the pack rows
+  (~2 MB; for microcontrollers / low-memory use; approximate, see MODEL_CARD.md).
+
+Group scores are sums of member probabilities.
 
 Pack npz fields: W (R, d) f32, b (R,) f32, codes (R,) str (species codes, member class names,
 "other" last), n_species, scientific_name/japanese_name (n_species,), groups json,
-group_thresholds json, meta json (build report included).
+group_thresholds json, meta json (build report included). An exact pack instead stores the full
+head W (V + 1, d), b (V + 1,) (the last row is dead: unmatched species point at it) and
+cols (R - 1,) int, the full-head row of every pack row but "other".
 
 A species list comes from a CSV or, for any eBird region, from the eBird API (free key).
 """
@@ -80,8 +88,9 @@ def fetch_region_species(region: str, key: str) -> list[dict]:
 def build_pack(headpack: str | Path, species: list[dict], out: str | Path,
                groups: dict[str, list[str]] | None = None,
                group_thresholds: dict[str, float | None] | None = None,
-               ridge_lambda: float = RIDGE_LAMBDA) -> dict:
-    """Fold the full head onto a species list; returns the build report (also stored in meta)."""
+               ridge_lambda: float = RIDGE_LAMBDA, compact: bool = False) -> dict:
+    """Fold the full head onto a species list; returns the build report (also stored in meta).
+    Writes an exact pack, or with compact=True the approximate compact pack (see module doc)."""
     hp = np.load(headpack, allow_pickle=False)
     W, b, labels = hp["W"].astype(np.float32), hp["b"].astype(np.float32), hp["labels"]
     lab_idx = {str(n): i for i, n in enumerate(labels)}
@@ -111,10 +120,24 @@ def build_pack(headpack: str | Path, species: list[dict], out: str | Path,
     in_mask[midx] = True
     out_idx = np.flatnonzero(~in_mask)
 
+    n_sp = len(vidx)
+    codes = [r["ebird_code"] for r in species] + members + ["other"]
+    common = {"codes": np.array(codes), "n_species": n_sp,
+              "scientific_name": np.array([r.get("scientific_name", "") for r in species]),
+              "japanese_name": np.array([r.get("japanese_name", "") for r in species]),
+              "groups": json.dumps(groups), "group_thresholds": json.dumps(group_thresholds)}
+    hp_meta = json.loads(str(hp["meta"]))
+    if not compact:
+        report = {"exact": True, "n_species": n_sp, "unmatched": unmatched, "n_group_rows": len(midx)}
+        np.savez(Path(out), W=np.vstack([hp["W"], np.zeros((1, W.shape[1]), hp["W"].dtype)]),
+                 b=np.append(b, DEAD_BIAS).astype(np.float32),
+                 cols=np.concatenate([np.where(vidx >= 0, vidx, len(labels)), midx]),
+                 meta=json.dumps({"headpack_meta": hp_meta} | report), **common)
+        return report
+
     # exact out-of-pack logsumexp on the calibration features, chunked (W alone is ~40 MB)
     h = hp["calib_h"].astype(np.float32)
     is_ho = hp["calib_is_holdout"]
-    n_sp = len(vidx)
     cols = np.concatenate([np.where(vidx >= 0, vidx, 0), midx])
     z = np.empty(len(h), np.float32)
     p_in = np.empty((len(h), len(cols)), np.float32)  # exact folded probs for the report
@@ -145,17 +168,13 @@ def build_pack(headpack: str | Path, species: list[dict], out: str | Path,
     pp = (e / e.sum(1, keepdims=True))[:, :-1]
     fire_pack, fire_full = (pp[:, :n_sp] > 0.1).any(1), (pe[:, :n_sp] > 0.1).any(1)
     report = {
-        "n_species": n_sp, "unmatched": unmatched, "n_group_rows": len(midx),
+        "exact": False, "n_species": n_sp, "unmatched": unmatched, "n_group_rows": len(midx),
         "holdout_windows": int(is_ho.sum()),
         "prob_err_mean": float(np.abs(pp - pe).mean()), "prob_err_max": float(np.abs(pp - pe).max()),
         "fire@0.1_disagree": float((fire_pack != fire_full).mean()),
     }
 
-    codes = ([r["ebird_code"] for r in species] + members + ["other"])
-    np.savez(Path(out), W=Wp, b=bp, codes=np.array(codes), n_species=n_sp,
-             scientific_name=np.array([r.get("scientific_name", "") for r in species]),
-             japanese_name=np.array([r.get("japanese_name", "") for r in species]),
-             groups=json.dumps(groups), group_thresholds=json.dumps(group_thresholds),
-             meta=json.dumps({"headpack_meta": json.loads(str(hp["meta"])),
-                              "ridge_lambda": ridge_lambda} | report))
+    np.savez(Path(out), W=Wp, b=bp,
+             meta=json.dumps({"headpack_meta": hp_meta, "ridge_lambda": ridge_lambda} | report),
+             **common)
     return report

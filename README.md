@@ -4,8 +4,8 @@
 [Perch 2.0](https://github.com/google-research/perch).**
 
 Kinglets are among the smallest birds in the northern hemisphere. Kinglet models are among the
-smallest bioacoustic models: a trunk ONNX (~22–53 MB, preprocessing included) plus a ~2 MB regional
-head pack that process **months of field recordings in hours on an ordinary laptop CPU** — no GPU,
+smallest bioacoustic models: a trunk ONNX (~22–53 MB, preprocessing included) plus a regional
+head pack (26–38 MB exact, ~2 MB compact) that process **months of field recordings in hours on an ordinary laptop CPU** — no GPU,
 no Python ML stack — while staying close to Perch 2.0 on public soundscape benchmarks from 72 sites
 worldwide. Each model outputs species scores for **any regional species list**, sound-group scores
 (human voice, vehicles, rain/wind, ...), and a 1536-d embedding in the Perch 2.0 embedding space,
@@ -55,16 +55,23 @@ use the default files.
 
 ```bash
 pip install kinglet-bio   # needs ffmpeg on PATH
-kinglet analyze recordings/ --model kinglet-s-v0.3.2.onnx --pack kinglet-s-v0.3.2.pack-jp.npz --out detections.csv
+kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species kinglet-v0.3.2.species-jp.csv --out jp.npz
+kinglet analyze recordings/ --model kinglet-s-v0.3.2.onnx --pack jp.npz --out detections.csv
 ```
+
+`build-pack` writes an **exact** pack by default: scores are the full 14,795-way softmax read at
+the listed species, at almost the same speed. `--compact` writes the ~2 MB approximate pack
+(ridge-fitted "other" row; it misses about one in ten exact-fold detections with a site-specific
+list, see MODEL_CARD.md) for microcontrollers and low-memory devices; the prebuilt
+`.pack-jp.npz` is such a compact pack.
 
 The CLI keeps, per 5 s window, the top-3 species scoring at least 0.1 (adjustable with
 `--top-k` / `--min-score`), adds one row per calibrated sound group that passes its own threshold
 (`human_voice` marks windows with a clear voice), and can dump embeddings with
 `--embeddings emb/`.
 
-Deploying outside Japan (or with your own species list)? Fold a pack from the `.headpack.npz`
-release asset — the CSV needs `ebird_code, scientific_name` columns:
+Deploying outside Japan (or with your own species list)? Fold a pack from the same `.headpack.npz`
+— the CSV needs `ebird_code, scientific_name` columns:
 
 ```bash
 kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species my_region.csv --out my_region.npz
@@ -81,7 +88,7 @@ Or from Python / any ONNX runtime:
 
 ```python
 from kinglet import Kinglet, decode, windows
-m = Kinglet("kinglet-s-v0.3.2.onnx", "kinglet-s-v0.3.2.pack-jp.npz")
+m = Kinglet("kinglet-s-v0.3.2.onnx", "jp.npz")
 starts, wins = windows(decode("field_recording.wav"))   # 5 s windows at 32 kHz mono
 embeddings, scores, groups = m.run(wins)                # (n, 1536), (n, 317), {group: (n,)}
 voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear human voice
@@ -98,7 +105,9 @@ voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear 
   97–100% once refitted on Kinglet embeddings.
 - Output `feature`: `(batch, d)` — the trunk feature; scores = `softmax(feature @ W.T + b)` with
   `W, b` from the pack `.npz`, background column dropped (this is what `Kinglet.run` does).
-  Row order: pack `codes` (species, then group-member classes, then "other").
+  Row order: pack `codes` (species, then group-member classes, then "other"). An exact pack
+  stores the full head as `W, b` and the full-head column of each pack row in `cols`; its scores
+  are `softmax(feature @ W.T + b)[:, cols]`.
 - A device that stores the trunk feature instead of the embedding (e.g. a microcontroller build
   logging the int8 feature, 1 byte per dimension) loses nothing: the embedding is one linear layer
   on top of the feature, and `kinglet.embedding_from_feature` applies it on the host

@@ -1,4 +1,4 @@
-"""Offline tests for build-pack --region (eBird API mocked). Run: python -m unittest discover tests"""
+"""Offline tests for build-pack (eBird API and ONNX trunk mocked). Run: python -m unittest discover tests"""
 
 import contextlib
 import csv
@@ -9,11 +9,12 @@ import tempfile
 import unittest
 import urllib.parse
 from pathlib import Path
+from types import SimpleNamespace
 from unittest import mock
 
 import numpy as np
 
-from kinglet import cli, pack
+from kinglet import Kinglet, cli, pack
 
 KEY = "secret-ebird-key"
 TAXA = {
@@ -38,6 +39,20 @@ def fake_ebird(spplist: list[str], calls: list):
         return io.BytesIO(json.dumps(body).encode())
 
     return urlopen
+
+
+class FeatureSession:
+    """onnxruntime.InferenceSession stand-in for a trunk whose feature is its input."""
+
+    def __init__(self, *args, **kwargs):
+        pass
+
+    def get_outputs(self):
+        return [SimpleNamespace(name="embedding"), SimpleNamespace(name="feature")]
+
+    def run(self, _, feeds):
+        x = feeds["waveform"]
+        return np.zeros((len(x), 1536), np.float32), x
 
 
 def run_cli(*argv: str) -> str:
@@ -106,6 +121,43 @@ class BuildPackRegion(unittest.TestCase):
         p = pack.load_pack(out)
         self.assertEqual(p["n_species"], 2)
         self.assertEqual(p["meta"]["unmatched"], ["ccc1"])
+
+    def test_exact_pack_is_the_full_softmax(self):
+        # pack rows deliberately out of vocabulary order; the two unmatched species are dead rows
+        species = [{"ebird_code": "ccc1", "scientific_name": "Cus novus"},
+                   {"ebird_code": "aaa1", "scientific_name": "Aus bus"},
+                   {"ebird_code": "ddd1", "scientific_name": "Dus novus"}]
+        pack.build_pack(self.headpack, species, self.tmp / "exact.npz")
+        run_cli("build-pack", "--headpack", str(self.headpack), "--species", str(self._csv(species)),
+                "--out", str(self.tmp / "compact.npz"), "--compact")
+        hp = np.load(self.headpack)
+        labels = [str(n) for n in hp["labels"]]
+        h = 3 * np.random.default_rng(1).normal(size=(9, 4)).astype(np.float32)
+        lg = h.astype(np.float64) @ hp["W"].astype(np.float64).T + hp["b"]
+        ref = np.exp(lg - lg.max(1, keepdims=True))
+        ref /= ref.sum(1, keepdims=True)
+        with mock.patch("onnxruntime.InferenceSession", FeatureSession):
+            exact, compact = Kinglet("toy.onnx", self.tmp / "exact.npz"), Kinglet("toy.onnx", self.tmp / "compact.npz")
+        _, scores, groups = exact.run(h)
+        np.testing.assert_allclose(scores[:, 1], ref[:, labels.index("Aus bus")], rtol=1e-5, atol=1e-9)
+        self.assertTrue((scores[:, [0, 2]] == 0).all())
+        for g, members in pack.default_groups()[0].items():
+            np.testing.assert_allclose(groups[g], ref[:, [labels.index(m) for m in members]].sum(1),
+                                       rtol=1e-5, atol=1e-9)
+        # the compact pack keeps its own layout (listed rows + "other") and the same outputs
+        self.assertIsNone(compact.cols)
+        self.assertEqual(len(compact.W), len(pack.load_pack(self.tmp / "compact.npz")["codes"]))
+        _, c_scores, c_groups = compact.run(h)
+        self.assertEqual(c_scores.shape, scores.shape)
+        self.assertEqual(c_groups.keys(), groups.keys())
+
+    def _csv(self, rows: list[dict]) -> Path:
+        path = self.tmp / "species.csv"
+        with path.open("w", newline="") as f:
+            w = csv.DictWriter(f, ["ebird_code", "scientific_name"])
+            w.writeheader()
+            w.writerows(rows)
+        return path
 
     def test_missing_key(self):
         env = {k: v for k, v in os.environ.items() if k != "EBIRD_API_KEY"}
