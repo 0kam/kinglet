@@ -228,8 +228,9 @@ fold flags). The public benchmark results above use the exact fold.
 
 ## License and provenance
 
-Apache-2.0 (see LICENSE, NOTICE). Distilled from Perch 2.0; some training audio carries
+Apache-2.0 (see LICENSE, NOTICE). Distilled from Perch 2.0; most training audio carries
 non-commercial Creative Commons licenses and the Macaulay Library research license — following the
 precedent of Perch itself, the released weights are licensed Apache-2.0 with this provenance
 disclosed. Training additionally uses BirdSet XCL (Xeno-canto-derived). Audio is not
-redistributed. Contact: Ryotaro Okamoto.
+redistributed; the headpacks contain trunk feature vectors (not audio) of 31,171 validation
+windows from these recordings, used to fit the "other" row. Contact: Ryotaro Okamoto.
