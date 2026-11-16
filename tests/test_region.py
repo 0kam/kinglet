@@ -47,6 +47,9 @@ class FeatureSession:
     def __init__(self, *args, **kwargs):
         pass
 
+    def get_inputs(self):
+        return [SimpleNamespace(name="waveform")]
+
     def get_outputs(self):
         return [SimpleNamespace(name="embedding"), SimpleNamespace(name="feature")]
 

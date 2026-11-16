@@ -119,7 +119,7 @@ def main() -> None:
 
     an = sub.add_parser("analyze", help="detect species / sound groups, extract embeddings")
     an.add_argument("audio", nargs="+", type=Path, help="audio files and/or directories")
-    an.add_argument("--model", type=Path, required=True, help="Kinglet trunk .onnx")
+    an.add_argument("--model", type=Path, required=True, help="Kinglet trunk .onnx (power or waveform input)")
     an.add_argument("--pack", type=Path, required=True, help="regional head pack .npz")
     an.add_argument("--out", type=Path, default=Path("kinglet_detections.csv"))
     an.add_argument("--top-k", type=int, default=3, help="keep at most the k best species per window")

@@ -1,13 +1,16 @@
 """Kinglet: kinglet-sized bioacoustic embedding and classification models distilled from Perch 2.0.
 
-Since v0.3 a model is two files: a trunk ONNX (preprocessing included) mapping waveform
-(batch, 160000) float32 in [-1, 1] at 32 kHz mono to "embedding" (batch, 1536; a projection into
-the Perch 2.0 embedding space) and "feature" (batch, d; the trunk feature), plus a regional head
-pack (.npz, see kinglet.pack) folding the full 14,795-class Perch vocabulary onto
+Since v0.3 a model is two files: a trunk ONNX mapping 5-s windows at 32 kHz mono to "embedding"
+(batch, 1536; a projection into the Perch 2.0 embedding space) and "feature" (batch, d; the trunk
+feature), plus a regional head pack (.npz, see kinglet.pack) folding the full 14,795-class Perch vocabulary onto
 <region species> + <sound groups such as human_voice / vehicle / geophony> + "other".
 Scores are softmax probabilities (an exact pack reads the full 14,795-way softmax, a compact pack
 approximates the out-of-pack mass with its "other" row); a group's score is the sum of its member
 probabilities. Prebuilt packs ship for Japan; `kinglet build-pack` folds any species list.
+A trunk comes in two forms with the same outputs: the power-input trunk (input "power", the
+power spectrogram, which Kinglet computes with numpy's FFT; the faster form for Python) and the
+waveform-input trunk (input "waveform" (batch, 160000) float32 in [-1, 1]; preprocessing inside the
+graph as a DFT matrix product, for runtimes without numpy). Kinglet accepts either.
 v0.2 single-file models (logits in the graph) are not supported by this version.
 """
 
@@ -20,6 +23,8 @@ from .pack import load_pack
 
 SR = 32_000
 WIN = 5 * SR
+N_FFT, HOP = 1024, 320
+HANN = 0.5 - 0.5 * np.cos(2 * np.pi * np.arange(N_FFT) / N_FFT)  # periodic, as torch.hann_window
 
 __version__ = "0.3.2"
 
@@ -40,6 +45,20 @@ def windows(audio: np.ndarray, hop_s: float = 5.0) -> tuple[np.ndarray, np.ndarr
     hop = int(hop_s * SR)
     starts = np.arange(0, len(audio) - WIN + 1, hop)
     return starts / SR, np.stack([audio[s : s + WIN] for s in starts])
+
+
+def power_spectrogram(wins: np.ndarray) -> np.ndarray:
+    """(n, samples) float32 windows -> (n, 1 + samples // 320, 513) float32 power spectrogram
+    (501 frames for a 5-s window): the torchaudio Spectrogram(n_fft=1024, hop_length=320, power=2)
+    the models were trained on - centred frames with reflect padding, periodic Hann window, one-sided
+    FFT. One window at a time (cache-friendly); the FFT runs in float64, which numpy computes faster
+    than float32."""
+    out = np.empty((len(wins), 1 + wins.shape[1] // HOP, N_FFT // 2 + 1), np.float32)
+    for i, x in enumerate(wins):
+        x = np.pad(x, N_FFT // 2, mode="reflect")
+        z = np.fft.rfft(np.lib.stride_tricks.sliding_window_view(x, N_FFT)[::HOP] * HANN)
+        np.add(np.square(z.real), np.square(z.imag), out=out[i], casting="same_kind")
+    return out
 
 
 def embedding_from_feature(model_path: str | Path, feature: np.ndarray, scale: float = 1.0,
@@ -77,6 +96,8 @@ class Kinglet:
         self.sess = ort.InferenceSession(str(model_path), opt, providers=["CPUExecutionProvider"])
         assert [o.name for o in self.sess.get_outputs()] == ["embedding", "feature"], \
             "not a v0.3 split model (expected outputs: embedding, feature)"
+        self.input = self.sess.get_inputs()[0].name
+        assert self.input in ("power", "waveform"), f"unexpected model input {self.input!r}"
         p = load_pack(pack_path)
         n = p["n_species"]
         self.W, self.b, self.n_species = np.asarray(p["W"], np.float32), p["b"], n
@@ -93,7 +114,8 @@ class Kinglet:
         head, read at the pack columns); the background/"other" channel is not returned."""
         embs, probs = [], []
         for i in range(0, len(wins), batch):
-            e, h = self.sess.run(None, {"waveform": wins[i : i + batch]})
+            x = wins[i : i + batch]
+            e, h = self.sess.run(None, {self.input: power_spectrogram(x) if self.input == "power" else x})
             lg = h @ self.W.T + self.b
             p = np.exp(lg - lg.max(axis=1, keepdims=True))
             p /= p.sum(axis=1, keepdims=True)

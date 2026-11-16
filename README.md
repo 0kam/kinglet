@@ -96,7 +96,11 @@ voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear 
 
 ## Model I/O
 
-- Input `waveform`: float32 `(batch, 160000)` — 5 s, 32 kHz, mono, amplitude in [-1, 1]
+- Input `waveform`: float32 `(batch, 160000)` — 5 s, 32 kHz, mono, amplitude in [-1, 1]; or, for the
+  `.power.onnx` trunks, `power`: float32 `(batch, 501, 513)` — the power spectrogram of that window,
+  `kinglet.power_spectrogram(waveform)` (1024-point FFT, hop 320, periodic Hann, centred frames with
+  reflect padding). Same network and outputs; in Python the FFT is faster than the waveform trunk's
+  in-graph DFT matrix product. `Kinglet` accepts either trunk.
 - Output `embedding`: `(batch, 1536)` — projection into the Perch 2.0 embedding space. On unseen
   soundscapes (WABAD) the mean cosine to the Perch 2.0 embedding of the same window is 0.87 (B) /
   0.86 (S) / 0.83 (XS). Mixing the two models in few-shot retrieval (Perch exemplars, Kinglet
