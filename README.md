@@ -11,7 +11,7 @@ worldwide. Each model outputs species scores for **any regional species list**, 
 (human voice, vehicles, rain/wind, ...), and a 1536-d embedding in the Perch 2.0 embedding space,
 so search indices and classifiers built on Perch embeddings keep working.
 
-## Models (v0.3.2)
+## Models (v0.4.0)
 
 | model | backbone | trunk size | speed on a laptop* | 1,000 h of audio* | WABAD cmAP** | BirdSet cmAP vs Perch 2.0*** |
 |---|---|---|---|---|---|---|
@@ -47,16 +47,18 @@ other five the ranges are 95–103% / 92–97% / 90–96%.
 Both benchmarks are scored by folding the full-vocabulary output onto each benchmark's species
 list; none of their recordings were used in training.
 
-Download from [GitHub Releases](https://github.com/0kam/kinglet/releases). The `.gemm-mel` trunk
-variants trade a slightly larger file for a mel frontend that is faster on some ARM CPUs — on x86,
-use the default files.
+Download from [GitHub Releases](https://github.com/0kam/kinglet/releases). Each tier comes in three
+trunk forms with the same outputs: `.power.onnx` takes the power spectrogram, which the package
+computes with numpy's FFT (use this one from Python); `.onnx` takes the waveform and computes the
+spectrogram inside the graph (for runtimes without numpy); `.gemm-mel.onnx` is a waveform variant
+whose mel frontend is faster on some ARM CPUs.
 
 ## Quickstart
 
 ```bash
 pip install kinglet-bio   # needs ffmpeg on PATH
-kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species kinglet-v0.3.2.species-jp.csv --out jp.npz
-kinglet analyze recordings/ --model kinglet-s-v0.3.2.onnx --pack jp.npz --out detections.csv
+kinglet build-pack --headpack kinglet-s-v0.4.0.headpack.npz --species kinglet-v0.4.0.species-jp.csv --out jp.npz
+kinglet analyze recordings/ --model kinglet-s-v0.4.0.power.onnx --pack jp.npz --out detections.csv
 ```
 
 `build-pack` writes an **exact** pack by default: scores are the full 14,795-way softmax read at
@@ -74,23 +76,23 @@ Deploying outside Japan (or with your own species list)? Fold a pack from the sa
 — the CSV needs `ebird_code, scientific_name` columns:
 
 ```bash
-kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species my_region.csv --out my_region.npz
+kinglet build-pack --headpack kinglet-s-v0.4.0.headpack.npz --species my_region.csv --out my_region.npz
 ```
 
 Or let eBird supply the list for any region (free key at https://ebird.org/api/keygen, via `--ebird-key`
 or `EBIRD_API_KEY`); it is saved as `us-ca.species.csv` to edit and rerun with `--species`:
 
 ```bash
-kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --region US-CA --out us-ca.npz
+kinglet build-pack --headpack kinglet-s-v0.4.0.headpack.npz --region US-CA --out us-ca.npz
 ```
 
 Or from Python / any ONNX runtime:
 
 ```python
 from kinglet import Kinglet, decode, windows
-m = Kinglet("kinglet-s-v0.3.2.onnx", "jp.npz")
+m = Kinglet("kinglet-s-v0.4.0.power.onnx", "jp.npz")
 starts, wins = windows(decode("field_recording.wav"))   # 5 s windows at 32 kHz mono
-embeddings, scores, groups = m.run(wins)                # (n, 1536), (n, 317), {group: (n,)}
+embeddings, scores, groups = m.run(wins)                # (n, 1536) unit length, (n, 317), {group: (n,)}
 voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear human voice
 ```
 
@@ -101,12 +103,20 @@ voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear 
   `kinglet.power_spectrogram(waveform)` (1024-point FFT, hop 320, periodic Hann, centred frames with
   reflect padding). Same network and outputs; in Python the FFT is faster than the waveform trunk's
   in-graph DFT matrix product. `Kinglet` accepts either trunk.
-- Output `embedding`: `(batch, 1536)` — projection into the Perch 2.0 embedding space. On unseen
-  soundscapes (WABAD) the mean cosine to the Perch 2.0 embedding of the same window is 0.87 (B) /
-  0.86 (S) / 0.83 (XS). Mixing the two models in few-shot retrieval (Perch exemplars, Kinglet
-  archive, or the reverse) keeps 93–100% of Perch's own retrieval mAP; a linear classifier trained
-  on Perch embeddings applied unchanged keeps 93% (B) / 92% (S) / 86% (XS) of its cmAP, and
-  97–100% once refitted on Kinglet embeddings.
+- Output `embedding`: `(batch, 1536)` — projection into the Perch 2.0 embedding space. Since v0.4.0
+  `Kinglet.run`, `kinglet.embedding_from_feature` and `kinglet analyze --embeddings` return it
+  **L2-normalised** (unit length). The network's raw output (the ONNX `embedding` tensor, or
+  `normalize=False`) is about 8–12 times as long as a Perch 2.0 embedding and varies in length
+  between windows: ranked by raw inner product, as the Perch Hoplite search index ranks, Kinglet
+  retrieval on WABAD lost up to 8.5 points of its ratio to Perch, and classifiers fitted on raw
+  Kinglet embeddings with a fixed penalty kept 86–91% of Perch's cmAP instead of 96–101%. Unit
+  length removes both; cosine similarities do not change. On unseen soundscapes (WABAD) the mean
+  cosine to the Perch 2.0 embedding of the same window is 0.87 (B) / 0.86 (S) / 0.83 (XS). Mixing
+  the two models in few-shot retrieval (Perch exemplars, Kinglet archive, or the reverse) keeps
+  93–100% of Perch's own retrieval mAP; a linear classifier trained on L2-normalised Perch
+  embeddings and applied unchanged to Kinglet embeddings keeps 95–100% of its cmAP. When you
+  combine the two models (a shared archive, a classifier trained on Perch), L2-normalise the
+  Perch 2.0 embeddings too.
 - Output `feature`: `(batch, d)` — the trunk feature; scores = `softmax(feature @ W.T + b)` with
   `W, b` from the pack `.npz`, background column dropped (this is what `Kinglet.run` does).
   Row order: pack `codes` (species, then group-member classes, then "other"). An exact pack
@@ -119,7 +129,7 @@ voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear 
 
   ```python
   import kinglet
-  emb = kinglet.embedding_from_feature("kinglet-xs-v0.3.2.onnx", feature_int8, scale, zero_point)  # (n, 1536)
+  emb = kinglet.embedding_from_feature("kinglet-xs-v0.4.0.power.onnx", feature_int8, scale, zero_point)  # (n, 1536)
   ```
 
   `scale` and `zero_point` are the quantisation parameters of the device model's feature tensor

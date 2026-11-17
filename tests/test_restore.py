@@ -35,11 +35,15 @@ class RestoreTest(unittest.TestCase):
             onnx.save(model, path)
             emb, feat = ort.InferenceSession(str(path), providers=["CPUExecutionProvider"]).run(
                 None, {"waveform": rng.normal(size=(5, 4)).astype(np.float32)})
-            np.testing.assert_allclose(kinglet.embedding_from_feature(path, feat), emb, atol=1e-5)
+            np.testing.assert_allclose(kinglet.embedding_from_feature(path, feat, normalize=False), emb, atol=1e-5)
+            # default: unit length, same direction as the graph's raw embedding
+            unit = kinglet.embedding_from_feature(path, feat)
+            np.testing.assert_allclose(np.linalg.norm(unit, axis=1), 1, atol=1e-6)
+            np.testing.assert_allclose(unit, emb / np.linalg.norm(emb, axis=1, keepdims=True), atol=1e-6)
             # int8 feature as a microcontroller logs it: exact up to the rounding of the feature itself
             scale, zp = float(feat.max()) / 255, -128
             q = np.clip(np.round(feat / scale) + zp, -128, 127).astype(np.int8)
-            restored = kinglet.embedding_from_feature(path, q, scale, zp)
+            restored = kinglet.embedding_from_feature(path, q, scale, zp, normalize=False)
             self.assertLessEqual(np.abs(restored - emb).max(), 0.5 * scale * np.abs(W).sum(1).max() + 1e-5)
             with self.assertRaises(AssertionError):
                 kinglet.embedding_from_feature(path, feat[:, :3])

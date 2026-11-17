@@ -4,6 +4,9 @@ Since v0.3 a model is two files: a trunk ONNX mapping 5-s windows at 32 kHz mono
 (batch, 1536; a projection into the Perch 2.0 embedding space) and "feature" (batch, d; the trunk
 feature), plus a regional head pack (.npz, see kinglet.pack) folding the full 14,795-class Perch vocabulary onto
 <region species> + <sound groups such as human_voice / vehicle / geophony> + "other".
+Since v0.4 `Kinglet.run` and `embedding_from_feature` return the embedding L2-normalised (unit
+length; pass normalize=False for the network's raw output, about 8-12x as long as a Perch 2.0
+embedding and varying in length between windows).
 Scores are softmax probabilities (an exact pack reads the full 14,795-way softmax, a compact pack
 approximates the out-of-pack mass with its "other" row); a group's score is the sum of its member
 probabilities. Prebuilt packs ship for Japan; `kinglet build-pack` folds any species list.
@@ -26,7 +29,7 @@ WIN = 5 * SR
 N_FFT, HOP = 1024, 320
 HANN = 0.5 - 0.5 * np.cos(2 * np.pi * np.arange(N_FFT) / N_FFT)  # periodic, as torch.hann_window
 
-__version__ = "0.3.2"
+__version__ = "0.4.0"
 
 
 def decode(path: str | Path, ffmpeg: str = "ffmpeg") -> np.ndarray:
@@ -61,14 +64,20 @@ def power_spectrogram(wins: np.ndarray) -> np.ndarray:
     return out
 
 
+def l2_normalize(emb: np.ndarray) -> np.ndarray:
+    """Rows scaled to unit L2 norm: inner-product search then ranks as cosine similarity does."""
+    return emb / np.linalg.norm(emb, axis=-1, keepdims=True)
+
+
 def embedding_from_feature(model_path: str | Path, feature: np.ndarray, scale: float = 1.0,
-                           zero_point: int = 0) -> np.ndarray:
+                           zero_point: int = 0, normalize: bool = True) -> np.ndarray:
     """Trunk feature (n, d) -> Perch-space embedding (n, 1536) on the host.
 
     The embedding is one linear layer on top of the trunk feature, so a device that cannot afford
     that layer (a microcontroller build logs the int8 feature, 1 byte per dimension) loses nothing:
     this applies the layer stored in the same tier's trunk ONNX. For quantised features pass the
-    feature tensor's `scale` and `zero_point`. Needs the `onnx` package (pip install kinglet-bio[mcu]).
+    feature tensor's `scale` and `zero_point`. The result is L2-normalised as `Kinglet.run` returns it;
+    normalize=False gives the layer's raw output. Needs the `onnx` package (pip install kinglet-bio[mcu]).
     """
     import onnx
     from onnx import numpy_helper
@@ -81,7 +90,8 @@ def embedding_from_feature(model_path: str | Path, feature: np.ndarray, scale: f
     W, b = init[node.input[1]], init[node.input[2]]
     h = (np.asarray(feature, np.float32) - zero_point) * scale
     assert h.ndim == 2 and h.shape[1] == W.shape[1], f"feature must be (n, {W.shape[1]}), got {h.shape}"
-    return h @ W.T + b
+    emb = h @ W.T + b
+    return l2_normalize(emb) if normalize else emb
 
 
 class Kinglet:
@@ -108,10 +118,12 @@ class Kinglet:
         self.group_cols = p["group_cols"]
         self.groups = p["group_thresholds"]
 
-    def run(self, wins: np.ndarray, batch: int = 64) -> tuple[np.ndarray, np.ndarray, dict]:
+    def run(self, wins: np.ndarray, batch: int = 64,
+            normalize: bool = True) -> tuple[np.ndarray, np.ndarray, dict]:
         """(n, 160000) float32 windows -> (embeddings (n, 1536), species scores (n, n_species),
         {group: scores (n,)}): softmax probabilities over the pack rows (exact pack: over the full
-        head, read at the pack columns); the background/"other" channel is not returned."""
+        head, read at the pack columns); the background/"other" channel is not returned.
+        Embeddings are L2-normalised unless normalize=False (the trunk's raw "embedding" output)."""
         embs, probs = [], []
         for i in range(0, len(wins), batch):
             x = wins[i : i + batch]
@@ -124,5 +136,7 @@ class Kinglet:
             embs.append(e)
             probs.append(p)
         emb, p = np.concatenate(embs), np.concatenate(probs)
+        if normalize:
+            emb = l2_normalize(emb)
         gscores = {g: p[:, cols].sum(axis=1) for g, cols in self.group_cols.items()}
         return emb, p[:, : self.n_species], gscores

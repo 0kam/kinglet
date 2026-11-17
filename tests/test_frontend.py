@@ -96,6 +96,11 @@ class PowerInputRunTest(unittest.TestCase):
             (ew, pw, _), (ep, pp, _) = wave.run(wins, batch=2), power.run(wins, batch=2)
             np.testing.assert_allclose(ep, ew, rtol=1e-4, atol=1e-4)
             np.testing.assert_allclose(pp, pw, atol=1e-5)
+            # embeddings are unit length by default; normalize=False gives the trunk's raw output
+            raw = power.sess.run(["embedding"], {"power": kinglet.power_spectrogram(wins)})[0]
+            np.testing.assert_allclose(np.linalg.norm(ep, axis=1), 1, atol=1e-6)
+            np.testing.assert_allclose(power.run(wins, normalize=False)[0], raw, rtol=1e-6)
+            np.testing.assert_allclose(ep, raw / np.linalg.norm(raw, axis=1, keepdims=True), atol=1e-6)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-# Kinglet Model Card (v0.3.2)
+# Kinglet Model Card (v0.4.0)
 
 ## Overview
 
@@ -28,6 +28,30 @@ windows already in memory.
 machine (13–38x on the laptop, 11–31x on the workstation).
 
 Speed vs the v0.2 single-file models on the same harness: B −1.6%, S −3.4%, XS −1%.
+
+## What changed in v0.4.0
+
+The trunk weights, the headpacks, the prebuilt Japan packs, the species list, the reliability table
+and the sound-group thresholds are identical to v0.3.2 (renamed). Changed:
+
+- **Embeddings are L2-normalised by default** (breaking). `Kinglet.run`,
+  `kinglet.embedding_from_feature` and `kinglet analyze --embeddings` return unit-length
+  embeddings; `normalize=False` gives the raw output of v0.3. The raw embedding is about 8–12 times
+  as long as a Perch 2.0 embedding and varies in length between windows, which cost up to 8.5 points
+  of the retrieval ratio to Perch when ranked by inner product (the Perch Hoplite search index) and
+  weakened the effective penalty of classifiers fitted on it. Directions, and so cosine
+  similarities, are unchanged. When combining Kinglet with Perch 2.0 embeddings, L2-normalise the
+  Perch embeddings too.
+- **FFT front end**: `.power.onnx` trunks take the power spectrogram, which
+  `kinglet.power_spectrogram` computes with numpy; `Kinglet` accepts either input. On 2,048 WABAD
+  windows they match the training pipeline at embedding cosine ≥ 0.9999997.
+- **Waveform trunks re-exported** (fix): the v0.3 `.onnx` trunks computed the angles of their DFT
+  basis in float32. On a loud, clipped window with empty high bands this moved the spectrogram
+  enough to lower the embedding cosine to the training pipeline to 0.9990–0.9999 (one of 2,048
+  WABAD windows). The v0.4.0 `.onnx` trunks use a float64 basis and agree with the `.power.onnx`
+  trunks at cosine ≥ 0.9999998. The `.gemm-mel.onnx` trunks were not affected.
+- **`kinglet build-pack` writes exact packs by default** (the full 14,795-way softmax read at the
+  listed species); `--compact` keeps the ~2 MB approximate pack. Existing packs keep working.
 
 ## What changed in v0.3.2
 
@@ -108,16 +132,17 @@ a catch-all and ships without a threshold (score exposed in the Python API; the 
 
 ## Files
 
-Per tier: `kinglet-<t>-v0.3.2.onnx` (trunk; `.gemm-mel` variant for ARM), `.pack-jp.npz`
+Per tier: `kinglet-<t>-v0.4.0.power.onnx` (trunk, power-spectrogram input; use from Python),
+`.onnx` (waveform input) and `.gemm-mel.onnx` (waveform input, faster on some ARM CPUs), `.pack-jp.npz`
 (prebuilt compact Japan pack: 317 species + 146 group rows + other), `.headpack.npz` (full head +
 calibration features, needed for `kinglet build-pack`). Shared:
-`kinglet-v0.3.2.species-jp.csv` (the JP species list with authoritative vocabulary indices),
-`kinglet-v0.3.2.reliability.csv` (per-class reliability tiers, below).
+`kinglet-v0.4.0.species-jp.csv` (the JP species list with authoritative vocabulary indices),
+`kinglet-v0.4.0.reliability.csv` (per-class reliability tiers, below).
 v0.2 single-file models (logits in the graph) are not supported by the v0.3 package.
 
 ```
-kinglet build-pack --headpack kinglet-s-v0.3.2.headpack.npz --species kinglet-v0.3.2.species-jp.csv --out jp.npz
-kinglet analyze recordings/ --model kinglet-s-v0.3.2.onnx --pack jp.npz
+kinglet build-pack --headpack kinglet-s-v0.4.0.headpack.npz --species kinglet-v0.4.0.species-jp.csv --out jp.npz
+kinglet analyze recordings/ --model kinglet-s-v0.4.0.power.onnx --pack jp.npz
 ```
 
 `build-pack` writes an exact pack by default (the full head, 26–38 MB; scores are the full softmax
@@ -151,7 +176,7 @@ and 1.01 / 1.00 / 0.94 for `low` species, and 1.02 / 0.97 / 0.95 for the 12 WABA
 any training recording (95% intervals 0.75–1.30). Twelve species cannot settle the question,
 though, and the benchmarks contain no other `softlabel_only` class: apart from the sound groups,
 the accuracy of these classes is untested. Treat their detections as unverified.
-`kinglet-v0.3.2.reliability.csv` has the per-class table.
+`kinglet-v0.4.0.reliability.csv` (identical to v0.3.2) has the per-class table.
 
 ## Evaluation on public benchmarks (higher is better)
 
@@ -177,8 +202,10 @@ Embedding compatibility with Perch 2.0 on the WABAD windows: mean cosine between
 embeddings of the same window 0.868 (B) / 0.861 (S) / 0.834 (XS). Few-shot retrieval (k = 1, 5)
 with Perch exemplars against a Kinglet archive reaches 99–100% (B), 97–98% (S), 95% (XS) of Perch's
 own retrieval mAP, and 93–99% in the reverse direction. A linear probe trained on Perch embeddings
-and applied unchanged to Kinglet embeddings keeps 93% (B) / 92% (S) / 86% (XS) of its cmAP;
-refitting it on Kinglet embeddings recovers 100% / 100% / 97%.
+and applied unchanged to Kinglet embeddings keeps 93% (B) / 92% (S) / 86% (XS) of its cmAP with
+per-dimension standardisation, and 100% / 98% / 96% with L2-normalised embeddings on both sides
+(the v0.4.0 default for Kinglet); refitting it on standardised Kinglet embeddings recovers
+100% / 100% / 97%.
 
 Open-set false detections: the 317-species Japan list scored on the same eight test sets (381,911
 windows), where almost no listed species occurs (69 of them are annotated in WABAD, 0–5 in each
@@ -212,7 +239,7 @@ foreign list there), and on 5.6–5.8% with packs built for each site's own spec
 always the pack missing a window the exact fold flags (about one in ten of the windows the exact
 fold flags). The public benchmark results above use the exact fold.
 
-## Known issues / limitations (v0.3.2)
+## Known issues / limitations (v0.4.0)
 
 - The ridge "other" row is an approximation: on bird-dense windows a single species probability
   can shift by up to ~0.5 vs the exact fold, and with a pack for the local species list about one

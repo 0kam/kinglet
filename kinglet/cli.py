@@ -5,7 +5,8 @@ kinglet analyze
   with every window x species whose score >= --min-score, plus one row per sound group
   (human_voice, vehicle, ...) whose score passes that group's own operating threshold
   (groups without a calibrated threshold are skipped; see MODEL_CARD.md). Optionally one .npz
-  of embeddings per audio file (t_start, embedding) for downstream probes / similarity search.
+  of embeddings per audio file (t_start, embedding; L2-normalised) for downstream probes / similarity
+  search.
 
 kinglet build-pack
   Folds the full-vocabulary head (the .headpack.npz release asset) onto your species list:
