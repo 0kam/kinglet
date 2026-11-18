@@ -11,23 +11,21 @@ species, a set of sound groups (human voice, vehicles, geophony, ...), and an ex
 background/"other" channel. Scores are softmax probabilities over the pack rows; the evaluated
 species operating threshold is **0.1**, the operating point used by the Perch ecosystem.
 
-| tier | backbone | params (trunk) | laptop, end to end* | laptop, model only* | workstation, end to end** |
+| tier | backbone | params (trunk) | Intel Core i7-8565U (2018 laptop)* | Apple M4 Pro* | AMD Ryzen AI 7 PRO 350* |
 |---|---|---|---|---|---|
-| Kinglet-B | RegNetY-016 | 11.7 M | 142x realtime | 147x | 515x |
-| Kinglet-S | EfficientNet-Lite0 | 5.3 M | 253x | 270x | 967x |
-| Kinglet-XS | MobileNetV4-Conv-S | 4.5 M | 399x | 416x | 1,456x |
-| *Perch 2.0 (teacher)* | | | 10.6x | 10.7x | 46.8x |
-| *BirdNET V2.4* | | | 36.9x | 37.1x | 115x |
-| *BirdNET+ V3* | | | 31.3x | 31.4x | 149x |
+| Kinglet-B | RegNetY-016 | 11.7 M | 158x realtime | 349x | 296x |
+| Kinglet-S | EfficientNet-Lite0 | 5.3 M | 307x | 695x | 583x |
+| Kinglet-XS | MobileNetV4-Conv-S | 4.5 M | 565x | 1,163x | 746x |
+| *Perch 2.0 (teacher)* | | | 10.7x | 33.7x | 35.3x |
+| *BirdNET V2.4* | | | 66.0x | 267x | 175x |
+| *BirdNET+ V3.0* | | | 33.5x | 93.5x | 75.4x |
 
-\* Intel Core i7-8565U, 4 threads, one session for all six models on a 10-minute 32 kHz 16-bit
-WAV; end to end = decoding + windowing + model (trunk + JP pack) on every pass, model only =
-windows already in memory.
-
-\*\* Same measurement on a Ryzen 9 9950X3D, 4 threads. The ratio to Perch 2.0 depends on the
-machine (13–38x on the laptop, 11–31x on the workstation).
-
-Speed vs the v0.2 single-file models on the same harness: B −1.6%, S −3.4%, XS −1%.
+\* End to end — decoding a 10-minute 32 kHz 16-bit WAV with ffmpeg, windowing and the model — at
+4 threads, laptops on mains power; median of five passes after a warm-up, each model as distributed
+in its own process. Kinglet: FFT front end and the exact Japan pack (full 14,795-class head, read
+at the listed species); the compact pack runs within 5% of it. BirdNET: consecutive 3-s segments,
+as used by default. The ratio to Perch 2.0 depends on the machine: 8–15x (B), 17–29x (S) and
+21–53x (XS). Values vary by about 10% with the state of a machine.
 
 ## What changed in v0.4.0
 
