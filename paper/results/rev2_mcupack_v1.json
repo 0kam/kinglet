@@ -1,0 +1,141 @@
+{
+ "bug_check": {
+  "board_layer": {
+   "deploy_state_equals_pack_jp_focal": false,
+   "rows_differing": [
+    268
+   ],
+   "dead_species": [
+    "shtalb"
+   ],
+   "species_rows_vs_full_head_maxabs": 0.0,
+   "other_row_rebuilt_from_v0.3.2_bundle_maxabs_W": 1.1980533599853516e-05,
+   "other_row_rebuilt_abs_b": 5.7220458984375e-06
+  },
+  "computer_pack_recomputed_vs_hists": {
+   "ops_equal": true,
+   "neg_hist_max_abs_count_diff": 0,
+   "pos_hist_max_abs_count_diff": 0
+  },
+  "packcmap_xs": {
+   "exact": [
+    0.44635924031374385,
+    0.44635924031374385
+   ],
+   "computer": [
+    0.44118647523586985,
+    0.44118647523586985
+   ]
+  }
+ },
+ "japan": {
+  "teacher_recall": 0.4103143324041142,
+  "teacher_fp_per_window": 0.033853437057324874,
+  "XS_exact": {
+   "R": 0.8894887462294064,
+   "fp_per_window": 0.03011225128367603,
+   "ci95": [
+    0.6583676351666988,
+    1.058560448978685
+   ],
+   "nan_share": 0.0
+  },
+  "XS_pack": {
+   "R": 1.0185488577475579,
+   "fp_per_window": 0.0344813796455671,
+   "ci95": [
+    0.7483509371623615,
+    1.212571040480102
+   ],
+   "nan_share": 0.0
+  },
+  "XS_pack_recomputed": {
+   "R": 1.0185488577475579,
+   "fp_per_window": 0.0344813796455671,
+   "ci95": [
+    0.7483509371623615,
+    1.212571040480102
+   ],
+   "nan_share": 0.0
+  },
+  "XS_mcu": {
+   "R": 1.0170398091350987,
+   "fp_per_window": 0.034430293163348766,
+   "ci95": [
+    0.7448031696715923,
+    1.2094450240538215
+   ],
+   "nan_share": 0.0
+  },
+  "op_p>0.1": {
+   "teacher": {
+    "fp_per_window": 0.033853437057324874,
+    "p_any_fp": 0.03286367766312046,
+    "recall": 0.4103143324041142,
+    "windows": 381911,
+    "positives": 20806
+   },
+   "XS_exact": {
+    "fp_per_window": 0.021285063797586348,
+    "p_any_fp": 0.020722105411993895,
+    "recall": 0.38315870421993653,
+    "windows": 381911,
+    "positives": 20806
+   },
+   "XS_pack": {
+    "fp_per_window": 0.020606895323779625,
+    "p_any_fp": 0.02015652861530566,
+    "recall": 0.37042199365567624,
+    "windows": 381911,
+    "positives": 20806
+   },
+   "XS_mcu": {
+    "fp_per_window": 0.020512632524331584,
+    "p_any_fp": 0.02006750263804918,
+    "recall": 0.3704700567144093,
+    "windows": 381911,
+    "positives": 20806
+   }
+  },
+  "p_any_fp_at_teacher_recall": {
+   "teacher": 0.03286367766312046,
+   "XS_exact": 0.028926634739507365,
+   "XS_pack": 0.032974365041260195,
+   "XS_mcu": 0.03292531103199033
+  }
+ },
+ "wabad_site_lists": {
+  "masked_cmAP_exact": 0.44635924031374385,
+  "masked_cmAP_computer": 0.44118647523586985,
+  "masked_cmAP_mcu": 0.4411883302095322,
+  "masked_pooled_auprc_exact": 0.4576631746400998,
+  "masked_pooled_auprc_computer": 0.45043411575528786,
+  "masked_pooled_auprc_mcu": 0.45045288123626537,
+  "cmAP_change_computer": -0.005172765077874009,
+  "site_auprc_computer_minus_exact": {
+   "median": -0.005772778621794095,
+   "min": -0.02502905169397196,
+   "max": 0.006823461168688483,
+   "sites_worse": 67
+  },
+  "fires_computer": {
+   "exact_only_windows": 0.05276106253532365,
+   "compact_only_windows": 0.003490807540144287,
+   "exact_fire_windows": 0.45240865720269957,
+   "missed_share_of_exact": 0.11662257495590829
+  },
+  "cmAP_change_mcu": -0.005170910104211668,
+  "site_auprc_mcu_minus_exact": {
+   "median": -0.005798071238231978,
+   "min": -0.025283642746190105,
+   "max": 0.006945752996940335,
+   "sites_worse": 67
+  },
+  "fires_mcu": {
+   "exact_only_windows": 0.05279430832142026,
+   "compact_only_windows": 0.0035074304331925927,
+   "exact_fire_windows": 0.45240865720269957,
+   "missed_share_of_exact": 0.11669606114050558
+  }
+ }
+}

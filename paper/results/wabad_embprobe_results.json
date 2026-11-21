@@ -1,0 +1,37 @@
+{
+ "teacher": {
+  "retrieval_k1_mAP": 0.1916,
+  "retrieval_k5_mAP": 0.1937,
+  "probe_cmAP": 0.4991,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "B": {
+  "retrieval_k1_mAP": 0.193,
+  "retrieval_k5_mAP": 0.1974,
+  "probe_cmAP": 0.5003,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "S": {
+  "retrieval_k1_mAP": 0.1839,
+  "retrieval_k5_mAP": 0.1888,
+  "probe_cmAP": 0.4989,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XS": {
+  "retrieval_k1_mAP": 0.1786,
+  "retrieval_k5_mAP": 0.185,
+  "probe_cmAP": 0.4824,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XS_int8pub": {
+  "retrieval_k1_mAP": 0.1771,
+  "retrieval_k5_mAP": 0.1838,
+  "probe_cmAP": 0.478,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ }
+}

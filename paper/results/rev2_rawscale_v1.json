@@ -1,0 +1,122 @@
+{
+ "watkins": {
+  "n_species_probe": 23,
+  "mean_l2_norm": {
+   "teacher": 3.9753,
+   "B": 33.5615,
+   "S": 30.87,
+   "XS": 36.6906
+  },
+  "rawscaled": {
+   "cross_B": 0.5629,
+   "cross_S": 0.5805,
+   "cross_XS": 0.558,
+   "own_B": 0.6179,
+   "own_S": 0.6077,
+   "own_XS": 0.5986,
+   "own_teacher": 0.6238,
+   "ratio_cross_B": 0.902,
+   "ratio_cross_S": 0.931,
+   "ratio_cross_XS": 0.895,
+   "ratio_own_B": 0.991,
+   "ratio_own_S": 0.974,
+   "ratio_own_XS": 0.96,
+   "fits_at_max_iter": {
+    "teacher": 0,
+    "B": 0,
+    "S": 0,
+    "XS": 0
+   }
+  }
+ },
+ "anuraset": {
+  "n_species_probe": 38,
+  "mean_l2_norm": {
+   "teacher": 4.5507,
+   "B": 40.5774,
+   "S": 37.5434,
+   "XS": 44.6047
+  },
+  "rawscaled": {
+   "cross_B": 0.7401,
+   "cross_S": 0.7486,
+   "cross_XS": 0.7225,
+   "own_B": 0.776,
+   "own_S": 0.7748,
+   "own_XS": 0.7698,
+   "own_teacher": 0.7863,
+   "ratio_cross_B": 0.941,
+   "ratio_cross_S": 0.952,
+   "ratio_cross_XS": 0.919,
+   "ratio_own_B": 0.987,
+   "ratio_own_S": 0.985,
+   "ratio_own_XS": 0.979,
+   "fits_at_max_iter": {
+    "teacher": 0,
+    "B": 0,
+    "S": 0,
+    "XS": 0
+   }
+  }
+ },
+ "humbugdb": {
+  "n_species_probe": 12,
+  "mean_l2_norm": {
+   "teacher": 3.562,
+   "B": 32.6517,
+   "S": 29.7357,
+   "XS": 35.1065
+  },
+  "rawscaled": {
+   "cross_B": 0.4731,
+   "cross_S": 0.4695,
+   "cross_XS": 0.4458,
+   "own_B": 0.5211,
+   "own_S": 0.5119,
+   "own_XS": 0.5099,
+   "own_teacher": 0.5247,
+   "ratio_cross_B": 0.902,
+   "ratio_cross_S": 0.895,
+   "ratio_cross_XS": 0.85,
+   "ratio_own_B": 0.993,
+   "ratio_own_S": 0.976,
+   "ratio_own_XS": 0.972,
+   "fits_at_max_iter": {
+    "teacher": 0,
+    "B": 0,
+    "S": 0,
+    "XS": 0
+   }
+  }
+ },
+ "reefset": {
+  "n_species_probe": 37,
+  "mean_l2_norm": {
+   "teacher": 3.9503,
+   "B": 31.7016,
+   "S": 28.7977,
+   "XS": 32.3287
+  },
+  "rawscaled": {
+   "cross_B": 0.6879,
+   "cross_S": 0.6318,
+   "cross_XS": 0.5426,
+   "own_B": 0.8413,
+   "own_S": 0.8279,
+   "own_XS": 0.8134,
+   "own_teacher": 0.8473,
+   "ratio_cross_B": 0.812,
+   "ratio_cross_S": 0.746,
+   "ratio_cross_XS": 0.64,
+   "ratio_own_B": 0.993,
+   "ratio_own_S": 0.977,
+   "ratio_own_XS": 0.96,
+   "fits_at_max_iter": {
+    "teacher": 0,
+    "B": 0,
+    "S": 0,
+    "XS": 0
+   }
+  }
+ }
+}

@@ -1,0 +1,5 @@
+model,backbone,params_M,xrt_e2e,hours_per_1000h,wabad_cmAP,wabad_pooled_auprc,gmacs_per_window,wabad_cmAP_vs_teacher,birdset5_cmAP_vs_teacher_mean,birdset5_cmAP_vs_teacher_min,birdset5_cmAP_vs_teacher_max,birdset_dev_cmAP_vs_teacher_mean
+Perch 2.0,EfficientNet-B3,12.0000,10.7275,93.2184,0.2905,0.3243,,,,,,
+Kinglet B,RegNetY-016,11.6784,157.6003,6.3452,0.2831,0.3278,2.0859,0.9745,1.0017,0.9490,1.0286,0.9390
+Kinglet S,EfficientNet-Lite0,5.3380,307.2592,3.2546,0.2694,0.3117,0.4895,0.9274,0.9546,0.9237,0.9725,0.9031
+Kinglet XS,MobileNetV4-Conv-S,4.4601,565.4599,1.7685,0.2592,0.3078,0.2300,0.8923,0.9297,0.9043,0.9568,0.8742

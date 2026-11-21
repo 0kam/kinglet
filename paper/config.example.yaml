@@ -1,0 +1,10 @@
+# Copy to config.yaml and set the locations (see common/config.py). Relative paths are relative to paper/.
+data_root: /path/to/benchmarks_and_caches
+distill_root: /path/to/training_targets_and_checkpoints
+audio_root: /path/to/collected_audio
+downloads: /path/to/downloads
+nonbird_root: /path/to/nonbird_datasets
+release_assets: /path/to/released_model_files
+perch_dir: /path/to/perch_v2_savedmodel
+perch_gpu_dir: /path/to/perch_v2_gpu_savedmodel
+wabad_src: /path/to/wabad_17293588

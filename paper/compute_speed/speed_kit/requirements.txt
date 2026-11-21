@@ -1,0 +1,13 @@
+# Kinglet speed kit - Python 3.10 (the paper's measurements used Python 3.10.18).
+# Same runtime versions as the paper (Appendix S4). All pins have wheels for Linux x86_64,
+# macOS arm64 (12+) and Windows x86_64 on Python 3.10, so no platform deviates.
+tensorflow==2.21.0        # Perch 2.0 SavedModel
+ai-edge-litert==2.3.0     # BirdNET V2.4 TFLite
+onnxruntime==1.23.2       # BirdNET+ V3.0 and Kinglet
+numpy==2.2.6
+# not pinned in the paper (its environment did not record them); fixed here for reproducibility
+scipy==1.15.3             # BirdNET 32 -> 48 kHz resampling; last release for Python 3.10
+kagglehub==1.0.0          # Perch 2.0 download (anonymous)
+psutil==7.1.3             # cores, battery state
+imageio-ffmpeg==0.6.0     # static ffmpeg, used only when ffmpeg is not on PATH
+# the kinglet package itself is installed from this archive (see README.md), not from this file

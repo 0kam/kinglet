@@ -1,0 +1,29 @@
+{
+ "baseline": {
+  "n_windows": 60158,
+  "cmAP": 0.2592191091774651,
+  "pooled_auprc": 0.307848671758522,
+  "auroc": 0.9261631249960154,
+  "n_species": 1189
+ },
+ "cutback_max_dp_first256": 0.0,
+ "cutback_max_dp_prev64": 2.384185791015625e-07,
+ "rate": {
+  "n_windows": 60158,
+  "cmAP": 0.2605423179893053,
+  "pooled_auprc": 0.3140900835253097,
+  "auroc": 0.927793687937442,
+  "n_species": 1189
+ },
+ "emb_cos_rate_vs_plain": {
+  "mean": 0.9629113674163818,
+  "median": 0.968140721321106,
+  "p10": 0.9408618807792664,
+  "min": 0.5806777477264404
+ },
+ "neighbour_share": {
+  "next": 0.9285,
+  "prev": 0.0715
+ },
+ "cmAP_rate_over_baseline": 1.0051045959383123
+}

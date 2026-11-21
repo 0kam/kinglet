@@ -1,0 +1,1270 @@
+[
+{
+"species": "alpacc1",
+"perch_idx": 11190
+},
+{
+"species": "amawoo1",
+"perch_idx": 12451
+},
+{
+"species": "amepip",
+"perch_idx": 870
+},
+{
+"species": "amewig",
+"perch_idx": 7650
+},
+{
+"species": "ancmur",
+"perch_idx": 13288
+},
+{
+"species": "arcloo",
+"perch_idx": 5396
+},
+{
+"species": "arcwar2",
+"perch_idx": 10294
+},
+{
+"species": "arcwar3",
+"perch_idx": 10353
+},
+{
+"species": "asbfly",
+"perch_idx": 8333
+},
+{
+"species": "ashmar1",
+"perch_idx": 4009
+},
+{
+"species": "ashmin1",
+"perch_idx": 9898
+},
+{
+"species": "asistu1",
+"perch_idx": 14295
+},
+{
+"species": "asrfin1",
+"perch_idx": 7138
+},
+{
+"species": "azwmag2",
+"perch_idx": 3852
+},
+{
+"species": "baitea",
+"perch_idx": 12638
+},
+{
+"species": "banswa",
+"perch_idx": 12163
+},
+{
+"species": "barswa",
+"perch_idx": 6116
+},
+{
+"species": "batgod",
+"perch_idx": 7192
+},
+{
+"species": "bawfly2",
+"perch_idx": 3854
+},
+{
+"species": "bbrwar1",
+"perch_idx": 77
+},
+{
+"species": "bcnher",
+"perch_idx": 8963
+},
+{
+"species": "bkbplo",
+"perch_idx": 10713
+},
+{
+"species": "bkfalb",
+"perch_idx": 10139
+},
+{
+"species": "bkfbun2",
+"perch_idx": 4626
+},
+{
+"species": "bkhgul",
+"perch_idx": 2815
+},
+{
+"species": "bklkit",
+"perch_idx": 12165
+},
+{
+"species": "bktgod",
+"perch_idx": 7193
+},
+{
+"species": "bktgul",
+"perch_idx": 6879
+},
+{
+"species": "bkwsti",
+"perch_idx": 6086
+},
+{
+"species": "blakit1",
+"perch_idx": 8143
+},
+{
+"species": "blawoo1",
+"perch_idx": 4366
+},
+{
+"species": "blfowl1",
+"perch_idx": 6663
+},
+{
+"species": "blfspo1",
+"perch_idx": 10551
+},
+{
+"species": "blksco2",
+"perch_idx": 7834
+},
+{
+"species": "blnter1",
+"perch_idx": 12990
+},
+{
+"species": "bncrai1",
+"perch_idx": 11842
+},
+{
+"species": "bohwax",
+"perch_idx": 1652
+},
+{
+"species": "bonpet",
+"perch_idx": 11486
+},
+{
+"species": "brambl",
+"perch_idx": 5230
+},
+{
+"species": "brant",
+"perch_idx": 1742
+},
+{
+"species": "brbsan",
+"perch_idx": 1990
+},
+{
+"species": "brebul1",
+"perch_idx": 6377
+},
+{
+"species": "brhthr1",
+"perch_idx": 14082
+},
+{
+"species": "brnboo",
+"perch_idx": 13156
+},
+{
+"species": "brnnod",
+"perch_idx": 750
+},
+{
+"species": "brnshr",
+"perch_idx": 6842
+},
+{
+"species": "brodip1",
+"perch_idx": 2938
+},
+{
+"species": "buhshr1",
+"perch_idx": 6837
+},
+{
+"species": "bulpet",
+"perch_idx": 1833
+},
+{
+"species": "burthr",
+"perch_idx": 8289
+},
+{
+"species": "cacgoo1",
+"perch_idx": 1744
+},
+{
+"species": "carcro1",
+"perch_idx": 3441
+},
+{
+"species": "categr2",
+"perch_idx": 1101
+},
+{
+"species": "chbpar3",
+"perch_idx": 1453
+},
+{
+"species": "chcsta1",
+"perch_idx": 309
+},
+{
+"species": "chebun2",
+"perch_idx": 4608
+},
+{
+"species": "chpher1",
+"perch_idx": 1114
+},
+{
+"species": "chptit1",
+"perch_idx": 11968
+},
+{
+"species": "cinbit1",
+"perch_idx": 1673
+},
+{
+"species": "cintit13",
+"perch_idx": 9718
+},
+{
+"species": "coatit2",
+"perch_idx": 9910
+},
+{
+"species": "combuz6",
+"perch_idx": 1865
+},
+{
+"species": "comcra",
+"perch_idx": 5680
+},
+{
+"species": "comcuc",
+"perch_idx": 3740
+},
+{
+"species": "comgol",
+"perch_idx": 1803
+},
+{
+"species": "comgre",
+"perch_idx": 13956
+},
+{
+"species": "comkin1",
+"perch_idx": 348
+},
+{
+"species": "commer",
+"perch_idx": 7962
+},
+{
+"species": "commoo3",
+"perch_idx": 5333
+},
+{
+"species": "commur",
+"perch_idx": 14247
+},
+{
+"species": "compea",
+"perch_idx": 9791
+},
+{
+"species": "compoc",
+"perch_idx": 1430
+},
+{
+"species": "comred1",
+"perch_idx": 13961
+},
+{
+"species": "comsan",
+"perch_idx": 132
+},
+{
+"species": "comshe",
+"perch_idx": 13362
+},
+{
+"species": "comsni",
+"perch_idx": 5317
+},
+{
+"species": "comter",
+"perch_idx": 12986
+},
+{
+"species": "copphe1",
+"perch_idx": 13299
+},
+{
+"species": "crekin1",
+"perch_idx": 7713
+},
+{
+"species": "cremyn",
+"perch_idx": 57
+},
+{
+"species": "crseag1",
+"perch_idx": 12819
+},
+{
+"species": "dasfly",
+"perch_idx": 8341
+},
+{
+"species": "daujac1",
+"perch_idx": 3228
+},
+{
+"species": "daured1",
+"perch_idx": 10154
+},
+{
+"species": "dunlin",
+"perch_idx": 1987
+},
+{
+"species": "dusthr1",
+"perch_idx": 14118
+},
+{
+"species": "dusthr2",
+"perch_idx": 14085
+},
+{
+"species": "duswar",
+"perch_idx": 10297
+},
+{
+"species": "eacwar1",
+"perch_idx": 10292
+},
+{
+"species": "eargre",
+"perch_idx": 10730
+},
+{
+"species": "easmah1",
+"perch_idx": 3020
+},
+{
+"species": "eaywag",
+"perch_idx": 8313
+},
+{
+"species": "eurbul",
+"perch_idx": 11776
+},
+{
+"species": "eurcoo",
+"perch_idx": 5246
+},
+{
+"species": "eurcur",
+"perch_idx": 8943
+},
+{
+"species": "eurhob",
+"perch_idx": 5096
+},
+{
+"species": "eurjay1",
+"perch_idx": 5378
+},
+{
+"species": "eurkes",
+"perch_idx": 5098
+},
+{
+"species": "eurnut2",
+"perch_idx": 12685
+},
+{
+"species": "eurnut3",
+"perch_idx": 8938
+},
+{
+"species": "euroys1",
+"perch_idx": 5811
+},
+{
+"species": "eursis",
+"perch_idx": 12842
+},
+{
+"species": "eurspa1",
+"perch_idx": 36
+},
+{
+"species": "eurspo1",
+"perch_idx": 10550
+},
+{
+"species": "eursta",
+"perch_idx": 13144
+},
+{
+"species": "eurtre1",
+"perch_idx": 2470
+},
+{
+"species": "eurwig",
+"perch_idx": 7652
+},
+{
+"species": "eurwoo",
+"perch_idx": 12454
+},
+{
+"species": "eurwry",
+"perch_idx": 6648
+},
+{
+"species": "eutspa",
+"perch_idx": 9738
+},
+{
+"species": "eyethr",
+"perch_idx": 14123
+},
+{
+"species": "faecur",
+"perch_idx": 8944
+},
+{
+"species": "falduc",
+"perch_idx": 7651
+},
+{
+"species": "ferduc",
+"perch_idx": 1434
+},
+{
+"species": "flfshe",
+"perch_idx": 1108
+},
+{
+"species": "fotswi",
+"perch_idx": 1009
+},
+{
+"species": "gadwal",
+"perch_idx": 7654
+},
+{
+"species": "gargan",
+"perch_idx": 12748
+},
+{
+"species": "glagul",
+"perch_idx": 6886
+},
+{
+"species": "glwgul",
+"perch_idx": 6883
+},
+{
+"species": "gnwtea",
+"perch_idx": 636
+},
+{
+"species": "goldcr1",
+"perch_idx": 11963
+},
+{
+"species": "graher1",
+"perch_idx": 1096
+},
+{
+"species": "grcgre1",
+"perch_idx": 10726
+},
+{
+"species": "grecor",
+"perch_idx": 10029
+},
+{
+"species": "greegr",
+"perch_idx": 1095
+},
+{
+"species": "grekno",
+"perch_idx": 2007
+},
+{
+"species": "gresca",
+"perch_idx": 1432
+},
+{
+"species": "grnsan",
+"perch_idx": 13957
+},
+{
+"species": "grsplo",
+"perch_idx": 613
+},
+{
+"species": "grswoo",
+"perch_idx": 4046
+},
+{
+"species": "grybun",
+"perch_idx": 4632
+},
+{
+"species": "grywag",
+"perch_idx": 8305
+},
+{
+"species": "gwfgoo",
+"perch_idx": 752
+},
+{
+"species": "gyfbuz1",
+"perch_idx": 1851
+},
+{
+"species": "gyfwoo1",
+"perch_idx": 10437
+},
+{
+"species": "gyhlap1",
+"perch_idx": 14314
+},
+{
+"species": "gysfly1",
+"perch_idx": 8337
+},
+{
+"species": "gyttat1",
+"perch_idx": 13949
+},
+{
+"species": "harduc",
+"perch_idx": 6120
+},
+{
+"species": "hawfin",
+"perch_idx": 3141
+},
+{
+"species": "hoocra1",
+"perch_idx": 5682
+},
+{
+"species": "horgre",
+"perch_idx": 10725
+},
+{
+"species": "houswi1",
+"perch_idx": 1008
+},
+{
+"species": "ijlwar1",
+"perch_idx": 10305
+},
+{
+"species": "integr1",
+"perch_idx": 1102
+},
+{
+"species": "izuthr1",
+"perch_idx": 14080
+},
+{
+"species": "jabwar",
+"perch_idx": 6143
+},
+{
+"species": "japacc1",
+"perch_idx": 11199
+},
+{
+"species": "japfly1",
+"perch_idx": 13524
+},
+{
+"species": "japgro1",
+"perch_idx": 4690
+},
+{
+"species": "japmur1",
+"perch_idx": 13291
+},
+{
+"species": "japrob2",
+"perch_idx": 6896
+},
+{
+"species": "japspa1",
+"perch_idx": 13345
+},
+{
+"species": "japthr1",
+"perch_idx": 14079
+},
+{
+"species": "japwag1",
+"perch_idx": 8310
+},
+{
+"species": "japwax1",
+"perch_idx": 1653
+},
+{
+"species": "japwoo1",
+"perch_idx": 10436
+},
+{
+"species": "jasowl1",
+"perch_idx": 9464
+},
+{
+"species": "jawpig1",
+"perch_idx": 3247
+},
+{
+"species": "kenplo1",
+"perch_idx": 603
+},
+{
+"species": "labcro1",
+"perch_idx": 3455
+},
+{
+"species": "latsni1",
+"perch_idx": 5318
+},
+{
+"species": "layalb",
+"perch_idx": 10137
+},
+{
+"species": "lbbgul",
+"perch_idx": 6882
+},
+{
+"species": "lescuc1",
+"perch_idx": 3747
+},
+{
+"species": "lessap2",
+"perch_idx": 615
+},
+{
+"species": "lidjay1",
+"perch_idx": 5380
+},
+{
+"species": "lirplo",
+"perch_idx": 13662
+},
+{
+"species": "litbun",
+"perch_idx": 4620
+},
+{
+"species": "litegr",
+"perch_idx": 4495
+},
+{
+"species": "litgre1",
+"perch_idx": 13314
+},
+{
+"species": "litter1",
+"perch_idx": 12996
+},
+{
+"species": "livbul1",
+"perch_idx": 11723
+},
+{
+"species": "lobdow",
+"perch_idx": 7169
+},
+{
+"species": "lobplo1",
+"perch_idx": 13666
+},
+{
+"species": "loeowl",
+"perch_idx": 1237
+},
+{
+"species": "lotduc",
+"perch_idx": 3092
+},
+{
+"species": "lotros1",
+"perch_idx": 2277
+},
+{
+"species": "lotsti",
+"perch_idx": 2004
+},
+{
+"species": "lottit1",
+"perch_idx": 154
+},
+{
+"species": "mallar3",
+"perch_idx": 649
+},
+{
+"species": "manduc",
+"perch_idx": 328
+},
+{
+"species": "margra1",
+"perch_idx": 5950
+},
+{
+"species": "marsan",
+"perch_idx": 13960
+},
+{
+"species": "martit2",
+"perch_idx": 10751
+},
+{
+"species": "meabun1",
+"perch_idx": 4603
+},
+{
+"species": "melthr",
+"perch_idx": 5368
+},
+{
+"species": "merlin",
+"perch_idx": 5072
+},
+{
+"species": "mewgul",
+"perch_idx": 6878
+},
+{
+"species": "migwar",
+"perch_idx": 5948
+},
+{
+"species": "mouhae1",
+"perch_idx": 8891
+},
+{
+"species": "mugfly",
+"perch_idx": 5134
+},
+{
+"species": "mutswa",
+"perch_idx": 3884
+},
+{
+"species": "narfly2",
+"perch_idx": 5135
+},
+{
+"species": "narfly3",
+"perch_idx": 5137
+},
+{
+"species": "nohcuc1",
+"perch_idx": 6077
+},
+{
+"species": "norboo1",
+"perch_idx": 8857
+},
+{
+"species": "norful",
+"perch_idx": 5252
+},
+{
+"species": "norgos1",
+"perch_idx": 1284
+},
+{
+"species": "norhar1",
+"perch_idx": 3011
+},
+{
+"species": "norlap",
+"perch_idx": 14332
+},
+{
+"species": "norpin",
+"perch_idx": 628
+},
+{
+"species": "norsho",
+"perch_idx": 12742
+},
+{
+"species": "nutman",
+"perch_idx": 7337
+},
+{
+"species": "ocrbun1",
+"perch_idx": 4633
+},
+{
+"species": "okirai1",
+"perch_idx": 5341
+},
+{
+"species": "okiwoo1",
+"perch_idx": 4047
+},
+{
+"species": "olbpip",
+"perch_idx": 854
+},
+{
+"species": "oricuc2",
+"perch_idx": 3746
+},
+{
+"species": "origre",
+"perch_idx": 2674
+},
+{
+"species": "orihob2",
+"perch_idx": 9925
+},
+{
+"species": "orimag1",
+"perch_idx": 10398
+},
+{
+"species": "oripra",
+"perch_idx": 5526
+},
+{
+"species": "oristo1",
+"perch_idx": 2894
+},
+{
+"species": "orrwar1",
+"perch_idx": 90
+},
+{
+"species": "ortdov",
+"perch_idx": 13064
+},
+{
+"species": "osprey",
+"perch_idx": 9605
+},
+{
+"species": "pacloo",
+"perch_idx": 5398
+},
+{
+"species": "pacreh1",
+"perch_idx": 4500
+},
+{
+"species": "pacswa5",
+"perch_idx": 6118
+},
+{
+"species": "pagplo",
+"perch_idx": 10712
+},
+{
+"species": "palthr1",
+"perch_idx": 14128
+},
+{
+"species": "pelcor",
+"perch_idx": 14249
+},
+{
+"species": "perfal",
+"perch_idx": 5088
+},
+{
+"species": "pieavo1",
+"perch_idx": 11956
+},
+{
+"species": "piggui",
+"perch_idx": 2409
+},
+{
+"species": "pomjae",
+"perch_idx": 12979
+},
+{
+"species": "purher1",
+"perch_idx": 1105
+},
+{
+"species": "pygwoo1",
+"perch_idx": 14591
+},
+{
+"species": "rebfly",
+"perch_idx": 5138
+},
+{
+"species": "reblei",
+"perch_idx": 6933
+},
+{
+"species": "rebmer",
+"perch_idx": 7964
+},
+{
+"species": "reccra1",
+"perch_idx": 5681
+},
+{
+"species": "redcro",
+"perch_idx": 7420
+},
+{
+"species": "redkno",
+"perch_idx": 1989
+},
+{
+"species": "redpol1",
+"perch_idx": 9
+},
+{
+"species": "reebun",
+"perch_idx": 4624
+},
+{
+"species": "refblu1",
+"perch_idx": 13454
+},
+{
+"species": "refboo",
+"perch_idx": 13158
+},
+{
+"species": "rengre",
+"perch_idx": 10728
+},
+{
+"species": "renpha",
+"perch_idx": 10040
+},
+{
+"species": "rensti",
+"perch_idx": 2003
+},
+{
+"species": "retloo",
+"perch_idx": 5399
+},
+{
+"species": "retpip",
+"perch_idx": 843
+},
+{
+"species": "rhiauk",
+"perch_idx": 2466
+},
+{
+"species": "rinphe1",
+"perch_idx": 10060
+},
+{
+"species": "rinphe2",
+"perch_idx": 10060
+},
+{
+"species": "rocpig",
+"perch_idx": 3251
+},
+{
+"species": "rocpta1",
+"perch_idx": 6742
+},
+{
+"species": "rook1",
+"perch_idx": 3448
+},
+{
+"species": "rorpar",
+"perch_idx": 11404
+},
+{
+"species": "rubcra1",
+"perch_idx": 14614
+},
+{
+"species": "rudkin1",
+"perch_idx": 5827
+},
+{
+"species": "rudtur",
+"perch_idx": 1122
+},
+{
+"species": "ruff",
+"perch_idx": 2000
+},
+{
+"species": "rusbun",
+"perch_idx": 4621
+},
+{
+"species": "russpa2",
+"perch_idx": 9723
+},
+{
+"species": "ryumin1",
+"perch_idx": 9908
+},
+{
+"species": "ryurob2",
+"perch_idx": 6899
+},
+{
+"species": "ryurob3",
+"perch_idx": 6900
+},
+{
+"species": "ryusco1",
+"perch_idx": 9432
+},
+{
+"species": "sakwar1",
+"perch_idx": 5945
+},
+{
+"species": "salwar1",
+"perch_idx": 10281
+},
+{
+"species": "sancra",
+"perch_idx": 880
+},
+{
+"species": "sander",
+"perch_idx": 1986
+},
+{
+"species": "saugul2",
+"perch_idx": 12310
+},
+{
+"species": "scathr2",
+"perch_idx": 14675
+},
+{
+"species": "shtalb",
+"perch_idx": -1
+},
+{
+"species": "shtsan",
+"perch_idx": 1985
+},
+{
+"species": "shtshe",
+"perch_idx": 1113
+},
+{
+"species": "sibrob",
+"perch_idx": 6898
+},
+{
+"species": "sibrub",
+"perch_idx": 2028
+},
+{
+"species": "sibthr1",
+"perch_idx": 5435
+},
+{
+"species": "skylar",
+"perch_idx": 336
+},
+{
+"species": "slbgul",
+"perch_idx": 6893
+},
+{
+"species": "smew",
+"perch_idx": 7961
+},
+{
+"species": "sooshe",
+"perch_idx": 1111
+},
+{
+"species": "spbduc",
+"perch_idx": 656
+},
+{
+"species": "spored",
+"perch_idx": 13950
+},
+{
+"species": "stonec7",
+"perch_idx": 12323
+},
+{
+"species": "strher",
+"perch_idx": 1892
+},
+{
+"species": "strshe",
+"perch_idx": 2066
+},
+{
+"species": "stseag",
+"perch_idx": 5839
+},
+{
+"species": "taibeg1",
+"perch_idx": 759
+},
+{
+"species": "temsti",
+"perch_idx": 2006
+},
+{
+"species": "tersan",
+"perch_idx": 14506
+},
+{
+"species": "trspet",
+"perch_idx": 6181
+},
+{
+"species": "tufduc",
+"perch_idx": 1431
+},
+{
+"species": "tunswa",
+"perch_idx": 3881
+},
+{
+"species": "uraowl1",
+"perch_idx": 13097
+},
+{
+"species": "vartit1",
+"perch_idx": 12712
+},
+{
+"species": "veggul1",
+"perch_idx": 6871
+},
+{
+"species": "warwhe1",
+"perch_idx": 14726
+},
+{
+"species": "wetshe",
+"perch_idx": 1112
+},
+{
+"species": "whbpig1",
+"perch_idx": 13906
+},
+{
+"species": "whbwat1",
+"perch_idx": 450
+},
+{
+"species": "whbwoo1",
+"perch_idx": 4044
+},
+{
+"species": "whcsta1",
+"perch_idx": 12870
+},
+{
+"species": "whgpig1",
+"perch_idx": 13893
+},
+{
+"species": "whimbr",
+"perch_idx": 8946
+},
+{
+"species": "whiter2",
+"perch_idx": 2654
+},
+{
+"species": "whiwag",
+"perch_idx": 8302
+},
+{
+"species": "whncra1",
+"perch_idx": 882
+},
+{
+"species": "whoswa",
+"perch_idx": 3882
+},
+{
+"species": "whteag",
+"perch_idx": 5836
+},
+{
+"species": "whtnee",
+"perch_idx": 6098
+},
+{
+"species": "whwsco1",
+"perch_idx": 7839
+},
+{
+"species": "wiltit1",
+"perch_idx": 10750
+},
+{
+"species": "winwre4",
+"perch_idx": 13999
+},
+{
+"species": "woosan",
+"perch_idx": 13952
+},
+{
+"species": "y00621",
+"perch_idx": 2351
+},
+{
+"species": "yebwar3",
+"perch_idx": 10306
+},
+{
+"species": "yelbit",
+"perch_idx": 1683
+},
+{
+"species": "yelbun1",
+"perch_idx": 4629
+},
+{
+"species": "yetbun1",
+"perch_idx": 4606
+},
+{
+"species": "zitcis1",
+"perch_idx": 3058
+}
+]

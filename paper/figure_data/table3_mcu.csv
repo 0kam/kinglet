@@ -1,0 +1,22 @@
+quantity,value,unit,measured_on,source
+sampling rate of the audio interface,31250,Hz,firmware (does not depend on the model),fw_xs_pub_uart.log
+"window period (160,000 samples)",5.12,s,firmware (does not depend on the model),"160,000 / capture rate; NPU onsets in power_xspub_5v_60s_r*.npz"
+"spectrogram, per window",108,ms,firmware (does not depend on the model),fw_xs_pub_uart.log
+"network, per window",366,ms,public-only int8 on the board,fw_xs_pub_uart.log
+processing time / audio duration,0.093,,public-only int8 on the board,derived
+mean board power,110.1-110.2,mW,public-only int8 on the board,"power_xspub_5v_60s_r*.npz (5.0 V, 60 s x 3)"
+board power between inferences,108.5,mW,public-only int8 on the board,same traces
+"inference energy above the level between inferences, per window",8.4-8.5,mJ,public-only int8 on the board,derived from the same traces
+inference share of board energy,1.5,%,public-only int8 on the board,derived
+8-bit model file before compilation,3.33,MB,public-only int8 (ptqpub_v1),kinglet-xs_pub-jp-int8.tflite
+compiled model file written to the board,2.8,MB,public-only int8 on the board,kinglet-xs_pub-jp-int8_vela.tflite
+working memory reported by the compiler,637.8,KiB,public-only int8 (ptqpub_v1),xs_pub_vela.log
+flash memory reported by the compiler,2699.4,KiB,public-only int8 (ptqpub_v1),xs_pub_vela.log
+memory reserved for the network,657876,B,public-only int8 on the board,fw_xs_pub_uart.log
+"board vs computer, 8-bit model, test window: largest difference in probability",0.019,,public-only int8 on the board,fw_xs_pub_uart.log
+"board vs computer, 8-bit model, test window: largest difference in the first 16 feature bytes",4,quantisation steps,public-only int8 on the board,fw_xs_pub_uart.log
+"8-bit vs floating-point model: agreement on the top class (2,048 WABAD windows)",0.9946,,public-only int8 (ptqpub_v1),ptqpub_v1.json
+8-bit vs floating-point model: windows whose detections differ,0.83,%,public-only int8 (ptqpub_v1),ptqpub_v1.json
+"recovered embedding vs floating-point embedding, cosine similarity (mean)",0.9898,,public-only int8 (ptqpub_v1),wabad_embcompat_results.json
+retrieval and classifier performance relative to floating-point XS,98.6-99.8,%,public-only int8 (ptqpub_v1),mcuemb_v2
+WABAD cmAP at the board's sampling rate relative to 32 kHz,1.005,,fp32 XS on the host (mcurate_v1b),mcurate_v1b.json

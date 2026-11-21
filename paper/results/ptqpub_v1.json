@@ -1,0 +1,25 @@
+{
+ "model": "distill_root/xs_pub_deploy/kinglet-xs_pub-jp-int8.tflite",
+ "head": "kinglet.pack.build_pack(headpack_focal.npz, 317 JP species, no group rows)",
+ "calibration": "512 focal val windows (8 val parts x 64)",
+ "feature_quantization": {
+  "scale": 0.0027061118744313717,
+  "zero_point": -128
+ },
+ "parity_wabad_2048": {
+  "public_only": {
+   "top1_agreement": 0.9946,
+   "max_abs_dprob": 0.2129,
+   "window_fire_disagree": 0.0083,
+   "fire_rate_fp32": 0.0884
+  }
+ },
+ "restored_embedding_cos_to_fp32_xs_wabad_60158": {
+  "public_only": {
+   "mean": 0.9898,
+   "p10": 0.9858,
+   "min": 0.9466
+  }
+ },
+ "pass": true
+}

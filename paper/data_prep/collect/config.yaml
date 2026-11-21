@@ -1,0 +1,77 @@
+# Written with Claude (Anthropic) under the author's direction; see paper/README.md.
+# Settings for the training-audio collection scripts.
+# Paths below are relative to common.config.AUDIO_ROOT (set `audio_root` in paper/config.yaml),
+# except species_list, which is relative to paper/.
+# API keys: set XC_API_KEY (or XC_API_KEY_FILE); see utils.load_api_key.
+
+# Species list
+species_list: data_prep/species/species_list.csv
+
+# Xeno-canto
+xeno_canto:
+  api_url: https://xeno-canto.org/api/3/recordings
+  per_page: 500          # API v3 maximum
+  rate_limit_sec: 1.0
+  metadata_dir: audio/xeno-canto/metadata
+  wav_dir: audio/xeno-canto/wav
+  # Download filter
+  download_filter:
+    min_quality: C        # keep A, B, C (drop D, E)
+    allowed_licenses:     # Creative Commons licences only
+      - //creativecommons.org
+  # Parallel download
+  download:
+    max_concurrent: 5
+    rate_limit_sec: 0.5
+
+# iNat Sounds 2024
+inat_sounds:
+  annotation_urls:
+    train: https://ml-inat-competition-datasets.s3.amazonaws.com/sounds/2024/train.json.tar.gz
+    val: https://ml-inat-competition-datasets.s3.amazonaws.com/sounds/2024/val.json.tar.gz
+  annotations_dir: audio/inat-sounds/annotations
+  raw_dir: audio/inat-sounds/raw
+  filtered_dir: audio/inat-sounds/filtered
+  s3_bucket: ml-inat-competition-datasets
+  s3_prefix: sounds/2024
+
+# iNat API (direct observation search, complementing Sounds 2024)
+inat_api:
+  api_url: https://api.inaturalist.org/v1/observations
+  per_page: 200
+  rate_limit_sec: 1.0
+  metadata_dir: audio/inat-api/metadata
+  audio_dir: audio/inat-api/audio
+  allowed_licenses:
+    - cc-by
+    - cc-by-nc
+    - cc-by-sa
+    - cc-by-nd
+    - cc-by-nc-sa
+    - cc-by-nc-nd
+    - cc0
+  download:
+    max_concurrent: 1
+    rate_limit_sec: 0.5
+    hourly_limit_gb: 4.5   # margin below the 5 GB/hour limit
+
+# Macaulay Library (Cornell Lab / eBird)
+macaulay:
+  search_api: https://search.macaulaylibrary.org/api/v1/search
+  per_page: 100
+  rate_limit_sec: 1.0
+  metadata_dir: audio/macaulay/metadata
+  audio_dir: audio/macaulay/audio
+  download:
+    max_concurrent: 3
+    rate_limit_sec: 0.5
+
+# Unified metadata
+unified_metadata: metadata/unified_metadata.parquet
+
+# Japan test (rough latitude/longitude box)
+japan_bounds:
+  lat_min: 24.0
+  lat_max: 46.0
+  lon_min: 122.0
+  lon_max: 154.0

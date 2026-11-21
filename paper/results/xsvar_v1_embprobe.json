@@ -1,0 +1,107 @@
+{
+ "teacher": {
+  "retrieval_k1_mAP": 0.1916,
+  "retrieval_k5_mAP": 0.1937,
+  "probe_cmAP": 0.4991,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XS": {
+  "retrieval_k1_mAP": 0.1786,
+  "retrieval_k5_mAP": 0.185,
+  "probe_cmAP": 0.4824,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XSs1": {
+  "retrieval_k1_mAP": 0.1768,
+  "retrieval_k5_mAP": 0.1815,
+  "probe_cmAP": 0.4804,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XSs2": {
+  "retrieval_k1_mAP": 0.1788,
+  "retrieval_k5_mAP": 0.1844,
+  "probe_cmAP": 0.4807,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XSdet": {
+  "retrieval_k1_mAP": 0.1794,
+  "retrieval_k5_mAP": 0.1813,
+  "probe_cmAP": 0.4707,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XS0_feat": {
+  "retrieval_k1_mAP": 0.1601,
+  "retrieval_k5_mAP": 0.1747,
+  "probe_cmAP": 0.4872,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XSs1_feat": {
+  "retrieval_k1_mAP": 0.1595,
+  "retrieval_k5_mAP": 0.1737,
+  "probe_cmAP": 0.4852,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XSs2_feat": {
+  "retrieval_k1_mAP": 0.1609,
+  "retrieval_k5_mAP": 0.1757,
+  "probe_cmAP": 0.4843,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XScls_feat": {
+  "retrieval_k1_mAP": 0.1513,
+  "retrieval_k5_mAP": 0.1683,
+  "probe_cmAP": 0.4664,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XSdet_feat": {
+  "retrieval_k1_mAP": 0.1839,
+  "retrieval_k5_mAP": 0.199,
+  "probe_cmAP": 0.4742,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XS0_ridge": {
+  "retrieval_k1_mAP": 0.1763,
+  "retrieval_k5_mAP": 0.1821,
+  "probe_cmAP": 0.4831,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XSs1_ridge": {
+  "retrieval_k1_mAP": 0.1751,
+  "retrieval_k5_mAP": 0.179,
+  "probe_cmAP": 0.4805,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XSs2_ridge": {
+  "retrieval_k1_mAP": 0.177,
+  "retrieval_k5_mAP": 0.1818,
+  "probe_cmAP": 0.4804,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XScls_ridge": {
+  "retrieval_k1_mAP": 0.1607,
+  "retrieval_k5_mAP": 0.1686,
+  "probe_cmAP": 0.4634,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ },
+ "XSdet_ridge": {
+  "retrieval_k1_mAP": 0.1746,
+  "retrieval_k5_mAP": 0.173,
+  "probe_cmAP": 0.4716,
+  "n_species_retrieval": 823,
+  "n_species_probe": 719
+ }
+}

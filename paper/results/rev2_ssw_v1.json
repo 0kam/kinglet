@@ -1,0 +1,1376 @@
+{
+ "bug_check": {
+  "JP": {
+   "B_exact": {
+    "R": 0.9393,
+    "ci95": [
+     0.6694,
+     1.1486
+    ]
+   },
+   "S_exact": {
+    "R": 1.0437,
+    "ci95": [
+     0.7094,
+     1.2849
+    ]
+   },
+   "XS_exact": {
+    "R": 0.8895,
+    "ci95": [
+     0.6584,
+     1.0586
+    ]
+   },
+   "teacher_fp_per_window": 0.0339,
+   "teacher_recall": 0.4103
+  },
+  "DE": {
+   "B_exact": {
+    "R": 0.6742,
+    "ci95": [
+     0.5408,
+     1.0951
+    ]
+   },
+   "S_exact": {
+    "R": 1.0846,
+    "ci95": [
+     0.815,
+     1.5229
+    ]
+   },
+   "XS_exact": {
+    "R": 0.7132,
+    "ci95": [
+     0.5527,
+     1.2552
+    ]
+   },
+   "teacher_fp_per_window": 0.1029,
+   "teacher_recall": 0.5381
+  },
+  "CR": {
+   "B_exact": {
+    "R": 0.8398,
+    "ci95": [
+     0.8173,
+     1.0317
+    ]
+   },
+   "S_exact": {
+    "R": 1.4332,
+    "ci95": [
+     1.0422,
+     1.5148
+    ]
+   },
+   "XS_exact": {
+    "R": 1.9816,
+    "ci95": [
+     1.2185,
+     2.1626
+    ]
+   },
+   "teacher_fp_per_window": 0.0701,
+   "teacher_recall": 0.5116
+  },
+  "reproduced": "all R and ci95 of opensetcurve_v1.json / regionlists_v1.json to 1e-9"
+ },
+ "no_ssw": {
+  "JP": {
+   "clusters": 78,
+   "teacher_recall": 0.41052477850258007,
+   "teacher_fp_per_window": 0.05244155711868531,
+   "B_exact": {
+    "R": 1.0082094445966245,
+    "fp_per_window": 0.05287207317641188,
+    "ci95": [
+     0.7247884850879104,
+     1.181187276939242
+    ],
+    "nan_share": 0.0
+   },
+   "S_exact": {
+    "R": 1.1341459409498875,
+    "fp_per_window": 0.059476379143248624,
+    "ci95": [
+     0.8178559583484153,
+     1.3181006929107344
+    ],
+    "nan_share": 0.0
+   },
+   "XS_exact": {
+    "R": 0.9784396244739395,
+    "fp_per_window": 0.0513108974540351,
+    "ci95": [
+     0.7860741409238414,
+     1.0750705514362724
+    ],
+    "nan_share": 0.0
+   }
+  },
+  "DE": {
+   "clusters": 51,
+   "teacher_recall": 0.5462749213011543,
+   "teacher_fp_per_window": 0.10995414046959648,
+   "B_exact": {
+    "R": 0.9575982449288252,
+    "fp_per_window": 0.1052918919363431,
+    "ci95": [
+     0.6304209294664611,
+     1.1471366174759592
+    ],
+    "nan_share": 0.0
+   },
+   "S_exact": {
+    "R": 1.358213335730642,
+    "fp_per_window": 0.1493411799046062,
+    "ci95": [
+     0.7450921605340441,
+     1.5599336734533984
+    ],
+    "nan_share": 0.0
+   },
+   "XS_exact": {
+    "R": 1.0381420510732362,
+    "fp_per_window": 0.11414801691110162,
+    "ci95": [
+     0.6776081559328037,
+     1.3439979722243633
+    ],
+    "nan_share": 0.0
+   }
+  },
+  "CR": {
+   "clusters": 52,
+   "teacher_recall": 0.35510002469745616,
+   "teacher_fp_per_window": 0.04884941800006709,
+   "B_exact": {
+    "R": 0.9058107855943274,
+    "fp_per_window": 0.044248329694466446,
+    "ci95": [
+     0.7965139624502054,
+     1.0745182220620635
+    ],
+    "nan_share": 0.0
+   },
+   "S_exact": {
+    "R": 1.1704721030042917,
+    "fp_per_window": 0.05717688101707423,
+    "ci95": [
+     0.9604655756657317,
+     1.4015906771748075
+    ],
+    "nan_share": 0.0
+   },
+   "XS_exact": {
+    "R": 1.3916011885110597,
+    "fp_per_window": 0.06797890814696692,
+    "ci95": [
+     1.1237295322109508,
+     1.753957142812968
+    ],
+    "nan_share": 0.0
+   }
+  }
+ },
+ "per_set": {
+  "JP": {
+   "sets": {
+    "WABAD": {
+     "clusters": 72,
+     "windows": 60158,
+     "listed_occurrences": 7838,
+     "teacher_recall": 0.39844348047971423,
+     "teacher_fp_per_window": 0.06625885169054822,
+     "B_exact": {
+      "fp_per_window": 0.05488879284550683,
+      "R": 0.8283993978926242,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.060094780713817256,
+      "R": 0.9069698490170142,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.061504704278732676,
+      "R": 0.9282488710486704,
+      "max_recall": 1.0
+     }
+    },
+    "POW": {
+     "windows": 4560,
+     "listed_occurrences": 0,
+     "teacher_fp_per_window_at_0.1": 0.006359649122807017,
+     "note": "undefined: no annotated occurrence of a listed species"
+    },
+    "HSN": {
+     "clusters": 1,
+     "windows": 12000,
+     "listed_occurrences": 1085,
+     "teacher_recall": 0.1815668202764977,
+     "teacher_fp_per_window": 0.05575,
+     "B_exact": {
+      "fp_per_window": 0.0495,
+      "R": 0.8878923766816144,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.04325,
+      "R": 0.7757847533632286,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.03341666666666667,
+      "R": 0.5994020926756354,
+      "max_recall": 1.0
+     }
+    },
+    "NES": {
+     "windows": 24480,
+     "listed_occurrences": 0,
+     "teacher_fp_per_window_at_0.1": 0.0363562091503268,
+     "note": "undefined: no annotated occurrence of a listed species"
+    },
+    "PER": {
+     "windows": 15120,
+     "listed_occurrences": 0,
+     "teacher_fp_per_window_at_0.1": 0.004695767195767196,
+     "note": "undefined: no annotated occurrence of a listed species"
+    },
+    "SNE": {
+     "windows": 23756,
+     "listed_occurrences": 1,
+     "teacher_fp_per_window_at_0.1": 0.030350227310995116,
+     "note": "undefined: teacher recall at p>0.1 is 0"
+    },
+    "SSW": {
+     "clusters": 1,
+     "windows": 205200,
+     "listed_occurrences": 264,
+     "teacher_recall": 0.3939393939393939,
+     "teacher_fp_per_window": 0.01864522417153996,
+     "B_exact": {
+      "fp_per_window": 0.011228070175438596,
+      "R": 0.6021955044432827,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.011466861598440545,
+      "R": 0.6150026136957658,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.00942495126705653,
+      "R": 0.5054887611082071,
+      "max_recall": 1.0
+     }
+    },
+    "UHH": {
+     "clusters": 1,
+     "windows": 36637,
+     "listed_occurrences": 11618,
+     "teacher_recall": 0.4400929592012395,
+     "teacher_fp_per_window": 0.07918224745475885,
+     "B_exact": {
+      "fp_per_window": 0.1070527310940009,
+      "R": 1.3519789414308552,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.11360100444905424,
+      "R": 1.434677697345743,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.08639353658869452,
+      "R": 1.0910720441227166,
+      "max_recall": 1.0
+     }
+    }
+   },
+   "mean": {
+    "B_exact": {
+     "unweighted_mean_R": 0.9176165551120941,
+     "median_R": 0.8581458872871193,
+     "sets_used": 4,
+     "sets_undefined": [
+      "POW",
+      "NES",
+      "PER",
+      "SNE"
+     ]
+    },
+    "S_exact": {
+     "unweighted_mean_R": 0.9331087283554378,
+     "median_R": 0.8413773011901213,
+     "sets_used": 4,
+     "sets_undefined": [
+      "POW",
+      "NES",
+      "PER",
+      "SNE"
+     ]
+    },
+    "XS_exact": {
+     "unweighted_mean_R": 0.7810529422388073,
+     "median_R": 0.7638254818621528,
+     "sets_used": 4,
+     "sets_undefined": [
+      "POW",
+      "NES",
+      "PER",
+      "SNE"
+     ]
+    }
+   },
+   "at_pooled_threshold": {
+    "thresholds": {
+     "teacher": {
+      "edge": 1200,
+      "threshold_p": 0.1000000000000001,
+      "pooled_recall": 0.4103143324041142,
+      "pooled_fp_per_window": 0.033853437057324874
+     },
+     "B_exact": {
+      "edge": 1187,
+      "threshold_p": 0.08889319171506843,
+      "pooled_recall": 0.4104585215803134,
+      "pooled_fp_per_window": 0.03188177350220339
+     },
+     "S_exact": {
+      "edge": 1169,
+      "threshold_p": 0.07535325969545344,
+      "pooled_recall": 0.4104585215803134,
+      "pooled_fp_per_window": 0.03539568119273862
+     },
+     "XS_exact": {
+      "edge": 1175,
+      "threshold_p": 0.07964174752589587,
+      "pooled_recall": 0.4104104585215803,
+      "pooled_fp_per_window": 0.03019027993433025
+     }
+    },
+    "sets": {
+     "WABAD": {
+      "windows": 60158,
+      "teacher": {
+       "fp": 3986,
+       "hits": 3123
+      },
+      "B_exact": {
+       "fp": 3878,
+       "hits": 3270,
+       "R": 0.9729051680883091
+      },
+      "S_exact": {
+       "fp": 4389,
+       "hits": 3290,
+       "R": 1.1011038635223283
+      },
+      "XS_exact": {
+       "fp": 4076,
+       "hits": 3214,
+       "R": 1.0225790265930759
+      },
+      "listed_occurrences": 7838,
+      "teacher_fp_share": 0.30829917240312477
+     },
+     "POW": {
+      "windows": 4560,
+      "teacher": {
+       "fp": 29,
+       "hits": 0
+      },
+      "B_exact": {
+       "fp": 33,
+       "hits": 0,
+       "R": 1.1379310344827587
+      },
+      "S_exact": {
+       "fp": 41,
+       "hits": 0,
+       "R": 1.4137931034482758
+      },
+      "XS_exact": {
+       "fp": 48,
+       "hits": 0,
+       "R": 1.6551724137931034
+      },
+      "listed_occurrences": 0,
+      "teacher_fp_share": 0.0022430195684120966
+     },
+     "HSN": {
+      "windows": 12000,
+      "teacher": {
+       "fp": 669,
+       "hits": 197
+      },
+      "B_exact": {
+       "fp": 749,
+       "hits": 228,
+       "R": 1.1195814648729447
+      },
+      "S_exact": {
+       "fp": 753,
+       "hits": 266,
+       "R": 1.1255605381165918
+      },
+      "XS_exact": {
+       "fp": 537,
+       "hits": 236,
+       "R": 0.8026905829596412
+      },
+      "listed_occurrences": 1085,
+      "teacher_fp_share": 0.051744141078196304
+     },
+     "NES": {
+      "windows": 24480,
+      "teacher": {
+       "fp": 890,
+       "hits": 0
+      },
+      "B_exact": {
+       "fp": 828,
+       "hits": 0,
+       "R": 0.9303370786516854
+      },
+      "S_exact": {
+       "fp": 987,
+       "hits": 0,
+       "R": 1.1089887640449438
+      },
+      "XS_exact": {
+       "fp": 830,
+       "hits": 0,
+       "R": 0.9325842696629213
+      },
+      "listed_occurrences": 0,
+      "teacher_fp_share": 0.06883749709954366
+     },
+     "PER": {
+      "windows": 15120,
+      "teacher": {
+       "fp": 71,
+       "hits": 0
+      },
+      "B_exact": {
+       "fp": 43,
+       "hits": 0,
+       "R": 0.6056338028169014
+      },
+      "S_exact": {
+       "fp": 68,
+       "hits": 0,
+       "R": 0.9577464788732394
+      },
+      "XS_exact": {
+       "fp": 46,
+       "hits": 0,
+       "R": 0.647887323943662
+      },
+      "listed_occurrences": 0,
+      "teacher_fp_share": 0.005491530667491686
+     },
+     "SNE": {
+      "windows": 23756,
+      "teacher": {
+       "fp": 721,
+       "hits": 0
+      },
+      "B_exact": {
+       "fp": 597,
+       "hits": 0,
+       "R": 0.8280166435506241
+      },
+      "S_exact": {
+       "fp": 933,
+       "hits": 0,
+       "R": 1.2940360610263524
+      },
+      "XS_exact": {
+       "fp": 774,
+       "hits": 0,
+       "R": 1.073509015256588
+      },
+      "listed_occurrences": 1,
+      "teacher_fp_share": 0.05576610720086627
+     },
+     "SSW": {
+      "windows": 205200,
+      "teacher": {
+       "fp": 3662,
+       "hits": 104
+      },
+      "B_exact": {
+       "fp": 2859,
+       "hits": 110,
+       "R": 0.7807209175314036
+      },
+      "S_exact": {
+       "fp": 3037,
+       "hits": 112,
+       "R": 0.8293282359366466
+      },
+      "XS_exact": {
+       "fp": 2497,
+       "hits": 112,
+       "R": 0.6818678317859094
+      },
+      "listed_occurrences": 264,
+      "teacher_fp_share": 0.2832392296387965
+     },
+     "UHH": {
+      "windows": 36637,
+      "teacher": {
+       "fp": 2901,
+       "hits": 5113
+      },
+      "B_exact": {
+       "fp": 3189,
+       "hits": 4932,
+       "R": 1.0992761116856256
+      },
+      "S_exact": {
+       "fp": 3310,
+       "hits": 4872,
+       "R": 1.1409858669424335
+      },
+      "XS_exact": {
+       "fp": 2722,
+       "hits": 4977,
+       "R": 0.9382971389176146
+      },
+      "listed_occurrences": 11618,
+      "teacher_fp_share": 0.2243793023435687
+     }
+    },
+    "mean": {
+     "B_exact": {
+      "unweighted_mean_R": 0.9343002777100315,
+      "median_R": 0.9516211233699972,
+      "sets_used": 8
+     },
+     "S_exact": {
+      "unweighted_mean_R": 1.1214428639888514,
+      "median_R": 1.1172746510807678,
+      "sets_used": 8
+     },
+     "XS_exact": {
+      "unweighted_mean_R": 0.9693234503640645,
+      "median_R": 0.9354407042902679,
+      "sets_used": 8
+     }
+    }
+   }
+  },
+  "DE": {
+   "sets": {
+    "WABAD": {
+     "clusters": 45,
+     "windows": 39794,
+     "listed_occurrences": 1952,
+     "teacher_recall": 0.41956967213114754,
+     "teacher_fp_per_window": 0.09041564054882646,
+     "B_exact": {
+      "fp_per_window": 0.06503492988892798,
+      "R": 0.7192884936075598,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.09410966477358396,
+      "R": 1.0408560311284045,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.08958636980449314,
+      "R": 0.9908282379099499,
+      "max_recall": 1.0
+     }
+    },
+    "POW": {
+     "clusters": 1,
+     "windows": 4560,
+     "listed_occurrences": 448,
+     "teacher_recall": 0.16517857142857142,
+     "teacher_fp_per_window": 0.03289473684210526,
+     "B_exact": {
+      "fp_per_window": 0.01787280701754386,
+      "R": 0.5433333333333333,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.032383040935672514,
+      "R": 0.9844444444444445,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.03925438596491228,
+      "R": 1.1933333333333334,
+      "max_recall": 1.0
+     }
+    },
+    "HSN": {
+     "clusters": 1,
+     "windows": 12000,
+     "listed_occurrences": 1233,
+     "teacher_recall": 0.1954582319545823,
+     "teacher_fp_per_window": 0.24691666666666667,
+     "B_exact": {
+      "fp_per_window": 0.175375,
+      "R": 0.7102598717516031,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.150625,
+      "R": 0.6100236247046912,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.13083333333333333,
+      "R": 0.5298683766452918,
+      "max_recall": 1.0
+     }
+    },
+    "NES": {
+     "windows": 24480,
+     "listed_occurrences": 5,
+     "teacher_fp_per_window_at_0.1": 0.09285130718954249,
+     "note": "undefined: teacher recall at p>0.1 is 0"
+    },
+    "PER": {
+     "windows": 15120,
+     "listed_occurrences": 0,
+     "teacher_fp_per_window_at_0.1": 0.008465608465608466,
+     "note": "undefined: no annotated occurrence of a listed species"
+    },
+    "SNE": {
+     "clusters": 1,
+     "windows": 23756,
+     "listed_occurrences": 3803,
+     "teacher_recall": 0.4811990533789114,
+     "teacher_fp_per_window": 0.10721501936352922,
+     "B_exact": {
+      "fp_per_window": 0.09068586181736545,
+      "R": 0.8458316974218035,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.1774589276694008,
+      "R": 1.6551685456279095,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.15782479012820821,
+      "R": 1.4720399349374615,
+      "max_recall": 1.0
+     }
+    },
+    "SSW": {
+     "clusters": 1,
+     "windows": 205200,
+     "listed_occurrences": 18043,
+     "teacher_recall": 0.531618910380757,
+     "teacher_fp_per_window": 0.0974561403508772,
+     "B_exact": {
+      "fp_per_window": 0.051112806170014374,
+      "R": 0.5244698382881763,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.08545586187691448,
+      "R": 0.8768648293400765,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.05112329434697852,
+      "R": 0.5245774577457741,
+      "max_recall": 1.0
+     }
+    },
+    "UHH": {
+     "clusters": 1,
+     "windows": 36637,
+     "listed_occurrences": 6854,
+     "teacher_recall": 0.7068864896410855,
+     "teacher_fp_per_window": 0.15271446897944702,
+     "B_exact": {
+      "fp_per_window": 0.1932563619655903,
+      "R": 1.2654751266011315,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.23893487847960088,
+      "R": 1.5645857270522139,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.14913884870486122,
+      "R": 0.9765862377122431,
+      "max_recall": 1.0
+     }
+    }
+   },
+   "mean": {
+    "B_exact": {
+     "unweighted_mean_R": 0.7681097268339346,
+     "median_R": 0.7147741826795815,
+     "sets_used": 6,
+     "sets_undefined": [
+      "NES",
+      "PER"
+     ]
+    },
+    "S_exact": {
+     "unweighted_mean_R": 1.1219905337162899,
+     "median_R": 1.0126502377864246,
+     "sets_used": 6,
+     "sets_undefined": [
+      "NES",
+      "PER"
+     ]
+    },
+    "XS_exact": {
+     "unweighted_mean_R": 0.9478722630473424,
+     "median_R": 0.9837072378110965,
+     "sets_used": 6,
+     "sets_undefined": [
+      "NES",
+      "PER"
+     ]
+    }
+   },
+   "at_pooled_threshold": {
+    "thresholds": {
+     "teacher": {
+      "edge": 1200,
+      "threshold_p": 0.1000000000000001,
+      "pooled_recall": 0.5380975941616674,
+      "pooled_fp_per_window": 0.10286076222455172
+     },
+     "B_exact": {
+      "edge": 1204,
+      "threshold_p": 0.10365804092908082,
+      "pooled_recall": 0.5381594409054363,
+      "pooled_fp_per_window": 0.06939346751597994
+     },
+     "S_exact": {
+      "edge": 1170,
+      "threshold_p": 0.07605297664921137,
+      "pooled_recall": 0.5376337435834003,
+      "pooled_fp_per_window": 0.11096482614985051
+     },
+     "XS_exact": {
+      "edge": 1182,
+      "threshold_p": 0.08492600543319688,
+      "pooled_recall": 0.5379120539303606,
+      "pooled_fp_per_window": 0.07316337848191244
+     }
+    },
+    "sets": {
+     "WABAD": {
+      "windows": 39794,
+      "teacher": {
+       "fp": 3598,
+       "hits": 819
+      },
+      "B_exact": {
+       "fp": 2624,
+       "hits": 822,
+       "R": 0.7292940522512507
+      },
+      "S_exact": {
+       "fp": 4002,
+       "hits": 831,
+       "R": 1.1122846025569761
+      },
+      "XS_exact": {
+       "fp": 3478,
+       "hits": 818,
+       "R": 0.9666481378543635
+      },
+      "listed_occurrences": 1952,
+      "teacher_fp_share": 0.09674903869423754
+     },
+     "POW": {
+      "windows": 4560,
+      "teacher": {
+       "fp": 127,
+       "hits": 74
+      },
+      "B_exact": {
+       "fp": 89,
+       "hits": 76,
+       "R": 0.7007874015748031
+      },
+      "S_exact": {
+       "fp": 162,
+       "hits": 78,
+       "R": 1.2755905511811023
+      },
+      "XS_exact": {
+       "fp": 171,
+       "hits": 73,
+       "R": 1.3464566929133859
+      },
+      "listed_occurrences": 448,
+      "teacher_fp_share": 0.0034149883029928204
+     },
+     "HSN": {
+      "windows": 12000,
+      "teacher": {
+       "fp": 2923,
+       "hits": 241
+      },
+      "B_exact": {
+       "fp": 1926,
+       "hits": 233,
+       "R": 0.6589120766335956
+      },
+      "S_exact": {
+       "fp": 2893,
+       "hits": 299,
+       "R": 0.989736572015053
+      },
+      "XS_exact": {
+       "fp": 1730,
+       "hits": 254,
+       "R": 0.5918576804652754
+      },
+      "listed_occurrences": 1233,
+      "teacher_fp_share": 0.07859851031218908
+     },
+     "NES": {
+      "windows": 24480,
+      "teacher": {
+       "fp": 2273,
+       "hits": 0
+      },
+      "B_exact": {
+       "fp": 1377,
+       "hits": 0,
+       "R": 0.6058073031236252
+      },
+      "S_exact": {
+       "fp": 1916,
+       "hits": 0,
+       "R": 0.8429388473383194
+      },
+      "XS_exact": {
+       "fp": 1676,
+       "hits": 0,
+       "R": 0.7373515178178619
+      },
+      "listed_occurrences": 5,
+      "teacher_fp_share": 0.06112022372206835
+     },
+     "PER": {
+      "windows": 15120,
+      "teacher": {
+       "fp": 128,
+       "hits": 0
+      },
+      "B_exact": {
+       "fp": 64,
+       "hits": 0,
+       "R": 0.5
+      },
+      "S_exact": {
+       "fp": 120,
+       "hits": 0,
+       "R": 0.9375
+      },
+      "XS_exact": {
+       "fp": 69,
+       "hits": 0,
+       "R": 0.5390625
+      },
+      "listed_occurrences": 0,
+      "teacher_fp_share": 0.0034418779746699293
+     },
+     "SNE": {
+      "windows": 23756,
+      "teacher": {
+       "fp": 2547,
+       "hits": 1830
+      },
+      "B_exact": {
+       "fp": 1821,
+       "hits": 1770,
+       "R": 0.7149587750294464
+      },
+      "S_exact": {
+       "fp": 2918,
+       "hits": 1646,
+       "R": 1.1456615626226934
+      },
+      "XS_exact": {
+       "fp": 2265,
+       "hits": 1622,
+       "R": 0.889281507656066
+      },
+      "listed_occurrences": 3803,
+      "teacher_fp_share": 0.06848799376159617
+     },
+     "SSW": {
+      "windows": 205200,
+      "teacher": {
+       "fp": 19998,
+       "hits": 9592
+      },
+      "B_exact": {
+       "fp": 13023,
+       "hits": 9958,
+       "R": 0.6512151215121512
+      },
+      "S_exact": {
+       "fp": 22908,
+       "hits": 9999,
+       "R": 1.1455145514551455
+      },
+      "XS_exact": {
+       "fp": 13120,
+       "hits": 9955,
+       "R": 0.656065606560656
+      },
+      "listed_occurrences": 18043,
+      "teacher_fp_share": 0.5377396541988223
+     },
+     "UHH": {
+      "windows": 36637,
+      "teacher": {
+       "fp": 5595,
+       "hits": 4845
+      },
+      "B_exact": {
+       "fp": 4165,
+       "hits": 4544,
+       "R": 0.7444146559428061
+      },
+      "S_exact": {
+       "fp": 5200,
+       "hits": 4533,
+       "R": 0.9294012511170688
+      },
+      "XS_exact": {
+       "fp": 3943,
+       "hits": 4673,
+       "R": 0.7047363717605004
+      },
+      "listed_occurrences": 6854,
+      "teacher_fp_share": 0.15044771303342386
+     }
+    },
+    "mean": {
+     "B_exact": {
+      "unweighted_mean_R": 0.6631736732584598,
+      "median_R": 0.6798497391041993,
+      "sets_used": 8
+     },
+     "S_exact": {
+      "unweighted_mean_R": 1.0473284922857948,
+      "median_R": 1.0510105872860147,
+      "sets_used": 8
+     },
+     "XS_exact": {
+      "unweighted_mean_R": 0.8039325018785137,
+      "median_R": 0.7210439447891812,
+      "sets_used": 8
+     }
+    }
+   }
+  },
+  "CR": {
+   "sets": {
+    "WABAD": {
+     "clusters": 48,
+     "windows": 42291,
+     "listed_occurrences": 2950,
+     "teacher_recall": 0.3430508474576271,
+     "teacher_fp_per_window": 0.03142512591331489,
+     "B_exact": {
+      "fp_per_window": 0.028422122910311886,
+      "R": 0.9044394281414598,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.036587768871233425,
+      "R": 1.1642839227489337,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.03790404577806153,
+      "R": 1.2061700526711816,
+      "max_recall": 1.0
+     }
+    },
+    "POW": {
+     "clusters": 1,
+     "windows": 4560,
+     "listed_occurrences": 4947,
+     "teacher_recall": 0.4891853648675965,
+     "teacher_fp_per_window": 0.09912280701754386,
+     "B_exact": {
+      "fp_per_window": 0.11345029239766082,
+      "R": 1.1445427728613569,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.15175438596491228,
+      "R": 1.5309734513274336,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.16366959064327485,
+      "R": 1.6511799410029497,
+      "max_recall": 1.0
+     }
+    },
+    "HSN": {
+     "clusters": 1,
+     "windows": 12000,
+     "listed_occurrences": 4551,
+     "teacher_recall": 0.28103713469567126,
+     "teacher_fp_per_window": 0.03933333333333333,
+     "B_exact": {
+      "fp_per_window": 0.04641666666666667,
+      "R": 1.180084745762712,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.06216666666666666,
+      "R": 1.5805084745762712,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.08749999999999997,
+      "R": 2.22457627118644,
+      "max_recall": 1.0
+     }
+    },
+    "SNE": {
+     "clusters": 1,
+     "windows": 23756,
+     "listed_occurrences": 7500,
+     "teacher_recall": 0.3304,
+     "teacher_fp_per_window": 0.07012965145647415,
+     "B_exact": {
+      "fp_per_window": 0.055564909917494555,
+      "R": 0.7923169267707088,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.07931469944435093,
+      "R": 1.1309723889555827,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.08485224785317398,
+      "R": 1.2099339735894366,
+      "max_recall": 1.0
+     }
+    },
+    "SSW": {
+     "clusters": 1,
+     "windows": 205200,
+     "listed_occurrences": 48787,
+     "teacher_recall": 0.5765470309713653,
+     "teacher_fp_per_window": 0.08248538011695906,
+     "B_exact": {
+      "fp_per_window": 0.06746332204780954,
+      "R": 0.8178821744186765,
+      "max_recall": 1.0
+     },
+     "S_exact": {
+      "fp_per_window": 0.12648686241065624,
+      "R": 1.5334458328409937,
+      "max_recall": 1.0
+     },
+     "XS_exact": {
+      "fp_per_window": 0.182118202594609,
+      "R": 2.207884625570942,
+      "max_recall": 1.0
+     }
+    },
+    "UHH": {
+     "windows": 36637,
+     "listed_occurrences": 297,
+     "teacher_fp_per_window_at_0.1": 0.05202391025466059,
+     "note": "undefined: teacher recall at p>0.1 is 0"
+    }
+   },
+   "mean": {
+    "B_exact": {
+     "unweighted_mean_R": 0.9678532095909829,
+     "median_R": 0.9044394281414598,
+     "sets_used": 5,
+     "sets_undefined": [
+      "UHH"
+     ]
+    },
+    "S_exact": {
+     "unweighted_mean_R": 1.3880368140898427,
+     "median_R": 1.5309734513274336,
+     "sets_used": 5,
+     "sets_undefined": [
+      "UHH"
+     ]
+    },
+    "XS_exact": {
+     "unweighted_mean_R": 1.69994897280419,
+     "median_R": 1.6511799410029497,
+     "sets_used": 5,
+     "sets_undefined": [
+      "UHH"
+     ]
+    }
+   },
+   "at_pooled_threshold": {
+    "thresholds": {
+     "teacher": {
+      "edge": 1200,
+      "threshold_p": 0.1000000000000001,
+      "pooled_recall": 0.5116033144049137,
+      "pooled_fp_per_window": 0.07012304126444009
+     },
+     "B_exact": {
+      "edge": 1198,
+      "threshold_p": 0.09821434476333786,
+      "pooled_recall": 0.5113860238729865,
+      "pooled_fp_per_window": 0.05874973801333974
+     },
+     "S_exact": {
+      "edge": 1167,
+      "threshold_p": 0.07397153770832833,
+      "pooled_recall": 0.5112701355892919,
+      "pooled_fp_per_window": 0.0999987671215988
+     },
+     "XS_exact": {
+      "edge": 1161,
+      "threshold_p": 0.06996516433445846,
+      "pooled_recall": 0.5111397612701356,
+      "pooled_fp_per_window": 0.13811320289479848
+     }
+    },
+    "sets": {
+     "WABAD": {
+      "windows": 42291,
+      "teacher": {
+       "fp": 1329,
+       "hits": 1012
+      },
+      "B_exact": {
+       "fp": 1060,
+       "hits": 997,
+       "R": 0.7975921745673439
+      },
+      "S_exact": {
+       "fp": 1560,
+       "hits": 1014,
+       "R": 1.1738148984198646
+      },
+      "XS_exact": {
+       "fp": 1603,
+       "hits": 1012,
+       "R": 1.2061700526711814
+      },
+      "listed_occurrences": 2950,
+      "teacher_fp_share": 0.058415014724627484
+     },
+     "POW": {
+      "windows": 4560,
+      "teacher": {
+       "fp": 452,
+       "hits": 2420
+      },
+      "B_exact": {
+       "fp": 467,
+       "hits": 2377,
+       "R": 1.0331858407079646
+      },
+      "S_exact": {
+       "fp": 686,
+       "hits": 2416,
+       "R": 1.5176991150442478
+      },
+      "XS_exact": {
+       "fp": 710,
+       "hits": 2389,
+       "R": 1.5707964601769913
+      },
+      "listed_occurrences": 4947,
+      "teacher_fp_share": 0.01986725858204035
+     },
+     "HSN": {
+      "windows": 12000,
+      "teacher": {
+       "fp": 472,
+       "hits": 1279
+      },
+      "B_exact": {
+       "fp": 672,
+       "hits": 1324,
+       "R": 1.423728813559322
+      },
+      "S_exact": {
+       "fp": 1135,
+       "hits": 1430,
+       "R": 2.4046610169491527
+      },
+      "XS_exact": {
+       "fp": 1570,
+       "hits": 1388,
+       "R": 3.3262711864406778
+      },
+      "listed_occurrences": 4551,
+      "teacher_fp_share": 0.020746340820183725
+     },
+     "SNE": {
+      "windows": 23756,
+      "teacher": {
+       "fp": 1666,
+       "hits": 2478
+      },
+      "B_exact": {
+       "fp": 1225,
+       "hits": 2432,
+       "R": 0.7352941176470589
+      },
+      "S_exact": {
+       "fp": 1746,
+       "hits": 2429,
+       "R": 1.0480192076830732
+      },
+      "XS_exact": {
+       "fp": 1997,
+       "hits": 2473,
+       "R": 1.1986794717887155
+      },
+      "listed_occurrences": 7500,
+      "teacher_fp_share": 0.07322755043734341
+     },
+     "SSW": {
+      "windows": 205200,
+      "teacher": {
+       "fp": 16926,
+       "hits": 28128
+      },
+      "B_exact": {
+       "fp": 13994,
+       "hits": 28172,
+       "R": 0.8267753751624719
+      },
+      "S_exact": {
+       "fp": 25141,
+       "hits": 28005,
+       "R": 1.4853479853479854
+      },
+      "XS_exact": {
+       "fp": 36353,
+       "hits": 28023,
+       "R": 2.1477608413092284
+      },
+      "listed_occurrences": 48787,
+      "teacher_fp_share": 0.743967298140741
+     },
+     "UHH": {
+      "windows": 36637,
+      "teacher": {
+       "fp": 1906,
+       "hits": 0
+      },
+      "B_exact": {
+       "fp": 1643,
+       "hits": 0,
+       "R": 0.8620146904512067
+      },
+      "S_exact": {
+       "fp": 2176,
+       "hits": 0,
+       "R": 1.1416579223504721
+      },
+      "XS_exact": {
+       "fp": 2577,
+       "hits": 0,
+       "R": 1.3520461699895068
+      },
+      "listed_occurrences": 297,
+      "teacher_fp_share": 0.08377653729506396
+     }
+    },
+    "mean": {
+     "B_exact": {
+      "unweighted_mean_R": 0.946431835349228,
+      "median_R": 0.8443950328068393,
+      "sets_used": 6
+     },
+     "S_exact": {
+      "unweighted_mean_R": 1.4618666909657996,
+      "median_R": 1.3295814418839251,
+      "sets_used": 6
+     },
+     "XS_exact": {
+      "unweighted_mean_R": 1.8002873637293835,
+      "median_R": 1.461421315083249,
+      "sets_used": 6
+     }
+    }
+   }
+  }
+ },
+ "ssw_share": {
+  "JP": {
+   "windows": [
+    205200,
+    381911,
+    0.537297956853822
+   ],
+   "listed_occurrences": [
+    264,
+    20806,
+    0.012688647505527251
+   ],
+   "teacher_fp_at_0.1": [
+    3662,
+    12929,
+    0.2832392296387965
+   ]
+  },
+  "DE": {
+   "windows": [
+    205200,
+    361547,
+    0.5675610639833826
+   ],
+   "listed_occurrences": [
+    18043,
+    32338,
+    0.5579503989114973
+   ],
+   "teacher_fp_at_0.1": [
+    19998,
+    37189,
+    0.5377396541988222
+   ]
+  },
+  "CR": {
+   "windows": [
+    205200,
+    324444,
+    0.6324666198172875
+   ],
+   "listed_occurrences": [
+    48787,
+    69032,
+    0.7067302120755592
+   ],
+   "teacher_fp_at_0.1": [
+    16926,
+    22751,
+    0.743967298140741
+   ]
+  }
+ }
+}

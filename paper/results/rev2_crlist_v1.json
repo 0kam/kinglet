@@ -1,0 +1,662 @@
+{
+ "listed_share": {
+  "JP": {
+   "annotated_occurrences": 351057,
+   "listed": 20806,
+   "listed_share": 0.059266728764844456,
+   "list_size": 317,
+   "clusters": 79
+  },
+  "DE": {
+   "annotated_occurrences": 312613,
+   "listed": 32338,
+   "listed_share": 0.10344419457924015,
+   "list_size": 493,
+   "clusters": 52
+  },
+  "CR": {
+   "annotated_occurrences": 269792,
+   "listed": 69032,
+   "listed_share": 0.2558711896572174,
+   "list_size": 949,
+   "clusters": 53
+  }
+ },
+ "cr_bug_check": {
+  "windows": 324444,
+  "counts": {
+   "teacher": {
+    "fp01_mine_vs_hist": [
+     22751,
+     22751
+    ],
+    "fp_at_edge_mine_vs_hist": [
+     22751,
+     22751
+    ]
+   },
+   "S": {
+    "fp01_mine_vs_hist": [
+     19692,
+     19692
+    ],
+    "fp_at_edge_mine_vs_hist": [
+     32444,
+     32444
+    ]
+   },
+   "XS": {
+    "fp01_mine_vs_hist": [
+     23572,
+     23572
+    ],
+    "fp_at_edge_mine_vs_hist": [
+     44810,
+     44810
+    ]
+   }
+  },
+  "fp_per_window_at_0.1": {
+   "teacher": 0.07012304126444009,
+   "S": 0.060694603691237935,
+   "XS": 0.07265352418290984
+  },
+  "listed_occurrences": 69032
+ },
+ "cr_operating_point": {
+  "teacher_recall_at_0.1": 0.5116033144049137,
+  "teacher": {
+   "threshold_logit": -2.1972245773362182,
+   "threshold_p": 0.1000000000000001,
+   "recall_at_threshold": 0.5116033144049137,
+   "fp_per_window_at_threshold": 0.07012304126444009,
+   "fp_per_window_interpolated": 0.07012304126444009
+  },
+  "S": {
+   "threshold_logit": -2.5272245773362183,
+   "threshold_p": 0.07397153770832833,
+   "recall_at_threshold": 0.5112701355892919,
+   "fp_per_window_at_threshold": 0.0999987671215988,
+   "fp_per_window_interpolated": 0.10049999296738381
+  },
+  "XS": {
+   "threshold_logit": -2.587224577336219,
+   "threshold_p": 0.06996516433445846,
+   "recall_at_threshold": 0.5111397612701356,
+   "fp_per_window_at_threshold": 0.13811320289479848,
+   "fp_per_window_interpolated": 0.1389544610979725
+  }
+ },
+ "cr_S": {
+  "fp_total": {
+   "teacher": 22751,
+   "S": 32444
+  },
+  "net_increase": 9693,
+  "sum_of_positive_increases": 12098,
+  "top10_increase": 10966,
+  "top10_share_of_net": 1.131331888992056,
+  "increase_by_set": {
+   "HSN": 663,
+   "POW": 234,
+   "SNE": 80,
+   "SSW": 8215,
+   "UHH": 270,
+   "WABAD": 231
+  },
+  "increase_from_species_annotated_in_us_sets": 199,
+  "increase_from_species_not_annotated_anywhere_here": 9723,
+  "species_with_fp_increase": 164,
+  "top10": [
+   {
+    "ebird_code": "grhowl",
+    "name": "Bubo virginianus",
+    "fp_teacher": 3337,
+    "fp_S": 12512,
+    "increase": 9175,
+    "fp_S_by_set": {
+     "HSN": 685,
+     "POW": 10,
+     "SNE": 16,
+     "SSW": 11731,
+     "UHH": 10,
+     "WABAD": 60
+    },
+    "fp_teacher_by_set": {
+     "HSN": 92,
+     "POW": 3,
+     "SNE": 23,
+     "SSW": 3182,
+     "UHH": 11,
+     "WABAD": 26
+    },
+    "annotated_windows_by_set": {},
+    "annotated_in_us_sets": false
+   },
+   {
+    "ebird_code": "ovenbi1",
+    "name": "Seiurus aurocapilla",
+    "fp_teacher": 1594,
+    "fp_S": 2202,
+    "increase": 608,
+    "fp_S_by_set": {
+     "POW": 62,
+     "SNE": 6,
+     "SSW": 2044,
+     "UHH": 2,
+     "WABAD": 88
+    },
+    "fp_teacher_by_set": {
+     "HSN": 2,
+     "POW": 44,
+     "SNE": 4,
+     "SSW": 1482,
+     "UHH": 1,
+     "WABAD": 61
+    },
+    "annotated_windows_by_set": {
+     "POW": 510,
+     "SSW": 3579,
+     "WABAD": 196
+    },
+    "annotated_in_us_sets": true
+   },
+   {
+    "ebird_code": "webowl1",
+    "name": "Tyto alba",
+    "fp_teacher": 460,
+    "fp_S": 747,
+    "increase": 287,
+    "fp_S_by_set": {
+     "HSN": 28,
+     "SNE": 2,
+     "SSW": 664,
+     "UHH": 6,
+     "WABAD": 47
+    },
+    "fp_teacher_by_set": {
+     "HSN": 20,
+     "SNE": 2,
+     "SSW": 388,
+     "UHH": 19,
+     "WABAD": 31
+    },
+    "annotated_windows_by_set": {},
+    "annotated_in_us_sets": false
+   },
+   {
+    "ebird_code": "woothr",
+    "name": "Hylocichla mustelina",
+    "fp_teacher": 1374,
+    "fp_S": 1592,
+    "increase": 218,
+    "fp_S_by_set": {
+     "HSN": 1,
+     "POW": 348,
+     "SNE": 74,
+     "SSW": 1066,
+     "UHH": 51,
+     "WABAD": 52
+    },
+    "fp_teacher_by_set": {
+     "POW": 179,
+     "SNE": 51,
+     "SSW": 1070,
+     "UHH": 36,
+     "WABAD": 38
+    },
+    "annotated_windows_by_set": {
+     "POW": 1220,
+     "SSW": 4678,
+     "WABAD": 22
+    },
+    "annotated_in_us_sets": true
+   },
+   {
+    "ebird_code": "trogna2",
+    "name": "Polioptila bilineata",
+    "fp_teacher": 62,
+    "fp_S": 262,
+    "increase": 200,
+    "fp_S_by_set": {
+     "UHH": 258,
+     "WABAD": 4
+    },
+    "fp_teacher_by_set": {
+     "UHH": 61,
+     "WABAD": 1
+    },
+    "annotated_windows_by_set": {},
+    "annotated_in_us_sets": false
+   },
+   {
+    "ebird_code": "yerwar",
+    "name": "Setophaga coronata",
+    "fp_teacher": 195,
+    "fp_S": 327,
+    "increase": 132,
+    "fp_S_by_set": {
+     "HSN": 26,
+     "POW": 1,
+     "SNE": 126,
+     "SSW": 84,
+     "UHH": 69,
+     "WABAD": 21
+    },
+    "fp_teacher_by_set": {
+     "HSN": 10,
+     "POW": 1,
+     "SNE": 72,
+     "SSW": 44,
+     "UHH": 48,
+     "WABAD": 20
+    },
+    "annotated_windows_by_set": {
+     "HSN": 18,
+     "SNE": 1060,
+     "SSW": 17,
+     "WABAD": 255
+    },
+    "annotated_in_us_sets": true
+   },
+   {
+    "ebird_code": "hoowar",
+    "name": "Setophaga citrina",
+    "fp_teacher": 149,
+    "fp_S": 252,
+    "increase": 103,
+    "fp_S_by_set": {
+     "POW": 70,
+     "SNE": 1,
+     "SSW": 169,
+     "UHH": 2,
+     "WABAD": 10
+    },
+    "fp_teacher_by_set": {
+     "POW": 49,
+     "SNE": 1,
+     "SSW": 88,
+     "WABAD": 11
+    },
+    "annotated_windows_by_set": {
+     "POW": 82,
+     "SSW": 14
+    },
+    "annotated_in_us_sets": true
+   },
+   {
+    "ebird_code": "westan",
+    "name": "Piranga ludoviciana",
+    "fp_teacher": 135,
+    "fp_S": 229,
+    "increase": 94,
+    "fp_S_by_set": {
+     "HSN": 1,
+     "SNE": 179,
+     "SSW": 43,
+     "UHH": 2,
+     "WABAD": 4
+    },
+    "fp_teacher_by_set": {
+     "SNE": 74,
+     "SSW": 55,
+     "UHH": 3,
+     "WABAD": 3
+    },
+    "annotated_windows_by_set": {
+     "SNE": 1149
+    },
+    "annotated_in_us_sets": true
+   },
+   {
+    "ebird_code": "lesgol",
+    "name": "Spinus psaltria",
+    "fp_teacher": 399,
+    "fp_S": 487,
+    "increase": 88,
+    "fp_S_by_set": {
+     "HSN": 2,
+     "SSW": 174,
+     "UHH": 308,
+     "WABAD": 3
+    },
+    "fp_teacher_by_set": {
+     "HSN": 2,
+     "SNE": 1,
+     "SSW": 136,
+     "UHH": 257,
+     "WABAD": 3
+    },
+    "annotated_windows_by_set": {},
+    "annotated_in_us_sets": false
+   },
+   {
+    "ebird_code": "scatan",
+    "name": "Piranga olivacea",
+    "fp_teacher": 292,
+    "fp_S": 353,
+    "increase": 61,
+    "fp_S_by_set": {
+     "POW": 4,
+     "SNE": 69,
+     "SSW": 228,
+     "UHH": 40,
+     "WABAD": 12
+    },
+    "fp_teacher_by_set": {
+     "POW": 24,
+     "SNE": 46,
+     "SSW": 196,
+     "UHH": 14,
+     "WABAD": 12
+    },
+    "annotated_windows_by_set": {
+     "POW": 342,
+     "SSW": 906,
+     "WABAD": 59
+    },
+    "annotated_in_us_sets": true
+   }
+  ]
+ },
+ "cr_XS": {
+  "fp_total": {
+   "teacher": 22751,
+   "XS": 44810
+  },
+  "net_increase": 22059,
+  "sum_of_positive_increases": 24013,
+  "top10_increase": 22247,
+  "top10_share_of_net": 1.0085225984858788,
+  "increase_by_set": {
+   "HSN": 1098,
+   "POW": 258,
+   "SNE": 331,
+   "SSW": 19427,
+   "UHH": 671,
+   "WABAD": 274
+  },
+  "increase_from_species_annotated_in_us_sets": 1363,
+  "increase_from_species_not_annotated_anywhere_here": 20689,
+  "species_with_fp_increase": 171,
+  "top10": [
+   {
+    "ebird_code": "grhowl",
+    "name": "Bubo virginianus",
+    "fp_teacher": 3337,
+    "fp_XS": 23383,
+    "increase": 20046,
+    "fp_XS_by_set": {
+     "HSN": 1051,
+     "POW": 3,
+     "SNE": 45,
+     "SSW": 22217,
+     "UHH": 22,
+     "WABAD": 45
+    },
+    "fp_teacher_by_set": {
+     "HSN": 92,
+     "POW": 3,
+     "SNE": 23,
+     "SSW": 3182,
+     "UHH": 11,
+     "WABAD": 26
+    },
+    "annotated_windows_by_set": {},
+    "annotated_in_us_sets": false
+   },
+   {
+    "ebird_code": "ovenbi1",
+    "name": "Seiurus aurocapilla",
+    "fp_teacher": 1594,
+    "fp_XS": 2430,
+    "increase": 836,
+    "fp_XS_by_set": {
+     "POW": 42,
+     "SNE": 5,
+     "SSW": 2292,
+     "UHH": 2,
+     "WABAD": 89
+    },
+    "fp_teacher_by_set": {
+     "HSN": 2,
+     "POW": 44,
+     "SNE": 4,
+     "SSW": 1482,
+     "UHH": 1,
+     "WABAD": 61
+    },
+    "annotated_windows_by_set": {
+     "POW": 510,
+     "SSW": 3579,
+     "WABAD": 196
+    },
+    "annotated_in_us_sets": true
+   },
+   {
+    "ebird_code": "yerwar",
+    "name": "Setophaga coronata",
+    "fp_teacher": 195,
+    "fp_XS": 526,
+    "increase": 331,
+    "fp_XS_by_set": {
+     "HSN": 22,
+     "SNE": 216,
+     "SSW": 125,
+     "UHH": 136,
+     "WABAD": 27
+    },
+    "fp_teacher_by_set": {
+     "HSN": 10,
+     "POW": 1,
+     "SNE": 72,
+     "SSW": 44,
+     "UHH": 48,
+     "WABAD": 20
+    },
+    "annotated_windows_by_set": {
+     "HSN": 18,
+     "SNE": 1060,
+     "SSW": 17,
+     "WABAD": 255
+    },
+    "annotated_in_us_sets": true
+   },
+   {
+    "ebird_code": "webowl1",
+    "name": "Tyto alba",
+    "fp_teacher": 460,
+    "fp_XS": 672,
+    "increase": 212,
+    "fp_XS_by_set": {
+     "HSN": 28,
+     "SNE": 2,
+     "SSW": 583,
+     "UHH": 7,
+     "WABAD": 52
+    },
+    "fp_teacher_by_set": {
+     "HSN": 20,
+     "SNE": 2,
+     "SSW": 388,
+     "UHH": 19,
+     "WABAD": 31
+    },
+    "annotated_windows_by_set": {},
+    "annotated_in_us_sets": false
+   },
+   {
+    "ebird_code": "woothr",
+    "name": "Hylocichla mustelina",
+    "fp_teacher": 1374,
+    "fp_XS": 1565,
+    "increase": 191,
+    "fp_XS_by_set": {
+     "POW": 345,
+     "SNE": 70,
+     "SSW": 1038,
+     "UHH": 69,
+     "WABAD": 43
+    },
+    "fp_teacher_by_set": {
+     "POW": 179,
+     "SNE": 51,
+     "SSW": 1070,
+     "UHH": 36,
+     "WABAD": 38
+    },
+    "annotated_windows_by_set": {
+     "POW": 1220,
+     "SSW": 4678,
+     "WABAD": 22
+    },
+    "annotated_in_us_sets": true
+   },
+   {
+    "ebird_code": "swathr",
+    "name": "Catharus ustulatus",
+    "fp_teacher": 422,
+    "fp_XS": 582,
+    "increase": 160,
+    "fp_XS_by_set": {
+     "HSN": 14,
+     "POW": 9,
+     "SNE": 129,
+     "SSW": 377,
+     "UHH": 26,
+     "WABAD": 27
+    },
+    "fp_teacher_by_set": {
+     "HSN": 8,
+     "POW": 9,
+     "SNE": 88,
+     "SSW": 281,
+     "UHH": 16,
+     "WABAD": 20
+    },
+    "annotated_windows_by_set": {
+     "POW": 28,
+     "SNE": 1,
+     "WABAD": 173
+    },
+    "annotated_in_us_sets": true
+   },
+   {
+    "ebird_code": "lesgol",
+    "name": "Spinus psaltria",
+    "fp_teacher": 399,
+    "fp_XS": 537,
+    "increase": 138,
+    "fp_XS_by_set": {
+     "HSN": 5,
+     "SNE": 3,
+     "SSW": 263,
+     "UHH": 259,
+     "WABAD": 7
+    },
+    "fp_teacher_by_set": {
+     "HSN": 2,
+     "SNE": 1,
+     "SSW": 136,
+     "UHH": 257,
+     "WABAD": 3
+    },
+    "annotated_windows_by_set": {},
+    "annotated_in_us_sets": false
+   },
+   {
+    "ebird_code": "barswa",
+    "name": "Hirundo rustica",
+    "fp_teacher": 187,
+    "fp_XS": 311,
+    "increase": 124,
+    "fp_XS_by_set": {
+     "HSN": 31,
+     "SNE": 2,
+     "SSW": 64,
+     "UHH": 172,
+     "WABAD": 42
+    },
+    "fp_teacher_by_set": {
+     "HSN": 11,
+     "SNE": 5,
+     "SSW": 36,
+     "UHH": 101,
+     "WABAD": 34
+    },
+    "annotated_windows_by_set": {
+     "WABAD": 25
+    },
+    "annotated_in_us_sets": false
+   },
+   {
+    "ebird_code": "houspa",
+    "name": "Passer domesticus",
+    "fp_teacher": 317,
+    "fp_XS": 426,
+    "increase": 109,
+    "fp_XS_by_set": {
+     "HSN": 80,
+     "SNE": 7,
+     "SSW": 37,
+     "UHH": 196,
+     "WABAD": 106
+    },
+    "fp_teacher_by_set": {
+     "HSN": 46,
+     "SNE": 11,
+     "SSW": 41,
+     "UHH": 150,
+     "WABAD": 69
+    },
+    "annotated_windows_by_set": {
+     "WABAD": 243
+    },
+    "annotated_in_us_sets": false
+   },
+   {
+    "ebird_code": "trogna2",
+    "name": "Polioptila bilineata",
+    "fp_teacher": 62,
+    "fp_XS": 162,
+    "increase": 100,
+    "fp_XS_by_set": {
+     "UHH": 158,
+     "WABAD": 4
+    },
+    "fp_teacher_by_set": {
+     "UHH": 61,
+     "WABAD": 1
+    },
+    "annotated_windows_by_set": {},
+    "annotated_in_us_sets": false
+   }
+  ]
+ },
+ "cr_sets": {
+  "HSN": {
+   "windows": 12000,
+   "listed_occurrences": 4551
+  },
+  "POW": {
+   "windows": 4560,
+   "listed_occurrences": 4947
+  },
+  "SNE": {
+   "windows": 23756,
+   "listed_occurrences": 7500
+  },
+  "SSW": {
+   "windows": 205200,
+   "listed_occurrences": 48787
+  },
+  "UHH": {
+   "windows": 36637,
+   "listed_occurrences": 297
+  },
+  "WABAD": {
+   "windows": 42291,
+   "listed_occurrences": 2950
+  }
+ }
+}

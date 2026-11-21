@@ -1,0 +1,46 @@
+{
+ "B": {
+  "field_cos_mean": 0.8684,
+  "field_cos_median": 0.8705,
+  "field_cos_p10": 0.8356,
+  "xretrieval_t2s_k1_mAP": 0.1915,
+  "xretrieval_t2s_k5_mAP": 0.1917,
+  "xretrieval_s2t_k1_mAP": 0.1865,
+  "xretrieval_s2t_k5_mAP": 0.191,
+  "xprobe_cmAP": 0.4653
+ },
+ "S": {
+  "field_cos_mean": 0.8606,
+  "field_cos_median": 0.864,
+  "field_cos_p10": 0.8246,
+  "xretrieval_t2s_k1_mAP": 0.1869,
+  "xretrieval_t2s_k5_mAP": 0.1883,
+  "xretrieval_s2t_k1_mAP": 0.1817,
+  "xretrieval_s2t_k5_mAP": 0.1861,
+  "xprobe_cmAP": 0.4592
+ },
+ "XS": {
+  "field_cos_mean": 0.8341,
+  "field_cos_median": 0.8377,
+  "field_cos_p10": 0.7907,
+  "xretrieval_t2s_k1_mAP": 0.1825,
+  "xretrieval_t2s_k5_mAP": 0.1848,
+  "xretrieval_s2t_k1_mAP": 0.1778,
+  "xretrieval_s2t_k5_mAP": 0.1815,
+  "xprobe_cmAP": 0.4277
+ },
+ "XS_int8pub": {
+  "field_cos_mean": 0.8267,
+  "field_cos_median": 0.8305,
+  "field_cos_p10": 0.7825,
+  "fp32_cos_mean": 0.9898,
+  "fp32_cos_p10": 0.9858,
+  "fp32_cos_min": 0.9466,
+  "xretrieval_t2s_k1_mAP": 0.1819,
+  "xretrieval_t2s_k5_mAP": 0.1845,
+  "xretrieval_s2t_k1_mAP": 0.1767,
+  "xretrieval_s2t_k5_mAP": 0.1804,
+  "xprobe_cmAP": 0.4215
+ },
+ "teacher_probe_cmAP": 0.4991
+}

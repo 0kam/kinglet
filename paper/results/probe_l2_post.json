@@ -1,0 +1,152 @@
+{
+ "watkins": {
+  "n_species_probe": 23,
+  "std": {
+   "cross_B": 0.5042,
+   "cross_S": 0.4968,
+   "cross_XS": 0.4474,
+   "own_B": 0.569,
+   "own_S": 0.5816,
+   "own_XS": 0.5626,
+   "own_teacher": 0.6132,
+   "ratio_cross_B": 0.822,
+   "ratio_cross_S": 0.81,
+   "ratio_cross_XS": 0.73,
+   "ratio_own_B": 0.928,
+   "ratio_own_S": 0.948,
+   "ratio_own_XS": 0.917
+  },
+  "l2": {
+   "cross_B": 0.6024,
+   "cross_S": 0.6141,
+   "cross_XS": 0.6003,
+   "own_B": 0.6122,
+   "own_S": 0.6072,
+   "own_XS": 0.5972,
+   "own_teacher": 0.6216,
+   "ratio_cross_B": 0.969,
+   "ratio_cross_S": 0.988,
+   "ratio_cross_XS": 0.966,
+   "ratio_own_B": 0.985,
+   "ratio_own_S": 0.977,
+   "ratio_own_XS": 0.961
+  }
+ },
+ "anuraset": {
+  "n_species_probe": 38,
+  "std": {
+   "cross_B": 0.6271,
+   "cross_S": 0.6297,
+   "cross_XS": 0.5927,
+   "own_B": 0.7535,
+   "own_S": 0.749,
+   "own_XS": 0.7417,
+   "own_teacher": 0.7718,
+   "ratio_cross_B": 0.813,
+   "ratio_cross_S": 0.816,
+   "ratio_cross_XS": 0.768,
+   "ratio_own_B": 0.976,
+   "ratio_own_S": 0.97,
+   "ratio_own_XS": 0.961
+  },
+  "l2": {
+   "cross_B": 0.7506,
+   "cross_S": 0.7662,
+   "cross_XS": 0.7319,
+   "own_B": 0.7517,
+   "own_S": 0.7669,
+   "own_XS": 0.7424,
+   "own_teacher": 0.7741,
+   "ratio_cross_B": 0.97,
+   "ratio_cross_S": 0.99,
+   "ratio_cross_XS": 0.945,
+   "ratio_own_B": 0.971,
+   "ratio_own_S": 0.991,
+   "ratio_own_XS": 0.959
+  }
+ },
+ "humbugdb": {
+  "n_species_probe": 12,
+  "std": {
+   "cross_B": 0.276,
+   "cross_S": 0.2602,
+   "cross_XS": 0.2286,
+   "own_B": 0.4455,
+   "own_S": 0.4497,
+   "own_XS": 0.4355,
+   "own_teacher": 0.4676,
+   "ratio_cross_B": 0.59,
+   "ratio_cross_S": 0.556,
+   "ratio_cross_XS": 0.489,
+   "ratio_own_B": 0.953,
+   "ratio_own_S": 0.962,
+   "ratio_own_XS": 0.931
+  },
+  "l2": {
+   "cross_B": 0.465,
+   "cross_S": 0.4624,
+   "cross_XS": 0.454,
+   "own_B": 0.4885,
+   "own_S": 0.4739,
+   "own_XS": 0.4725,
+   "own_teacher": 0.4891,
+   "ratio_cross_B": 0.951,
+   "ratio_cross_S": 0.945,
+   "ratio_cross_XS": 0.928,
+   "ratio_own_B": 0.999,
+   "ratio_own_S": 0.969,
+   "ratio_own_XS": 0.966
+  }
+ },
+ "reefset": {
+  "n_species_probe": 37,
+  "std": {
+   "cross_B": 0.2776,
+   "cross_S": 0.2837,
+   "cross_XS": 0.2472,
+   "own_B": 0.8193,
+   "own_S": 0.8072,
+   "own_XS": 0.7984,
+   "own_teacher": 0.8269,
+   "ratio_cross_B": 0.336,
+   "ratio_cross_S": 0.343,
+   "ratio_cross_XS": 0.299,
+   "ratio_own_B": 0.991,
+   "ratio_own_S": 0.976,
+   "ratio_own_XS": 0.966
+  },
+  "l2": {
+   "cross_B": 0.7277,
+   "cross_S": 0.6905,
+   "cross_XS": 0.6259,
+   "own_B": 0.7914,
+   "own_S": 0.7643,
+   "own_XS": 0.7363,
+   "own_teacher": 0.7982,
+   "ratio_cross_B": 0.912,
+   "ratio_cross_S": 0.865,
+   "ratio_cross_XS": 0.784,
+   "ratio_own_B": 0.991,
+   "ratio_own_S": 0.958,
+   "ratio_own_XS": 0.922
+  }
+ },
+ "wabad": {
+  "n_species_probe": 719,
+  "l2": {
+   "cross_B": 0.4815,
+   "cross_S": 0.4697,
+   "cross_XS": 0.4597,
+   "own_B": 0.4881,
+   "own_S": 0.4758,
+   "own_XS": 0.4634,
+   "own_teacher": 0.4815,
+   "ratio_cross_B": 1.0,
+   "ratio_cross_S": 0.975,
+   "ratio_cross_XS": 0.955,
+   "ratio_own_B": 1.014,
+   "ratio_own_S": 0.988,
+   "ratio_own_XS": 0.962
+  }
+ }
+}

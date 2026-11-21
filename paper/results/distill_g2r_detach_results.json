@@ -1,0 +1,22 @@
+{
+ "ckpt": "distill_root/g2xcl_v1/mobilenetv4_conv_small_detach/best.pt",
+ "epoch_val_cos": 0.8903287742644629,
+ "POW": {
+  "n_windows": 4560,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.40828473785412805,
+  "n_species": 48,
+  "auroc": 0.8632199548625995
+ },
+ "HSN": {
+  "n_windows": 12000,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.4770570971770058,
+  "n_species": 21,
+  "auroc": 0.8737546086139351
+ }
+}

@@ -1,0 +1,36 @@
+diff --git a/EPII_CM55M_APP_S/app/main.c b/EPII_CM55M_APP_S/app/main.c
+index 93098d8..1911626 100644
+--- a/EPII_CM55M_APP_S/app/main.c
++++ b/EPII_CM55M_APP_S/app/main.c
+@@ -308,6 +308,18 @@ int main(void)
+ }
+ #endif
+ 
++#ifdef BIRD_PDM
++#include "bird_pdm.h"
++
++/* main entry */
++int main(void)
++{
++	board_init();
++	bird_pdm_app();
++	return 0;
++}
++#endif
++
+ 
+ #ifdef TFLM_PEOPLENET
+ #include "tflm_peoplenet.h"
+diff --git a/EPII_CM55M_APP_S/makefile b/EPII_CM55M_APP_S/makefile
+index 25ca382..4597177 100644
+--- a/EPII_CM55M_APP_S/makefile
++++ b/EPII_CM55M_APP_S/makefile
+@@ -155,7 +155,7 @@ CUSTOMER ?= seeed
+ # tflm_mb_cls
+ # torch_mb_cls
+ ##
+-APP_TYPE = allon_sensor_tflm
++APP_TYPE = bird_pdm
+  
+ ### Options above must be added before include options.mk ###
+ override EPII_ROOT := $(strip $(subst \,/,$(EPII_ROOT)))

@@ -1,0 +1,326 @@
+{
+ "kit": "speedkit_v2",
+ "label": "Ryzen AI 7 PRO 350, t8",
+ "note": "AC, best performance; fan intake unobstructed; Windows Update paused; t8 only, started after 15 min cool-down",
+ "machine": {
+  "cpu": "AMD Ryzen AI 7 PRO 350 w/ Radeon 860M",
+  "arch": "AMD64",
+  "physical_cores": 8,
+  "logical_cpus": 16,
+  "memory_gib": 23.6,
+  "os": "Windows-10-10.0.26200-SP0",
+  "python": "3.10.22",
+  "packages": {
+   "tensorflow": "2.21.0",
+   "ai-edge-litert": "2.3.0",
+   "onnxruntime": "1.23.2",
+   "numpy": "2.2.6",
+   "scipy": "1.15.3",
+   "kinglet": "0.3.2",
+   "kagglehub": "1.0.0",
+   "psutil": "7.1.3",
+   "imageio-ffmpeg": "0.6.0"
+  },
+  "date": "2026-11-18T17:27:29+09:00",
+  "ffmpeg": {
+   "source": "imageio-ffmpeg",
+   "version": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFm"
+  },
+  "power": {
+   "battery": {
+    "percent": 99,
+    "plugged_in": true
+   },
+   "scheme": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)"
+  },
+  "load_before": 1.3
+ },
+ "model_files": {
+  "BirdNET+_V3.0_Global_12K_FP32.onnx": "ok",
+  "BirdNET_v2.4_audio-model-fp32.tflite": "ok",
+  "kinglet-b-v0.3.2.onnx": "ok",
+  "kinglet-b-v0.3.2.pack-jp.npz": "ok",
+  "kinglet-s-v0.3.2.onnx": "ok",
+  "kinglet-s-v0.3.2.pack-jp.npz": "ok",
+  "kinglet-xs-v0.3.2.onnx": "ok",
+  "kinglet-xs-v0.3.2.pack-jp.npz": "ok",
+  "kinglet-b-v0.3.3.power.onnx": "ok",
+  "kinglet-s-v0.3.3.power.onnx": "ok",
+  "kinglet-xs-v0.3.3.power.onnx": "ok",
+  "kinglet-b-v0.3.2.headpack.npz": "ok",
+  "kinglet-s-v0.3.2.headpack.npz": "ok",
+  "kinglet-xs-v0.3.2.headpack.npz": "ok",
+  "perch": {
+   "saved_model.pb": "ok",
+   "variables/variables.index": "ok"
+  }
+ },
+ "reps": 5,
+ "audio_s": 600.0,
+ "decode": {
+  "xrt": 1706.6161811716481,
+  "wall_s_per_run": 0.352,
+  "xrt_runs": [
+   1662.9,
+   1702.7,
+   1723.1,
+   1722.5,
+   1706.6
+  ],
+  "cpu_s_per_wall_s": 0.65
+ },
+ "runs": [
+  {
+   "model": "perch",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 32.10200991486887,
+   "wall_s_per_run": 18.69,
+   "xrt_runs": [
+    32.1,
+    31.9,
+    32.5,
+    32.1,
+    32.1
+   ],
+   "cpu_s_per_wall_s": 6.74,
+   "segment_s": 5.0,
+   "batch": 8,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "birdnet_v3",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 59.17188182155393,
+   "wall_s_per_run": 10.14,
+   "xrt_runs": [
+    58.7,
+    59.2,
+    59.3,
+    58.8,
+    59.3
+   ],
+   "cpu_s_per_wall_s": 5.42,
+   "segment_s": 3.0,
+   "batch": 16,
+   "passes_per_10min": 200
+  },
+  {
+   "model": "birdnet_v24",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 131.59965411223274,
+   "wall_s_per_run": 4.559,
+   "xrt_runs": [
+    131.9,
+    131.6,
+    132.0,
+    130.6,
+    130.6
+   ],
+   "cpu_s_per_wall_s": 2.3,
+   "segment_s": 3.0,
+   "batch": 48,
+   "passes_per_10min": 200
+  },
+  {
+   "model": "kinglet_b",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 243.66961567819467,
+   "wall_s_per_run": 2.462,
+   "xrt_runs": [
+    242.2,
+    241.9,
+    244.2,
+    243.7,
+    244.6
+   ],
+   "cpu_s_per_wall_s": 5.58,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_s",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 452.45777324730767,
+   "wall_s_per_run": 1.326,
+   "xrt_runs": [
+    449.7,
+    458.3,
+    452.5,
+    453.0,
+    437.1
+   ],
+   "cpu_s_per_wall_s": 3.53,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_xs",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 564.8373499076365,
+   "wall_s_per_run": 1.062,
+   "xrt_runs": [
+    560.5,
+    569.6,
+    559.8,
+    564.8,
+    568.1
+   ],
+   "cpu_s_per_wall_s": 2.51,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "birdnet_v3_5s",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 58.64583024628145,
+   "wall_s_per_run": 10.231,
+   "xrt_runs": [
+    58.8,
+    58.6,
+    58.6,
+    58.7,
+    58.6
+   ],
+   "cpu_s_per_wall_s": 5.29,
+   "segment_s": 5.0,
+   "batch": 32,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "birdnet_v24_overlap",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 75.78333826513845,
+   "wall_s_per_run": 7.917,
+   "xrt_runs": [
+    75.7,
+    75.8,
+    76.0,
+    74.1,
+    75.8
+   ],
+   "cpu_s_per_wall_s": 2.36,
+   "segment_s": 5.0,
+   "batch": 16,
+   "passes_per_10min": 360
+  },
+  {
+   "model": "kinglet_b_convdft",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 247.61947918429433,
+   "wall_s_per_run": 2.423,
+   "xrt_runs": [
+    248.8,
+    243.4,
+    247.9,
+    247.0,
+    247.6
+   ],
+   "cpu_s_per_wall_s": 6.91,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_s_convdft",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 465.080550788483,
+   "wall_s_per_run": 1.29,
+   "xrt_runs": [
+    465.6,
+    460.0,
+    462.4,
+    472.7,
+    465.1
+   ],
+   "cpu_s_per_wall_s": 6.03,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_xs_convdft",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 592.3203884671931,
+   "wall_s_per_run": 1.013,
+   "xrt_runs": [
+    592.4,
+    592.3,
+    588.8,
+    597.5,
+    583.8
+   ],
+   "cpu_s_per_wall_s": 5.54,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_b_pack",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 245.61070138917884,
+   "wall_s_per_run": 2.443,
+   "xrt_runs": [
+    245.6,
+    245.4,
+    246.3,
+    245.6,
+    245.8
+   ],
+   "cpu_s_per_wall_s": 5.56,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_s_pack",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 457.40590474473515,
+   "wall_s_per_run": 1.312,
+   "xrt_runs": [
+    451.8,
+    461.7,
+    463.1,
+    455.6,
+    457.4
+   ],
+   "cpu_s_per_wall_s": 3.52,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_xs_pack",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 580.2134450544559,
+   "wall_s_per_run": 1.034,
+   "xrt_runs": [
+    580.2,
+    580.5,
+    576.3,
+    578.6,
+    582.0
+   ],
+   "cpu_s_per_wall_s": 2.42,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  }
+ ]
+}

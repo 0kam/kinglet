@@ -1,0 +1,32 @@
+{
+ "wabad": {
+  "n_species_probe": 719,
+  "mean_l2_norm": {
+   "teacher": 3.9722,
+   "B": 42.1631,
+   "S": 38.4968,
+   "XS": 47.2543
+  },
+  "rawscaled": {
+   "cross_B": 0.5112,
+   "cross_S": 0.5008,
+   "cross_XS": 0.4824,
+   "own_B": 0.5278,
+   "own_S": 0.5157,
+   "own_XS": 0.5023,
+   "own_teacher": 0.5222,
+   "ratio_cross_B": 0.979,
+   "ratio_cross_S": 0.959,
+   "ratio_cross_XS": 0.924,
+   "ratio_own_B": 1.011,
+   "ratio_own_S": 0.988,
+   "ratio_own_XS": 0.962,
+   "fits_at_max_iter": {
+    "teacher": 0,
+    "B": 0,
+    "S": 0,
+    "XS": 0
+   }
+  }
+ }
+}

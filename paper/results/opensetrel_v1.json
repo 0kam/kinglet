@@ -1,0 +1,167 @@
+{
+ "b": {
+  "sne": {
+   "goldcr1_fp_windows": 179,
+   "of_them_gockin": 168,
+   "share": 0.9385,
+   "gockin_base_rate": 0.1606,
+   "goldcr1_fp_rate": 0.0075
+  },
+  "pooled_fp": 10409,
+  "species_with_fp": 148,
+  "top5_share": 0.2913,
+  "top10_share": 0.4355,
+  "top10": [
+   [
+    "eursis",
+    904
+   ],
+   [
+    "redcro",
+    655
+   ],
+   [
+    "eursta",
+    643
+   ],
+   [
+    "brambl",
+    418
+   ],
+   [
+    "eurbul",
+    412
+   ],
+   [
+    "goldcr1",
+    335
+   ],
+   [
+    "skylar",
+    319
+   ],
+   [
+    "comcuc",
+    301
+   ],
+   [
+    "grswoo",
+    276
+   ],
+   [
+    "norlap",
+    270
+   ]
+  ]
+ },
+ "s": {
+  "sne": {
+   "goldcr1_fp_windows": 690,
+   "of_them_gockin": 666,
+   "share": 0.9652,
+   "gockin_base_rate": 0.1606,
+   "goldcr1_fp_rate": 0.029
+  },
+  "pooled_fp": 10426,
+  "species_with_fp": 152,
+  "top5_share": 0.3023,
+  "top10_share": 0.4499,
+  "top10": [
+   [
+    "goldcr1",
+    859
+   ],
+   [
+    "eursis",
+    818
+   ],
+   [
+    "eursta",
+    592
+   ],
+   [
+    "redcro",
+    493
+   ],
+   [
+    "norlap",
+    390
+   ],
+   [
+    "brambl",
+    346
+   ],
+   [
+    "eurbul",
+    343
+   ],
+   [
+    "wiltit1",
+    289
+   ],
+   [
+    "grswoo",
+    281
+   ],
+   [
+    "skylar",
+    280
+   ]
+  ]
+ },
+ "xs": {
+  "sne": {
+   "goldcr1_fp_windows": 367,
+   "of_them_gockin": 358,
+   "share": 0.9755,
+   "gockin_base_rate": 0.1606,
+   "goldcr1_fp_rate": 0.0154
+  },
+  "pooled_fp": 7971,
+  "species_with_fp": 145,
+  "top5_share": 0.2755,
+  "top10_share": 0.4218,
+  "top10": [
+   [
+    "eursta",
+    571
+   ],
+   [
+    "goldcr1",
+    496
+   ],
+   [
+    "eursis",
+    423
+   ],
+   [
+    "redcro",
+    387
+   ],
+   [
+    "skylar",
+    319
+   ],
+   [
+    "norlap",
+    300
+   ],
+   [
+    "eurbul",
+    235
+   ],
+   [
+    "grswoo",
+    227
+   ],
+   [
+    "brambl",
+    221
+   ],
+   [
+    "eurjay1",
+    183
+   ]
+  ]
+ }
+}

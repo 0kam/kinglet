@@ -1,0 +1,2347 @@
+{
+ "machine": "desktop",
+ "gpu": "NVIDIA GeForce RTX 5090, 595.99.02, 32607 MiB",
+ "cpu": "AMD Ryzen 9 9950X3D 16-Core Processor",
+ "python": "3.12.3",
+ "wav": "bench.wav",
+ "resident_windows": 512,
+ "batches": [
+  1,
+  16,
+  64,
+  256
+ ],
+ "e2e_batch": {
+  "perch": 128,
+  "kinglet": 32
+ },
+ "reps": 5,
+ "max_min_ratio": 1.2,
+ "perch": {
+  "versions": {
+   "tensorflow": "2.20.0",
+   "tf_cuda_build": "12.5.1",
+   "tf_cudnn_build": "9",
+   "tf32_enabled": true
+  },
+  "model": "Perch 2.0 GPU SavedModel perch_v2/2 (fp32)",
+  "model_only": {
+   "1": {
+    "windows_per_s": 445.9,
+    "rtf": 2229.4,
+    "n_windows_per_rep": 2048,
+    "rep_walls_s": [
+     4.5911,
+     4.5906,
+     4.5932,
+     4.5937,
+     4.5939
+    ],
+    "max_min_ratio": 1.001,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      8.61,
+      9.29,
+      8.94
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      8.79,
+      9.28,
+      8.95
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "finite": true,
+    "peak_mem_mb": 1069
+   },
+   "16": {
+    "windows_per_s": 2266.4,
+    "rtf": 11332.1,
+    "n_windows_per_rep": 2048,
+    "rep_walls_s": [
+     0.7636,
+     0.8099,
+     0.9044,
+     0.9036,
+     0.9037
+    ],
+    "max_min_ratio": 1.184,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      11.25,
+      9.81,
+      9.13
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      11.07,
+      9.8,
+      9.12
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "finite": true,
+    "peak_mem_mb": 1389
+   },
+   "64": {
+    "windows_per_s": 2917.2,
+    "rtf": 14586.1,
+    "n_windows_per_rep": 2048,
+    "rep_walls_s": [
+     0.6887,
+     0.7013,
+     0.7057,
+     0.702,
+     0.7025
+    ],
+    "max_min_ratio": 1.025,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      13.04,
+      10.28,
+      9.29
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      12.87,
+      10.29,
+      9.3
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "finite": true,
+    "peak_mem_mb": 2389
+   },
+   "256": {
+    "windows_per_s": 2794.8,
+    "rtf": 13974.0,
+    "n_windows_per_rep": 2048,
+    "rep_walls_s": [
+     0.7164,
+     0.7307,
+     0.7328,
+     0.7336,
+     0.7341
+    ],
+    "max_min_ratio": 1.025,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      11.85,
+      10.22,
+      9.3
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      11.85,
+      10.22,
+      9.3
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "finite": true,
+    "peak_mem_mb": 6197
+   }
+  },
+  "end_to_end": {
+   "windows_per_s": 614.6,
+   "rtf": 3072.8,
+   "n_windows_per_rep": 120,
+   "rep_walls_s": [
+    0.1938,
+    0.2011,
+    0.1953,
+    0.1915,
+    0.1971
+   ],
+   "max_min_ratio": 1.05,
+   "spread_ok": true,
+   "attempts": 1,
+   "host_before": {
+    "loadavg": [
+     13.66,
+     10.74,
+     9.48
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   },
+   "host_after": {
+    "loadavg": [
+     13.66,
+     10.74,
+     9.48
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   },
+   "batch": 128,
+   "audio_s": 600.0
+  },
+  "decode_only": {
+   "windows_per_s": 1045.0,
+   "rtf": 5225.2,
+   "n_windows_per_rep": 120,
+   "rep_walls_s": [
+    0.1153,
+    0.1145,
+    0.1148,
+    0.1152,
+    0.1106
+   ],
+   "max_min_ratio": 1.043,
+   "spread_ok": true,
+   "attempts": 1,
+   "host_before": {
+    "loadavg": [
+     8.45,
+     9.28,
+     8.94
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   },
+   "host_after": {
+    "loadavg": [
+     8.45,
+     9.28,
+     8.94
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   }
+  },
+  "date": "2026-11-16 13:14",
+  "elapsed_s": 98
+ },
+ "kinglet": {
+  "versions": {
+   "torch": "2.10.0+cu128",
+   "torch_cuda": "12.8",
+   "cudnn": 92400,
+   "onnxruntime": "1.31.0",
+   "cudnn_allow_tf32": true,
+   "matmul_allow_tf32": false,
+   "cudnn_benchmark": false
+  },
+  "B": {
+   "ckpt": "distill_root/g3conf_v1/regnety_016_full/best.pt",
+   "params_m": 24.83,
+   "cos_vs_onnx_cpu": [
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999998,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999998
+   ],
+   "cos_ok": true,
+   "softmax_rowsum_max_dev": 5.960464477539063e-08,
+   "model_only": {
+    "1": {
+     "windows_per_s": 148.6,
+     "rtf": 743.1,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      11.8287,
+      13.78,
+      13.813,
+      13.8221,
+      13.7658
+     ],
+     "max_min_ratio": 1.169,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       13.28,
+       10.71,
+       9.48
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       10.33,
+       10.35,
+       9.44
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 428,
+     "peak_reserved_mb": 538
+    },
+    "16": {
+     "windows_per_s": 2612.5,
+     "rtf": 13062.6,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.7879,
+      0.7848,
+      0.7839,
+      0.7811,
+      0.7826
+     ],
+     "max_min_ratio": 1.009,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       10.33,
+       10.35,
+       9.44
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       10.33,
+       10.35,
+       9.44
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 550,
+     "peak_reserved_mb": 730
+    },
+    "64": {
+     "windows_per_s": 4717.9,
+     "rtf": 23589.3,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.433,
+      0.4326,
+      0.4341,
+      0.4356,
+      0.4361
+     ],
+     "max_min_ratio": 1.008,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       10.33,
+       10.35,
+       9.44
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       10.22,
+       10.33,
+       9.44
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 940,
+     "peak_reserved_mb": 1488
+    },
+    "256": {
+     "windows_per_s": 3697.7,
+     "rtf": 18488.4,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.554,
+      0.5534,
+      0.5539,
+      0.5539,
+      0.5536
+     ],
+     "max_min_ratio": 1.001,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       10.22,
+       10.33,
+       9.44
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       10.22,
+       10.33,
+       9.44
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 2506,
+     "peak_reserved_mb": 4502
+    }
+   },
+   "end_to_end": {
+    "windows_per_s": 777.5,
+    "rtf": 3887.3,
+    "n_windows_per_rep": 120,
+    "rep_walls_s": [
+     0.1543,
+     0.1596,
+     0.1547,
+     0.1512,
+     0.1526
+    ],
+    "max_min_ratio": 1.056,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      10.12,
+      10.31,
+      9.44
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      10.12,
+      10.31,
+      9.44
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "batch": 32,
+    "audio_s": 600.0
+   }
+  },
+  "S": {
+   "ckpt": "distill_root/g3conf_v1/efficientnet_lite0_full/best.pt",
+   "params_m": 24.29,
+   "cos_vs_onnx_cpu": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "cos_ok": true,
+   "softmax_rowsum_max_dev": 1.1920928955078125e-07,
+   "model_only": {
+    "1": {
+     "windows_per_s": 848.9,
+     "rtf": 4244.4,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      2.4301,
+      2.4095,
+      2.3999,
+      2.4126,
+      2.423
+     ],
+     "max_min_ratio": 1.013,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       10.12,
+       10.31,
+       9.44
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.95,
+       10.26,
+       9.43
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 431,
+     "peak_reserved_mb": 586
+    },
+    "16": {
+     "windows_per_s": 8321.9,
+     "rtf": 41609.7,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.246,
+      0.2461,
+      0.2461,
+      0.2463,
+      0.2472
+     ],
+     "max_min_ratio": 1.005,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.95,
+       10.26,
+       9.43
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.95,
+       10.26,
+       9.43
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 655,
+     "peak_reserved_mb": 810
+    },
+    "64": {
+     "windows_per_s": 7000.0,
+     "rtf": 35000.0,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.2926,
+      0.2926,
+      0.2926,
+      0.2926,
+      0.2926
+     ],
+     "max_min_ratio": 1.0,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.95,
+       10.26,
+       9.43
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.88,
+       10.24,
+       9.43
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 1377,
+     "peak_reserved_mb": 1944
+    },
+    "256": {
+     "windows_per_s": 6141.1,
+     "rtf": 30705.3,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.3339,
+      0.3335,
+      0.3334,
+      0.3335,
+      0.3335
+     ],
+     "max_min_ratio": 1.001,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.88,
+       10.24,
+       9.43
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.88,
+       10.24,
+       9.43
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 4259,
+     "peak_reserved_mb": 6462
+    }
+   },
+   "end_to_end": {
+    "windows_per_s": 848.9,
+    "rtf": 4244.7,
+    "n_windows_per_rep": 120,
+    "rep_walls_s": [
+     0.1319,
+     0.1416,
+     0.1414,
+     0.1414,
+     0.1393
+    ],
+    "max_min_ratio": 1.073,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      9.88,
+      10.24,
+      9.43
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      9.88,
+      10.24,
+      9.43
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "batch": 32,
+    "audio_s": 600.0
+   }
+  },
+  "XS": {
+   "ckpt": "distill_root/g2xcl_v1/mobilenetv4_conv_small_full/best.pt",
+   "params_m": 23.41,
+   "cos_vs_onnx_cpu": [
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999
+   ],
+   "cos_ok": true,
+   "softmax_rowsum_max_dev": 1.1920928955078125e-07,
+   "model_only": {
+    "1": {
+     "windows_per_s": 844.3,
+     "rtf": 4221.3,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      2.4436,
+      2.4216,
+      2.4286,
+      2.4258,
+      2.4242
+     ],
+     "max_min_ratio": 1.009,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.88,
+       10.24,
+       9.43
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.68,
+       10.18,
+       9.42
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 418,
+     "peak_reserved_mb": 484
+    },
+    "16": {
+     "windows_per_s": 14203.4,
+     "rtf": 71016.8,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.1464,
+      0.1442,
+      0.1442,
+      0.1441,
+      0.144
+     ],
+     "max_min_ratio": 1.017,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.68,
+       10.18,
+       9.42
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.68,
+       10.18,
+       9.42
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 518,
+     "peak_reserved_mb": 580
+    },
+    "64": {
+     "windows_per_s": 20557.3,
+     "rtf": 102786.3,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.0996,
+      0.0996,
+      0.0996,
+      0.0996,
+      0.0996
+     ],
+     "max_min_ratio": 1.0,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.68,
+       10.18,
+       9.42
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.68,
+       10.18,
+       9.42
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 833,
+     "peak_reserved_mb": 998
+    },
+    "256": {
+     "windows_per_s": 18099.0,
+     "rtf": 90495.1,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.1132,
+      0.1132,
+      0.1132,
+      0.1131,
+      0.1131
+     ],
+     "max_min_ratio": 1.001,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.68,
+       10.18,
+       9.42
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.68,
+       10.18,
+       9.42
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 2091,
+     "peak_reserved_mb": 2662
+    }
+   },
+   "end_to_end": {
+    "windows_per_s": 885.5,
+    "rtf": 4427.5,
+    "n_windows_per_rep": 120,
+    "rep_walls_s": [
+     0.1439,
+     0.1259,
+     0.1355,
+     0.141,
+     0.1337
+    ],
+    "max_min_ratio": 1.143,
+    "spread_ok": true,
+    "attempts": 2,
+    "host_before": {
+     "loadavg": [
+      9.68,
+      10.18,
+      9.42
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      9.68,
+      10.18,
+      9.42
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "batch": 32,
+    "audio_s": 600.0
+   }
+  },
+  "decode_only": {
+   "windows_per_s": 980.0,
+   "rtf": 4899.9,
+   "n_windows_per_rep": 120,
+   "rep_walls_s": [
+    0.1105,
+    0.1225,
+    0.1187,
+    0.1316,
+    0.1313
+   ],
+   "max_min_ratio": 1.191,
+   "spread_ok": true,
+   "attempts": 1,
+   "host_before": {
+    "loadavg": [
+     13.28,
+     10.71,
+     9.48
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   },
+   "host_after": {
+    "loadavg": [
+     13.28,
+     10.71,
+     9.48
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   }
+  },
+  "date": "2026-11-16 13:16",
+  "elapsed_s": 114
+ },
+ "kinglet_channels_last": {
+  "versions": {
+   "torch": "2.10.0+cu128",
+   "torch_cuda": "12.8",
+   "cudnn": 92400,
+   "onnxruntime": "1.31.0",
+   "cudnn_allow_tf32": true,
+   "matmul_allow_tf32": false,
+   "cudnn_benchmark": false
+  },
+  "B": {
+   "ckpt": "distill_root/g3conf_v1/regnety_016_full/best.pt",
+   "params_m": 24.83,
+   "cos_vs_onnx_cpu": [
+    0.999997,
+    0.999999,
+    0.999998,
+    0.999999,
+    0.999996,
+    0.999998,
+    0.999998,
+    0.999997
+   ],
+   "cos_ok": true,
+   "softmax_rowsum_max_dev": 1.1920928955078125e-07,
+   "model_only": {
+    "1": {
+     "windows_per_s": 144.2,
+     "rtf": 720.9,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      13.9528,
+      14.2045,
+      14.2524,
+      12.3046,
+      14.3404
+     ],
+     "max_min_ratio": 1.165,
+     "spread_ok": true,
+     "attempts": 3,
+     "host_before": {
+      "loadavg": [
+       9.06,
+       9.73,
+       9.35
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.06,
+       9.59,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 428,
+     "peak_reserved_mb": 538
+    },
+    "16": {
+     "windows_per_s": 2669.5,
+     "rtf": 13347.4,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.7653,
+      0.7672,
+      0.7642,
+      0.7781,
+      0.8772
+     ],
+     "max_min_ratio": 1.148,
+     "spread_ok": true,
+     "attempts": 2,
+     "host_before": {
+      "loadavg": [
+       9.05,
+       9.58,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.05,
+       9.58,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 551,
+     "peak_reserved_mb": 730
+    },
+    "64": {
+     "windows_per_s": 4510.4,
+     "rtf": 22552.2,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.4446,
+      0.4531,
+      0.4541,
+      0.4541,
+      0.4541
+     ],
+     "max_min_ratio": 1.021,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.05,
+       9.58,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.05,
+       9.57,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 941,
+     "peak_reserved_mb": 1488
+    },
+    "256": {
+     "windows_per_s": 3636.2,
+     "rtf": 18180.8,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.5604,
+      0.563,
+      0.5635,
+      0.5636,
+      0.5632
+     ],
+     "max_min_ratio": 1.006,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.05,
+       9.57,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.05,
+       9.57,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 2508,
+     "peak_reserved_mb": 4502
+    }
+   },
+   "end_to_end": {
+    "windows_per_s": 777.7,
+    "rtf": 3888.6,
+    "n_windows_per_rep": 120,
+    "rep_walls_s": [
+     0.1543,
+     0.1518,
+     0.1555,
+     0.1543,
+     0.1465
+    ],
+    "max_min_ratio": 1.062,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      9.13,
+      9.58,
+      9.33
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      9.13,
+      9.58,
+      9.33
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "batch": 32,
+    "audio_s": 600.0
+   }
+  },
+  "S": {
+   "ckpt": "distill_root/g3conf_v1/efficientnet_lite0_full/best.pt",
+   "params_m": 24.29,
+   "cos_vs_onnx_cpu": [
+    0.999998,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999997,
+    0.999999,
+    0.999999,
+    0.999999
+   ],
+   "cos_ok": true,
+   "softmax_rowsum_max_dev": 1.1920928955078125e-07,
+   "model_only": {
+    "1": {
+     "windows_per_s": 825.2,
+     "rtf": 4125.8,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      2.4837,
+      2.4769,
+      2.4819,
+      2.4538,
+      2.4831
+     ],
+     "max_min_ratio": 1.012,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.13,
+       9.58,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.11,
+       9.56,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 432,
+     "peak_reserved_mb": 586
+    },
+    "16": {
+     "windows_per_s": 8600.8,
+     "rtf": 43003.8,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.2345,
+      0.2352,
+      0.2381,
+      0.2391,
+      0.2393
+     ],
+     "max_min_ratio": 1.02,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.11,
+       9.56,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.11,
+       9.56,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 656,
+     "peak_reserved_mb": 810
+    },
+    "64": {
+     "windows_per_s": 7433.3,
+     "rtf": 37166.6,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.272,
+      0.2743,
+      0.2755,
+      0.2758,
+      0.2758
+     ],
+     "max_min_ratio": 1.014,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.1,
+       9.55,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.1,
+       9.55,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 1377,
+     "peak_reserved_mb": 1944
+    },
+    "256": {
+     "windows_per_s": 6358.6,
+     "rtf": 31793.1,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.3221,
+      0.3219,
+      0.3221,
+      0.3221,
+      0.3221
+     ],
+     "max_min_ratio": 1.001,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.1,
+       9.55,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.1,
+       9.55,
+       9.33
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 4259,
+     "peak_reserved_mb": 6462
+    }
+   },
+   "end_to_end": {
+    "windows_per_s": 882.5,
+    "rtf": 4412.7,
+    "n_windows_per_rep": 120,
+    "rep_walls_s": [
+     0.1316,
+     0.1372,
+     0.136,
+     0.1359,
+     0.1373
+    ],
+    "max_min_ratio": 1.043,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      9.1,
+      9.55,
+      9.33
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      9.1,
+      9.55,
+      9.33
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "batch": 32,
+    "audio_s": 600.0
+   }
+  },
+  "XS": {
+   "ckpt": "distill_root/g2xcl_v1/mobilenetv4_conv_small_full/best.pt",
+   "params_m": 23.41,
+   "cos_vs_onnx_cpu": [
+    0.999996,
+    0.999995,
+    0.999995,
+    0.999996,
+    0.999994,
+    0.999995,
+    0.999993,
+    0.999996
+   ],
+   "cos_ok": true,
+   "softmax_rowsum_max_dev": 1.1920928955078125e-07,
+   "model_only": {
+    "1": {
+     "windows_per_s": 830.7,
+     "rtf": 4153.5,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      2.4632,
+      2.463,
+      2.4811,
+      2.4748,
+      2.4654
+     ],
+     "max_min_ratio": 1.007,
+     "spread_ok": true,
+     "attempts": 3,
+     "host_before": {
+      "loadavg": [
+       9.12,
+       9.5,
+       9.32
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.1,
+       9.49,
+       9.32
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 418,
+     "peak_reserved_mb": 484
+    },
+    "16": {
+     "windows_per_s": 13732.8,
+     "rtf": 68664.0,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.1501,
+      0.1491,
+      0.1494,
+      0.1491,
+      0.1491
+     ],
+     "max_min_ratio": 1.007,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.1,
+       9.49,
+       9.32
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.1,
+       9.49,
+       9.32
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 518,
+     "peak_reserved_mb": 580
+    },
+    "64": {
+     "windows_per_s": 20572.1,
+     "rtf": 102860.3,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.0995,
+      0.0995,
+      0.0996,
+      0.0998,
+      0.1005
+     ],
+     "max_min_ratio": 1.01,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.1,
+       9.49,
+       9.32
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.1,
+       9.49,
+       9.32
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 833,
+     "peak_reserved_mb": 998
+    },
+    "256": {
+     "windows_per_s": 18194.0,
+     "rtf": 90970.0,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.1118,
+      0.1119,
+      0.1126,
+      0.1132,
+      0.1137
+     ],
+     "max_min_ratio": 1.016,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.1,
+       9.49,
+       9.32
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.1,
+       9.49,
+       9.32
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 2091,
+     "peak_reserved_mb": 2662
+    }
+   },
+   "end_to_end": {
+    "windows_per_s": 910.9,
+    "rtf": 4554.5,
+    "n_windows_per_rep": 120,
+    "rep_walls_s": [
+     0.1339,
+     0.13,
+     0.1317,
+     0.1349,
+     0.1239
+    ],
+    "max_min_ratio": 1.089,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      9.09,
+      9.48,
+      9.31
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      9.09,
+      9.48,
+      9.31
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "batch": 32,
+    "audio_s": 600.0
+   }
+  },
+  "decode_only": {
+   "windows_per_s": 1023.8,
+   "rtf": 5119.0,
+   "n_windows_per_rep": 120,
+   "rep_walls_s": [
+    0.1087,
+    0.1172,
+    0.11,
+    0.1196,
+    0.1177
+   ],
+   "max_min_ratio": 1.1,
+   "spread_ok": true,
+   "attempts": 1,
+   "host_before": {
+    "loadavg": [
+     9.63,
+     10.16,
+     9.42
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   },
+   "host_after": {
+    "loadavg": [
+     9.63,
+     10.16,
+     9.42
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   }
+  },
+  "date": "2026-11-16 13:20",
+  "elapsed_s": 285
+ },
+ "kinglet_compile": {
+  "versions": {
+   "torch": "2.10.0+cu128",
+   "torch_cuda": "12.8",
+   "cudnn": 92400,
+   "onnxruntime": "1.31.0",
+   "cudnn_allow_tf32": true,
+   "matmul_allow_tf32": false,
+   "cudnn_benchmark": false
+  },
+  "B": {
+   "ckpt": "distill_root/g3conf_v1/regnety_016_full/best.pt",
+   "params_m": 24.83,
+   "cos_vs_onnx_cpu": [
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999998,
+    0.999999,
+    0.999999,
+    0.999998,
+    0.999998
+   ],
+   "cos_ok": true,
+   "softmax_rowsum_max_dev": 1.1920928955078125e-07,
+   "model_only": {
+    "1": {
+     "windows_per_s": 169.4,
+     "rtf": 847.1,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      11.9137,
+      11.9134,
+      12.0878,
+      12.1022,
+      12.1653
+     ],
+     "max_min_ratio": 1.021,
+     "spread_ok": true,
+     "attempts": 2,
+     "host_before": {
+      "loadavg": [
+       9.25,
+       9.47,
+       9.32
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.21,
+       9.42,
+       9.32
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 428,
+     "peak_reserved_mb": 724
+    },
+    "16": {
+     "windows_per_s": 3246.0,
+     "rtf": 16229.8,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.6304,
+      0.6309,
+      0.6311,
+      0.6311,
+      0.6309
+     ],
+     "max_min_ratio": 1.001,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.18,
+       9.41,
+       9.31
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.16,
+       9.4,
+       9.31
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 520,
+     "peak_reserved_mb": 726
+    },
+    "64": {
+     "windows_per_s": 5719.1,
+     "rtf": 28595.6,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.3528,
+      0.3552,
+      0.3581,
+      0.3588,
+      0.359
+     ],
+     "max_min_ratio": 1.018,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.14,
+       9.39,
+       9.31
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.14,
+       9.39,
+       9.31
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 806,
+     "peak_reserved_mb": 1294
+    },
+    "256": {
+     "windows_per_s": 4917.3,
+     "rtf": 24586.3,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.4119,
+      0.4136,
+      0.4165,
+      0.4168,
+      0.4169
+     ],
+     "max_min_ratio": 1.012,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.12,
+       9.38,
+       9.3
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.11,
+       9.37,
+       9.3
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 1949,
+     "peak_reserved_mb": 3554
+    }
+   },
+   "end_to_end": {
+    "windows_per_s": 814.6,
+    "rtf": 4073.2,
+    "n_windows_per_rep": 120,
+    "rep_walls_s": [
+     0.1473,
+     0.1441,
+     0.1479,
+     0.1486,
+     0.1414
+    ],
+    "max_min_ratio": 1.051,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      9.16,
+      9.36,
+      9.3
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      9.16,
+      9.36,
+      9.3
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "batch": 32,
+    "audio_s": 600.0
+   }
+  },
+  "S": {
+   "ckpt": "distill_root/g3conf_v1/efficientnet_lite0_full/best.pt",
+   "params_m": 24.29,
+   "cos_vs_onnx_cpu": [
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999998,
+    0.999999,
+    0.999999,
+    0.999999
+   ],
+   "cos_ok": true,
+   "softmax_rowsum_max_dev": 1.1920928955078125e-07,
+   "model_only": {
+    "1": {
+     "windows_per_s": 325.6,
+     "rtf": 1628.1,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      6.224,
+      6.2808,
+      6.2895,
+      6.3014,
+      6.3837
+     ],
+     "max_min_ratio": 1.026,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.21,
+       9.37,
+       9.3
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.13,
+       9.33,
+       9.29
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 431,
+     "peak_reserved_mb": 732
+    },
+    "16": {
+     "windows_per_s": 8216.1,
+     "rtf": 41080.3,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.2564,
+      0.2489,
+      0.2493,
+      0.2492,
+      0.2494
+     ],
+     "max_min_ratio": 1.03,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.13,
+       9.33,
+       9.29
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.13,
+       9.33,
+       9.29
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 659,
+     "peak_reserved_mb": 828
+    },
+    "64": {
+     "windows_per_s": 7029.6,
+     "rtf": 35147.8,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.2914,
+      0.2913,
+      0.2913,
+      0.2913,
+      0.2917
+     ],
+     "max_min_ratio": 1.001,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.13,
+       9.33,
+       9.29
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.13,
+       9.33,
+       9.29
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 1393,
+     "peak_reserved_mb": 1962
+    },
+    "256": {
+     "windows_per_s": 6176.8,
+     "rtf": 30883.9,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.3318,
+      0.3315,
+      0.3317,
+      0.3315,
+      0.3316
+     ],
+     "max_min_ratio": 1.001,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.12,
+       9.32,
+       9.29
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.12,
+       9.32,
+       9.29
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 4321,
+     "peak_reserved_mb": 6480
+    }
+   },
+   "end_to_end": {
+    "windows_per_s": 902.7,
+    "rtf": 4513.3,
+    "n_windows_per_rep": 120,
+    "rep_walls_s": [
+     0.1391,
+     0.1329,
+     0.1322,
+     0.1338,
+     0.1306
+    ],
+    "max_min_ratio": 1.065,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      9.12,
+      9.32,
+      9.29
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      9.12,
+      9.32,
+      9.29
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "batch": 32,
+    "audio_s": 600.0
+   }
+  },
+  "XS": {
+   "ckpt": "distill_root/g2xcl_v1/mobilenetv4_conv_small_full/best.pt",
+   "params_m": 23.41,
+   "cos_vs_onnx_cpu": [
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999,
+    0.999999
+   ],
+   "cos_ok": true,
+   "softmax_rowsum_max_dev": 1.1920928955078125e-07,
+   "model_only": {
+    "1": {
+     "windows_per_s": 295.1,
+     "rtf": 1475.3,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      7.342,
+      6.9214,
+      6.9408,
+      6.766,
+      6.9408
+     ],
+     "max_min_ratio": 1.085,
+     "spread_ok": true,
+     "attempts": 2,
+     "host_before": {
+      "loadavg": [
+       9.08,
+       9.3,
+       9.28
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.13,
+       9.28,
+       9.27
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 418,
+     "peak_reserved_mb": 484
+    },
+    "16": {
+     "windows_per_s": 4812.3,
+     "rtf": 24061.5,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.3911,
+      0.4359,
+      0.4256,
+      0.4201,
+      0.4268
+     ],
+     "max_min_ratio": 1.114,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.13,
+       9.28,
+       9.27
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.12,
+       9.28,
+       9.27
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 508,
+     "peak_reserved_mb": 580
+    },
+    "64": {
+     "windows_per_s": 19581.4,
+     "rtf": 97907.0,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.1057,
+      0.1046,
+      0.1045,
+      0.1042,
+      0.1048
+     ],
+     "max_min_ratio": 1.015,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.12,
+       9.28,
+       9.27
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.12,
+       9.28,
+       9.27
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 793,
+     "peak_reserved_mb": 958
+    },
+    "256": {
+     "windows_per_s": 18374.3,
+     "rtf": 91871.7,
+     "n_windows_per_rep": 2048,
+     "rep_walls_s": [
+      0.1116,
+      0.1114,
+      0.1115,
+      0.1115,
+      0.1115
+     ],
+     "max_min_ratio": 1.002,
+     "spread_ok": true,
+     "attempts": 1,
+     "host_before": {
+      "loadavg": [
+       9.12,
+       9.28,
+       9.27
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "host_after": {
+      "loadavg": [
+       9.12,
+       9.28,
+       9.27
+      ],
+      "other_job_pids": [
+       1878072
+      ]
+     },
+     "finite": true,
+     "peak_mem_mb": 1933,
+     "peak_reserved_mb": 2464
+    }
+   },
+   "end_to_end": {
+    "windows_per_s": 930.3,
+    "rtf": 4651.6,
+    "n_windows_per_rep": 120,
+    "rep_walls_s": [
+     0.1255,
+     0.1252,
+     0.1306,
+     0.129,
+     0.1292
+    ],
+    "max_min_ratio": 1.042,
+    "spread_ok": true,
+    "attempts": 1,
+    "host_before": {
+     "loadavg": [
+      9.12,
+      9.28,
+      9.27
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "host_after": {
+     "loadavg": [
+      9.12,
+      9.28,
+      9.27
+     ],
+     "other_job_pids": [
+      1878072
+     ]
+    },
+    "batch": 32,
+    "audio_s": 600.0
+   }
+  },
+  "decode_only": {
+   "windows_per_s": 1039.2,
+   "rtf": 5195.9,
+   "n_windows_per_rep": 120,
+   "rep_walls_s": [
+    0.1128,
+    0.1155,
+    0.1177,
+    0.1165,
+    0.113
+   ],
+   "max_min_ratio": 1.044,
+   "spread_ok": true,
+   "attempts": 1,
+   "host_before": {
+    "loadavg": [
+     9.09,
+     9.48,
+     9.31
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   },
+   "host_after": {
+    "loadavg": [
+     9.09,
+     9.48,
+     9.31
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   }
+  },
+  "date": "2026-11-16 13:25",
+  "elapsed_s": 292
+ },
+ "kinglet_launch_b1": {
+  "B": {
+   "gpu_ops_per_forward": 721.0,
+   "gpu_ms_per_forward": 1.749,
+   "host_enqueue_ms_per_forward": 4.546,
+   "wall_ms_per_forward": 4.546,
+   "host": {
+    "loadavg": [
+     8.95,
+     9.22,
+     9.25
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   }
+  },
+  "S": {
+   "gpu_ops_per_forward": 170.0,
+   "gpu_ms_per_forward": 0.377,
+   "host_enqueue_ms_per_forward": 1.442,
+   "wall_ms_per_forward": 1.442,
+   "host": {
+    "loadavg": [
+     8.95,
+     9.22,
+     9.25
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   }
+  },
+  "XS": {
+   "gpu_ops_per_forward": 168.0,
+   "gpu_ms_per_forward": 0.323,
+   "host_enqueue_ms_per_forward": 2.742,
+   "wall_ms_per_forward": 2.742,
+   "host": {
+    "loadavg": [
+     8.95,
+     9.22,
+     9.25
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   }
+  },
+  "decode_only": {
+   "windows_per_s": 1034.7,
+   "rtf": 5173.7,
+   "n_windows_per_rep": 120,
+   "rep_walls_s": [
+    0.1166,
+    0.1157,
+    0.1136,
+    0.1254,
+    0.116
+   ],
+   "max_min_ratio": 1.104,
+   "spread_ok": true,
+   "attempts": 1,
+   "host_before": {
+    "loadavg": [
+     8.94,
+     9.23,
+     9.26
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   },
+   "host_after": {
+    "loadavg": [
+     8.94,
+     9.23,
+     9.26
+    ],
+    "other_job_pids": [
+     1878072
+    ]
+   }
+  },
+  "date": "2026-11-16 13:26",
+  "elapsed_s": 14
+ }
+}

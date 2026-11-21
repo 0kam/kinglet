@@ -4,3 +4,5 @@ dist/
 release_assets/
 *.onnx
 *.npz
+paper/_work/
+paper/config.yaml

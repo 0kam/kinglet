@@ -1,0 +1,31 @@
+model,machine,threads,xrt_e2e
+teacher,i7-8565U,4,10.7275
+birdnet_v3,i7-8565U,4,33.5173
+birdnet_v24,i7-8565U,4,66.0076
+B,i7-8565U,4,157.6003
+S,i7-8565U,4,307.2592
+XS,i7-8565U,4,565.4599
+teacher,M4 Pro,4,33.6617
+birdnet_v3,M4 Pro,4,93.5444
+birdnet_v24,M4 Pro,4,266.5004
+B,M4 Pro,4,348.6350
+S,M4 Pro,4,694.8749
+XS,M4 Pro,4,1163.4239
+teacher,M4 Pro,12,59.0924
+birdnet_v3,M4 Pro,12,106.1599
+birdnet_v24,M4 Pro,12,282.2759
+B,M4 Pro,12,424.5193
+S,M4 Pro,12,778.7001
+XS,M4 Pro,12,1234.6860
+teacher,Ryzen AI 7 PRO 350,4,35.2630
+birdnet_v3,Ryzen AI 7 PRO 350,4,75.3821
+birdnet_v24,Ryzen AI 7 PRO 350,4,174.8594
+B,Ryzen AI 7 PRO 350,4,296.0888
+S,Ryzen AI 7 PRO 350,4,583.1849
+XS,Ryzen AI 7 PRO 350,4,746.1388
+teacher,Ryzen AI 7 PRO 350,8,35.1307
+birdnet_v3,Ryzen AI 7 PRO 350,8,68.1283
+birdnet_v24,Ryzen AI 7 PRO 350,8,154.5149
+B,Ryzen AI 7 PRO 350,8,265.9666
+S,Ryzen AI 7 PRO 350,8,514.1228
+XS,Ryzen AI 7 PRO 350,8,629.2320

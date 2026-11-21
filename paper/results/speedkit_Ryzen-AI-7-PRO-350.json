@@ -1,0 +1,578 @@
+{
+ "kit": "speedkit_v2",
+ "label": "Ryzen AI 7 PRO 350",
+ "note": "AC, best performance; fan intake unobstructed; Windows Update paused",
+ "machine": {
+  "cpu": "AMD Ryzen AI 7 PRO 350 w/ Radeon 860M",
+  "arch": "AMD64",
+  "physical_cores": 8,
+  "logical_cpus": 16,
+  "memory_gib": 23.6,
+  "os": "Windows-10-10.0.26200-SP0",
+  "python": "3.10.22",
+  "packages": {
+   "tensorflow": "2.21.0",
+   "ai-edge-litert": "2.3.0",
+   "onnxruntime": "1.23.2",
+   "numpy": "2.2.6",
+   "scipy": "1.15.3",
+   "kinglet": "0.3.2",
+   "kagglehub": "1.0.0",
+   "psutil": "7.1.3",
+   "imageio-ffmpeg": "0.6.0"
+  },
+  "date": "2026-11-18T16:56:35+09:00",
+  "ffmpeg": {
+   "source": "imageio-ffmpeg",
+   "version": "ffmpeg version 7.1-essentials_build-www.gyan.dev Copyright (c) 2000-2024 the FFm"
+  },
+  "power": {
+   "battery": {
+    "percent": 99,
+    "plugged_in": true
+   },
+   "scheme": "Power Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (Balanced)"
+  },
+  "load_before": 4.2
+ },
+ "model_files": {
+  "BirdNET+_V3.0_Global_12K_FP32.onnx": "ok",
+  "BirdNET_v2.4_audio-model-fp32.tflite": "ok",
+  "kinglet-b-v0.3.2.onnx": "ok",
+  "kinglet-b-v0.3.2.pack-jp.npz": "ok",
+  "kinglet-s-v0.3.2.onnx": "ok",
+  "kinglet-s-v0.3.2.pack-jp.npz": "ok",
+  "kinglet-xs-v0.3.2.onnx": "ok",
+  "kinglet-xs-v0.3.2.pack-jp.npz": "ok",
+  "kinglet-b-v0.3.3.power.onnx": "ok",
+  "kinglet-s-v0.3.3.power.onnx": "ok",
+  "kinglet-xs-v0.3.3.power.onnx": "ok",
+  "kinglet-b-v0.3.2.headpack.npz": "ok",
+  "kinglet-s-v0.3.2.headpack.npz": "ok",
+  "kinglet-xs-v0.3.2.headpack.npz": "ok",
+  "perch": {
+   "saved_model.pb": "ok",
+   "variables/variables.index": "ok"
+  }
+ },
+ "reps": 5,
+ "audio_s": 600.0,
+ "decode": {
+  "xrt": 2322.947820779116,
+  "wall_s_per_run": 0.258,
+  "xrt_runs": [
+   2231.9,
+   2322.9,
+   2328.2,
+   2342.7,
+   2297.9
+  ],
+  "cpu_s_per_wall_s": 0.7
+ },
+ "runs": [
+  {
+   "model": "perch",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 35.2629769121483,
+   "wall_s_per_run": 17.015,
+   "xrt_runs": [
+    35.3,
+    35.3,
+    35.5,
+    35.3,
+    33.9
+   ],
+   "cpu_s_per_wall_s": 3.82,
+   "segment_s": 5.0,
+   "batch": 8,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "birdnet_v3",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 75.38205983614655,
+   "wall_s_per_run": 7.959,
+   "xrt_runs": [
+    75.4,
+    75.3,
+    77.1,
+    74.2,
+    78.0
+   ],
+   "cpu_s_per_wall_s": 3.0,
+   "segment_s": 3.0,
+   "batch": 16,
+   "passes_per_10min": 200
+  },
+  {
+   "model": "birdnet_v24",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 174.85935697628798,
+   "wall_s_per_run": 3.431,
+   "xrt_runs": [
+    173.7,
+    174.9,
+    175.3,
+    174.7,
+    175.1
+   ],
+   "cpu_s_per_wall_s": 1.69,
+   "segment_s": 3.0,
+   "batch": 48,
+   "passes_per_10min": 200
+  },
+  {
+   "model": "kinglet_b",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 296.0888001893746,
+   "wall_s_per_run": 2.026,
+   "xrt_runs": [
+    295.6,
+    294.8,
+    296.7,
+    296.1,
+    296.1
+   ],
+   "cpu_s_per_wall_s": 3.01,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_s",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 583.1849127730279,
+   "wall_s_per_run": 1.029,
+   "xrt_runs": [
+    577.1,
+    584.7,
+    583.2,
+    583.7,
+    582.0
+   ],
+   "cpu_s_per_wall_s": 2.11,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_xs",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 746.1388248492923,
+   "wall_s_per_run": 0.804,
+   "xrt_runs": [
+    737.4,
+    748.8,
+    742.8,
+    753.7,
+    746.1
+   ],
+   "cpu_s_per_wall_s": 1.6,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "birdnet_v3_5s",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 76.40625521710211,
+   "wall_s_per_run": 7.853,
+   "xrt_runs": [
+    76.4,
+    76.6,
+    76.6,
+    76.2,
+    76.4
+   ],
+   "cpu_s_per_wall_s": 2.94,
+   "segment_s": 5.0,
+   "batch": 32,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "birdnet_v24_overlap",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 99.74797842017885,
+   "wall_s_per_run": 6.015,
+   "xrt_runs": [
+    100.1,
+    99.7,
+    99.7,
+    99.7,
+    100.3
+   ],
+   "cpu_s_per_wall_s": 1.72,
+   "segment_s": 5.0,
+   "batch": 16,
+   "passes_per_10min": 360
+  },
+  {
+   "model": "kinglet_b_convdft",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 304.4858221503651,
+   "wall_s_per_run": 1.971,
+   "xrt_runs": [
+    305.8,
+    304.5,
+    303.2,
+    304.9,
+    288.7
+   ],
+   "cpu_s_per_wall_s": 3.55,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_s_convdft",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 597.3440887124503,
+   "wall_s_per_run": 1.004,
+   "xrt_runs": [
+    606.1,
+    610.9,
+    577.8,
+    597.3,
+    590.3
+   ],
+   "cpu_s_per_wall_s": 3.14,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_xs_convdft",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 784.3466372897003,
+   "wall_s_per_run": 0.765,
+   "xrt_runs": [
+    785.8,
+    782.6,
+    781.8,
+    784.3,
+    786.5
+   ],
+   "cpu_s_per_wall_s": 2.86,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_b_pack",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 287.1619923873775,
+   "wall_s_per_run": 2.089,
+   "xrt_runs": [
+    287.5,
+    287.2,
+    285.9,
+    286.4,
+    287.3
+   ],
+   "cpu_s_per_wall_s": 3.02,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_s_pack",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 567.3963288880861,
+   "wall_s_per_run": 1.057,
+   "xrt_runs": [
+    571.4,
+    564.9,
+    567.4,
+    566.8,
+    568.6
+   ],
+   "cpu_s_per_wall_s": 2.12,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_xs_pack",
+   "threads": 4,
+   "status": "ok",
+   "xrt": 733.14938615225,
+   "wall_s_per_run": 0.818,
+   "xrt_runs": [
+    740.4,
+    732.7,
+    737.1,
+    733.1,
+    730.4
+   ],
+   "cpu_s_per_wall_s": 1.57,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "perch",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 35.13071477338562,
+   "wall_s_per_run": 17.079,
+   "xrt_runs": [
+    35.3,
+    35.3,
+    34.9,
+    35.1,
+    35.1
+   ],
+   "cpu_s_per_wall_s": 6.83,
+   "segment_s": 5.0,
+   "batch": 8,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "birdnet_v3",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 68.1282554377243,
+   "wall_s_per_run": 8.807,
+   "xrt_runs": [
+    70.1,
+    67.8,
+    68.5,
+    66.6,
+    68.1
+   ],
+   "cpu_s_per_wall_s": 5.69,
+   "segment_s": 3.0,
+   "batch": 16,
+   "passes_per_10min": 200
+  },
+  {
+   "model": "birdnet_v24",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 154.5148505381581,
+   "wall_s_per_run": 3.883,
+   "xrt_runs": [
+    156.1,
+    157.1,
+    153.3,
+    154.5,
+    152.8
+   ],
+   "cpu_s_per_wall_s": 2.45,
+   "segment_s": 3.0,
+   "batch": 48,
+   "passes_per_10min": 200
+  },
+  {
+   "model": "kinglet_b",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 265.96663067408497,
+   "wall_s_per_run": 2.256,
+   "xrt_runs": [
+    257.8,
+    266.0,
+    267.6,
+    254.2,
+    267.5
+   ],
+   "cpu_s_per_wall_s": 5.61,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_s",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 514.1227814316045,
+   "wall_s_per_run": 1.167,
+   "xrt_runs": [
+    514.1,
+    534.1,
+    522.9,
+    493.5,
+    501.0
+   ],
+   "cpu_s_per_wall_s": 3.85,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_xs",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 629.2319783236535,
+   "wall_s_per_run": 0.954,
+   "xrt_runs": [
+    607.4,
+    637.2,
+    637.6,
+    622.6,
+    629.2
+   ],
+   "cpu_s_per_wall_s": 2.5,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "birdnet_v3_5s",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 66.78907174055185,
+   "wall_s_per_run": 8.984,
+   "xrt_runs": [
+    67.3,
+    68.2,
+    64.8,
+    66.2,
+    66.8
+   ],
+   "cpu_s_per_wall_s": 5.63,
+   "segment_s": 5.0,
+   "batch": 32,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "birdnet_v24_overlap",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 90.35356161843067,
+   "wall_s_per_run": 6.641,
+   "xrt_runs": [
+    92.8,
+    90.4,
+    89.4,
+    88.8,
+    93.2
+   ],
+   "cpu_s_per_wall_s": 2.47,
+   "segment_s": 5.0,
+   "batch": 16,
+   "passes_per_10min": 360
+  },
+  {
+   "model": "kinglet_b_convdft",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 262.3555355639176,
+   "wall_s_per_run": 2.287,
+   "xrt_runs": [
+    264.4,
+    262.4,
+    260.4,
+    262.7,
+    257.0
+   ],
+   "cpu_s_per_wall_s": 6.96,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_s_convdft",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 499.09887697759405,
+   "wall_s_per_run": 1.202,
+   "xrt_runs": [
+    499.1,
+    490.8,
+    480.5,
+    507.1,
+    520.7
+   ],
+   "cpu_s_per_wall_s": 6.17,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_xs_convdft",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 634.0498060917245,
+   "wall_s_per_run": 0.946,
+   "xrt_runs": [
+    641.1,
+    624.0,
+    626.7,
+    634.0,
+    645.8
+   ],
+   "cpu_s_per_wall_s": 5.6,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_b_pack",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 266.52830886003017,
+   "wall_s_per_run": 2.251,
+   "xrt_runs": [
+    266.9,
+    268.2,
+    262.8,
+    263.4,
+    266.5
+   ],
+   "cpu_s_per_wall_s": 5.67,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_s_pack",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 532.9570893147331,
+   "wall_s_per_run": 1.126,
+   "xrt_runs": [
+    533.0,
+    543.0,
+    549.1,
+    501.5,
+    498.0
+   ],
+   "cpu_s_per_wall_s": 3.77,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  },
+  {
+   "model": "kinglet_xs_pack",
+   "threads": 8,
+   "status": "ok",
+   "xrt": 746.0169223996338,
+   "wall_s_per_run": 0.804,
+   "xrt_runs": [
+    632.0,
+    747.1,
+    748.9,
+    746.0,
+    724.9
+   ],
+   "cpu_s_per_wall_s": 2.54,
+   "segment_s": 5.0,
+   "batch": 64,
+   "passes_per_10min": 120
+  }
+ ]
+}

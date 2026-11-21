@@ -1,0 +1,73 @@
+site,n_windows,n_species,teacher,B,S,XS,birdnet_v3,birdnet_v24,country,biome,lat,lon
+ARD,1008,88,0.4476,0.4211,0.4108,0.4047,0.6373,0.1950,Argentina,Tropical and Subtropical Moist Broadleaf Forest,-25.7905,-54.2778
+BAM,1416,42,0.3147,0.2886,0.2736,0.2561,0.3730,0.2772,Cameroon,Tropical and Subtropical Moist Broadleaf Forest,6.0903,10.3017
+BERB,2160,56,0.2414,0.2308,0.2279,0.2249,0.2372,0.1725,Indonesia,Tropical and Subtropical Moist Broadleaf Forest,-1.2837,104.2642
+BIAL,1200,36,0.6139,0.6152,0.6135,0.6354,0.7891,0.2937,Poland,Temperate Broadleaf and Mixed Forest,52.7453,23.7733
+BMT,720,94,0.5194,0.4728,0.4537,0.4458,0.6272,0.3696,Brazil,Wetland,-16.5139,-56.3936
+BOLIN,1116,42,0.2660,0.2667,0.2573,0.2483,0.3166,0.2005,Spain,Wetland,36.9905,-6.4426
+BRCAS,660,27,0.7889,0.7659,0.7511,0.7360,0.8669,0.6006,Taiwan,Tropical and Subtropical Moist Broadleaf Forest,23.0650,120.7636
+BRE,539,26,0.7947,0.7776,0.7865,0.7834,0.7762,0.6136,Colombia,Tropical and Subtropical Moist Broadleaf Forest,4.6753,-75.6136
+BUR,1080,45,0.5860,0.5614,0.5360,0.5306,0.5684,0.4127,Burkina Faso,Tropical and Subtropical Grasslands & Savannas and Shrublands,12.5036,-1.7205
+CARI,744,33,0.6137,0.5853,0.5662,0.5719,0.6807,0.3236,Colombia,Tropical and Subtropical Dry Broadleaf Forest,6.2831,-71.7778
+CAT,708,16,0.7643,0.7807,0.7655,0.7714,0.8879,0.6859,Spain,Mediterranean Forests. Woodlands and shrublands,41.9919,1.5098
+CB,419,34,0.5061,0.4959,0.4903,0.4920,0.5563,0.4226,Canada,Boreal forest/Taiga,49.3877,-79.1380
+CLH,732,15,0.6639,0.6575,0.6518,0.6474,0.6716,0.5907,Scotland,Temperate Broadleaf and Mixed Forest,55.9247,-3.2315
+COU,156,21,0.5646,0.5893,0.5815,0.5729,0.7133,0.4525,France,Montane Grasslands and Savannas & Boreal Forests/Taiga,42.7969,1.0767
+CRAT,1560,13,0.7928,0.7795,0.7750,0.7895,0.7991,0.5314,Mexico,Tropical and Subtropical Moist Broadleaf Forest,19.5489,-96.9203
+CRUZ,936,29,0.5230,0.5108,0.5109,0.5147,0.6005,0.2929,Costa Rica,Tropical and Subtropical Moist Broadleaf Forest,8.7853,-82.9589
+DEVA,360,19,0.5289,0.5275,0.5261,0.5308,0.6009,0.4856,New Caledonia,Tropical and Subtropical Dry Broadleaf Forest,-21.5891,165.3762
+DONG,707,61,0.4514,0.4150,0.4041,0.4011,0.3761,0.3543,Vietnam,Tropical and Subtropical Moist Broadleaf Forest,11.4414,107.4008
+DUNAS,720,25,0.6947,0.6989,0.6794,0.6786,0.7608,0.5668,Brazil,Tropical and Subtropical Moist Broadleaf Forest,-5.8118,-35.1917
+DYOM,686,16,0.6006,0.6114,0.6126,0.6344,0.7312,0.4903,Cyprus,Mediterranean Forests. Woodlands and shrublands,34.9193,33.2008
+EFFOR,2400,38,0.3895,0.3898,0.3762,0.3663,0.3900,0.3121,Indonesia,Tropical and Subtropical Moist Broadleaf Forest,-1.8326,103.2019
+EFFOU,3240,48,0.2345,0.2446,0.2343,0.2259,0.2934,0.2240,Indonesia,Tropical and Subtropical Moist Broadleaf Forest,-1.7773,102.9124
+EMP,168,18,0.7361,0.7320,0.7474,0.7425,0.7074,0.6688,Brazil,Tropical and Subtropical Moist Broadleaf Forest,-5.8117,-35.1918
+EVROS,960,19,0.8413,0.8337,0.8303,0.8419,0.8471,0.7006,Greece,Mediterranean Forests. Woodlands and shrublands,40.7971,26.0527
+FEU,828,34,0.6778,0.6713,0.6557,0.6474,0.8053,0.3719,Canada,Boreal Forests/Taiga,49.2500,-69.7200
+FNCA,2280,111,0.3505,0.3482,0.3204,0.3215,0.5387,0.2179,Brazil,Tropical and Subtropical Moist Broadleaf Forest,-6.1792,-50.1568
+GLEN,693,24,0.8238,0.8220,0.8067,0.7944,0.8749,0.6529,Scotland,Temperate Broadleaf and Mixed Forest,56.6800,-5.7000
+GTLU,720,34,0.5880,0.5332,0.5220,0.4913,0.7169,0.3917,Guatemala,Tropical and Subtropical Moist Broadleaf Forest,17.4828,-90.0569
+HAG,1464,63,0.5945,0.5839,0.5761,0.5643,0.7688,0.3399,France,Temperate Broadleaf and Mixed Forest,43.2161,0.8808
+HAK,826,13,0.6899,0.6833,0.6712,0.6566,0.8592,0.5560,Hawaii (USA),Tropical and Subtropical Moist Broadleaf Forest,19.7942,-155.3216
+HAR,192,26,0.7052,0.6857,0.6669,0.6491,0.7703,0.5543,France,Montane Grasslands and Savannas & Boreal Forests/Taiga,42.6191,1.7644
+HONDO,803,35,0.6137,0.6121,0.6091,0.6126,0.6169,0.5367,Spain,Wetland,38.1826,-0.7544
+HUAP,730,26,0.7208,0.7159,0.6818,0.7015,0.7359,0.4094,China (mainland),Tropical and Subtropical Moist Broadleaf Forest,25.5891,109.8936
+JUNCA,360,14,0.8112,0.8148,0.8008,0.7889,0.8475,0.6839,Spain,Wetland,36.9361,-6.3783
+KAR,1344,26,0.7161,0.7238,0.7087,0.7276,0.8283,0.3646,Sweden,Boreal Forests/Taiga,64.0578,18.6402
+KIB,1680,74,0.5130,0.5049,0.4863,0.4786,0.4893,0.2425,Uganda,Tropical and Subtropical Moist Broadleaf Forest,0.5664,30.3725
+LIM,1104,15,0.6197,0.6199,0.6137,0.6084,0.6901,0.4863,Dominican Republic,Tropical and Subtropical Dry Broadleaf Forest,18.9581,-69.7111
+MABI,564,26,0.7020,0.6961,0.6573,0.6744,0.8011,0.5225,USA,Temperate Broadleaf and Mixed Forest,43.6312,-72.5179
+MAPIMI,767,13,0.7846,0.7818,0.7755,0.7538,0.7148,0.6319,Mexico,Deserts and Xeric Shrublands,26.6883,-103.7500
+MARTI,576,21,0.4223,0.4037,0.4101,0.3884,0.4184,0.2336,Spain,Wetland,37.0282,-6.4380
+MILLAN,240,10,0.7436,0.7419,0.7389,0.7395,0.6594,0.4776,Spain,Wetland,37.0191,-6.6025
+MONTEB,576,15,0.4597,0.5002,0.4283,0.4350,0.5461,0.3256,Spain,Mediterranean Forests. Woodlands and shrublands,37.0208,-6.5545
+MOPU,659,33,0.8085,0.7742,0.7516,0.7640,0.8599,0.5577,Spain,Mediterranean Forests. Woodlands and shrublands,40.5270,-4.1768
+NAV,690,33,0.6272,0.6266,0.6053,0.6110,0.6926,0.4139,Spain,Temperate Broadleaf and Mixed Forest,43.0165,-1.7748
+NL,120,12,0.6584,0.6319,0.6050,0.6031,0.6474,0.4294,Canada,Boreal forest/Taiga,51.8760,-76.0650
+OESF,1512,18,0.8415,0.8179,0.7970,0.8163,0.9004,0.7499,USA,Temperate Coniferous Forest,47.7152,-124.1697
+OIO,713,41,0.6609,0.6343,0.6189,0.5939,0.6151,0.3540,Spain,Mediterranean Forests. Woodlands and shrublands,40.0115,-3.5770
+OLIV,841,21,0.7463,0.7832,0.7607,0.7615,0.7926,0.5164,Guinea-Bissau,Tropical and Subtropical Dry Broadleaf Forest,12.3808,-15.2043
+PETI,709,30,0.5606,0.5743,0.5473,0.5434,0.6950,0.3883,Brazil,Tropical and Subtropical Moist Broadleaf Forest,-19.8992,-43.3686
+PGF,360,26,0.2180,0.1702,0.1761,0.1632,0.5515,0.1367,New Caledonia,Tropical and Subtropical Moist Broadleaf Forest,-21.6222,165.7612
+PINA,716,37,0.6986,0.6681,0.6424,0.6462,0.7690,0.5643,Spain,Mediterranean Forests. Woodlands and shrublands,41.4582,-4.7137
+PITI,576,30,0.7364,0.7235,0.7123,0.7164,0.7451,0.6433,Spain,Wetlands,42.4116,-1.5861
+POZO,828,38,0.4627,0.4785,0.4616,0.4489,0.5381,0.2712,Spain,Mediterranean Forests. Woodlands and shrublands,36.9819,-6.4824
+PUUL,716,12,0.5448,0.5342,0.5100,0.4997,0.7624,0.7048,Hawaii (USA),Tropical and Subtropical Dry Broadleaf Forest,19.8620,-155.5431
+QR,780,58,0.7894,0.7803,0.7722,0.7558,0.8495,0.6436,Mexico,Tropical and Subtropical Dry Broadleaf Forest,18.7106,-88.3923
+RBA,180,28,0.6519,0.6259,0.6096,0.6028,0.6679,0.5274,Brazil,Tropical and Subtropical Moist Broadleaf Forest,-6.2020,-35.2276
+RFP,372,41,0.7104,0.6905,0.6649,0.6546,0.7980,0.5391,Brazil,Tropical and Subtropical Moist Broadleaf Forest,-7.0407,-35.1541
+RGU,156,14,0.7457,0.7785,0.7565,0.7615,0.6944,0.6554,Brazil,Tropical and Subtropical Moist Broadleaf Forest,-6.7178,-35.1818
+RME,156,21,0.7514,0.7226,0.7113,0.6860,0.5790,0.6590,Brazil,Tropical and Subtropical Moist Broadleaf Forest,-6.3961,-35.0094
+ROTOK,1188,19,0.1547,0.1490,0.1459,0.1421,0.1795,0.1065,New Zealand,Temperate Broadleaf and Mixed Forest,-39.4542,174.4091
+SAL,684,41,0.5428,0.5334,0.5170,0.5254,0.5117,0.4661,Colombia,Tropical and Subtropical Moist Broadleaf Forest,4.6325,-75.4594
+SBN,792,22,0.4630,0.4179,0.4032,0.4011,0.5627,0.2265,Mexico,Tropical and Subtropical Moist Broadleaf Forest,19.3453,-96.9392
+SCHF,720,20,0.7539,0.7624,0.7495,0.7645,0.8377,0.5159,Germany,Temperate Broadleaf and Mixed Forest,52.8731,13.9028
+SCHG,960,34,0.6636,0.6513,0.6265,0.6279,0.7684,0.5104,Germany,Temperate Grasslands,53.0010,13.9002
+SD,120,18,0.6992,0.6814,0.6567,0.6777,0.7362,0.5545,Canada,Boreal forest/Taiga,52.5440,-72.0780
+SITH,1188,20,0.6372,0.6429,0.6344,0.6322,0.6843,0.5133,Greece,Mediterranean Forests. Woodlands and shrublands,40.1602,23.7744
+SLOB,840,32,0.7223,0.6894,0.6637,0.6766,0.8276,0.4324,Ukraine,Temperate Coniferous forest,50.0600,35.2300
+SPMCO,744,46,0.5933,0.5813,0.5623,0.5549,0.7186,0.4690,Colombia,Tropical and Subtropical Grasslands & Savannas and Shrublands,6.4258,-75.5358
+TAM,348,15,0.6982,0.6698,0.6729,0.6604,0.6834,0.6387,Colombia,Tropical and Subtropical Dry Broadleaf Forest,5.7533,-72.2108
+UNI,996,25,0.6986,0.6701,0.6775,0.6709,0.6416,0.6157,Colombia,Tropical and Subtropical Moist Broadleaf Forest,4.5539,-75.6611
+VER,684,32,0.5166,0.5062,0.5109,0.4942,0.5252,0.4771,Colombia,Tropical and Subtropical Moist Broadleaf Forest,4.5914,-75.5908
+VIL,668,33,0.7077,0.7020,0.6778,0.6798,0.8029,0.5996,Spain,Mediterranean Forests. Woodlands and shrublands,38.5603,-0.8778

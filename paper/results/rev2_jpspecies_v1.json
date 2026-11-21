@@ -1,0 +1,305 @@
+{
+ "jp_classes": 315,
+ "all 9 benchmarks (Fig. 3c)": {
+  "n_pairs": {
+   "jp": 100,
+   "other": 1594
+  },
+  "n_species": {
+   "jp": 74,
+   "other": 1268
+  },
+  "jp_pairs_by_benchmark": {
+   "WABAD": 71,
+   "NBP": 16,
+   "SSW": 5,
+   "UHH": 5,
+   "HSN": 2,
+   "SNE": 1
+  },
+  "median_positives": {
+   "jp": 24.0,
+   "other": 32.5
+  },
+  "teacher_mean_ap": {
+   "jp": 0.41304263154142434,
+   "other": 0.31931677800236036
+  },
+  "B": {
+   "ratio_jp": 1.0036,
+   "ratio_jp_ci": [
+    0.9655,
+    1.0458
+   ],
+   "ratio_other": 0.9799,
+   "ratio_other_ci": [
+    0.9663,
+    0.9932
+   ],
+   "diff_jp_minus_other": 0.0237,
+   "diff_ci": [
+    -0.0166,
+    0.0681
+   ]
+  },
+  "S": {
+   "ratio_jp": 0.9833,
+   "ratio_jp_ci": [
+    0.939,
+    1.0328
+   ],
+   "ratio_other": 0.9318,
+   "ratio_other_ci": [
+    0.9182,
+    0.945
+   ],
+   "diff_jp_minus_other": 0.0515,
+   "diff_ci": [
+    0.0059,
+    0.1028
+   ]
+  },
+  "XS": {
+   "ratio_jp": 0.9711,
+   "ratio_jp_ci": [
+    0.925,
+    1.0182
+   ],
+   "ratio_other": 0.9001,
+   "ratio_other_ci": [
+    0.8856,
+    0.9151
+   ],
+   "diff_jp_minus_other": 0.071,
+   "diff_ci": [
+    0.0246,
+    0.1198
+   ]
+  }
+ },
+ "7 benchmarks not used in development": {
+  "n_pairs": {
+   "jp": 98,
+   "other": 1527
+  },
+  "n_species": {
+   "jp": 73,
+   "other": 1257
+  },
+  "jp_pairs_by_benchmark": {
+   "WABAD": 71,
+   "NBP": 16,
+   "SSW": 5,
+   "UHH": 5,
+   "SNE": 1
+  },
+  "median_positives": {
+   "jp": 24.0,
+   "other": 32.0
+  },
+  "teacher_mean_ap": {
+   "jp": 0.4051711988246182,
+   "other": 0.3101420442713441
+  },
+  "B": {
+   "ratio_jp": 1.0044,
+   "ratio_jp_ci": [
+    0.9648,
+    1.0467
+   ],
+   "ratio_other": 0.9845,
+   "ratio_other_ci": [
+    0.9705,
+    0.9985
+   ],
+   "diff_jp_minus_other": 0.0198,
+   "diff_ci": [
+    -0.0228,
+    0.0656
+   ]
+  },
+  "S": {
+   "ratio_jp": 0.9911,
+   "ratio_jp_ci": [
+    0.9497,
+    1.0385
+   ],
+   "ratio_other": 0.935,
+   "ratio_other_ci": [
+    0.9211,
+    0.9484
+   ],
+   "diff_jp_minus_other": 0.0561,
+   "diff_ci": [
+    0.0133,
+    0.1048
+   ]
+  },
+  "XS": {
+   "ratio_jp": 0.979,
+   "ratio_jp_ci": [
+    0.9371,
+    1.0265
+   ],
+   "ratio_other": 0.9033,
+   "ratio_other_ci": [
+    0.8876,
+    0.9181
+   ],
+   "diff_jp_minus_other": 0.0758,
+   "diff_ci": [
+    0.0304,
+    0.1258
+   ]
+  }
+ },
+ "WABAD only": {
+  "n_pairs": {
+   "jp": 71,
+   "other": 1118
+  },
+  "n_species": {
+   "jp": 71,
+   "other": 1118
+  },
+  "jp_pairs_by_benchmark": {
+   "WABAD": 71
+  },
+  "median_positives": {
+   "jp": 38.0,
+   "other": 27.0
+  },
+  "teacher_mean_ap": {
+   "jp": 0.35832792859831314,
+   "other": 0.2862029547820246
+  },
+  "B": {
+   "ratio_jp": 0.996,
+   "ratio_jp_ci": [
+    0.9516,
+    1.0535
+   ],
+   "ratio_other": 0.9727,
+   "ratio_other_ci": [
+    0.9551,
+    0.99
+   ],
+   "diff_jp_minus_other": 0.0233,
+   "diff_ci": [
+    -0.0231,
+    0.0829
+   ]
+  },
+  "S": {
+   "ratio_jp": 0.9832,
+   "ratio_jp_ci": [
+    0.9235,
+    1.0522
+   ],
+   "ratio_other": 0.9228,
+   "ratio_other_ci": [
+    0.9042,
+    0.9402
+   ],
+   "diff_jp_minus_other": 0.0604,
+   "diff_ci": [
+    -0.0039,
+    0.1319
+   ]
+  },
+  "XS": {
+   "ratio_jp": 0.9527,
+   "ratio_jp_ci": [
+    0.9007,
+    1.012
+   ],
+   "ratio_other": 0.8875,
+   "ratio_other_ci": [
+    0.8676,
+    0.9068
+   ],
+   "diff_jp_minus_other": 0.0652,
+   "diff_ci": [
+    0.0092,
+    0.1293
+   ]
+  }
+ },
+ ">= 100 training recordings (Table S2 group), 9 benchmarks": {
+  "n_pairs": {
+   "jp": 100,
+   "other": 750
+  },
+  "n_species": {
+   "jp": 74,
+   "other": 486
+  },
+  "jp_pairs_by_benchmark": {
+   "WABAD": 71,
+   "NBP": 16,
+   "SSW": 5,
+   "UHH": 5,
+   "HSN": 2,
+   "SNE": 1
+  },
+  "median_positives": {
+   "jp": 24.0,
+   "other": 51.0
+  },
+  "teacher_mean_ap": {
+   "jp": 0.41304263154142434,
+   "other": 0.3914609179218639
+  },
+  "B": {
+   "ratio_jp": 1.0036,
+   "ratio_jp_ci": [
+    0.9655,
+    1.0458
+   ],
+   "ratio_other": 0.9841,
+   "ratio_other_ci": [
+    0.9693,
+    1.0003
+   ],
+   "diff_jp_minus_other": 0.0195,
+   "diff_ci": [
+    -0.0224,
+    0.0631
+   ]
+  },
+  "S": {
+   "ratio_jp": 0.9833,
+   "ratio_jp_ci": [
+    0.9394,
+    1.0306
+   ],
+   "ratio_other": 0.9355,
+   "ratio_other_ci": [
+    0.9211,
+    0.9504
+   ],
+   "diff_jp_minus_other": 0.0478,
+   "diff_ci": [
+    0.0032,
+    0.0972
+   ]
+  },
+  "XS": {
+   "ratio_jp": 0.9711,
+   "ratio_jp_ci": [
+    0.9273,
+    1.0188
+   ],
+   "ratio_other": 0.9136,
+   "ratio_other_ci": [
+    0.8958,
+    0.9302
+   ],
+   "diff_jp_minus_other": 0.0575,
+   "diff_ci": [
+    0.0091,
+    0.1082
+   ]
+  }
+ }
+}

@@ -1,0 +1,1151 @@
+{
+ "watkins": {
+  "field_cos_mean": {
+   "B": 0.7833,
+   "S": 0.7711,
+   "XS": 0.7426
+  },
+  "embedding": {
+   "n_species_retrieval": 29,
+   "n_species_probe": 23,
+   "n_units": 1695,
+   "n_groups": 149,
+   "n_test_units": 398,
+   "teacher": {
+    "retrieval_k1_mAP": 0.2882,
+    "retrieval_k5_mAP": 0.2774,
+    "probe_cmAP": 0.6132
+   },
+   "B": {
+    "retrieval_k1_mAP": 0.2759,
+    "retrieval_k5_mAP": 0.2529,
+    "probe_cmAP": 0.569,
+    "xretrieval_t2s_k1_mAP": 0.2643,
+    "xretrieval_t2s_k5_mAP": 0.2532,
+    "xretrieval_s2t_k1_mAP": 0.2727,
+    "xretrieval_s2t_k5_mAP": 0.2638,
+    "xprobe_cmAP": 0.5042
+   },
+   "S": {
+    "retrieval_k1_mAP": 0.278,
+    "retrieval_k5_mAP": 0.2429,
+    "probe_cmAP": 0.5816,
+    "xretrieval_t2s_k1_mAP": 0.2692,
+    "xretrieval_t2s_k5_mAP": 0.2539,
+    "xretrieval_s2t_k1_mAP": 0.2694,
+    "xretrieval_s2t_k5_mAP": 0.2642,
+    "xprobe_cmAP": 0.4968
+   },
+   "XS": {
+    "retrieval_k1_mAP": 0.2631,
+    "retrieval_k5_mAP": 0.2289,
+    "probe_cmAP": 0.5626,
+    "xretrieval_t2s_k1_mAP": 0.2566,
+    "xretrieval_t2s_k5_mAP": 0.242,
+    "xretrieval_s2t_k1_mAP": 0.2565,
+    "xretrieval_s2t_k5_mAP": 0.2489,
+    "xprobe_cmAP": 0.4474
+   },
+   "chance_cmAP_probe": 0.0435,
+   "ratio_B": {
+    "retrieval_k1_mAP": 0.957,
+    "retrieval_k5_mAP": 0.912,
+    "probe_cmAP": 0.928,
+    "xretrieval_t2s_k1_mAP": 0.917,
+    "xretrieval_s2t_k1_mAP": 0.946,
+    "xprobe_cmAP": 0.822,
+    "mean_within": 0.932
+   },
+   "ratio_S": {
+    "retrieval_k1_mAP": 0.965,
+    "retrieval_k5_mAP": 0.876,
+    "probe_cmAP": 0.948,
+    "xretrieval_t2s_k1_mAP": 0.934,
+    "xretrieval_s2t_k1_mAP": 0.935,
+    "xprobe_cmAP": 0.81,
+    "mean_within": 0.93
+   },
+   "ratio_XS": {
+    "retrieval_k1_mAP": 0.913,
+    "retrieval_k5_mAP": 0.825,
+    "probe_cmAP": 0.917,
+    "xretrieval_t2s_k1_mAP": 0.89,
+    "xretrieval_s2t_k1_mAP": 0.89,
+    "xprobe_cmAP": 0.73,
+    "mean_within": 0.885
+   }
+  },
+  "beans": {
+   "n_train": 1017,
+   "n_test": 339,
+   "n_classes": 31,
+   "teacher": {
+    "accuracy": 0.8938
+   },
+   "B": {
+    "accuracy": 0.8673,
+    "x_accuracy": 0.7463
+   },
+   "S": {
+    "accuracy": 0.8614,
+    "x_accuracy": 0.705
+   },
+   "XS": {
+    "accuracy": 0.8378,
+    "x_accuracy": 0.6136
+   },
+   "first_window_only": {
+    "n_train": 1017,
+    "n_test": 339,
+    "n_classes": 31,
+    "teacher": {
+     "accuracy": 0.8879
+    },
+    "B": {
+     "accuracy": 0.8584,
+     "x_accuracy": 0.7463
+    },
+    "S": {
+     "accuracy": 0.8673,
+     "x_accuracy": 0.705
+    },
+    "XS": {
+     "accuracy": 0.8201,
+     "x_accuracy": 0.6313
+    }
+   }
+  },
+  "head": {
+   "n_classes_in_data": 31,
+   "n_mapped": 12,
+   "n_mapped_with_train_recordings": 0,
+   "n_scored": 12,
+   "min_pos": 5,
+   "macro_AP": {
+    "prevalence": 0.0275,
+    "teacher_logit": 0.1116,
+    "teacher_softmax": 0.1708,
+    "B": 0.1735,
+    "S": 0.1589,
+    "XS": 0.1749
+   },
+   "ratio_B": {
+    "macro_AP_vs_teacher_logit": 1.554,
+    "macro_AP_vs_teacher_softmax": 1.016,
+    "chance_corrected_vs_teacher_logit": 1.735,
+    "median_per_class_ratio": 1.0
+   },
+   "ratio_S": {
+    "macro_AP_vs_teacher_logit": 1.424,
+    "macro_AP_vs_teacher_softmax": 0.93,
+    "chance_corrected_vs_teacher_logit": 1.562,
+    "median_per_class_ratio": 0.912
+   },
+   "ratio_XS": {
+    "macro_AP_vs_teacher_logit": 1.566,
+    "macro_AP_vs_teacher_softmax": 1.024,
+    "chance_corrected_vs_teacher_logit": 1.752,
+    "median_per_class_ratio": 0.901
+   },
+   "per_class": [
+    {
+     "label": "Bearded_Seal",
+     "sci": "Erignathus barbatus",
+     "perch_idx": 4778,
+     "n_pos": 37,
+     "prevalence": 0.0218,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.129,
+     "teacher_softmax": 0.0601,
+     "B": 0.0923,
+     "S": 0.0778,
+     "XS": 0.0643
+    },
+    {
+     "label": "Beluga,_White_Whale",
+     "sci": "Delphinapterus leucas",
+     "perch_idx": 4013,
+     "n_pos": 50,
+     "prevalence": 0.0295,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0444,
+     "teacher_softmax": 0.0216,
+     "B": 0.0216,
+     "S": 0.0342,
+     "XS": 0.023
+    },
+    {
+     "label": "Bottlenose_Dolphin",
+     "sci": "Tursiops truncatus",
+     "perch_idx": 14168,
+     "n_pos": 24,
+     "prevalence": 0.0142,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0115,
+     "teacher_softmax": 0.0166,
+     "B": 0.0166,
+     "S": 0.0132,
+     "XS": 0.0134
+    },
+    {
+     "label": "Bowhead_Whale",
+     "sci": "Balaena mysticetus",
+     "perch_idx": 1446,
+     "n_pos": 60,
+     "prevalence": 0.0354,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0762,
+     "teacher_softmax": 0.0249,
+     "B": 0.0211,
+     "S": 0.0213,
+     "XS": 0.0232
+    },
+    {
+     "label": "Fin,_Finback_Whale",
+     "sci": "Balaenoptera physalus",
+     "perch_idx": 1448,
+     "n_pos": 50,
+     "prevalence": 0.0295,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0163,
+     "teacher_softmax": 0.8436,
+     "B": 0.8828,
+     "S": 0.7159,
+     "XS": 0.9309
+    },
+    {
+     "label": "Harp_Seal",
+     "sci": "Pagophilus groenlandicus",
+     "perch_idx": 9587,
+     "n_pos": 47,
+     "prevalence": 0.0277,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0396,
+     "teacher_softmax": 0.056,
+     "B": 0.0633,
+     "S": 0.0548,
+     "XS": 0.0323
+    },
+    {
+     "label": "Humpback_Whale",
+     "sci": "Megaptera novaeangliae",
+     "perch_idx": 7737,
+     "n_pos": 64,
+     "prevalence": 0.0378,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.4811,
+     "teacher_softmax": 0.4717,
+     "B": 0.4572,
+     "S": 0.4802,
+     "XS": 0.5222
+    },
+    {
+     "label": "Killer_Whale",
+     "sci": "Orcinus orca",
+     "perch_idx": 9259,
+     "n_pos": 35,
+     "prevalence": 0.0207,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.167,
+     "teacher_softmax": 0.1797,
+     "B": 0.1298,
+     "S": 0.1315,
+     "XS": 0.1551
+    },
+    {
+     "label": "Northern_Right_Whale",
+     "sci": "Eubalaena glacialis",
+     "perch_idx": 4845,
+     "n_pos": 54,
+     "prevalence": 0.0319,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0779,
+     "teacher_softmax": 0.0604,
+     "B": 0.0817,
+     "S": 0.0634,
+     "XS": 0.0502
+    },
+    {
+     "label": "Southern_Right_Whale",
+     "sci": "Eubalaena australis",
+     "perch_idx": 4844,
+     "n_pos": 25,
+     "prevalence": 0.0147,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0193,
+     "teacher_softmax": 0.0222,
+     "B": 0.0381,
+     "S": 0.0356,
+     "XS": 0.0392
+    },
+    {
+     "label": "Sperm_Whale",
+     "sci": "Physeter macrocephalus",
+     "perch_idx": 10384,
+     "n_pos": 75,
+     "prevalence": 0.0442,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.2388,
+     "teacher_softmax": 0.2622,
+     "B": 0.2081,
+     "S": 0.1971,
+     "XS": 0.2084
+    },
+    {
+     "label": "Walrus",
+     "sci": "Odobenus rosmarus",
+     "perch_idx": 9033,
+     "n_pos": 38,
+     "prevalence": 0.0224,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0384,
+     "teacher_softmax": 0.0303,
+     "B": 0.069,
+     "S": 0.0818,
+     "XS": 0.0361
+    }
+   ]
+  }
+ },
+ "anuraset": {
+  "field_cos_mean": {
+   "B": 0.8433,
+   "S": 0.8375,
+   "XS": 0.8079
+  },
+  "embedding": {
+   "n_species_retrieval": 38,
+   "n_species_probe": 38,
+   "n_units": 17811,
+   "n_groups": 1612,
+   "n_test_units": 5342,
+   "teacher": {
+    "retrieval_k1_mAP": 0.3347,
+    "retrieval_k5_mAP": 0.3656,
+    "probe_cmAP": 0.7718
+   },
+   "B": {
+    "retrieval_k1_mAP": 0.3365,
+    "retrieval_k5_mAP": 0.3757,
+    "probe_cmAP": 0.7535,
+    "xretrieval_t2s_k1_mAP": 0.335,
+    "xretrieval_t2s_k5_mAP": 0.3672,
+    "xretrieval_s2t_k1_mAP": 0.3302,
+    "xretrieval_s2t_k5_mAP": 0.3708,
+    "xprobe_cmAP": 0.6271
+   },
+   "S": {
+    "retrieval_k1_mAP": 0.3268,
+    "retrieval_k5_mAP": 0.3713,
+    "probe_cmAP": 0.749,
+    "xretrieval_t2s_k1_mAP": 0.3328,
+    "xretrieval_t2s_k5_mAP": 0.3631,
+    "xretrieval_s2t_k1_mAP": 0.3271,
+    "xretrieval_s2t_k5_mAP": 0.3668,
+    "xprobe_cmAP": 0.6297
+   },
+   "XS": {
+    "retrieval_k1_mAP": 0.3258,
+    "retrieval_k5_mAP": 0.3621,
+    "probe_cmAP": 0.7417,
+    "xretrieval_t2s_k1_mAP": 0.326,
+    "xretrieval_t2s_k5_mAP": 0.3484,
+    "xretrieval_s2t_k1_mAP": 0.3274,
+    "xretrieval_s2t_k5_mAP": 0.3526,
+    "xprobe_cmAP": 0.5927
+   },
+   "chance_cmAP_probe": 0.0404,
+   "ratio_B": {
+    "retrieval_k1_mAP": 1.005,
+    "retrieval_k5_mAP": 1.028,
+    "probe_cmAP": 0.976,
+    "xretrieval_t2s_k1_mAP": 1.001,
+    "xretrieval_s2t_k1_mAP": 0.987,
+    "xprobe_cmAP": 0.813,
+    "mean_within": 1.003
+   },
+   "ratio_S": {
+    "retrieval_k1_mAP": 0.976,
+    "retrieval_k5_mAP": 1.016,
+    "probe_cmAP": 0.97,
+    "xretrieval_t2s_k1_mAP": 0.994,
+    "xretrieval_s2t_k1_mAP": 0.977,
+    "xprobe_cmAP": 0.816,
+    "mean_within": 0.987
+   },
+   "ratio_XS": {
+    "retrieval_k1_mAP": 0.973,
+    "retrieval_k5_mAP": 0.99,
+    "probe_cmAP": 0.961,
+    "xretrieval_t2s_k1_mAP": 0.974,
+    "xretrieval_s2t_k1_mAP": 0.978,
+    "xprobe_cmAP": 0.768,
+    "mean_within": 0.975
+   }
+  },
+  "head": {
+   "n_classes_in_data": 42,
+   "n_mapped": 37,
+   "n_mapped_with_train_recordings": 0,
+   "n_scored": 36,
+   "min_pos": 5,
+   "macro_AP": {
+    "prevalence": 0.0447,
+    "teacher_logit": 0.4892,
+    "teacher_softmax": 0.4711,
+    "B": 0.4484,
+    "S": 0.4403,
+    "XS": 0.436
+   },
+   "ratio_B": {
+    "macro_AP_vs_teacher_logit": 0.917,
+    "macro_AP_vs_teacher_softmax": 0.952,
+    "chance_corrected_vs_teacher_logit": 0.908,
+    "median_per_class_ratio": 0.889
+   },
+   "ratio_S": {
+    "macro_AP_vs_teacher_logit": 0.9,
+    "macro_AP_vs_teacher_softmax": 0.935,
+    "chance_corrected_vs_teacher_logit": 0.89,
+    "median_per_class_ratio": 0.883
+   },
+   "ratio_XS": {
+    "macro_AP_vs_teacher_logit": 0.891,
+    "macro_AP_vs_teacher_softmax": 0.926,
+    "chance_corrected_vs_teacher_logit": 0.88,
+    "median_per_class_ratio": 0.856
+   },
+   "per_class": [
+    {
+     "label": "RHIICT",
+     "sci": "Rhinella icterica",
+     "perch_idx": 12041,
+     "n_pos": 115,
+     "prevalence": 0.0065,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.8276,
+     "teacher_softmax": 0.8356,
+     "B": 0.852,
+     "S": 0.8442,
+     "XS": 0.8478
+    },
+    {
+     "label": "RHIORN",
+     "sci": "Rhinella ornata",
+     "perch_idx": 12047,
+     "n_pos": 14,
+     "prevalence": 0.0008,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.6513,
+     "teacher_softmax": 0.4888,
+     "B": 0.4034,
+     "S": 0.4498,
+     "XS": 0.4328
+    },
+    {
+     "label": "AMEPIC",
+     "sci": "Ameerega picta",
+     "perch_idx": 516,
+     "n_pos": 32,
+     "prevalence": 0.0018,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0013,
+     "teacher_softmax": 0.001,
+     "B": 0.001,
+     "S": 0.001,
+     "XS": 0.001
+    },
+    {
+     "label": "BOAALB",
+     "sci": "Boana albopunctata",
+     "perch_idx": 1569,
+     "n_pos": 1248,
+     "prevalence": 0.0701,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.8252,
+     "teacher_softmax": 0.8332,
+     "B": 0.7657,
+     "S": 0.783,
+     "XS": 0.7125
+    },
+    {
+     "label": "BOAALM",
+     "sci": "Boana albomarginata",
+     "perch_idx": 1568,
+     "n_pos": 487,
+     "prevalence": 0.0273,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.9073,
+     "teacher_softmax": 0.8824,
+     "B": 0.8525,
+     "S": 0.8654,
+     "XS": 0.8102
+    },
+    {
+     "label": "BOABIS",
+     "sci": "Boana bischoffi",
+     "perch_idx": 1570,
+     "n_pos": 3338,
+     "prevalence": 0.1874,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.7601,
+     "teacher_softmax": 0.7574,
+     "B": 0.7537,
+     "S": 0.7394,
+     "XS": 0.6719
+    },
+    {
+     "label": "BOAFAB",
+     "sci": "Boana faber",
+     "perch_idx": 1581,
+     "n_pos": 1921,
+     "prevalence": 0.1079,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.9407,
+     "teacher_softmax": 0.9413,
+     "B": 0.9398,
+     "S": 0.9432,
+     "XS": 0.9358
+    },
+    {
+     "label": "BOALUN",
+     "sci": "Boana lundii",
+     "perch_idx": 1591,
+     "n_pos": 634,
+     "prevalence": 0.0356,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.7289,
+     "teacher_softmax": 0.7463,
+     "B": 0.6419,
+     "S": 0.5578,
+     "XS": 0.6645
+    },
+    {
+     "label": "BOAPRA",
+     "sci": "Boana prasina",
+     "perch_idx": 1598,
+     "n_pos": 156,
+     "prevalence": 0.0088,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.2778,
+     "teacher_softmax": 0.2749,
+     "B": 0.2575,
+     "S": 0.2218,
+     "XS": 0.1837
+    },
+    {
+     "label": "BOARAN",
+     "sci": "Boana raniceps",
+     "perch_idx": 1602,
+     "n_pos": 402,
+     "prevalence": 0.0226,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.5919,
+     "teacher_softmax": 0.5976,
+     "B": 0.501,
+     "S": 0.4767,
+     "XS": 0.5217
+    },
+    {
+     "label": "DENCRU",
+     "sci": "Dendropsophus cruzi",
+     "perch_idx": 4086,
+     "n_pos": 181,
+     "prevalence": 0.0102,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0143,
+     "teacher_softmax": 0.0108,
+     "B": 0.0095,
+     "S": 0.0089,
+     "XS": 0.0086
+    },
+    {
+     "label": "DENELE",
+     "sci": "Dendropsophus elegans",
+     "perch_idx": 4089,
+     "n_pos": 42,
+     "prevalence": 0.0024,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0031,
+     "teacher_softmax": 0.0029,
+     "B": 0.002,
+     "S": 0.0026,
+     "XS": 0.002
+    },
+    {
+     "label": "DENMIN",
+     "sci": "Dendropsophus minutus",
+     "perch_idx": 4102,
+     "n_pos": 2092,
+     "prevalence": 0.1175,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.9336,
+     "teacher_softmax": 0.9297,
+     "B": 0.9119,
+     "S": 0.8986,
+     "XS": 0.8944
+    },
+    {
+     "label": "DENNAH",
+     "sci": "Dendropsophus nahdereri",
+     "perch_idx": 4104,
+     "n_pos": 161,
+     "prevalence": 0.009,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.7038,
+     "teacher_softmax": 0.6981,
+     "B": 0.6642,
+     "S": 0.69,
+     "XS": 0.701
+    },
+    {
+     "label": "DENNAN",
+     "sci": "Dendropsophus nanus",
+     "perch_idx": 4105,
+     "n_pos": 1192,
+     "prevalence": 0.0669,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.7848,
+     "teacher_softmax": 0.76,
+     "B": 0.7045,
+     "S": 0.7037,
+     "XS": 0.7479
+    },
+    {
+     "label": "PITAZU",
+     "sci": "Pithecopus azureus",
+     "perch_idx": 10512,
+     "n_pos": 1521,
+     "prevalence": 0.0854,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0853,
+     "teacher_softmax": 0.0649,
+     "B": 0.0585,
+     "S": 0.0553,
+     "XS": 0.0587
+    },
+    {
+     "label": "PHYDIS",
+     "sci": "Phyllomedusa distincta",
+     "perch_idx": 10245,
+     "n_pos": 327,
+     "prevalence": 0.0184,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0338,
+     "teacher_softmax": 0.0313,
+     "B": 0.0282,
+     "S": 0.0235,
+     "XS": 0.0215
+    },
+    {
+     "label": "PHYSAU",
+     "sci": "Phyllomedusa sauvagii",
+     "perch_idx": 10246,
+     "n_pos": 487,
+     "prevalence": 0.0273,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.3929,
+     "teacher_softmax": 0.2274,
+     "B": 0.2496,
+     "S": 0.1945,
+     "XS": 0.2419
+    },
+    {
+     "label": "SCIALT",
+     "sci": "Scinax alter",
+     "perch_idx": 12375,
+     "n_pos": 46,
+     "prevalence": 0.0026,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.005,
+     "teacher_softmax": 0.0054,
+     "B": 0.0042,
+     "S": 0.0064,
+     "XS": 0.0027
+    },
+    {
+     "label": "SCIFUS",
+     "sci": "Scinax fuscomarginatus",
+     "perch_idx": 12386,
+     "n_pos": 22,
+     "prevalence": 0.0012,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0033,
+     "teacher_softmax": 0.0031,
+     "B": 0.0016,
+     "S": 0.0017,
+     "XS": 0.0021
+    },
+    {
+     "label": "SCIFUV",
+     "sci": "Scinax fuscovarius",
+     "perch_idx": 12387,
+     "n_pos": 863,
+     "prevalence": 0.0485,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.8427,
+     "teacher_softmax": 0.8385,
+     "B": 0.8201,
+     "S": 0.8105,
+     "XS": 0.7724
+    },
+    {
+     "label": "SCINAS",
+     "sci": "Scinax nasicus",
+     "perch_idx": 12393,
+     "n_pos": 7,
+     "prevalence": 0.0004,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0375,
+     "teacher_softmax": 0.0308,
+     "B": 0.0033,
+     "S": 0.0027,
+     "XS": 0.001
+    },
+    {
+     "label": "SCIPER",
+     "sci": "Scinax perereca",
+     "perch_idx": 12395,
+     "n_pos": 1154,
+     "prevalence": 0.0648,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.7317,
+     "teacher_softmax": 0.7349,
+     "B": 0.7302,
+     "S": 0.7006,
+     "XS": 0.6799
+    },
+    {
+     "label": "SPHSUR",
+     "sci": "Sphaenorhynchus surdus",
+     "perch_idx": 12784,
+     "n_pos": 3936,
+     "prevalence": 0.221,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.5763,
+     "teacher_softmax": 0.5243,
+     "B": 0.6085,
+     "S": 0.6055,
+     "XS": 0.6969
+    },
+    {
+     "label": "ADEDIP",
+     "sci": "Adenomera diptyx",
+     "perch_idx": 146,
+     "n_pos": 119,
+     "prevalence": 0.0067,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0103,
+     "teacher_softmax": 0.0051,
+     "B": 0.0044,
+     "S": 0.0061,
+     "XS": 0.0048
+    },
+    {
+     "label": "ADEMAR",
+     "sci": "Adenomera marmorata",
+     "perch_idx": 149,
+     "n_pos": 145,
+     "prevalence": 0.0081,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.4292,
+     "teacher_softmax": 0.3923,
+     "B": 0.3979,
+     "S": 0.3951,
+     "XS": 0.4279
+    },
+    {
+     "label": "LEPELE",
+     "sci": "Leptodactylus elenae",
+     "perch_idx": 7002,
+     "n_pos": 9,
+     "prevalence": 0.0005,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0016,
+     "teacher_softmax": 0.0005,
+     "B": 0.0004,
+     "S": 0.0004,
+     "XS": 0.0004
+    },
+    {
+     "label": "LEPFUS",
+     "sci": "Leptodactylus fuscus",
+     "perch_idx": 7006,
+     "n_pos": 363,
+     "prevalence": 0.0204,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.8527,
+     "teacher_softmax": 0.8444,
+     "B": 0.8227,
+     "S": 0.7885,
+     "XS": 0.8145
+    },
+    {
+     "label": "LEPLAB",
+     "sci": "Leptodactylus labyrinthicus",
+     "perch_idx": 7012,
+     "n_pos": 357,
+     "prevalence": 0.02,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.8436,
+     "teacher_softmax": 0.829,
+     "B": 0.7719,
+     "S": 0.8406,
+     "XS": 0.7963
+    },
+    {
+     "label": "LEPLAT",
+     "sci": "Leptodactylus latrans",
+     "perch_idx": 7014,
+     "n_pos": 1647,
+     "prevalence": 0.0925,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.6044,
+     "teacher_softmax": 0.5784,
+     "B": 0.4856,
+     "S": 0.4267,
+     "XS": 0.4066
+    },
+    {
+     "label": "LEPNOT",
+     "sci": "Leptodactylus notoaktites",
+     "perch_idx": 7026,
+     "n_pos": 313,
+     "prevalence": 0.0176,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.6621,
+     "teacher_softmax": 0.6595,
+     "B": 0.6875,
+     "S": 0.6523,
+     "XS": 0.6249
+    },
+    {
+     "label": "LEPPOD",
+     "sci": "Leptodactylus podicipinus",
+     "perch_idx": 7032,
+     "n_pos": 1826,
+     "prevalence": 0.1025,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.5596,
+     "teacher_softmax": 0.5366,
+     "B": 0.4496,
+     "S": 0.4898,
+     "XS": 0.3821
+    },
+    {
+     "label": "PHYALB",
+     "sci": "Physalaemus albonotatus",
+     "perch_idx": 10359,
+     "n_pos": 1771,
+     "prevalence": 0.0994,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.9119,
+     "teacher_softmax": 0.9091,
+     "B": 0.8939,
+     "S": 0.8699,
+     "XS": 0.8665
+    },
+    {
+     "label": "PHYCUV",
+     "sci": "Physalaemus cuvieri",
+     "perch_idx": 10367,
+     "n_pos": 1273,
+     "prevalence": 0.0715,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.8688,
+     "teacher_softmax": 0.8721,
+     "B": 0.8412,
+     "S": 0.7741,
+     "XS": 0.7374
+    },
+    {
+     "label": "PHYNAT",
+     "sci": "Physalaemus nattereri",
+     "perch_idx": 10376,
+     "n_pos": 96,
+     "prevalence": 0.0054,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.1652,
+     "teacher_softmax": 0.0766,
+     "B": 0.0038,
+     "S": 0.0035,
+     "XS": 0.0043
+    },
+    {
+     "label": "ELABIC",
+     "sci": "Elachistocleis bicolor",
+     "perch_idx": 4504,
+     "n_pos": 355,
+     "prevalence": 0.0199,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.0428,
+     "teacher_softmax": 0.036,
+     "B": 0.0203,
+     "S": 0.0162,
+     "XS": 0.0187
+    }
+   ]
+  }
+ },
+ "humbugdb": {
+  "field_cos_mean": {
+   "B": 0.8329,
+   "S": 0.8202,
+   "XS": 0.7941
+  },
+  "embedding": {
+   "n_species_retrieval": 12,
+   "n_species_probe": 12,
+   "n_units": 9295,
+   "n_groups": 3237,
+   "n_test_units": 2950,
+   "teacher": {
+    "retrieval_k1_mAP": 0.1998,
+    "retrieval_k5_mAP": 0.2276,
+    "probe_cmAP": 0.4676
+   },
+   "B": {
+    "retrieval_k1_mAP": 0.2039,
+    "retrieval_k5_mAP": 0.2313,
+    "probe_cmAP": 0.4455,
+    "xretrieval_t2s_k1_mAP": 0.1965,
+    "xretrieval_t2s_k5_mAP": 0.2213,
+    "xretrieval_s2t_k1_mAP": 0.1846,
+    "xretrieval_s2t_k5_mAP": 0.2039,
+    "xprobe_cmAP": 0.276
+   },
+   "S": {
+    "retrieval_k1_mAP": 0.2031,
+    "retrieval_k5_mAP": 0.2279,
+    "probe_cmAP": 0.4497,
+    "xretrieval_t2s_k1_mAP": 0.1928,
+    "xretrieval_t2s_k5_mAP": 0.219,
+    "xretrieval_s2t_k1_mAP": 0.1836,
+    "xretrieval_s2t_k5_mAP": 0.1981,
+    "xprobe_cmAP": 0.2602
+   },
+   "XS": {
+    "retrieval_k1_mAP": 0.1977,
+    "retrieval_k5_mAP": 0.2225,
+    "probe_cmAP": 0.4355,
+    "xretrieval_t2s_k1_mAP": 0.1842,
+    "xretrieval_t2s_k5_mAP": 0.2083,
+    "xretrieval_s2t_k1_mAP": 0.1837,
+    "xretrieval_s2t_k5_mAP": 0.1949,
+    "xprobe_cmAP": 0.2286
+   },
+   "chance_cmAP_probe": 0.0454,
+   "ratio_B": {
+    "retrieval_k1_mAP": 1.021,
+    "retrieval_k5_mAP": 1.016,
+    "probe_cmAP": 0.953,
+    "xretrieval_t2s_k1_mAP": 0.983,
+    "xretrieval_s2t_k1_mAP": 0.924,
+    "xprobe_cmAP": 0.59,
+    "mean_within": 0.997
+   },
+   "ratio_S": {
+    "retrieval_k1_mAP": 1.017,
+    "retrieval_k5_mAP": 1.001,
+    "probe_cmAP": 0.962,
+    "xretrieval_t2s_k1_mAP": 0.965,
+    "xretrieval_s2t_k1_mAP": 0.919,
+    "xprobe_cmAP": 0.556,
+    "mean_within": 0.993
+   },
+   "ratio_XS": {
+    "retrieval_k1_mAP": 0.989,
+    "retrieval_k5_mAP": 0.978,
+    "probe_cmAP": 0.931,
+    "xretrieval_t2s_k1_mAP": 0.922,
+    "xretrieval_s2t_k1_mAP": 0.919,
+    "xprobe_cmAP": 0.489,
+    "mean_within": 0.966
+   }
+  },
+  "beans": {
+   "n_train": 5577,
+   "n_test": 1859,
+   "n_classes": 14,
+   "teacher": {
+    "accuracy": 0.8112
+   },
+   "B": {
+    "accuracy": 0.7795,
+    "x_accuracy": 0.3599
+   },
+   "S": {
+    "accuracy": 0.7859,
+    "x_accuracy": 0.3453
+   },
+   "XS": {
+    "accuracy": 0.7795,
+    "x_accuracy": 0.3308
+   },
+   "first_window_only": {
+    "n_train": 5577,
+    "n_test": 1859,
+    "n_classes": 14,
+    "teacher": {
+     "accuracy": 0.787
+    },
+    "B": {
+     "accuracy": 0.7558,
+     "x_accuracy": 0.3432
+    },
+    "S": {
+     "accuracy": 0.773,
+     "x_accuracy": 0.3297
+    },
+    "XS": {
+     "accuracy": 0.7536,
+     "x_accuracy": 0.3206
+    }
+   }
+  },
+  "head": {
+   "n_classes_in_data": 14,
+   "n_mapped": 0,
+   "n_mapped_with_train_recordings": 0,
+   "n_scored": 0,
+   "min_pos": 5
+  }
+ },
+ "reefset": {
+  "field_cos_mean": {
+   "B": 0.7575,
+   "S": 0.7443,
+   "XS": 0.6955
+  },
+  "embedding": {
+   "n_species_retrieval": 37,
+   "n_species_probe": 37,
+   "n_units": 57074,
+   "n_groups": 57074,
+   "n_test_units": 17122,
+   "teacher": {
+    "retrieval_k1_mAP": 0.3979,
+    "retrieval_k5_mAP": 0.4045,
+    "probe_cmAP": 0.8269
+   },
+   "B": {
+    "retrieval_k1_mAP": 0.3957,
+    "retrieval_k5_mAP": 0.4313,
+    "probe_cmAP": 0.8193,
+    "xretrieval_t2s_k1_mAP": 0.3368,
+    "xretrieval_t2s_k5_mAP": 0.3402,
+    "xretrieval_s2t_k1_mAP": 0.3238,
+    "xretrieval_s2t_k5_mAP": 0.3256,
+    "xprobe_cmAP": 0.2776
+   },
+   "S": {
+    "retrieval_k1_mAP": 0.3759,
+    "retrieval_k5_mAP": 0.4071,
+    "probe_cmAP": 0.8072,
+    "xretrieval_t2s_k1_mAP": 0.3129,
+    "xretrieval_t2s_k5_mAP": 0.3249,
+    "xretrieval_s2t_k1_mAP": 0.2996,
+    "xretrieval_s2t_k5_mAP": 0.2967,
+    "xprobe_cmAP": 0.2837
+   },
+   "XS": {
+    "retrieval_k1_mAP": 0.3307,
+    "retrieval_k5_mAP": 0.3606,
+    "probe_cmAP": 0.7984,
+    "xretrieval_t2s_k1_mAP": 0.2776,
+    "xretrieval_t2s_k5_mAP": 0.2914,
+    "xretrieval_s2t_k1_mAP": 0.2433,
+    "xretrieval_s2t_k5_mAP": 0.2272,
+    "xprobe_cmAP": 0.2472
+   },
+   "chance_cmAP_probe": 0.027,
+   "ratio_B": {
+    "retrieval_k1_mAP": 0.994,
+    "retrieval_k5_mAP": 1.066,
+    "probe_cmAP": 0.991,
+    "xretrieval_t2s_k1_mAP": 0.846,
+    "xretrieval_s2t_k1_mAP": 0.814,
+    "xprobe_cmAP": 0.336,
+    "mean_within": 1.017
+   },
+   "ratio_S": {
+    "retrieval_k1_mAP": 0.945,
+    "retrieval_k5_mAP": 1.006,
+    "probe_cmAP": 0.976,
+    "xretrieval_t2s_k1_mAP": 0.786,
+    "xretrieval_s2t_k1_mAP": 0.753,
+    "xprobe_cmAP": 0.343,
+    "mean_within": 0.976
+   },
+   "ratio_XS": {
+    "retrieval_k1_mAP": 0.831,
+    "retrieval_k5_mAP": 0.891,
+    "probe_cmAP": 0.966,
+    "xretrieval_t2s_k1_mAP": 0.698,
+    "xretrieval_s2t_k1_mAP": 0.611,
+    "xprobe_cmAP": 0.299,
+    "mean_within": 0.896
+   }
+  },
+  "reef_k16": {
+   "k": 16,
+   "draws": 5,
+   "n_classes": 37,
+   "teacher": 0.9707,
+   "B": 0.969,
+   "S": 0.9681,
+   "XS": 0.9623,
+   "x_B": 0.9652,
+   "x_S": 0.9636,
+   "x_XS": 0.9551
+  },
+  "head": {
+   "n_classes_in_data": 37,
+   "n_mapped": 1,
+   "n_mapped_with_train_recordings": 0,
+   "n_scored": 1,
+   "min_pos": 5,
+   "macro_AP": {
+    "prevalence": 0.0438,
+    "teacher_logit": 0.5137,
+    "teacher_softmax": 0.5341,
+    "B": 0.5659,
+    "S": 0.5787,
+    "XS": 0.5887
+   },
+   "ratio_B": {
+    "macro_AP_vs_teacher_logit": 1.102,
+    "macro_AP_vs_teacher_softmax": 1.06,
+    "chance_corrected_vs_teacher_logit": 1.111,
+    "median_per_class_ratio": 1.102
+   },
+   "ratio_S": {
+    "macro_AP_vs_teacher_logit": 1.127,
+    "macro_AP_vs_teacher_softmax": 1.084,
+    "chance_corrected_vs_teacher_logit": 1.138,
+    "median_per_class_ratio": 1.127
+   },
+   "ratio_XS": {
+    "macro_AP_vs_teacher_logit": 1.146,
+    "macro_AP_vs_teacher_softmax": 1.102,
+    "chance_corrected_vs_teacher_logit": 1.16,
+    "median_per_class_ratio": 1.146
+   },
+   "per_class": [
+    {
+     "label": "bioph_megnov",
+     "sci": "Megaptera novaeangliae",
+     "perch_idx": 7737,
+     "n_pos": 2501,
+     "prevalence": 0.0438,
+     "n_train_recordings": 0,
+     "teacher_logit": 0.5137,
+     "teacher_softmax": 0.5341,
+     "B": 0.5659,
+     "S": 0.5787,
+     "XS": 0.5887
+    }
+   ]
+  }
+ }
+}

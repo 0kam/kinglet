@@ -1,0 +1,53 @@
+{
+ "wabad": {
+  "n_species_probe": 719,
+  "mean_l2_norm": {
+   "teacher": 3.9722,
+   "B": 42.1631,
+   "S": 38.4968,
+   "XS": 47.2543
+  },
+  "l2": {
+   "cross_B": 0.4815,
+   "cross_S": 0.4697,
+   "cross_XS": 0.4597,
+   "own_B": 0.4881,
+   "own_S": 0.4758,
+   "own_XS": 0.4634,
+   "own_teacher": 0.4815,
+   "ratio_cross_B": 1.0,
+   "ratio_cross_S": 0.975,
+   "ratio_cross_XS": 0.955,
+   "ratio_own_B": 1.014,
+   "ratio_own_S": 0.988,
+   "ratio_own_XS": 0.962,
+   "fits_at_max_iter": {
+    "teacher": 0,
+    "B": 0,
+    "S": 0,
+    "XS": 0
+   }
+  },
+  "raw": {
+   "cross_B": 0.5112,
+   "cross_S": 0.5008,
+   "cross_XS": 0.4824,
+   "own_B": 0.4741,
+   "own_S": 0.4664,
+   "own_XS": 0.4474,
+   "own_teacher": 0.5222,
+   "ratio_cross_B": 0.979,
+   "ratio_cross_S": 0.959,
+   "ratio_cross_XS": 0.924,
+   "ratio_own_B": 0.908,
+   "ratio_own_S": 0.893,
+   "ratio_own_XS": 0.857,
+   "fits_at_max_iter": {
+    "teacher": 0,
+    "B": 0,
+    "S": 0,
+    "XS": 0
+   }
+  }
+ }
+}

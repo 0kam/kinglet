@@ -1,0 +1,1270 @@
+{
+ "silent": {
+  "NBP POW HSN PER SNE NES UHH WABAD SSW": {
+   "silent_model_inputs": 19,
+   "windows_or_inputs_without_sound": 0
+  }
+ },
+ "benchmarks": {
+  "v3relc5s": {
+   "WABAD": {
+    "cmAP": 0.43980554738081024,
+    "pooled_auprc": 0.5175426246574344,
+    "auroc": 0.9740818687165662,
+    "n_species": 1189,
+    "n_windows": 60158,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.513960576181791,
+    "n_unmatched_codes": 4,
+    "n_unmatched_annotated": 4,
+    "unmatched_annotated": [
+     "bantur1",
+     "banwea1",
+     "fepoli1",
+     "scamin1"
+    ]
+   },
+   "WABAD_per_site_auprc": {
+    "ARD": 0.6372747049528965,
+    "BAM": 0.37303351500247833,
+    "BERB": 0.23719009155956994,
+    "BIAL": 0.789067826741937,
+    "BMT": 0.6272054641696894,
+    "BOLIN": 0.3166240635981635,
+    "BRCAS": 0.8668554434947835,
+    "BRE": 0.7762056604345374,
+    "BUR": 0.5683556043839861,
+    "CARI": 0.6807065068370167,
+    "CAT": 0.8878730889052135,
+    "CB": 0.556273572883167,
+    "CLH": 0.6716297764391536,
+    "COU": 0.7132603567396815,
+    "CRAT": 0.7991338990804184,
+    "CRUZ": 0.6005236384936148,
+    "DEVA": 0.600922337406615,
+    "DONG": 0.3760980967697111,
+    "DUNAS": 0.7608087377190972,
+    "DYOM": 0.7311747739371594,
+    "EFFOR": 0.38995391659313183,
+    "EFFOU": 0.2934297429562909,
+    "EMP": 0.7073859856456994,
+    "EVROS": 0.847142990384551,
+    "FEU": 0.8053304162516607,
+    "FNCA": 0.5387124702971249,
+    "GLEN": 0.8749013750409971,
+    "GTLU": 0.7168542030169879,
+    "HAG": 0.7688253605577784,
+    "HAK": 0.859224145282727,
+    "HAR": 0.7703075507397439,
+    "HONDO": 0.6169307772426644,
+    "HUAP": 0.735859279521023,
+    "JUNCA": 0.847503163037557,
+    "KAR": 0.8282641970841966,
+    "KIB": 0.48930825634533237,
+    "LIM": 0.690078802588683,
+    "MABI": 0.8011016131973212,
+    "MAPIMI": 0.714772680781411,
+    "MARTI": 0.4184128967212954,
+    "MILLAN": 0.6593981532085529,
+    "MONTEB": 0.5460552986507984,
+    "MOPU": 0.859945903802191,
+    "NAV": 0.692582585773703,
+    "NL": 0.6473862427717845,
+    "OESF": 0.9004038039837866,
+    "OIO": 0.6150964063793816,
+    "OLIV": 0.7925879088447539,
+    "PETI": 0.69500779864619,
+    "PGF": 0.5515262204280531,
+    "PINA": 0.7689790221544043,
+    "PITI": 0.7450946514150553,
+    "POZO": 0.5381354157269141,
+    "PUUL": 0.7624162865106003,
+    "QR": 0.8494760881243385,
+    "RBA": 0.6678856500989939,
+    "RFP": 0.7980215196626137,
+    "RGU": 0.6943911596592899,
+    "RME": 0.5790366459871142,
+    "ROTOK": 0.17950420149258536,
+    "SAL": 0.5116932342463787,
+    "SBN": 0.5627026448566895,
+    "SCHF": 0.8376948795468059,
+    "SCHG": 0.7684381695145337,
+    "SD": 0.7362201037475091,
+    "SITH": 0.6842659645009685,
+    "SLOB": 0.8275554092581616,
+    "SPMCO": 0.7186005850252372,
+    "TAM": 0.6833879051994044,
+    "UNI": 0.6415557029382987,
+    "VER": 0.5251828861807516,
+    "VIL": 0.8028577183278691
+   },
+   "POW": {
+    "cmAP": 0.739643164565393,
+    "pooled_auprc": 0.8897667170819173,
+    "auroc": 0.9496197419830533,
+    "n_species": 48,
+    "n_windows": 4560,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.3689490367673385,
+    "n_unmatched_codes": 0,
+    "n_unmatched_annotated": 0,
+    "unmatched_annotated": []
+   },
+   "HSN": {
+    "cmAP": 0.580798491514381,
+    "pooled_auprc": 0.6123547109132876,
+    "auroc": 0.8888269562463794,
+    "n_species": 21,
+    "n_windows": 12000,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.1020844241259602,
+    "n_unmatched_codes": 0,
+    "n_unmatched_annotated": 0,
+    "unmatched_annotated": []
+   },
+   "NES": {
+    "cmAP": 0.43156185754415083,
+    "pooled_auprc": 0.4469365700263388,
+    "auroc": 0.9350304241662998,
+    "n_species": 89,
+    "n_windows": 24480,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.0687515045669906,
+    "n_unmatched_codes": 1,
+    "n_unmatched_annotated": 1,
+    "unmatched_annotated": [
+     "runwre1"
+    ]
+   },
+   "PER": {
+    "cmAP": 0.38150723354468563,
+    "pooled_auprc": 0.47561235019537923,
+    "auroc": 0.8415640238373723,
+    "n_species": 132,
+    "n_windows": 15120,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.666698267997753,
+    "n_unmatched_codes": 1,
+    "n_unmatched_annotated": 1,
+    "unmatched_annotated": [
+     "scbwoo5"
+    ]
+   },
+   "SNE": {
+    "cmAP": 0.44757224309741817,
+    "pooled_auprc": 0.7325249643101834,
+    "auroc": 0.871307570936841,
+    "n_species": 56,
+    "n_windows": 23756,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.28024096995829,
+    "n_unmatched_codes": 1,
+    "n_unmatched_annotated": 1,
+    "unmatched_annotated": [
+     "pasfly"
+    ]
+   },
+   "SSW": {
+    "cmAP": 0.627237168619818,
+    "pooled_auprc": 0.7609533912593276,
+    "auroc": 0.9827109094325883,
+    "n_species": 81,
+    "n_windows": 205200,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.3272051811676218,
+    "n_unmatched_codes": 0,
+    "n_unmatched_annotated": 0,
+    "unmatched_annotated": []
+   },
+   "UHH": {
+    "cmAP": 0.39701162044845656,
+    "pooled_auprc": 0.6183755468349688,
+    "auroc": 0.8847183804979143,
+    "n_species": 27,
+    "n_windows": 36637,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.0379388769894289,
+    "n_unmatched_codes": 0,
+    "n_unmatched_annotated": 0,
+    "unmatched_annotated": []
+   },
+   "NBP": {
+    "cmAP": 0.7601962668829944,
+    "pooled_auprc": 0.7182889551136692,
+    "auroc": 0.9369880196370878,
+    "n_species": 51,
+    "n_windows": 539,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.1558404544366647,
+    "n_unmatched_codes": 0,
+    "n_unmatched_annotated": 0,
+    "unmatched_annotated": []
+   }
+  },
+  "v3relc": {
+   "WABAD": {
+    "cmAP": 0.3943098732390254,
+    "pooled_auprc": 0.47045037818156965,
+    "auroc": 0.971750298357027,
+    "n_species": 1189,
+    "n_windows": 60158,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.3573489612358878,
+    "n_unmatched_codes": 4,
+    "n_unmatched_annotated": 4,
+    "unmatched_annotated": [
+     "bantur1",
+     "banwea1",
+     "fepoli1",
+     "scamin1"
+    ]
+   },
+   "WABAD_per_site_auprc": {
+    "ARD": 0.599813466572549,
+    "BAM": 0.3136568067249535,
+    "BERB": 0.2326772587808226,
+    "BIAL": 0.7436493546814397,
+    "BMT": 0.5598180585064866,
+    "BOLIN": 0.29829802883903633,
+    "BRCAS": 0.8411176464477109,
+    "BRE": 0.7391185784227008,
+    "BUR": 0.5487110746525101,
+    "CARI": 0.6400916271504699,
+    "CAT": 0.8583871019518141,
+    "CB": 0.5273426957610711,
+    "CLH": 0.6191805542183547,
+    "COU": 0.6403351612359192,
+    "CRAT": 0.7859301768851669,
+    "CRUZ": 0.5546823973997879,
+    "DEVA": 0.5647952218354656,
+    "DONG": 0.3527201605342496,
+    "DUNAS": 0.688107319846795,
+    "DYOM": 0.7053965955789091,
+    "EFFOR": 0.36931043510172124,
+    "EFFOU": 0.26988468736275256,
+    "EMP": 0.658261333271578,
+    "EVROS": 0.8218896593829559,
+    "FEU": 0.7622026834688401,
+    "FNCA": 0.4452010105985412,
+    "GLEN": 0.8141867310026429,
+    "GTLU": 0.6436411485234089,
+    "HAG": 0.7153508263710938,
+    "HAK": 0.8404455475641881,
+    "HAR": 0.7202955135020976,
+    "HONDO": 0.5814846828310175,
+    "HUAP": 0.6645526686221099,
+    "JUNCA": 0.8404140140315113,
+    "KAR": 0.7673960272848619,
+    "KIB": 0.48551706822815227,
+    "LIM": 0.6505582466503657,
+    "MABI": 0.7155365324239504,
+    "MAPIMI": 0.6202526337367635,
+    "MARTI": 0.3794261799852731,
+    "MILLAN": 0.6580425112336312,
+    "MONTEB": 0.46966848991221904,
+    "MOPU": 0.8250555989200992,
+    "NAV": 0.6408873659408796,
+    "NL": 0.5812359877542769,
+    "OESF": 0.8642699399386362,
+    "OIO": 0.5490672504820521,
+    "OLIV": 0.7286964769880026,
+    "PETI": 0.6418777176280717,
+    "PGF": 0.48703285613193054,
+    "PINA": 0.6941355269232725,
+    "PITI": 0.724221262753,
+    "POZO": 0.48237362575328846,
+    "PUUL": 0.7045163325049097,
+    "QR": 0.765186905784667,
+    "RBA": 0.6060781108712191,
+    "RFP": 0.7327173069626437,
+    "RGU": 0.6234270256785426,
+    "RME": 0.5165271332700336,
+    "ROTOK": 0.15498538624079825,
+    "SAL": 0.4511874895416627,
+    "SBN": 0.49590786612989823,
+    "SCHF": 0.7807076671135155,
+    "SCHG": 0.7156021519046877,
+    "SD": 0.6897938015454852,
+    "SITH": 0.6226430407913197,
+    "SLOB": 0.7844982552358659,
+    "SPMCO": 0.6653165519110589,
+    "TAM": 0.6361550903397789,
+    "UNI": 0.5558626209492282,
+    "VER": 0.5129476225828716,
+    "VIL": 0.7540511517784664
+   },
+   "POW": {
+    "cmAP": 0.671053057103114,
+    "pooled_auprc": 0.8586362468294643,
+    "auroc": 0.9461783400408024,
+    "n_species": 48,
+    "n_windows": 4560,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.2420008460172387,
+    "n_unmatched_codes": 0,
+    "n_unmatched_annotated": 0,
+    "unmatched_annotated": []
+   },
+   "HSN": {
+    "cmAP": 0.5199033123113381,
+    "pooled_auprc": 0.5490951355036732,
+    "auroc": 0.8773443745511138,
+    "n_species": 21,
+    "n_windows": 12000,
+    "all_finite": true,
+    "cmAP_vs_teacher": 0.9865337994522545,
+    "n_unmatched_codes": 0,
+    "n_unmatched_annotated": 0,
+    "unmatched_annotated": []
+   },
+   "NES": {
+    "cmAP": 0.38363893454904324,
+    "pooled_auprc": 0.3890226953206235,
+    "auroc": 0.9224327306242838,
+    "n_species": 89,
+    "n_windows": 24480,
+    "all_finite": true,
+    "cmAP_vs_teacher": 0.9500716556439902,
+    "n_unmatched_codes": 1,
+    "n_unmatched_annotated": 1,
+    "unmatched_annotated": [
+     "runwre1"
+    ]
+   },
+   "PER": {
+    "cmAP": 0.34950366230535956,
+    "pooled_auprc": 0.43053593209481705,
+    "auroc": 0.8308908661786468,
+    "n_species": 132,
+    "n_windows": 15120,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.5268836273716015,
+    "n_unmatched_codes": 1,
+    "n_unmatched_annotated": 1,
+    "unmatched_annotated": [
+     "scbwoo5"
+    ]
+   },
+   "SNE": {
+    "cmAP": 0.38198110654530143,
+    "pooled_auprc": 0.6703473966095232,
+    "auroc": 0.853757323944209,
+    "n_species": 56,
+    "n_windows": 23756,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.0926233024751184,
+    "n_unmatched_codes": 1,
+    "n_unmatched_annotated": 1,
+    "unmatched_annotated": [
+     "pasfly"
+    ]
+   },
+   "SSW": {
+    "cmAP": 0.527480121188443,
+    "pooled_auprc": 0.688949797879802,
+    "auroc": 0.9739060936884604,
+    "n_species": 81,
+    "n_windows": 205200,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.1161238281600572,
+    "n_unmatched_codes": 0,
+    "n_unmatched_annotated": 0,
+    "unmatched_annotated": []
+   },
+   "UHH": {
+    "cmAP": 0.3630002214273674,
+    "pooled_auprc": 0.5564408428429533,
+    "auroc": 0.8760661220707867,
+    "n_species": 27,
+    "n_windows": 36637,
+    "all_finite": true,
+    "cmAP_vs_teacher": 0.9490201867382153,
+    "n_unmatched_codes": 0,
+    "n_unmatched_annotated": 0,
+    "unmatched_annotated": []
+   },
+   "NBP": {
+    "cmAP": 0.6979743139410444,
+    "pooled_auprc": 0.6186243795512308,
+    "auroc": 0.9181653272307309,
+    "n_species": 51,
+    "n_windows": 539,
+    "all_finite": true,
+    "cmAP_vs_teacher": 1.0612350827748889,
+    "n_unmatched_codes": 0,
+    "n_unmatched_annotated": 0,
+    "unmatched_annotated": []
+   }
+  }
+ },
+ "mapping": {
+  "WABAD": {
+   "annotated": 1189,
+   "matched": 1185,
+   "matched_by_ebird_code": 1171,
+   "matched_by_name_rule": 14,
+   "unmatched": [
+    "bantur1",
+    "banwea1",
+    "fepoli1",
+    "scamin1"
+   ],
+   "class_differs_from_name_rule": [
+    "cibbun1: - -> Fringillaria tahapisi",
+    "clfdov1: - -> Ptilinopus holosericeus",
+    "gosbun1: - -> Fringillaria goslingi",
+    "haiwoo: - -> Leuconotopicus villosus",
+    "litwoo2: - -> Veniliornis passerinus",
+    "pacwre1: - -> Nannus pacificus",
+    "reebun: - -> Schoeniclus schoeniclus",
+    "smbwoo1: - -> Leuconotopicus fumigatus",
+    "winwre3: - -> Nannus hiemalis",
+    "winwre4: - -> Nannus troglodytes"
+   ]
+  },
+  "POW": {
+   "annotated": 48,
+   "matched": 48,
+   "matched_by_ebird_code": 48,
+   "matched_by_name_rule": 0,
+   "unmatched": [],
+   "class_differs_from_name_rule": [
+    "haiwoo: - -> Leuconotopicus villosus"
+   ]
+  },
+  "HSN": {
+   "annotated": 21,
+   "matched": 21,
+   "matched_by_ebird_code": 19,
+   "matched_by_name_rule": 2,
+   "unmatched": [],
+   "class_differs_from_name_rule": []
+  },
+  "NES": {
+   "annotated": 89,
+   "matched": 88,
+   "matched_by_ebird_code": 86,
+   "matched_by_name_rule": 2,
+   "unmatched": [
+    "runwre1"
+   ],
+   "class_differs_from_name_rule": []
+  },
+  "PER": {
+   "annotated": 132,
+   "matched": 131,
+   "matched_by_ebird_code": 130,
+   "matched_by_name_rule": 1,
+   "unmatched": [
+    "scbwoo5"
+   ],
+   "class_differs_from_name_rule": [
+    "litwoo2: - -> Veniliornis passerinus"
+   ]
+  },
+  "SNE": {
+   "annotated": 56,
+   "matched": 55,
+   "matched_by_ebird_code": 54,
+   "matched_by_name_rule": 1,
+   "unmatched": [
+    "pasfly"
+   ],
+   "class_differs_from_name_rule": [
+    "evegro: - -> Hesperiphona vespertina",
+    "whhwoo: - -> Leuconotopicus albolarvatus"
+   ]
+  },
+  "SSW": {
+   "annotated": 81,
+   "matched": 81,
+   "matched_by_ebird_code": 79,
+   "matched_by_name_rule": 2,
+   "unmatched": [],
+   "class_differs_from_name_rule": [
+    "haiwoo: - -> Leuconotopicus villosus"
+   ]
+  },
+  "UHH": {
+   "annotated": 27,
+   "matched": 27,
+   "matched_by_ebird_code": 27,
+   "matched_by_name_rule": 0,
+   "unmatched": [],
+   "class_differs_from_name_rule": []
+  },
+  "NBP": {
+   "annotated": 51,
+   "matched": 51,
+   "matched_by_ebird_code": 50,
+   "matched_by_name_rule": 1,
+   "unmatched": [],
+   "class_differs_from_name_rule": [
+    "winwre4: - -> Nannus troglodytes"
+   ]
+  },
+  "JP317": {
+   "listed": 317,
+   "matched": 310,
+   "matched_by_ebird_code": 307,
+   "matched_by_name_rule": 3,
+   "unmatched": [
+    "amawoo1",
+    "houswi1",
+    "japmur1",
+    "oristo1",
+    "shtalb",
+    "stonec7",
+    "whwsco1"
+   ],
+   "class_differs_from_name_rule": [
+    "bkfbun2: - -> Schoeniclus personatus",
+    "categr2: Ardea ibis -> Ardea coromanda",
+    "grybun: - -> Schoeniclus variabilis",
+    "litbun: - -> Schoeniclus pusillus",
+    "ocrbun1: - -> Schoeniclus yessoensis",
+    "reebun: - -> Schoeniclus schoeniclus",
+    "rinphe2: Phasianus colchicus -> Phasianus versicolor",
+    "rusbun: - -> Schoeniclus rusticus",
+    "winwre4: - -> Nannus troglodytes",
+    "yelbun1: - -> Schoeniclus sulphuratus",
+    "yetbun1: - -> Schoeniclus elegans"
+   ]
+  }
+ },
+ "bug_check_same_class_equals_v1": {
+  "WABAD v3relc5s": {
+   "columns": 1175,
+   "max_abs_diff": 0.0
+  },
+  "WABAD v3relc": {
+   "columns": 1175,
+   "max_abs_diff": 0.0
+  },
+  "POW v3relc5s": {
+   "columns": 47,
+   "max_abs_diff": 0.0
+  },
+  "POW v3relc": {
+   "columns": 47,
+   "max_abs_diff": 0.0
+  },
+  "HSN v3relc5s": {
+   "columns": 21,
+   "max_abs_diff": 0.0
+  },
+  "HSN v3relc": {
+   "columns": 21,
+   "max_abs_diff": 0.0
+  },
+  "NES v3relc5s": {
+   "columns": 88,
+   "max_abs_diff": 0.0
+  },
+  "NES v3relc": {
+   "columns": 88,
+   "max_abs_diff": 0.0
+  },
+  "PER v3relc5s": {
+   "columns": 130,
+   "max_abs_diff": 0.0
+  },
+  "PER v3relc": {
+   "columns": 130,
+   "max_abs_diff": 0.0
+  },
+  "SNE v3relc5s": {
+   "columns": 53,
+   "max_abs_diff": 0.0
+  },
+  "SNE v3relc": {
+   "columns": 53,
+   "max_abs_diff": 0.0
+  },
+  "SSW v3relc5s": {
+   "columns": 80,
+   "max_abs_diff": 0.0
+  },
+  "SSW v3relc": {
+   "columns": 80,
+   "max_abs_diff": 0.0
+  },
+  "UHH v3relc5s": {
+   "columns": 27,
+   "max_abs_diff": 0.0
+  },
+  "UHH v3relc": {
+   "columns": 27,
+   "max_abs_diff": 0.0
+  },
+  "NBP v3relc5s": {
+   "columns": 50,
+   "max_abs_diff": 0.0
+  },
+  "NBP v3relc": {
+   "columns": 50,
+   "max_abs_diff": 0.0
+  }
+ },
+ "species": {
+  "v3relc5s": {
+   "agreement_pooled": {
+    "n_pairs": 1694,
+    "r": 0.824,
+    "rho": 0.849
+   },
+   "common": {
+    "WABAD": {
+     "n_species": 1189,
+     "n_common": 1107,
+     "teacher": {
+      "cmAP_all": 0.2905,
+      "cmAP_common": 0.2945
+     },
+     "B": {
+      "cmAP_all": 0.2831,
+      "cmAP_common": 0.2861
+     },
+     "S": {
+      "cmAP_all": 0.2694,
+      "cmAP_common": 0.2719
+     },
+     "XS": {
+      "cmAP_all": 0.2592,
+      "cmAP_common": 0.2623
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.4398,
+      "cmAP_common": 0.4443
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.2065,
+      "cmAP_common": 0.2214
+     }
+    },
+    "POW": {
+     "n_species": 48,
+     "n_common": 48,
+     "teacher": {
+      "cmAP_all": 0.5403,
+      "cmAP_common": 0.5403
+     },
+     "B": {
+      "cmAP_all": 0.4835,
+      "cmAP_common": 0.4835
+     },
+     "S": {
+      "cmAP_all": 0.4627,
+      "cmAP_common": 0.4627
+     },
+     "XS": {
+      "cmAP_all": 0.4451,
+      "cmAP_common": 0.4451
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.7396,
+      "cmAP_common": 0.7396
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.5756,
+      "cmAP_common": 0.5756
+     }
+    },
+    "HSN": {
+     "n_species": 21,
+     "n_common": 21,
+     "teacher": {
+      "cmAP_all": 0.527,
+      "cmAP_common": 0.527
+     },
+     "B": {
+      "cmAP_all": 0.5181,
+      "cmAP_common": 0.5181
+     },
+     "S": {
+      "cmAP_all": 0.5006,
+      "cmAP_common": 0.5006
+     },
+     "XS": {
+      "cmAP_all": 0.4873,
+      "cmAP_common": 0.4873
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.5808,
+      "cmAP_common": 0.5808
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.4977,
+      "cmAP_common": 0.4977
+     }
+    },
+    "NES": {
+     "n_species": 89,
+     "n_common": 84,
+     "teacher": {
+      "cmAP_all": 0.4038,
+      "cmAP_common": 0.4053
+     },
+     "B": {
+      "cmAP_all": 0.4014,
+      "cmAP_common": 0.4016
+     },
+     "S": {
+      "cmAP_all": 0.3927,
+      "cmAP_common": 0.3927
+     },
+     "XS": {
+      "cmAP_all": 0.386,
+      "cmAP_common": 0.3862
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.4316,
+      "cmAP_common": 0.4322
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.5217,
+      "cmAP_common": 0.5524
+     }
+    },
+    "PER": {
+     "n_species": 132,
+     "n_common": 131,
+     "teacher": {
+      "cmAP_all": 0.2289,
+      "cmAP_common": 0.2299
+     },
+     "B": {
+      "cmAP_all": 0.2334,
+      "cmAP_common": 0.235
+     },
+     "S": {
+      "cmAP_all": 0.2152,
+      "cmAP_common": 0.2168
+     },
+     "XS": {
+      "cmAP_all": 0.207,
+      "cmAP_common": 0.2085
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.3815,
+      "cmAP_common": 0.3844
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.3718,
+      "cmAP_common": 0.3746
+     }
+    },
+    "SNE": {
+     "n_species": 56,
+     "n_common": 55,
+     "teacher": {
+      "cmAP_all": 0.3496,
+      "cmAP_common": 0.3514
+     },
+     "B": {
+      "cmAP_all": 0.3596,
+      "cmAP_common": 0.361
+     },
+     "S": {
+      "cmAP_all": 0.3375,
+      "cmAP_common": 0.339
+     },
+     "XS": {
+      "cmAP_all": 0.3226,
+      "cmAP_common": 0.3242
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.4476,
+      "cmAP_common": 0.4554
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.4326,
+      "cmAP_common": 0.4401
+     }
+    },
+    "SSW": {
+     "n_species": 81,
+     "n_common": 80,
+     "teacher": {
+      "cmAP_all": 0.4726,
+      "cmAP_common": 0.4681
+     },
+     "B": {
+      "cmAP_all": 0.4806,
+      "cmAP_common": 0.4761
+     },
+     "S": {
+      "cmAP_all": 0.459,
+      "cmAP_common": 0.4545
+     },
+     "XS": {
+      "cmAP_all": 0.4522,
+      "cmAP_common": 0.4477
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.6272,
+      "cmAP_common": 0.6235
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.3436,
+      "cmAP_common": 0.3479
+     }
+    },
+    "UHH": {
+     "n_species": 27,
+     "n_common": 27,
+     "teacher": {
+      "cmAP_all": 0.3825,
+      "cmAP_common": 0.3825
+     },
+     "B": {
+      "cmAP_all": 0.363,
+      "cmAP_common": 0.363
+     },
+     "S": {
+      "cmAP_all": 0.3533,
+      "cmAP_common": 0.3533
+     },
+     "XS": {
+      "cmAP_all": 0.3476,
+      "cmAP_common": 0.3476
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.397,
+      "cmAP_common": 0.397
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.3512,
+      "cmAP_common": 0.3512
+     }
+    },
+    "NBP": {
+     "n_species": 51,
+     "n_common": 50,
+     "teacher": {
+      "cmAP_all": 0.6577,
+      "cmAP_common": 0.6548
+     },
+     "B": {
+      "cmAP_all": 0.67,
+      "cmAP_common": 0.6664
+     },
+     "S": {
+      "cmAP_all": 0.6451,
+      "cmAP_common": 0.6417
+     },
+     "XS": {
+      "cmAP_all": 0.6408,
+      "cmAP_common": 0.6371
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.7602,
+      "cmAP_common": 0.7596
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.4588,
+      "cmAP_common": 0.4668
+     }
+    }
+   }
+  },
+  "v3relc": {
+   "agreement_pooled": {
+    "n_pairs": 1694,
+    "r": 0.815,
+    "rho": 0.841
+   },
+   "common": {
+    "WABAD": {
+     "n_species": 1189,
+     "n_common": 1107,
+     "teacher": {
+      "cmAP_all": 0.2905,
+      "cmAP_common": 0.2945
+     },
+     "B": {
+      "cmAP_all": 0.2831,
+      "cmAP_common": 0.2861
+     },
+     "S": {
+      "cmAP_all": 0.2694,
+      "cmAP_common": 0.2719
+     },
+     "XS": {
+      "cmAP_all": 0.2592,
+      "cmAP_common": 0.2623
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.3943,
+      "cmAP_common": 0.3989
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.2065,
+      "cmAP_common": 0.2214
+     }
+    },
+    "POW": {
+     "n_species": 48,
+     "n_common": 48,
+     "teacher": {
+      "cmAP_all": 0.5403,
+      "cmAP_common": 0.5403
+     },
+     "B": {
+      "cmAP_all": 0.4835,
+      "cmAP_common": 0.4835
+     },
+     "S": {
+      "cmAP_all": 0.4627,
+      "cmAP_common": 0.4627
+     },
+     "XS": {
+      "cmAP_all": 0.4451,
+      "cmAP_common": 0.4451
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.6711,
+      "cmAP_common": 0.6711
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.5756,
+      "cmAP_common": 0.5756
+     }
+    },
+    "HSN": {
+     "n_species": 21,
+     "n_common": 21,
+     "teacher": {
+      "cmAP_all": 0.527,
+      "cmAP_common": 0.527
+     },
+     "B": {
+      "cmAP_all": 0.5181,
+      "cmAP_common": 0.5181
+     },
+     "S": {
+      "cmAP_all": 0.5006,
+      "cmAP_common": 0.5006
+     },
+     "XS": {
+      "cmAP_all": 0.4873,
+      "cmAP_common": 0.4873
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.5199,
+      "cmAP_common": 0.5199
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.4977,
+      "cmAP_common": 0.4977
+     }
+    },
+    "NES": {
+     "n_species": 89,
+     "n_common": 84,
+     "teacher": {
+      "cmAP_all": 0.4038,
+      "cmAP_common": 0.4053
+     },
+     "B": {
+      "cmAP_all": 0.4014,
+      "cmAP_common": 0.4016
+     },
+     "S": {
+      "cmAP_all": 0.3927,
+      "cmAP_common": 0.3927
+     },
+     "XS": {
+      "cmAP_all": 0.386,
+      "cmAP_common": 0.3862
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.3836,
+      "cmAP_common": 0.3819
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.5217,
+      "cmAP_common": 0.5524
+     }
+    },
+    "PER": {
+     "n_species": 132,
+     "n_common": 131,
+     "teacher": {
+      "cmAP_all": 0.2289,
+      "cmAP_common": 0.2299
+     },
+     "B": {
+      "cmAP_all": 0.2334,
+      "cmAP_common": 0.235
+     },
+     "S": {
+      "cmAP_all": 0.2152,
+      "cmAP_common": 0.2168
+     },
+     "XS": {
+      "cmAP_all": 0.207,
+      "cmAP_common": 0.2085
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.3495,
+      "cmAP_common": 0.3522
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.3718,
+      "cmAP_common": 0.3746
+     }
+    },
+    "SNE": {
+     "n_species": 56,
+     "n_common": 55,
+     "teacher": {
+      "cmAP_all": 0.3496,
+      "cmAP_common": 0.3514
+     },
+     "B": {
+      "cmAP_all": 0.3596,
+      "cmAP_common": 0.361
+     },
+     "S": {
+      "cmAP_all": 0.3375,
+      "cmAP_common": 0.339
+     },
+     "XS": {
+      "cmAP_all": 0.3226,
+      "cmAP_common": 0.3242
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.382,
+      "cmAP_common": 0.3886
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.4326,
+      "cmAP_common": 0.4401
+     }
+    },
+    "SSW": {
+     "n_species": 81,
+     "n_common": 80,
+     "teacher": {
+      "cmAP_all": 0.4726,
+      "cmAP_common": 0.4681
+     },
+     "B": {
+      "cmAP_all": 0.4806,
+      "cmAP_common": 0.4761
+     },
+     "S": {
+      "cmAP_all": 0.459,
+      "cmAP_common": 0.4545
+     },
+     "XS": {
+      "cmAP_all": 0.4522,
+      "cmAP_common": 0.4477
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.5275,
+      "cmAP_common": 0.5248
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.3436,
+      "cmAP_common": 0.3479
+     }
+    },
+    "UHH": {
+     "n_species": 27,
+     "n_common": 27,
+     "teacher": {
+      "cmAP_all": 0.3825,
+      "cmAP_common": 0.3825
+     },
+     "B": {
+      "cmAP_all": 0.363,
+      "cmAP_common": 0.363
+     },
+     "S": {
+      "cmAP_all": 0.3533,
+      "cmAP_common": 0.3533
+     },
+     "XS": {
+      "cmAP_all": 0.3476,
+      "cmAP_common": 0.3476
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.363,
+      "cmAP_common": 0.363
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.3512,
+      "cmAP_common": 0.3512
+     }
+    },
+    "NBP": {
+     "n_species": 51,
+     "n_common": 50,
+     "teacher": {
+      "cmAP_all": 0.6577,
+      "cmAP_common": 0.6548
+     },
+     "B": {
+      "cmAP_all": 0.67,
+      "cmAP_common": 0.6664
+     },
+     "S": {
+      "cmAP_all": 0.6451,
+      "cmAP_common": 0.6417
+     },
+     "XS": {
+      "cmAP_all": 0.6408,
+      "cmAP_common": 0.6371
+     },
+     "birdnet_v3": {
+      "cmAP_all": 0.698,
+      "cmAP_common": 0.6973
+     },
+     "birdnet_v24": {
+      "cmAP_all": 0.4588,
+      "cmAP_common": 0.4668
+     }
+    }
+   }
+  }
+ },
+ "openset_JP": {
+  "v3relc5s": {
+   "p>0.1": {
+    "fp_per_window": 0.02645118888955804,
+    "p_any_fp": 0.024762313732780674,
+    "recall": 0.6726425069691435,
+    "windows": 381911,
+    "positives": 20806
+   },
+   "p>0.25": {
+    "fp_per_window": 0.011141339212539047,
+    "p_any_fp": 0.010848077169811815,
+    "recall": 0.5722387772757859,
+    "windows": 381911,
+    "positives": 20806
+   },
+   "at_recall_teacher_recall@0.1": {
+    "recall": 0.4103143324041142,
+    "fp_per_window": 0.003593131410869051,
+    "p_any_fp": 0.003544925791208302
+   },
+   "at_recall_0.3": {
+    "recall": 0.3,
+    "fp_per_window": 0.0016830918835745133,
+    "p_any_fp": 0.0016752366502871766
+   },
+   "at_recall_0.4": {
+    "recall": 0.4,
+    "fp_per_window": 0.003348173652568497,
+    "p_any_fp": 0.0033040363490105203
+   },
+   "at_recall_0.5": {
+    "recall": 0.5,
+    "fp_per_window": 0.006491041106435794,
+    "p_any_fp": 0.006375910364012305
+   },
+   "max_recall": 1.0,
+   "R_vs_teacher_at_teacher_recall": {
+    "R": 0.10613786141669194,
+    "ci95": [
+     0.06349609964440203,
+     0.1904214328522394
+    ],
+    "nan_share": 0.0
+   }
+  },
+  "v3relc": {
+   "p>0.1": {
+    "fp_per_window": 0.017323407809672935,
+    "p_any_fp": 0.016495989903406814,
+    "recall": 0.5961261174661155,
+    "windows": 381911,
+    "positives": 20806
+   },
+   "p>0.25": {
+    "fp_per_window": 0.007067091547507141,
+    "p_any_fp": 0.006917842115047747,
+    "recall": 0.47851581274632315,
+    "windows": 381911,
+    "positives": 20806
+   },
+   "at_recall_teacher_recall@0.1": {
+    "recall": 0.4103143324041142,
+    "fp_per_window": 0.004390881451243682,
+    "p_any_fp": 0.004320184351657653
+   },
+   "at_recall_0.3": {
+    "recall": 0.3,
+    "fp_per_window": 0.0018014493778218833,
+    "p_any_fp": 0.0017935941445345468
+   },
+   "at_recall_0.4": {
+    "recall": 0.4,
+    "fp_per_window": 0.0040231512427914215,
+    "p_any_fp": 0.003962927787588508
+   },
+   "at_recall_0.5": {
+    "recall": 0.5,
+    "fp_per_window": 0.00823214667401843,
+    "p_any_fp": 0.008041002664026574
+   },
+   "max_recall": 1.0,
+   "R_vs_teacher_at_teacher_recall": {
+    "R": 0.12970267815963538,
+    "ci95": [
+     0.07674990114834834,
+     0.26941124589312754
+    ],
+    "nan_share": 0.0
+   }
+  },
+  "v3": {
+   "p>0.1": {
+    "fp_per_window": 0.02645118888955804,
+    "p_any_fp": 0.024762313732780674,
+    "recall": 0.6726425069691435,
+    "windows": 381911,
+    "positives": 20806
+   },
+   "p>0.25": {
+    "fp_per_window": 0.011141339212539047,
+    "p_any_fp": 0.010848077169811815,
+    "recall": 0.5722387772757859,
+    "windows": 381911,
+    "positives": 20806
+   },
+   "at_recall_teacher_recall@0.1": {
+    "recall": 0.4103143324041142,
+    "fp_per_window": 0.003593131410869051,
+    "p_any_fp": 0.003544925791208302
+   },
+   "at_recall_0.3": {
+    "recall": 0.3,
+    "fp_per_window": 0.0016830918835745133,
+    "p_any_fp": 0.0016752366502871766
+   },
+   "at_recall_0.4": {
+    "recall": 0.4,
+    "fp_per_window": 0.003348173652568497,
+    "p_any_fp": 0.0033040363490105203
+   },
+   "at_recall_0.5": {
+    "recall": 0.5,
+    "fp_per_window": 0.006491041106435794,
+    "p_any_fp": 0.006375910364012305
+   },
+   "max_recall": 1.0,
+   "R_vs_teacher_at_teacher_recall": {
+    "R": 0.10613786141669194,
+    "ci95": [
+     0.06349609964440203,
+     0.1904214328522394
+    ],
+    "nan_share": 0.0
+   }
+  }
+ }
+}

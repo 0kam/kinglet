@@ -1,0 +1,195 @@
+{
+ "species": 1189,
+ "no_perch_class": 1,
+ "tiers": {
+  "B": {
+   "bug_check_unmasked_exact_cmAP": 0.2831022428096579,
+   "paper_cmAP": 0.283,
+   "masked_cmAP_exact": 0.4674154033845052,
+   "masked_pooled_auprc_exact": 0.4761965203579506,
+   "masked_cmAP_pack": 0.4633778348172194,
+   "masked_pooled_auprc_pack": 0.473399905119795,
+   "masked_cmAP_refit_diagnostic": 0.4636363949438787,
+   "masked_pooled_auprc_refit_diagnostic": 0.46729170890444494,
+   "at_threshold": {
+    "exact": {
+     "recall": 0.22708910705058952,
+     "precision": 0.8426878159316716
+    },
+    "pack": {
+     "recall": 0.2005260932876133,
+     "precision": 0.8524361022364217
+    }
+   },
+   "site_auprc_pack_minus_exact": {
+    "median": -0.005320431788661095,
+    "min": -0.03193452304917055,
+    "max": 0.00399654983269826,
+    "sites_worse": 65
+   },
+   "site_auprc_refit_minus_exact": {
+    "median": -0.003548428616578281,
+    "min": -0.02486051606807782,
+    "max": 0.005189013037675494,
+    "sites_worse": 60
+   },
+   "site_auprc_median": {
+    "exact": 0.6330614167088211,
+    "pack": 0.6324187125152525,
+    "refit": 0.6303041775223794
+   },
+   "packother": {
+    "wabad_shipped": {
+     "windows": 60158,
+     "other_logit_bias": 0.3663375023106572,
+     "other_logit_abs_err": 0.4408011070420646,
+     "exact_only_fire": 0.05089929851391336,
+     "pack_only_fire": 0.005269457096313043,
+     "fire_exact": 0.49054157385551383
+    },
+    "focal_holdout_shipped": {
+     "windows": 516312,
+     "other_logit_bias": 0.0044696121416488085,
+     "other_logit_abs_err": 0.4352904883805117,
+     "exact_only_fire": 0.002938145927268783,
+     "pack_only_fire": 0.0016637227102991989,
+     "fire_exact": 0.019106664187545516
+    },
+    "wabad_refit": {
+     "windows": 60158,
+     "other_logit_bias": 0.17407493158684967,
+     "other_logit_abs_err": 0.3115573706646391,
+     "exact_only_fire": 0.029754978556467967,
+     "pack_only_fire": 0.00995711293593537,
+     "fire_exact": 0.49054157385551383
+    }
+   }
+  },
+  "S": {
+   "bug_check_unmasked_exact_cmAP": 0.2694232701905276,
+   "paper_cmAP": 0.269,
+   "masked_cmAP_exact": 0.4582541367797179,
+   "masked_pooled_auprc_exact": 0.4604420365816792,
+   "masked_cmAP_pack": 0.450328830015618,
+   "masked_pooled_auprc_pack": 0.4513715149676603,
+   "masked_cmAP_refit_diagnostic": 0.4519279341387383,
+   "masked_pooled_auprc_refit_diagnostic": 0.4495288137932522,
+   "at_threshold": {
+    "exact": {
+     "recall": 0.21174471949520096,
+     "precision": 0.847948082891808
+    },
+    "pack": {
+     "recall": 0.1854400551145349,
+     "precision": 0.8546635395994948
+    }
+   },
+   "site_auprc_pack_minus_exact": {
+    "median": -0.006400379654920796,
+    "min": -0.03818913669136237,
+    "max": 0.0022581367112696205,
+    "sites_worse": 69
+   },
+   "site_auprc_refit_minus_exact": {
+    "median": -0.004135163305550749,
+    "min": -0.038976438702122196,
+    "max": 0.0048282497311767925,
+    "sites_worse": 67
+   },
+   "site_auprc_median": {
+    "exact": 0.6162625946759064,
+    "pack": 0.608789209255612,
+    "refit": 0.6129063170913596
+   },
+   "packother": {
+    "wabad_shipped": {
+     "windows": 60158,
+     "other_logit_bias": 0.35771759554142846,
+     "other_logit_abs_err": 0.43637958109238123,
+     "exact_only_fire": 0.053891419262608466,
+     "pack_only_fire": 0.00472090162571894,
+     "fire_exact": 0.4644103859835766
+    },
+    "focal_holdout_shipped": {
+     "windows": 516312,
+     "other_logit_bias": -0.002747306064816931,
+     "other_logit_abs_err": 0.483629209573136,
+     "exact_only_fire": 0.003145384961031314,
+     "pack_only_fire": 0.0021053161654193586,
+     "fire_exact": 0.018300949813291188
+    },
+    "wabad_refit": {
+     "windows": 60158,
+     "other_logit_bias": 0.15973735370868705,
+     "other_logit_abs_err": 0.31499470262721824,
+     "exact_only_fire": 0.032198543834568966,
+     "pack_only_fire": 0.00905947671132684,
+     "fire_exact": 0.4644103859835766
+    }
+   }
+  },
+  "XS": {
+   "bug_check_unmasked_exact_cmAP": 0.2592313944181166,
+   "paper_cmAP": 0.259,
+   "masked_cmAP_exact": 0.44635924031374385,
+   "masked_pooled_auprc_exact": 0.4576631746400998,
+   "masked_cmAP_pack": 0.44118647523586985,
+   "masked_pooled_auprc_pack": 0.45043411575528786,
+   "masked_cmAP_refit_diagnostic": 0.4414386376295875,
+   "masked_pooled_auprc_refit_diagnostic": 0.4480127309982833,
+   "at_threshold": {
+    "exact": {
+     "recall": 0.20818262952698577,
+     "precision": 0.8524989580995737
+    },
+    "pack": {
+     "recall": 0.18132995130505583,
+     "precision": 0.8614572098039945
+    }
+   },
+   "site_auprc_pack_minus_exact": {
+    "median": -0.005772778621794095,
+    "min": -0.02502905169397196,
+    "max": 0.006823461168688483,
+    "sites_worse": 67
+   },
+   "site_auprc_refit_minus_exact": {
+    "median": -0.003462909153402083,
+    "min": -0.01542899125765873,
+    "max": 0.012856668154260953,
+    "sites_worse": 62
+   },
+   "site_auprc_median": {
+    "exact": 0.6300290838738791,
+    "pack": 0.6227304871788908,
+    "refit": 0.6200580894796133
+   },
+   "packother": {
+    "wabad_shipped": {
+     "windows": 60158,
+     "other_logit_bias": 0.3414473745899713,
+     "other_logit_abs_err": 0.3973082998949121,
+     "exact_only_fire": 0.05276106253532365,
+     "pack_only_fire": 0.003490807540144287,
+     "fire_exact": 0.45240865720269957
+    },
+    "focal_holdout_shipped": {
+     "windows": 516312,
+     "other_logit_bias": 0.0028727797116568175,
+     "other_logit_abs_err": 0.4198621704572526,
+     "exact_only_fire": 0.0032674042052092535,
+     "pack_only_fire": 0.0020414013232309147,
+     "fire_exact": 0.018682502053022205
+    },
+    "wabad_refit": {
+     "windows": 60158,
+     "other_logit_bias": 0.12586780403945955,
+     "other_logit_abs_err": 0.27240183867134904,
+     "exact_only_fire": 0.028441770005651783,
+     "pack_only_fire": 0.00987399847069384,
+     "fire_exact": 0.45240865720269957
+    }
+   }
+  }
+ }
+}

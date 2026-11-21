@@ -1,0 +1,195 @@
+{
+ "perch_dir": "kagglehub google/bird-vocalization-classifier/tensorFlow2/perch_v2_cpu/1",
+ "teacher": {
+  "macs": {
+   "frontend": 237632000,
+   "backbone": 1233502808,
+   "label_head": 5817630720,
+   "total": 7288765528
+  },
+  "fft": [
+   {
+    "shape": [
+     "1",
+     "500",
+     "513"
+    ],
+    "attrs": "fft_type=RFFT, fft_length={1024}"
+   }
+  ],
+  "params": {
+   "backbone": 10695512,
+   "label_head": 90974455
+  },
+  "bn_stats": {
+   "backbone": 87296
+  },
+  "n_batchnorm": 78,
+  "per_call_weight_ops_elements": {
+   "other:multiply": 90902276,
+   "label_head:divide": 90900480
+  },
+  "stored_values": 101757263
+ },
+ "students": {
+  "b": {
+   "macs": {
+    "frontend": 559260288,
+    "backbone": 2085930240,
+    "embedding_head": 1363968,
+    "class_head_full": 13137960,
+    "class_head_jp_pack": 412032,
+    "total_exact": 2659692456,
+    "total_pack": 2646966528
+   },
+   "feature_dim": 888,
+   "params": {
+    "onnx_initializers": 12768312,
+    "mel_constants": 1116290,
+    "embedding_head": 1365504,
+    "backbone_bn_folded": 10286518,
+    "class_head_full": 13152755,
+    "class_head_jp_pack": 412496,
+    "jp_pack_rows": 464
+   },
+   "fft_frontend": {
+    "macs": {
+     "frontend": 32897664,
+     "backbone": 2085930240,
+     "embedding_head": 1363968,
+     "class_head_full": 13137960,
+     "class_head_jp_pack": 412032,
+     "total_exact": 2133329832,
+     "total_pack": 2120603904
+    },
+    "feature_dim": 888,
+    "params": {
+     "onnx_initializers": 11717688,
+     "mel_constants": 65666,
+     "embedding_head": 1365504,
+     "backbone_bn_folded": 10286518,
+     "class_head_full": 13152755,
+     "class_head_jp_pack": 412496,
+     "jp_pack_rows": 464
+    },
+    "fft": [
+     {
+      "shape": [
+       1,
+       501,
+       513
+      ],
+      "fft_length": 1024,
+      "where": "numpy rfft outside the graph (kinglet.power_spectrogram); listed, not counted"
+     }
+    ]
+   }
+  },
+  "s": {
+   "macs": {
+    "frontend": 559260288,
+    "backbone": 489497600,
+    "embedding_head": 1966080,
+    "class_head_full": 18937600,
+    "class_head_jp_pack": 593920,
+    "total_exact": 1069661568,
+    "total_pack": 1051317888
+   },
+   "feature_dim": 1280,
+   "params": {
+    "onnx_initializers": 6433330,
+    "mel_constants": 1116290,
+    "embedding_head": 1967616,
+    "backbone_bn_folded": 3349424,
+    "class_head_full": 18952395,
+    "class_head_jp_pack": 594384,
+    "jp_pack_rows": 464
+   },
+   "fft_frontend": {
+    "macs": {
+     "frontend": 32897664,
+     "backbone": 489497600,
+     "embedding_head": 1966080,
+     "class_head_full": 18937600,
+     "class_head_jp_pack": 593920,
+     "total_exact": 543298944,
+     "total_pack": 524955264
+    },
+    "feature_dim": 1280,
+    "params": {
+     "onnx_initializers": 5382706,
+     "mel_constants": 65666,
+     "embedding_head": 1967616,
+     "backbone_bn_folded": 3349424,
+     "class_head_full": 18952395,
+     "class_head_jp_pack": 594384,
+     "jp_pack_rows": 464
+    },
+    "fft": [
+     {
+      "shape": [
+       1,
+       501,
+       513
+      ],
+      "fft_length": 1024,
+      "where": "numpy rfft outside the graph (kinglet.power_spectrogram); listed, not counted"
+     }
+    ]
+   }
+  },
+  "xs": {
+   "macs": {
+    "frontend": 559260288,
+    "backbone": 229950464,
+    "embedding_head": 1966080,
+    "class_head_full": 18937600,
+    "class_head_jp_pack": 593920,
+    "total_exact": 810114432,
+    "total_pack": 791770752
+   },
+   "feature_dim": 1280,
+   "params": {
+    "onnx_initializers": 5563810,
+    "mel_constants": 1116290,
+    "embedding_head": 1967616,
+    "backbone_bn_folded": 2479904,
+    "class_head_full": 18952395,
+    "class_head_jp_pack": 594384,
+    "jp_pack_rows": 464
+   },
+   "fft_frontend": {
+    "macs": {
+     "frontend": 32897664,
+     "backbone": 229950464,
+     "embedding_head": 1966080,
+     "class_head_full": 18937600,
+     "class_head_jp_pack": 593920,
+     "total_exact": 283751808,
+     "total_pack": 265408128
+    },
+    "feature_dim": 1280,
+    "params": {
+     "onnx_initializers": 4513186,
+     "mel_constants": 65666,
+     "embedding_head": 1967616,
+     "backbone_bn_folded": 2479904,
+     "class_head_full": 18952395,
+     "class_head_jp_pack": 594384,
+     "jp_pack_rows": 464
+    },
+    "fft": [
+     {
+      "shape": [
+       1,
+       501,
+       513
+      ],
+      "fft_length": 1024,
+      "where": "numpy rfft outside the graph (kinglet.power_spectrogram); listed, not counted"
+     }
+    ]
+   }
+  }
+ }
+}

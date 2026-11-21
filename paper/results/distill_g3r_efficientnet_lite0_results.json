@@ -1,0 +1,94 @@
+{
+ "ckpt": "distill_root/g3conf_v1/efficientnet_lite0_full/best.pt",
+ "epoch_val_cos": 0.8676838367521238,
+ "WABAD": {
+  "n_windows": 60158,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.2693780352550678,
+  "n_species": 1189,
+  "auroc": 0.9268648385784802,
+  "pooled_auprc": 0.3116649821847926
+ },
+ "POW": {
+  "n_windows": 4560,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.46268006566438036,
+  "n_species": 48,
+  "auroc": 0.872369406473247,
+  "pooled_auprc": 0.683050331768439
+ },
+ "HSN": {
+  "n_windows": 12000,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.5006450288886659,
+  "n_species": 21,
+  "auroc": 0.8778398771370044,
+  "pooled_auprc": 0.539827524784783
+ },
+ "NES": {
+  "n_windows": 24480,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.39266816113355546,
+  "n_species": 89,
+  "auroc": 0.9408803482768224,
+  "pooled_auprc": 0.3967305502378761
+ },
+ "PER": {
+  "n_windows": 15120,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.21517366592529694,
+  "n_species": 132,
+  "auroc": 0.7532159440486466,
+  "pooled_auprc": 0.25923434436015275
+ },
+ "SNE": {
+  "n_windows": 23756,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.33754715206625,
+  "n_species": 56,
+  "auroc": 0.879936675848762,
+  "pooled_auprc": 0.6098933272270239
+ },
+ "SSW": {
+  "n_windows": 205200,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.45896171960161763,
+  "n_species": 81,
+  "auroc": 0.9436657207191524,
+  "pooled_auprc": 0.6102730141467833
+ },
+ "UHH": {
+  "n_windows": 36637,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.35333505902974643,
+  "n_species": 27,
+  "auroc": 0.8689540883052337,
+  "pooled_auprc": 0.4758816846973507
+ },
+ "NBP": {
+  "n_windows": 539,
+  "all_finite": true,
+  "unmatched": [],
+  "checked_against_perch_windows": true,
+  "cmAP": 0.6451120901094587,
+  "n_species": 51,
+  "auroc": 0.9290922816769399,
+  "pooled_auprc": 0.603623312395599
+ }
+}

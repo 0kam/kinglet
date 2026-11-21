@@ -1,0 +1,103 @@
+{
+ "XS": {
+  "field_cos_mean": 0.8341,
+  "field_cos_median": 0.8377,
+  "field_cos_p10": 0.7907,
+  "xretrieval_t2s_k1_mAP": 0.1825,
+  "xretrieval_t2s_k5_mAP": 0.1848,
+  "xretrieval_s2t_k1_mAP": 0.1778,
+  "xretrieval_s2t_k5_mAP": 0.1815,
+  "xprobe_cmAP": 0.4277
+ },
+ "XSs1": {
+  "field_cos_mean": 0.8315,
+  "field_cos_median": 0.8348,
+  "field_cos_p10": 0.7871,
+  "xretrieval_t2s_k1_mAP": 0.1818,
+  "xretrieval_t2s_k5_mAP": 0.1841,
+  "xretrieval_s2t_k1_mAP": 0.1762,
+  "xretrieval_s2t_k5_mAP": 0.1788,
+  "xprobe_cmAP": 0.4232
+ },
+ "XSs2": {
+  "field_cos_mean": 0.8315,
+  "field_cos_median": 0.8351,
+  "field_cos_p10": 0.7866,
+  "xretrieval_t2s_k1_mAP": 0.1828,
+  "xretrieval_t2s_k5_mAP": 0.1851,
+  "xretrieval_s2t_k1_mAP": 0.1777,
+  "xretrieval_s2t_k5_mAP": 0.1809,
+  "xprobe_cmAP": 0.4228
+ },
+ "XSdet": {
+  "field_cos_mean": 0.8796,
+  "field_cos_median": 0.8827,
+  "field_cos_p10": 0.8457,
+  "xretrieval_t2s_k1_mAP": 0.1854,
+  "xretrieval_t2s_k5_mAP": 0.1876,
+  "xretrieval_s2t_k1_mAP": 0.1796,
+  "xretrieval_s2t_k5_mAP": 0.1806,
+  "xprobe_cmAP": 0.4322
+ },
+ "XScls": {
+  "field_cos_mean": 0.0038,
+  "field_cos_median": 0.003,
+  "field_cos_p10": -0.0265,
+  "xretrieval_t2s_k1_mAP": 0.0028,
+  "xretrieval_t2s_k5_mAP": 0.0023,
+  "xretrieval_s2t_k1_mAP": 0.0031,
+  "xretrieval_s2t_k5_mAP": 0.0024,
+  "xprobe_cmAP": 0.0043
+ },
+ "XS0_ridge": {
+  "field_cos_mean": 0.8258,
+  "field_cos_median": 0.8298,
+  "field_cos_p10": 0.7818,
+  "xretrieval_t2s_k1_mAP": 0.18,
+  "xretrieval_t2s_k5_mAP": 0.1823,
+  "xretrieval_s2t_k1_mAP": 0.1772,
+  "xretrieval_s2t_k5_mAP": 0.1807,
+  "xprobe_cmAP": 0.4205
+ },
+ "XSs1_ridge": {
+  "field_cos_mean": 0.823,
+  "field_cos_median": 0.8271,
+  "field_cos_p10": 0.7782,
+  "xretrieval_t2s_k1_mAP": 0.1794,
+  "xretrieval_t2s_k5_mAP": 0.1814,
+  "xretrieval_s2t_k1_mAP": 0.1764,
+  "xretrieval_s2t_k5_mAP": 0.179,
+  "xprobe_cmAP": 0.4159
+ },
+ "XSs2_ridge": {
+  "field_cos_mean": 0.8232,
+  "field_cos_median": 0.8274,
+  "field_cos_p10": 0.7782,
+  "xretrieval_t2s_k1_mAP": 0.1804,
+  "xretrieval_t2s_k5_mAP": 0.1826,
+  "xretrieval_s2t_k1_mAP": 0.178,
+  "xretrieval_s2t_k5_mAP": 0.1811,
+  "xprobe_cmAP": 0.4157
+ },
+ "XScls_ridge": {
+  "field_cos_mean": 0.7432,
+  "field_cos_median": 0.7479,
+  "field_cos_p10": 0.6852,
+  "xretrieval_t2s_k1_mAP": 0.1643,
+  "xretrieval_t2s_k5_mAP": 0.1657,
+  "xretrieval_s2t_k1_mAP": 0.1658,
+  "xretrieval_s2t_k5_mAP": 0.1698,
+  "xprobe_cmAP": 0.3477
+ },
+ "XSdet_ridge": {
+  "field_cos_mean": 0.8708,
+  "field_cos_median": 0.8747,
+  "field_cos_p10": 0.8356,
+  "xretrieval_t2s_k1_mAP": 0.1834,
+  "xretrieval_t2s_k5_mAP": 0.1846,
+  "xretrieval_s2t_k1_mAP": 0.1765,
+  "xretrieval_s2t_k5_mAP": 0.1759,
+  "xprobe_cmAP": 0.4316
+ },
+ "teacher_probe_cmAP": 0.4991
+}
