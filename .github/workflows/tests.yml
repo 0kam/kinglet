@@ -1,0 +1,22 @@
+# Written with Claude (Anthropic) under the author's direction; see README.md (Tests and demonstration data).
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+      # the package with onnx for the toy-model tests; pandas, scikit-learn, scipy and CPU torch for the paper's scoring tests
+      - run: python -m pip install -e ".[mcu]" pandas scikit-learn scipy
+      - run: python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
+      # no model download: tests/test_demo.py skips
+      - run: python -m unittest discover tests -v
