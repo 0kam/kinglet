@@ -155,7 +155,7 @@ python -m unittest discover tests -v
 They check, against hand-computed values or exact identities: the FFT front end against a direct DFT
 (`test_frontend.py`); decoding, 5-s windows and the `kinglet analyze` CSV, with the 0.1 threshold, the top-k
 rule, sound-group thresholds and the embedding files (`test_analyze.py`); `kinglet build-pack`, the exact pack
-against the full softmax, and the compact pack against Eq. 3 of the paper and against the exact pack when its
+against the full softmax, and the compact pack against Eq. (S3) of the paper's Supporting Information and against the exact pack when its
 "other" row is exact (`test_region.py`); the embedding recovered from a stored feature, float and int8, and
 L2 normalisation (`test_restore.py`); and the scoring functions of `paper/` (class-mean average precision,
 the site-weighted AP of the site bootstrap, the paired species bootstrap, false detections at equal recall;
@@ -189,10 +189,10 @@ Bittern are reported without an annotation; in `SCHG` Eurasian Skylark is detect
 Common Nightingale is missed and Greylag Goose is reported without an annotation. The excerpts show how to run
 the tool, not its accuracy, which the paper measures on all of WABAD and BirdSet.
 
-The new tests (`test_analyze.py`, `test_demo.py`, `test_paper_scoring.py`, the compact-pack tests in
-`test_region.py`), the files in `demo/` and the test workflow were written with a large language model
-(Claude, Anthropic; November 2026) under the author's direction, as was the code in `paper/`
-(see `paper/README.md`); each new code file carries a note to that effect.
+The package (`kinglet/`), the tests, the files in `demo/` and the test workflow were written with a large
+language model (Claude, Anthropic; October–November 2026) under the author's direction, as was the code in
+`paper/` (see `paper/README.md`). The files in `paper/` and the test files added for the paper
+(`test_analyze.py`, `test_demo.py`, `test_paper_scoring.py`) each carry a note to that effect.
 
 ## License
 

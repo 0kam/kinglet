@@ -91,7 +91,7 @@ class FetchRegionSpecies(unittest.TestCase):
 
 class CompactPackScores(unittest.TestCase):
     def test_hand_computed_scores(self):
-        """Compact pack, Eq. 3: p_k = exp(z_k) / (sum over pack rows exp(z_j) + exp(o)); "other" not returned."""
+        """Compact pack, Eq. (S3) of the paper: p_k = exp(z_k) / (sum over pack rows exp(z_j) + exp(o)); "other" not returned."""
         with tempfile.TemporaryDirectory() as d:
             path = Path(d) / "compact.npz"
             # rows: two species, one group member, "other"; feature (1, 0) gives logits log(2, 1, 1, 4)
