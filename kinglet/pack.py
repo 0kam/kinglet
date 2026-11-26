@@ -1,3 +1,4 @@
+# Written with Claude (Anthropic) under the author's direction; see README.md (Tests and demonstration data).
 """Regional head packs: build one from a headpack bundle, load one for scoring.
 
 A v0.3 model is a trunk ONNX (waveform -> embedding + trunk feature h) plus a head pack

@@ -1,3 +1,4 @@
+# Written with Claude (Anthropic) under the author's direction; see README.md (Tests and demonstration data).
 """Offline test of the FFT frontend: power_spectrogram against a direct DFT, and Kinglet.run on a power-input
 toy model against the same model with the spectrogram inside the graph (as a waveform-input trunk computes it,
 a DFT matrix product). Run: python -m unittest discover tests"""

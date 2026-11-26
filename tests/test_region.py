@@ -1,3 +1,4 @@
+# Written with Claude (Anthropic) under the author's direction; see README.md (Tests and demonstration data).
 """Offline tests for build-pack (eBird API and ONNX trunk mocked). Run: python -m unittest discover tests"""
 
 import contextlib
@@ -55,7 +56,7 @@ class FeatureSession:
 
     def run(self, _, feeds):
         x = feeds["waveform"]
-        return np.zeros((len(x), 1536), np.float32), x
+        return np.ones((len(x), 1536), np.float32), x  # the embedding is not under test; non-zero for L2 normalisation
 
 
 def run_cli(*argv: str) -> str:

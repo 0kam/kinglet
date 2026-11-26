@@ -191,8 +191,8 @@ the tool, not its accuracy, which the paper measures on all of WABAD and BirdSet
 
 The package (`kinglet/`), the tests, the files in `demo/` and the test workflow were written with a large
 language model (Claude, Anthropic; October–November 2026) under the author's direction, as was the code in
-`paper/` (see `paper/README.md`). The files in `paper/` and the test files added for the paper
-(`test_analyze.py`, `test_demo.py`, `test_paper_scoring.py`) each carry a note to that effect.
+`paper/` (see `paper/README.md`). The Python files of the package, of the tests and of `paper/` and the test
+workflow each carry a note to that effect.
 
 ## License
 

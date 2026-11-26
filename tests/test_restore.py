@@ -1,3 +1,4 @@
+# Written with Claude (Anthropic) under the author's direction; see README.md (Tests and demonstration data).
 """Offline test for embedding_from_feature on a toy split model. Run: python -m unittest discover tests"""
 
 import tempfile

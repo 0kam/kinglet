@@ -1,3 +1,4 @@
+# Written with Claude (Anthropic) under the author's direction; see README.md (Tests and demonstration data).
 """kinglet CLI: analyze audio on a laptop CPU; build regional head packs.
 
 kinglet analyze

@@ -1,3 +1,4 @@
+# Written with Claude (Anthropic) under the author's direction; see README.md (Tests and demonstration data).
 """Kinglet: kinglet-sized bioacoustic embedding and classification models distilled from Perch 2.0.
 
 Since v0.3 a model is two files: a trunk ONNX mapping 5-s windows at 32 kHz mono to "embedding"
