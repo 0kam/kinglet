@@ -6,7 +6,9 @@ is the `kinglet` package that runs the released models; the scripts here use it 
 
 All code in this folder was written with a large language model (Claude, Anthropic; models Fable 5,
 Fable 5.2 and Opus 5.5, October–November 2026) under the author's direction and was checked by the author;
-each file carries a note to that effect.
+each file carries a note to that effect. The tests, the demonstration data and the test workflow added for the
+paper were also written with Claude under the author's direction (see "Tests and demonstration data" in the
+repository's README.md).
 
 ## Contents
 

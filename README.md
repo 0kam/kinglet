@@ -142,6 +142,58 @@ voice = groups["human_voice"] >= m.groups["human_voice"] # windows with a clear 
 - v0.2 single-file models (`logits` in the graph) are not supported by the v0.3 package — use the
   v0.2 release assets with `kinglet-bio==0.2.0` if you need them.
 
+## Tests and demonstration data
+
+The unit tests need no model download and run in a few seconds (`onnx` from the `mcu` extra builds the toy
+models; ffmpeg on PATH for the decoding tests):
+
+```bash
+pip install -e ".[mcu]"
+python -m unittest discover tests -v
+```
+
+They check, against hand-computed values or exact identities: the FFT front end against a direct DFT
+(`test_frontend.py`); decoding, 5-s windows and the `kinglet analyze` CSV, with the 0.1 threshold, the top-k
+rule, sound-group thresholds and the embedding files (`test_analyze.py`); `kinglet build-pack`, the exact pack
+against the full softmax, and the compact pack against Eq. 3 of the paper and against the exact pack when its
+"other" row is exact (`test_region.py`); the embedding recovered from a stored feature, float and int8, and
+L2 normalisation (`test_restore.py`); and the scoring functions of `paper/` (class-mean average precision,
+the site-weighted AP of the site bootstrap, the paired species bootstrap, false detections at equal recall;
+`test_paper_scoring.py`, skipped unless `pandas scikit-learn scipy torch` are installed). GitHub Actions runs
+them on every push (`.github/workflows/tests.yml`).
+
+**Demonstration.** `demo/audio/` holds three 20-s excerpts of WABAD soundscapes from Germany and Poland
+(source, licence and changes: `demo/ATTRIBUTION.md`) and `demo/annotations.csv` the experts' annotations of
+them. From a clean clone (about 140 MB download):
+
+```bash
+git clone https://github.com/0kam/kinglet.git && cd kinglet
+python -m venv .venv && . .venv/bin/activate      # Windows: .venv\Scripts\activate
+pip install -e ".[mcu]"                          # needs ffmpeg on PATH
+mkdir -p demo/models
+for f in kinglet-s-v0.4.0.power.onnx kinglet-s-v0.4.0.headpack.npz; do
+  curl -L -o demo/models/$f https://github.com/0kam/kinglet/releases/download/v0.4.0/$f
+done
+kinglet build-pack --headpack demo/models/kinglet-s-v0.4.0.headpack.npz \
+  --species paper/results/regionlist_de.csv --out demo/models/de.npz      # exact pack, 493 German species
+kinglet analyze demo/audio --model demo/models/kinglet-s-v0.4.0.power.onnx \
+  --pack demo/models/de.npz --out demo_detections.csv
+python -m unittest discover tests -p test_demo.py -v   # reruns both steps, compares with demo/expected_detections.csv
+```
+
+`demo_detections.csv` should hold the 19 rows of `demo/expected_detections.csv` (scores may differ in the last
+digit between machines; the test allows 0.01). Next to `demo/annotations.csv`: in the Polish excerpt Common
+Chiffchaff and Song Thrush are detected and Common Chaffinch is missed; in `SCHF` Song Thrush is detected in all
+four windows and European Robin in two of its three, Eurasian Blackcap is missed, and Eurasian Blackbird and Great
+Bittern are reported without an annotation; in `SCHG` Eurasian Skylark is detected in three of four windows,
+Common Nightingale is missed and Greylag Goose is reported without an annotation. The excerpts show how to run
+the tool, not its accuracy, which the paper measures on all of WABAD and BirdSet.
+
+The new tests (`test_analyze.py`, `test_demo.py`, `test_paper_scoring.py`, the compact-pack tests in
+`test_region.py`), the files in `demo/` and the test workflow were written with a large language model
+(Claude, Anthropic; November 2026) under the author's direction, as was the code in `paper/`
+(see `paper/README.md`); each new code file carries a note to that effect.
+
 ## License
 
 [Apache License 2.0](https://github.com/0kam/kinglet/blob/main/LICENSE). Kinglet models are distilled from Perch 2.0 (Apache-2.0, Google);
