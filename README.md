@@ -167,7 +167,7 @@ them on every push (`.github/workflows/tests.yml`).
 them. From a clean clone (about 140 MB download):
 
 ```bash
-git clone https://github.com/0kam/kinglet.git && cd kinglet
+git clone -b paper-code https://github.com/0kam/kinglet.git && cd kinglet
 python -m venv .venv && . .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -e ".[mcu]"                          # needs ffmpeg on PATH
 mkdir -p demo/models
