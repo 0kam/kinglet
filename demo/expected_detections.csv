@@ -1,0 +1,20 @@
+file,start_s,end_s,label,scientific_name,japanese_name,score
+BIAL_20210420_071504_0-20s.flac,0.0,5.0,comchi1,Phylloscopus collybita,,0.624
+BIAL_20210420_071504_0-20s.flac,0.0,5.0,sonthr1,Turdus philomelos,,0.230
+BIAL_20210420_071504_0-20s.flac,5.0,10.0,sonthr1,Turdus philomelos,,0.900
+BIAL_20210420_071504_0-20s.flac,10.0,15.0,sonthr1,Turdus philomelos,,0.288
+BIAL_20210420_071504_0-20s.flac,10.0,15.0,comchi1,Phylloscopus collybita,,0.165
+BIAL_20210420_071504_0-20s.flac,15.0,20.0,comchi1,Phylloscopus collybita,,0.204
+SCHF_20230422_045610_0-20s.flac,0.0,5.0,sonthr1,Turdus philomelos,,0.180
+SCHF_20230422_045610_0-20s.flac,0.0,5.0,grebit1,Botaurus stellaris,,0.160
+SCHF_20230422_045610_0-20s.flac,5.0,10.0,sonthr1,Turdus philomelos,,0.522
+SCHF_20230422_045610_0-20s.flac,5.0,10.0,eurbla,Turdus merula,,0.152
+SCHF_20230422_045610_0-20s.flac,10.0,15.0,sonthr1,Turdus philomelos,,0.452
+SCHF_20230422_045610_0-20s.flac,10.0,15.0,eurrob1,Erithacus rubecula,,0.142
+SCHF_20230422_045610_0-20s.flac,15.0,20.0,sonthr1,Turdus philomelos,,0.399
+SCHF_20230422_045610_0-20s.flac,15.0,20.0,eurrob1,Erithacus rubecula,,0.149
+SCHG_20160501_034000_0-20s.flac,0.0,5.0,gragoo,Anser anser,,0.609
+SCHG_20160501_034000_0-20s.flac,0.0,5.0,skylar,Alauda arvensis,,0.109
+SCHG_20160501_034000_0-20s.flac,5.0,10.0,gragoo,Anser anser,,0.402
+SCHG_20160501_034000_0-20s.flac,10.0,15.0,skylar,Alauda arvensis,,0.256
+SCHG_20160501_034000_0-20s.flac,15.0,20.0,skylar,Alauda arvensis,,0.160
