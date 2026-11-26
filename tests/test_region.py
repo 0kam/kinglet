@@ -89,6 +89,26 @@ class FetchRegionSpecies(unittest.TestCase):
         self.assertEqual(sizes, [200, 200, 50])
 
 
+class CompactPackScores(unittest.TestCase):
+    def test_hand_computed_scores(self):
+        """Compact pack, Eq. 3: p_k = exp(z_k) / (sum over pack rows exp(z_j) + exp(o)); "other" not returned."""
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d) / "compact.npz"
+            # rows: two species, one group member, "other"; feature (1, 0) gives logits log(2, 1, 1, 4)
+            np.savez(path, W=np.array([[np.log(2), 0], [0, 0], [0, 0], [np.log(4), 0]], np.float32),
+                     b=np.zeros(4, np.float32), codes=np.array(["aaa1", "bbb1", "Speech", "other"]), n_species=2,
+                     scientific_name=np.array(["Aus bus", "Bus cus"]), japanese_name=np.array(["", ""]),
+                     groups=json.dumps({"human_voice": ["Speech"]}), group_thresholds=json.dumps({"human_voice": 0.1}),
+                     meta="{}")
+            with mock.patch("onnxruntime.InferenceSession", FeatureSession):
+                m = Kinglet("toy.onnx", path)
+        _, scores, groups = m.run(np.array([[1, 0], [0, 1]], np.float32))
+        np.testing.assert_allclose(scores, [[2 / 8, 1 / 8], [1 / 4, 1 / 4]], rtol=1e-6)
+        np.testing.assert_allclose(groups["human_voice"], [1 / 8, 1 / 4], rtol=1e-6)
+        self.assertEqual(m.classes, [("aaa1", "Aus bus", ""), ("bbb1", "Bus cus", "")])
+        self.assertEqual(m.groups, {"human_voice": 0.1})
+
+
 class BuildPackRegion(unittest.TestCase):
     def setUp(self):
         td = tempfile.TemporaryDirectory()
@@ -161,6 +181,31 @@ class BuildPackRegion(unittest.TestCase):
             w.writeheader()
             w.writerows(rows)
         return path
+
+    def test_compact_equals_exact_when_other_is_exact(self):
+        # one class outside the pack: its logit is the exact out-of-pack logsumexp and is linear in the
+        # feature, so an unpenalised ridge recovers it and the compact pack must give the exact scores
+        groups = pack.default_groups()[0]
+        labels = [str(n) for n in np.load(self.headpack)["labels"]]
+        species = [{"ebird_code": "aaa1", "scientific_name": "Aus bus"},
+                   {"ebird_code": "ddd1", "scientific_name": "Dus novus"}]  # "Genus zzz" stays out of the pack
+        pack.build_pack(self.headpack, species, self.tmp / "exact.npz", groups=groups)
+        report = pack.build_pack(self.headpack, species, self.tmp / "compact.npz", groups=groups,
+                                 ridge_lambda=0.0, compact=True)
+        self.assertLess(report["prob_err_max"], 1e-5)
+        p = pack.load_pack(self.tmp / "compact.npz")
+        hp = np.load(self.headpack)
+        np.testing.assert_allclose(p["W"][-1], hp["W"][labels.index("Genus zzz")], atol=1e-4)
+        np.testing.assert_array_equal(p["W"][0], hp["W"][labels.index("Aus bus")])  # listed rows are sliced
+        self.assertEqual(p["b"][1], pack.DEAD_BIAS)  # unmatched species: dead row
+        h = 3 * np.random.default_rng(2).normal(size=(9, 4)).astype(np.float32)
+        with mock.patch("onnxruntime.InferenceSession", FeatureSession):
+            exact, compact = Kinglet("toy.onnx", self.tmp / "exact.npz"), Kinglet("toy.onnx", self.tmp / "compact.npz")
+        (_, s_exact, g_exact), (_, s_compact, g_compact) = exact.run(h), compact.run(h)
+        np.testing.assert_allclose(s_compact, s_exact, atol=1e-5)
+        self.assertTrue((s_compact[:, 1] == 0).all())
+        for g in groups:
+            np.testing.assert_allclose(g_compact[g], g_exact[g], atol=1e-5)
 
     def test_missing_key(self):
         env = {k: v for k, v in os.environ.items() if k != "EBIRD_API_KEY"}
